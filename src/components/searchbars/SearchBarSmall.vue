@@ -1,15 +1,10 @@
 <template>
   <div class="row justify-content-center">
-    <div class="col-md-6">
-		<h2 class="search-title">{{ searchName}}</h2>
+    <div class="col-5">
+		<h3 class="search-title">{{ searchName }}</h3>
       <div id="custom-search-input">
-        <div class="input-group col-md-12">
-          <input type="text" class="form-control input-lg" placeholder="Recherche" />
-          <span class="input-group-btn">
-            <button class="btn btn-info btn-lg" type="button">
-              <svg class="icon icon-search"><use xlink:href="#icon-search"></use></svg>
-            </button>
-          </span>
+        <div class="input-group">
+          <input type="text" class="form-control input-lg" v-bind:placeholder='searchName' />
         </div>
       </div>
     </div>
@@ -18,7 +13,7 @@
 
 <script>
 export default {
-  name: 'SearchBar',
+  name: 'SearchBarSmall',
   props: ['searchName']
 }
 </script>
@@ -26,6 +21,7 @@ export default {
 <style scoped>
   #custom-search-input{
       padding: 3px;
+      margin-bottom: 5px;
       border: solid 1px #E4E4E4;
       border-radius: 6px;
       background-color: #fff;
@@ -52,7 +48,7 @@ export default {
       border-left: solid 1px #ccc;
   }
 
-  #custom-search-input .glyphicon-search{
+  #custom-search-input {
       font-size: 23px;
   }
 </style>
