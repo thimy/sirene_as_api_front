@@ -2,7 +2,7 @@
   <div v-if="isThereResults" class="col justify-content-center">
     <h2 >Résultats :</h2>
     <ul>
-      <li v-for="result in storedResults">
+      <li v-for="result in storedResultsEtablissements">
         {{ result['nom_raison_sociale'] }}
       </li>
     </ul>
@@ -16,10 +16,10 @@ export default {
   name: 'Results',
   computed: {
     isThereResults: function () {
-      return this.storedResults !== null
+      return store.getters.storedResultsEtablissements !== null
     },
-    storedResults () {
-      return store.state.storedResults
+    storedResultsEtablissements () {
+      return store.getters.storedResultsEtablissements
     }
   }
 }

@@ -1,10 +1,10 @@
 <template>
   <div class="row justify-content-center">
     <div class="col-6">
-		<h2 class="search-title">{{ searchName}}</h2>
+		<h2 class="search-title">{{ searchName }}</h2>
       <div id="custom-search-input">
         <div class="input-group col-12">
-          <input type="text" class="form-control input-lg" placeholder="Recherche" />
+          <input type="text" class="form-control input-lg" placeholder="Recherche" v-model="fullText"/>
           <span class="input-group-btn">
             <button class="btn btn-info btn-lg" type="button">
               <svg class="icon icon-search"><use xlink:href="#icon-search"></use></svg>
@@ -17,9 +17,28 @@
 </template>
 
 <script>
+import store from '../../store/store.js'
+
 export default {
   name: 'SearchBar',
-  props: ['searchName']
+  props: ['searchName'],
+  data () {
+    return {
+      fullText: null
+    }
+  },
+  watch: {
+    // whenever fullText changes, this function will run
+    /* eslint-disable no-undef */
+    fullText: function (setFullText) {
+      if (this.fullText) {
+        store.commit('setFullText', this.fullText)
+        store.commit('executeSearch')
+      } else {
+        store.commit('clearResults')
+      }
+    }
+  }
 }
 </script>
 

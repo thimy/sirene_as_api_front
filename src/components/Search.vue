@@ -16,13 +16,6 @@
         <SearchBarSmall searchName="Activite Principale" v-if="toggleFilters"></SearchBarSmall>
       </div>
     </div>
-    <button class="btn btn-default" v-on:click="requestSearch">
-      Recherche test
-    </button>
-    <button class="btn btn-default" v-on:click="clearButton">
-      Clear test
-    </button>
-    <p>{{ results}}</p>
   </div>
 </template>
 
@@ -30,9 +23,6 @@
 import SearchBar from './searchbars/SearchBar.vue'
 import SearchBarSmall from './searchbars/SearchBarSmall.vue'
 import store from '../store/store.js'
-import Vue from 'vue'
-import VueResource from 'vue-resource'
-Vue.use(VueResource)
 
 export default {
   name: 'Search',
@@ -47,28 +37,11 @@ export default {
     }
   },
   methods: {
-    add () {
-      store.commit('add')
-    },
-    clear () {
-      store.commit('clear')
-    },
     requestSearch () {
-      // GET /someUrl
-      this.$http.get('http://localhost:3000/full_text/test').then(response => {
-        // get body data
-        // var temp = response.body
-        // var tempEtablissements = temp.etablissement
-        // var arrayEtablissements = temp.etablissement[0]['nom_raison_sociale']
-        // this.results = temp.etablissement[0]['nom_raison_sociale']
-        // this.results = response.body.etablissement
-        store.state.storedResults = response.body.etablissement
-      }, response => {
-        // error callback
-      })
+      store.commit('executeSearch')
     },
     clearButton () {
-      store.state.storedResults = null
+      store.commit('clearResults')
     }
   }
 }
