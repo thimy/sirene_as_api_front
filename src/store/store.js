@@ -6,16 +6,12 @@ Vue.use(VueResource)
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-  // actions: {
-  // },
-  // modules: {
-  //
-  // }
   state: {
     storedResults: null,
-    storedFullText: null,
+    storedStatus: null,
+    storedFullText: '',
     baseAdress: 'http://localhost:3000/full_text/',
-    testAdress: 'http://localhost:3000/full_text/test' // TODO: virer
+    pageNumber: 1
   },
   getters: {
     storedResultsEtablissements: state => {
@@ -26,14 +22,18 @@ const store = new Vuex.Store({
       }
     },
     numberResults: state => {
-      if (state.storedResults !== null) {
-        return 1
-      } else {
+      if (state.storedStatus === 404) {
+        store.commit('clearResults')
         return 0
+      } else if (state.storedResults !== null) {
+        return state.storedResults.total_results
       }
     },
+    pageNumberToGet: state => {
+      return '?page='.concat(store.state.pageNumber)
+    },
     adressToGet: state => {
-      return store.state.baseAdress.concat(store.state.storedFullText)
+      return store.state.baseAdress.concat(store.state.storedFullText).concat(store.getters.pageNumberToGet)
     }
   },
   mutations: {
@@ -48,9 +48,10 @@ const store = new Vuex.Store({
     },
     executeSearch (state) {
       Vue.http.get(store.getters.adressToGet).then(response => {
+        state.storedStatus = response.status
         state.storedResults = response.body
       }, response => {
-        // TODO: error callback
+        state.storedStatus = response.status
       })
     }
   }

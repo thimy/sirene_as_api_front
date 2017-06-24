@@ -24,19 +24,15 @@ export default {
   props: ['searchName'],
   data () {
     return {
-      fullText: null
+      fullText: ''
     }
   },
   watch: {
     // whenever fullText changes, this function will run
     /* eslint-disable no-undef */
     fullText: function (setFullText) {
-      if (this.fullText) {
-        store.commit('setFullText', this.fullText)
-        store.commit('executeSearch')
-      } else {
-        store.commit('clearResults')
-      }
+      store.commit('setFullText', this.fullText)
+      store.commit('executeSearch')
     }
   }
 }
