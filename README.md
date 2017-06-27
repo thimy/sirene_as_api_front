@@ -23,3 +23,16 @@ npm run unit
 # run all tests
 npm test
 ```
+## Run in dev mode :
+
+``` bash
+
+# Launch back-end : in sirene_as_api folder, run
+rails s
+
+# Back-end is launched on localhost:3000
+# Launch SOLR server :
+rake solr:sunspot:start
+
+# Finally, go to sirene_as_api_front folder and start npm :
+npm run dev
