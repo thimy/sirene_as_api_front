@@ -11,7 +11,9 @@ const store = new Vuex.Store({
     storedStatus: null,
     storedFullText: '',
     baseAdress: 'http://localhost:3000/full_text/',
-    pageNumber: 1
+    pageNumber: 1,
+    filterPostalCode: '',
+    filterActivityCode: ''
   },
   getters: {
     storedResultsEtablissements: state => {
@@ -35,10 +37,23 @@ const store = new Vuex.Store({
       }
     },
     pageNumberToGet: state => {
-      return '?page='.concat(store.state.pageNumber)
+      return '?page='.concat(state.pageNumber)
     },
     adressToGet: state => {
-      return store.state.baseAdress.concat(store.state.storedFullText).concat(store.getters.pageNumberToGet)
+      return state.baseAdress.concat(state.storedFullText).concat(store.getters.optionsToGet)
+    },
+    optionsToGet: state => {
+      return store.getters.pageNumberToGet.concat(store.getters.filtersToGet)
+    },
+    filtersToGet: state => {
+      var filters = ''
+      if (state.filterPostalCode !== '') {
+        filters = filters.concat('&code_postal=').concat(state.filterPostalCode)
+      }
+      if (state.filterActivityCode !== '') {
+        filters = filters.concat('&activite_principale=').concat(state.filterActivityCode)
+      }
+      return filters
     }
   },
   mutations: {
@@ -48,15 +63,32 @@ const store = new Vuex.Store({
     clearResults (state) {
       state.storedResults = null
     },
+    clearFilters (state) {
+      state.filterPostalCode = ''
+      state.filterActivityCode = ''
+    },
     setFullText (state, value) {
       state.storedFullText = value
+    },
+    setSearchFilters (state, filterSearch) {
+      if (filterSearch.name === 'Code Postal') {
+        state.filterPostalCode = filterSearch.value
+      }
+      if (filterSearch.name === 'Activite Principale') {
+        state.filterActivityCode = filterSearch.value
+      }
     },
     executeSearch (state) {
       Vue.http.get(store.getters.adressToGet).then(response => {
         state.storedStatus = response.status
         state.storedResults = response.body
       }, response => {
-        state.storedStatus = response.status
+        if (state.pageNumber !== 1) {
+          state.pageNumber = 1
+          store.commit('executeSearch') // BAM, recursive research ! TODO: Verifier si c'est une idée brillante ou stupide
+        } else {
+          state.storedStatus = response.status
+        }
       })
     }
   }

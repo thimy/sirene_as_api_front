@@ -1,10 +1,10 @@
 <template>
-  <div v-if="isSearchNotEmpty" class="col justify-content-center">
-    <h2 >Résultats ({{numberResults}}) :</h2>
+  <div v-if="isSearchNotEmpty" class="justify-content-center">
+    <h2 class="justify-content-center">Résultats ({{numberResults}}) :</h2>
     <paginate-module></paginate-module>
     <ul>
       <li v-for="result in storedResultsEtablissements">
-        {{ result['nom_raison_sociale'] }}
+        <b>{{ result['nom_raison_sociale'] }}</b> ({{ result['code_postal'] }}) - {{ result['activite_principale'] }}
       </li>
     </ul>
     <p v-if="numberResults === 0">Aucun résultat trouvé</p>

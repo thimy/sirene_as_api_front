@@ -7,7 +7,7 @@
       <div class="col-8 offset-2 marged-top">
         <SearchBar searchName="Recherche par nom"></SearchBar>
         <div class="row justify-content-center">
-          <button class="btn btn-default" id="filter-button" v-on:click="toggleFilters = !toggleFilters">
+          <button class="btn btn-default" id="filter-button" v-on:click="filterButton">
             Filtres
             <svg class="icon icon-equalizer"><use xlink:href="#icon-equalizer"></use></svg>
           </button>
@@ -37,6 +37,11 @@ export default {
     }
   },
   methods: {
+    filterButton () {
+      this.toggleFilters = !this.toggleFilters
+      store.commit('clearFilters')
+      store.commit('executeSearch')
+    },
     requestSearch () {
       store.commit('executeSearch')
     },

@@ -4,7 +4,7 @@
 		<h3 class="search-title">{{ searchName }}</h3>
       <div id="custom-search-input">
         <div class="input-group">
-          <input type="text" class="form-control" v-bind:placeholder='searchName' />
+          <input type="text" class="form-control" v-bind:placeholder='searchName' v-model='filterSearched'/>
         </div>
       </div>
     </div>
@@ -12,9 +12,32 @@
 </template>
 
 <script>
+import store from '../../store/store.js'
+
 export default {
   name: 'SearchBarSmall',
-  props: ['searchName']
+  props: ['searchName'],
+  data () {
+    return {
+      filterSearched: ''
+    }
+  },
+  computed: {
+    /* eslint-disable no-undef */
+    filterSearchPayload: function () {
+      return {
+        name: this.searchName,
+        value: this.filterSearched
+      }
+    }
+  },
+  watch: {
+    /* eslint-disable no-undef */
+    filterSearched: function (setFilterSearched) {
+      store.commit('setSearchFilters', this.filterSearchPayload)
+      store.commit('executeSearch')
+    }
+  }
 }
 </script>
 
