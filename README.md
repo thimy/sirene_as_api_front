@@ -32,7 +32,8 @@ rails s
 
 # Back-end is launched on localhost:3000
 # Launch SOLR server :
-rake solr:sunspot:start
+rake sunspot:solr:start
 
 # Finally, go to sirene_as_api_front folder and start npm :
 npm run dev
+# Front-end load automatically on localhost:8080
