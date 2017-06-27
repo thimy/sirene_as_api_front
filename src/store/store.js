@@ -29,6 +29,11 @@ const store = new Vuex.Store({
         return state.storedResults.total_results
       }
     },
+    totalPageNumber: state => {
+      if (state.storedResults !== null) {
+        return state.storedResults.total_pages
+      }
+    },
     pageNumberToGet: state => {
       return '?page='.concat(store.state.pageNumber)
     },

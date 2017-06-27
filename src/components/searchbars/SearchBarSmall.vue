@@ -4,7 +4,7 @@
 		<h3 class="search-title">{{ searchName }}</h3>
       <div id="custom-search-input">
         <div class="input-group">
-          <input type="text" class="form-control input-lg" v-bind:placeholder='searchName' />
+          <input type="text" class="form-control" v-bind:placeholder='searchName' />
         </div>
       </div>
     </div>
@@ -25,6 +25,8 @@ export default {
       border: solid 1px #E4E4E4;
       border-radius: 6px;
       background-color: #fff;
+      width: 30%;
+      margin: auto;
   }
 
   #custom-search-input input{
