@@ -4,7 +4,9 @@
     <paginate-module></paginate-module>
     <ul>
       <li v-for="result in storedResultsEtablissements">
-        <b>{{ result['nom_raison_sociale'] }}</b> ({{ result['code_postal'] }}) - {{ result['activite_principale'] }}
+        <router-link :to="{ name: 'Entreprise', params: { siret: result['siret'] }}">
+          {{ result['nom_raison_sociale'] }} ({{ result['code_postal'] }}) - {{ result['activite_principale'] }}
+        </router-link>
       </li>
     </ul>
     <p v-if="numberResults === 0">Aucun résultat trouvé</p>
@@ -14,8 +16,8 @@
 </template>
 
 <script>
-import store from '../store/store.js'
-import PaginateModule from './paginate/PaginateModule.vue'
+import store from '@/store/store.js'
+import PaginateModule from '@/components/paginate/PaginateModule.vue'
 
 export default {
   name: 'Results',

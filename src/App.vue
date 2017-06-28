@@ -1,19 +1,16 @@
 <template>
-  <div>
-    <search></search>
-    <results></results>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script>
 import Search from './components/Search.vue'
-import Results from './components/Results.vue'
+import Entreprise from './components/results/Entreprise.vue'
 
 export default {
   name: 'app',
   components: {
     'Search': Search,
-    'Results': Results
+    'Entreprise': Entreprise
   }
 }
 </script>

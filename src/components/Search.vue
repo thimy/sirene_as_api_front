@@ -16,19 +16,22 @@
         <SearchBarSmall searchName="Activite Principale" v-if="toggleFilters"></SearchBarSmall>
       </div>
     </div>
+    <results></results>
   </div>
 </template>
 
 <script>
-import SearchBar from './searchbars/SearchBar.vue'
-import SearchBarSmall from './searchbars/SearchBarSmall.vue'
-import store from '../store/store.js'
+import SearchBar from '@/components/searchbars/SearchBar.vue'
+import SearchBarSmall from '@/components/searchbars/SearchBarSmall.vue'
+import Results from '@/components/results/Results.vue'
+import store from '@/store/store.js'
 
 export default {
   name: 'Search',
   components: {
     'SearchBar': SearchBar,
-    'SearchBarSmall': SearchBarSmall
+    'SearchBarSmall': SearchBarSmall,
+    'Results': Results
   },
   data () {
     return {

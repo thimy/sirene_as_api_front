@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Search from '@/components/Search'
+import Entreprise from '@/components/results/Entreprise'
 
 Vue.use(Router)
 
@@ -10,6 +11,11 @@ export default new Router({
       path: '/',
       name: 'Search',
       component: Search
+    },
+    {
+      path: '/entreprise/:siret',
+      name: 'Entreprise',
+      component: Entreprise
     }
   ]
 })

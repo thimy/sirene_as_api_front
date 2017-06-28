@@ -9,9 +9,10 @@
 </template>
 
 <script>
-import store from '../../store/store.js'
+import store from '@/store/store.js'
 import Paginate from 'vuejs-paginate'
 import Vue from 'vue'
+
 Vue.component('paginate', Paginate)
 
 export default {
