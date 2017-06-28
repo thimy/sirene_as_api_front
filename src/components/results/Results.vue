@@ -4,8 +4,8 @@
     <paginate-module></paginate-module>
     <ul>
       <li v-for="result in storedResultsEtablissements">
-        <router-link :to="{ name: 'Entreprise', params: { siret: result['siret'] }}">
-          {{ result['nom_raison_sociale'] }} ({{ result['code_postal'] }}) - {{ result['activite_principale'] }}
+        <router-link :to="{ name: 'Entreprise', params: { siret: result['siret']}}">
+          {{ result['nom_raison_sociale'] }} ({{ result['code_postal'] }})
         </router-link>
       </li>
     </ul>

@@ -9,8 +9,10 @@ const store = new Vuex.Store({
   state: {
     storedResults: null,
     storedStatus: null,
+    singlePageResult: null,
     storedFullText: '',
     baseAdress: 'http://localhost:3000/full_text/',
+    baseAdressSiret: 'http://localhost:3000/siret/',
     pageNumber: 1,
     filterPostalCode: '',
     filterActivityCode: ''
@@ -85,10 +87,19 @@ const store = new Vuex.Store({
       }, response => {
         if (state.pageNumber !== 1) {
           state.pageNumber = 1
-          store.commit('executeSearch') // BAM, recursive research ! TODO: Verifier si c'est une idée brillante ou stupide
+          store.commit('executeSearch')
         } else {
           state.storedStatus = response.status
         }
+      })
+    },
+    executeSearchBySiret (state, siret) {
+      Vue.http.get(store.state.baseAdressSiret.concat(siret)).then(response => {
+        state.singlePageResult = response.body
+        // state.storedResults = response.body
+      }, response => {
+        // error callback
+        // store.state.baseAdress.concat('?page=1&siret=').concat(siret)
       })
     }
   }
