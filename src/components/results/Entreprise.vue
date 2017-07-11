@@ -1,20 +1,22 @@
 <template>
   <div>
     <router-link to="/">Revenir aux résultats</router-link>
-    <h3>Bienvenue sur la page Entreprise {{$route.params.siret}}</h3>
-    <!-- debugResults : {{singleResult}} -->
-    <p>Nom entreprise : {{singleResult.etablissement.nom_raison_sociale}}</p>
-    <ul>
-      <li> Siret : {{singleResult.etablissement.siret}}</li>
-      <li> Sirene : {{singleResult.etablissement.siren}}</li>
-      <li> Code postal : {{singleResult.etablissement.code_postal}}</li>
-      <li> Departement : {{singleResult.etablissement.departement}}</li>
-      <li> Date de création : {{singleResult.etablissement.date_creation}}</li>
-      <li> Téléphone : {{singleResult.etablissement.telephone}}</li>
-      <li> Email : {{singleResult.etablissement.email}}</li>
-      <li> Code activité principale : {{singleResult.etablissement.activite_principale_entreprise}}</li>
-      <li> Libéllé activité principale : {{singleResult.etablissement.libelle_activite_principale_entreprise}}</li>
-    </ul>
+    <div v-if="result !== null">
+      <h3>Bienvenue sur la page Entreprise {{$route.params.siret}}</h3>
+      <!-- debugResults : {{singleResult}} -->
+      <p>Nom entreprise : {{result.nom_raison_sociale}}</p>
+      <ul>
+        <li> Siret : {{result.siret}}</li>
+        <li> Sirene : {{result.siren}}</li>
+        <li> Code postal : {{result.code_postal}}</li>
+        <li> Departement : {{result.departement}}</li>
+        <li> Date de création : {{result.date_creation}}</li>
+        <li> Téléphone : {{result.telephone}}</li>
+        <li> Email : {{result.email}}</li>
+        <li> Code activité principale : {{result.activite_principale_entreprise}}</li>
+        <li> Libéllé activité principale : {{result.libelle_activite_principale_entreprise}}</li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -25,10 +27,13 @@ import store from '@/store/store.js'
 export default {
   name: 'Entreprise',
   computed: {
-    singleResult: function () {
-      store.commit('executeSearchBySiret', this.$route.params.siret)
-      return store.state.singlePageResult
+    result: function () {
+      return store.getters.singlePageResultEtablissement
     }
+  },
+  created () {
+    console.log(this.$route.params.siret)
+    store.commit('executeSearchBySiret', this.$route.params.siret)
   }
 }
 

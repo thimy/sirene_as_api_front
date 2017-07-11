@@ -31,8 +31,12 @@ export default {
     // whenever fullText changes, this function will run
     /* eslint-disable no-undef */
     fullText: function (setFullText) {
-      store.commit('setFullText', this.fullText)
-      store.commit('executeSearch')
+      if (String(this.fullText).length >= 3) {
+        store.commit('setFullText', this.fullText)
+        store.commit('executeSearch')
+      } else {
+        store.commit('setFullText', '')
+      }
     }
   }
 }

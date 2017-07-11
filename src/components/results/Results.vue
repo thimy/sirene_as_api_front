@@ -1,5 +1,6 @@
 <template>
   <div v-if="isSearchNotEmpty" class="justify-content-center">
+    <p>{{informationMessage}}</p>
     <h2 class="justify-content-center">Résultats ({{numberResults}}) :</h2>
     <paginate-module></paginate-module>
     <ul>
@@ -24,7 +25,15 @@ export default {
   components: {
     'PaginateModule': PaginateModule
   },
+  // data () {
+  //   return {
+  //     informationMessage: ''
+  //   }
+  // },
   computed: {
+    informationMessage: function () {
+      return store.getters.infoMessage
+    },
     isSearchNotEmpty: function () {
       return store.state.storedFullText !== ''
     },

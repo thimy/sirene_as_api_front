@@ -33,7 +33,7 @@ export default {
   },
   watch: {
     /* eslint-disable no-undef */
-    filterSearched: function (setFilterSearched) {
+    filterSearched: function (setFilterSearched) { // TODO: delete the param ?
       store.commit('setSearchFilters', this.filterSearchPayload)
       store.commit('executeSearch')
     }

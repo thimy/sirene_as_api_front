@@ -8,8 +8,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     storedResults: null,
-    storedStatus: null,
     singlePageResult: null,
+    storedStatus: null,
     storedFullText: '',
     baseAdress: 'http://localhost:3000/full_text/',
     baseAdressSiret: 'http://localhost:3000/siret/',
@@ -18,6 +18,21 @@ const store = new Vuex.Store({
     filterActivityCode: ''
   },
   getters: {
+    singlePageResultEtablissement: state => {
+      if (state.singlePageResult !== null) {
+        return state.singlePageResult.etablissement
+      } else {
+        return null
+      }
+    },
+    infoMessage: state => {
+      var postalCodeLength = String(state.filterPostalCode).length
+      if (postalCodeLength !== 5 && postalCodeLength !== 0) {
+        return 'En attente du code postal...'
+      } else {
+        return ''
+      }
+    },
     storedResultsEtablissements: state => {
       if (state.storedResults !== null) {
         return state.storedResults.etablissement
@@ -81,6 +96,9 @@ const store = new Vuex.Store({
       }
     },
     executeSearch (state) {
+      if (store.getters.infoMessage !== '') {
+        return
+      }
       Vue.http.get(store.getters.adressToGet).then(response => {
         state.storedStatus = response.status
         state.storedResults = response.body
@@ -98,6 +116,7 @@ const store = new Vuex.Store({
         state.singlePageResult = response.body
         // state.storedResults = response.body
       }, response => {
+        state.singlePageResult = null
         // error callback
         // store.state.baseAdress.concat('?page=1&siret=').concat(siret)
       })
