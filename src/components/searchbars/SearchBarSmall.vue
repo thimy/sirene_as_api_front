@@ -12,8 +12,6 @@
 </template>
 
 <script>
-import store from '@/store/store.js'
-
 export default {
   name: 'SearchBarSmall',
   props: ['searchName'],
@@ -34,8 +32,8 @@ export default {
   watch: {
     /* eslint-disable no-undef */
     filterSearched: function (setFilterSearched) { // TODO: delete the param ?
-      store.commit('setSearchFilters', this.filterSearchPayload)
-      store.commit('executeSearch')
+      this.$store.commit('setSearchFilters', this.filterSearchPayload)
+      this.$store.commit('executeSearch')
     }
   }
 }

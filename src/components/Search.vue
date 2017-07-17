@@ -24,7 +24,6 @@
 import SearchBar from '@/components/searchbars/SearchBar.vue'
 import SearchBarSmall from '@/components/searchbars/SearchBarSmall.vue'
 import Results from '@/components/results/Results.vue'
-import store from '@/store/store.js'
 
 export default {
   name: 'Search',
@@ -42,14 +41,14 @@ export default {
   methods: {
     filterButton () {
       this.toggleFilters = !this.toggleFilters
-      store.commit('clearFilters')
-      store.commit('executeSearch')
+      this.$store.commit('clearFilters')
+      this.$store.commit('executeSearch')
     },
     requestSearch () {
-      store.commit('executeSearch')
+      this.$store.commit('executeSearch')
     },
     clearButton () {
-      store.commit('clearResults')
+      this.$store.commit('clearResults')
     }
   }
 }
