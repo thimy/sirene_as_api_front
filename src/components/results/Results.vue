@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import store from '@/store/store.js'
 import PaginateModule from '@/components/paginate/PaginateModule.vue'
 
 export default {
@@ -32,16 +31,16 @@ export default {
   // },
   computed: {
     informationMessage: function () {
-      return store.getters.infoMessage
+      return this.$store.getters.infoMessage
     },
     isSearchNotEmpty: function () {
-      return store.state.storedFullText !== ''
+      return this.$store.state.storedFullText !== ''
     },
     storedResultsEtablissements () {
-      return store.getters.storedResultsEtablissements
+      return this.$store.getters.storedResultsEtablissements
     },
     numberResults () {
-      return store.getters.numberResults
+      return this.$store.getters.numberResults
     // },
     // debugSeeAllEtablissements () {
     //   return store.state.storedResults
