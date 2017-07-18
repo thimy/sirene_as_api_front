@@ -17,8 +17,6 @@
 </template>
 
 <script>
-import store from '@/store/store.js'
-
 export default {
   name: 'SearchBar',
   props: ['searchName'],
@@ -32,10 +30,10 @@ export default {
     /* eslint-disable no-undef */
     fullText: function (setFullText) {
       if (String(this.fullText).length >= 3) {
-        store.commit('setFullText', this.fullText)
-        store.commit('executeSearch')
+        this.$store.commit('setFullText', this.fullText)
+        this.$store.commit('executeSearch')
       } else {
-        store.commit('setFullText', '')
+        this.$store.commit('setFullText', '')
       }
     }
   }

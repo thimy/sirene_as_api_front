@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import store from '@/store/store.js'
 import Paginate from 'vuejs-paginate'
 import Vue from 'vue'
 
@@ -19,13 +18,13 @@ export default {
   name: 'Results',
   computed: {
     totalPageNumber: function () {
-      return parseInt(store.getters.totalPageNumber)
+      return parseInt(this.$store.getters.totalPageNumber)
     }
   },
   methods: {
     selectPage (pageNum) {
-      store.state.pageNumber = pageNum
-      store.commit('executeSearch')
+      this.$store.state.pageNumber = pageNum
+      this.$store.commit('executeSearch')
     }
   }
 }

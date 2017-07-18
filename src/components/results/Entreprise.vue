@@ -21,14 +21,12 @@
 </template>
 
 <script>
-import store from '@/store/store.js'
-
 /* eslint-disable no-undef */
 export default {
   name: 'Entreprise',
   computed: {
     result: function () {
-      return store.getters.singlePageResultEtablissement
+      return this.$store.getters.singlePageResultEtablissement
     }
   },
   created () {
