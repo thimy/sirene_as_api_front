@@ -32,7 +32,6 @@ export default {
     }
   },
   created () {
-    console.log(this.$route.params.siret)
     store.commit('executeSearchBySiret', this.$route.params.siret)
   }
 }
