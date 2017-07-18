@@ -4,7 +4,7 @@
 
 <script>
 import Search from './components/Search.vue'
-import Entreprise from './components/results/Entreprise.vue'
+import Entreprise from './components/Entreprise.vue'
 
 export default {
   name: 'app',

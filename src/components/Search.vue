@@ -23,7 +23,7 @@
 <script>
 import SearchBar from '@/components/searchbars/SearchBar.vue'
 import SearchBarSmall from '@/components/searchbars/SearchBarSmall.vue'
-import Results from '@/components/results/Results.vue'
+import Results from '@/components/Results.vue'
 
 export default {
   name: 'Search',
