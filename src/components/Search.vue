@@ -16,7 +16,6 @@
         <SearchBarSmall searchName="Activite Principale" v-if="toggleFilters"></SearchBarSmall>
       </div>
     </div>
-    <results></results>
   </div>
 </template>
 
@@ -34,7 +33,7 @@ export default {
   },
   data () {
     return {
-      toggleFilters: false,
+      toggleFilters: true,
       results: null
     }
   },

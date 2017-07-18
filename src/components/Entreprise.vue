@@ -30,7 +30,7 @@ export default {
     }
   },
   created () {
-    store.commit('executeSearchBySiret', this.$route.params.siret)
+    this.$store.commit('executeSearchBySiret', this.$route.params.siret)
   }
 }
 
