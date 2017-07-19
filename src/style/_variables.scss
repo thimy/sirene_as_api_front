@@ -1,1 +1,30 @@
-$border-color: blue;
+// colors
+$color-white: #fff;
+$color-light-gray: #c0c9cc;
+$color-dark-gray: #373C42;
+$color-black: #000;
+
+$color-light-blue: #238DFF;
+$color-medium-blue: #2870F4;
+$color-dark-blue: #264491;
+
+// font-size
+$fs-small: .875rem;
+$fs-normal: 1rem;
+$fs-medium: 1.125rem;
+$fs-large: 1.25rem;
+
+// font-weight
+$fw-regular:  400;
+$fw-bold:     700;
+
+// media queries
+$desktop: 800px;
+$tablet: 600px;
+$mobile: 480px;
+
+// borders
+$border-color: $color-light-gray;
+
+// navigation
+$nav-height: 50px;

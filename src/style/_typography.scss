@@ -1,0 +1,32 @@
+$font-path: '../assets/fonts/';
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url($font_path +"Source Sans Pro/SourceSansPro-Regular.otf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url($font_path +"Source Sans Pro/SourceSansPro-Bold.otf");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url($font_path +"Source Sans Pro/SourceSansPro-It.otf");
+  font-style: italic;
+}
+
+body {
+  font-family: 'Source Sans Pro', 'Arial', sans-serif;
+  font-size: 15px;
+
+  @include breakpoint($mobile) {
+    font-size: 30px;
+  }
+}
+
+$title-color: $color-dark-gray;
+$title-color-light: $color-white;
+$text-color: $color-black;
