@@ -1,3 +1,23 @@
 body {
   padding-top: $nav-height;
 }
+
+a {
+  &:visited {
+    color: currentColor;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  position: relative;
+  width: $desktop;
+
+  @include breakpoint($desktop) {
+    width: auto;
+  }
+}
+
+.light-text {
+  color: $title-color-light;
+}

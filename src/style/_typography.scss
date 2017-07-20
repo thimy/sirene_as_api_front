@@ -18,15 +18,28 @@ $font-path: '../assets/fonts/';
   font-style: italic;
 }
 
+@font-face {
+  font-family: "TeX Gyre Adventor";
+  src: url($font_path +"TeX Gyre Adventor/texgyreadventor-bold.otf");
+  font-weight: 800;
+}
+
 body {
   font-family: 'Source Sans Pro', 'Arial', sans-serif;
-  font-size: 15px;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
 
   @include breakpoint($mobile) {
-    font-size: 30px;
+    // font-size: 30px;
   }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'TeX Gyre Adventor', sans-serif;
+  line-height: 1.3em;
 }
 
 $title-color: $color-dark-gray;
 $title-color-light: $color-white;
 $text-color: $color-black;
+$text-color-light: $color-white;
