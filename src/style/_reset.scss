@@ -9,3 +9,12 @@ html {
   padding: 0;
   height: 100%;
 }
+
+input, button {
+  outline: none;
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+}
