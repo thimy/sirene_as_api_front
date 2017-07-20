@@ -15,7 +15,8 @@ const store = new Vuex.Store({
     baseAdressSiret: 'http://localhost:3000/siret/',
     pageNumber: 1,
     filterPostalCode: '',
-    filterActivityCode: ''
+    filterActivityCode: '',
+    isSearchTextVisible: true
   },
   getters: {
     singlePageResultEtablissement: state => {
@@ -71,6 +72,9 @@ const store = new Vuex.Store({
         filters = filters.concat('&activite_principale=').concat(state.filterActivityCode)
       }
       return filters
+    },
+    isSearchTextVisible: state => {
+      return state.isSearchTextVisible || true
     }
   },
   mutations: {
@@ -99,6 +103,7 @@ const store = new Vuex.Store({
       if (store.getters.infoMessage !== '') {
         return
       }
+      store.commit('changeSearchTextVisibility', false)
       Vue.http.get(store.getters.adressToGet).then(response => {
         state.storedStatus = response.status
         state.storedResults = response.body
@@ -120,6 +125,9 @@ const store = new Vuex.Store({
         // error callback
         // store.state.baseAdress.concat('?page=1&siret=').concat(siret)
       })
+    },
+    changeSearchTextVisibility (state, isVisible) {
+      state.isSearchTextVisible = isVisible
     }
   }
 })

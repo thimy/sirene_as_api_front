@@ -1,10 +1,10 @@
 <template>
   <div class="row justify-content-center">
     <div class="col-5">
-		<h3 class="search-title">{{ searchName }}</h3>
+		<label for="search" class="search-title">{{ searchName }}</label>
       <div id="custom-search-input">
         <div class="input-group">
-          <input type="text" class="form-control" v-bind:placeholder='searchName' v-model='filterSearched'/>
+          <input type="text" name="search" class="form-control" v-bind:placeholder='searchName' v-model='filterSearched'/>
         </div>
       </div>
     </div>
