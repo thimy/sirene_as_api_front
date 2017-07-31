@@ -1,12 +1,14 @@
 <template>
-  <div v-if="isSearchNotEmpty" class="justify-content-center">
+  <div v-if="isSearchNotEmpty" class="container">
     <p>{{informationMessage}}</p>
     <h2 class="justify-content-center">Résultats ({{numberResults}}) :</h2>
     <paginate-module></paginate-module>
     <ul>
       <li v-for="result in storedResultsEtablissements">
-        <router-link :to="{ name: 'Entreprise', params: { siret: result['siret']}}">
-          {{ result['nom_raison_sociale'] }} ({{ result['code_postal'] }})
+        <router-link tag="div" :to="{ name: 'Entreprise', params: {siret: result['siret']}}" id="result-box">
+          <p class="title">{{result['nom_raison_sociale'] | capitalize }}</p>
+          <p> {{result['libelle_activite_principale_entreprise']}} </p>
+          <p>{{result['libelle_commune'] | capitalize}} {{result['code_postal']}}</p>
         </router-link>
       </li>
     </ul>
@@ -18,17 +20,13 @@
 
 <script>
 import PaginateModule from '@/components/paginate/PaginateModule.vue'
+import Filters from '@/components/mixins/filters.js'
 
 export default {
   name: 'Results',
   components: {
     'PaginateModule': PaginateModule
   },
-  // data () {
-  //   return {
-  //     informationMessage: ''
-  //   }
-  // },
   computed: {
     informationMessage: function () {
       return this.$store.getters.infoMessage
@@ -48,7 +46,43 @@ export default {
     // debugSeeResponseStatus () {
     //   return store.state.storedStatus
     }
-  }
+  },
+  mixins: [Filters]
 }
 
 </script>
+
+<style lang="scss" scoped>
+
+  .title {
+    font-weight: $fw-bold;
+    font-size: $fs-medium;
+  }
+
+  p {
+    font-weight: $fw-regular;
+    font-size: $fs-normal;
+    margin: 0.15em;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  #result-box {
+    @extend %box-shadow;
+    cursor: pointer;
+    border: $border-color 1px solid;
+    border-radius: $border-radius;
+    background-color: $color-white;
+    margin: 1.5em 0em 1.5em 0em;
+    width: 100%;
+  }
+
+  %box-shadow {
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+  }
+
+</style>

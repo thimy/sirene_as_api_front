@@ -1,9 +1,12 @@
 <template>
   <paginate
     :container-class="'pagination'"
+    :page-class = "'pagesButtons'"
+    :prev-class="'pagesButtons'"
+    :next-class="'pagesButtons'"
     :page-count="totalPageNumber"
-    :prev-text="'Prev'"
-    :next-text="'Next'"
+    :prev-text="'Precédent'"
+    :next-text="'Suivant'"
     :click-handler="selectPage">
   </paginate>
 </template>
@@ -29,3 +32,16 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+
+.pagination {
+	list-style: none;
+  display: inline;
+}
+
+li.pagesButtons {
+  display: inline;
+}
+
+</style>
