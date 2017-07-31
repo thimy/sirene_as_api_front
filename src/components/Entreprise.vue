@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-link to=/>Revenir aux résultats</router-link>
-    <div :if="result !== null">
+    <div v-if="result">
       <!-- debugResults : {{singleResult}} -->
       <p>Nom entreprise : {{result.nom_raison_sociale}}</p>
       <ul>
@@ -26,16 +26,16 @@
 export default {
   name: 'Entreprise',
   computed: {
-    result() {
+    result () {
       return this.$store.getters.singlePageResultEtablissement
     },
-    tvaIntracommunautaire() {
+    tvaIntracommunautaire () {
       const tvaKey = (12 + 3 * (this.result.siren % 97)) % 97
       const tvaNumber = `${tvaKey}${this.result.siren}`
       return `FR${tvaNumber}`
     }
   },
-  created() {
+  created () {
     this.$store.commit('executeSearchBySiret', this.$route.params.siret)
   }
 }
