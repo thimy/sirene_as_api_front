@@ -1,8 +1,6 @@
 <template>
   <div v-if="isSearchNotEmpty" class="container">
     <p>{{informationMessage}}</p>
-    <h2 class="justify-content-center">Résultats ({{numberResults}}) :</h2>
-    <paginate-module></paginate-module>
     <ul>
       <li v-for="result in storedResultsEtablissements">
         <router-link tag="div" :to="{ name: 'Entreprise', params: {siret: result['siret']}}" id="result-box">
@@ -15,6 +13,9 @@
     <p v-if="numberResults === 0">Aucun résultat trouvé</p>
     <!-- {{debugSeeAllEtablissements}} -->
     <!-- {{debugSeeResponseStatus}} -->
+    <div>
+      <paginate-module></paginate-module>
+    </div>
   </div>
 </template>
 
