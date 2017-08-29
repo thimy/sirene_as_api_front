@@ -1,25 +1,36 @@
 <template>
-  <div class="search light-text">
-    <div class="container">
-      <transition name="fade">
-        <div class="search__text" v-if="showText">
-          <h1 class="search__title">
-            Retrouvez toutes les informations concernant les entreprises et associations de France
-          </h1>
-          <p class="search__subtitle">La plus grande base de données sur l'état civil des entreprises françaises est maintenant accessible à tous, sans frais.<br /><router-link to="/">Plus d'informations</router-link>.</p>
+  <div>
+    <div class="search light-text">
+      <div class="container">
+        <transition name="fade">
+          <div class="search__text" v-if="showText">
+            <h1 class="search__title">
+              Retrouvez toutes les informations concernant les entreprises et associations de France
+            </h1>
+            <p class="search__subtitle">La plus grande base de données sur l'état civil des entreprises françaises est maintenant accessible à tous, sans frais.<br /><router-link to="/">Plus d'informations</router-link>.</p>
+          </div>
+        </transition>
+        <SearchBar searchName="Recherche par nom"></SearchBar>
+        <div class="filters">
+          <button class="btn btn-default" id="filter-button" v-on:click="filterButton">
+            Filtres
+            <svg class="icon icon-equalizer"><use xlink:href="#icon-equalizer"></use></svg>
+          </button>
+          <SearchBarSmall searchName="Code Postal" v-if="toggleFilters"></SearchBarSmall>
+          <SearchBarSmall searchName="Activite Principale" v-if="toggleFilters"></SearchBarSmall>
         </div>
-      </transition>
-      <SearchBar searchName="Recherche par nom"></SearchBar>
-      <div class="filters">
-        <button class="btn btn-default" id="filter-button" v-on:click="filterButton">
-          Filtres
-          <svg class="icon icon-equalizer"><use xlink:href="#icon-equalizer"></use></svg>
-        </button>
-        <SearchBarSmall searchName="Code Postal" v-if="toggleFilters"></SearchBarSmall>
-        <SearchBarSmall searchName="Activite Principale" v-if="toggleFilters"></SearchBarSmall>
+        <search-categories></search-categories>
       </div>
-      <search-categories></search-categories>
     </div>
+    <!-- TODO Factorize here  -->
+    <div class='informations-index' v-if="showText">
+      <p>Les données de la base Sirene sont accessibles publiquement.</p>
+      <a href="#">Telecharger les données brutes.</a>
+      <br><br>
+      <p>Vous souhaitez immatriculer votre entreprise ou mettre a jour sa situation ?</p>
+      <a href="#">Faire une demande a l'INSEE</a>
+    </div>
+    <!-- end factorize -->
   </div>
 </template>
 
@@ -69,6 +80,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
   .search {
     padding: 3em;
     text-align: center;
@@ -94,6 +106,10 @@ export default {
 
   .filters {
     display: none;
+  }
+
+  .informations-index {
+    text-align: center;
   }
 
 </style>

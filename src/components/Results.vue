@@ -1,20 +1,22 @@
 <template>
-  <div v-if="isSearchNotEmpty" class="container">
-    <p>{{informationMessage}}</p>
-    <ul>
-      <li v-for="result in storedResultsEtablissements">
-        <router-link tag="div" :to="{ name: 'Entreprise', params: {siret: result['siret']}}" id="result-box">
-          <p class="title">{{result['nom_raison_sociale'] | capitalize }}</p>
-          <p> {{result['libelle_activite_principale_entreprise']}} </p>
-          <p>{{result['libelle_commune'] | capitalize}} {{result['code_postal']}}</p>
-        </router-link>
-      </li>
-    </ul>
-    <p v-if="numberResults === 0">Aucun résultat trouvé</p>
-    <!-- {{debugSeeAllEtablissements}} -->
-    <!-- {{debugSeeResponseStatus}} -->
-    <div>
-      <paginate-module></paginate-module>
+  <div class="container">
+    <div v-if="isSearchNotEmpty">
+      <p>{{informationMessage}}</p>
+      <ul>
+        <li v-for="result in storedResultsEtablissements">
+          <router-link tag="div" :to="{ name: 'Entreprise', params: {siret: result['siret']}}" id="result-box">
+            <p class="title">{{result['nom_raison_sociale'] | capitalize }}</p>
+            <p> {{result['libelle_activite_principale_entreprise']}} </p>
+            <p>{{result['libelle_commune'] | capitalize}} {{result['code_postal']}}</p>
+          </router-link>
+        </li>
+      </ul>
+      <p v-if="numberResults === 0">Aucun résultat trouvé</p>
+      <!-- {{debugSeeAllEtablissements}} -->
+      <!-- {{debugSeeResponseStatus}} -->
+      <div>
+        <paginate-module></paginate-module>
+      </div>
     </div>
   </div>
 </template>
@@ -27,6 +29,11 @@ export default {
   name: 'Results',
   components: {
     'PaginateModule': PaginateModule
+  },
+  data () {
+    return {
+      noSearchWasMade: true
+    }
   },
   computed: {
     informationMessage: function () {

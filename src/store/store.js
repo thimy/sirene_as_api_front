@@ -11,8 +11,8 @@ const store = new Vuex.Store({
     singlePageResult: null,
     storedStatus: null,
     storedFullText: '',
-    baseAdress: 'http://localhost:3000/full_text/',
-    baseAdressSiret: 'http://localhost:3000/siret/',
+    baseAdress: 'http://sirene.entreprise.api.gouv.fr/full_text/', // TODO : replace by HTTPS
+    baseAdressSiret: 'http://sirene.entreprise.api.gouv.fr/siret/', // TODO : replace by HTTPS
     pageNumber: 1,
     filterPostalCode: '',
     filterActivityCode: '',
