@@ -18,13 +18,15 @@
         <SearchBarSmall searchName="Code Postal" v-if="toggleFilters"></SearchBarSmall>
         <SearchBarSmall searchName="Activite Principale" v-if="toggleFilters"></SearchBarSmall>
       </div>
+      <search-categories></search-categories>
     </div>
   </div>
 </template>
 
 <script>
-import SearchBar from '@/components/searchbars/SearchBar.vue'
-import SearchBarSmall from '@/components/searchbars/SearchBarSmall.vue'
+import SearchBar from '@/components/search/SearchBar'
+import SearchBarSmall from '@/components/search/SearchBarSmall'
+import SearchCategories from '@/components/search/SearchCategories'
 import Results from '@/components/Results.vue'
 
 export default {
@@ -32,6 +34,7 @@ export default {
   components: {
     'SearchBar': SearchBar,
     'SearchBarSmall': SearchBarSmall,
+    'SearchCategories': SearchCategories,
     'Results': Results
   },
   data () {
@@ -54,6 +57,9 @@ export default {
     }
   },
   computed: {
+    isSearchNotEmpty: function () {
+      return this.$store.state.storedFullText !== ''
+    },
     showText () {
       return this.$store.state.isSearchTextVisible
     }
@@ -89,4 +95,5 @@ export default {
   .filters {
     display: none;
   }
+
 </style>
