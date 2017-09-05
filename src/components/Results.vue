@@ -14,9 +14,7 @@
       <p v-if="numberResults === 0">Aucun résultat trouvé</p>
       <!-- {{debugSeeAllEtablissements}} -->
       <!-- {{debugSeeResponseStatus}} -->
-      <div>
-        <paginate-module></paginate-module>
-      </div>
+      <paginate-module></paginate-module>
     </div>
   </div>
 </template>
@@ -75,6 +73,10 @@ export default {
 
   ul {
     list-style: none;
+  }
+
+  .container {
+    padding-bottom: 1em;
   }
 
   #result-box {

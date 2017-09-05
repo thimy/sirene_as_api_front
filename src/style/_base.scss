@@ -5,6 +5,8 @@ body {
 }
 
 a {
+  outline: none;
+  
   &:visited {
     color: currentColor;
   }
