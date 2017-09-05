@@ -6,8 +6,8 @@
         <li v-for="result in storedResultsEtablissements">
           <router-link tag="div" :to="{ name: 'Entreprise', params: {siret: result['siret']}}" id="result-box">
             <p class="title">{{result['nom_raison_sociale'] | capitalize }}</p>
-            <p> {{result['libelle_activite_principale_entreprise']}} </p>
-            <p>{{result['libelle_commune'] | capitalize}} {{result['code_postal']}}</p>
+            <p>{{result['libelle_activite_principale_entreprise']}}</p>
+            <p>{{result['code_postal']}} {{result['libelle_commune'] | capitalize}}</p>
           </router-link>
         </li>
       </ul>
@@ -85,12 +85,11 @@ export default {
     background-color: $color-white;
     margin: 1.5em 0em 1.5em 0em;
     width: 100%;
+    padding: 15px;
   }
 
   %box-shadow {
-    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
-    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
   }
 
 </style>

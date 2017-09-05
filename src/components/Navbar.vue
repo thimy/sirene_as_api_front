@@ -24,6 +24,7 @@ export default {
     height: $nav-height;
     display: flex;
     align-items: center;
+    z-index: 100;
   }
 
   .logo {
