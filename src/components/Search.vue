@@ -3,7 +3,7 @@
     <div class="search light-text">
       <div class="container">
         <transition name="fade">
-          <div class="search__text" v-if="showText">
+          <div class="search__text" v-if="showWelcomeText">
             <h1 class="search__title">
               Retrouvez toutes les informations concernant les entreprises et associations de France
             </h1>
@@ -19,11 +19,11 @@
           <SearchBarSmall searchName="Code Postal" v-if="toggleFilters"></SearchBarSmall>
           <SearchBarSmall searchName="Activite Principale" v-if="toggleFilters"></SearchBarSmall>
         </div>
-        <search-categories></search-categories>
+        <search-categories v-if="!showWelcomeText"></search-categories>
       </div>
     </div>
     <!-- TODO Factorize here  -->
-    <div class='informations-index' v-if="showText">
+    <div class='informations-index' v-if="showWelcomeText">
       <p>Les données de la base Sirene sont accessibles publiquement.</p>
       <a href="#">Telecharger les données brutes.</a>
       <br><br>
@@ -71,8 +71,8 @@ export default {
     isSearchNotEmpty: function () {
       return this.$store.state.storedFullText !== ''
     },
-    showText () {
-      return this.$store.state.isSearchTextVisible
+    showWelcomeText () {
+      return this.$store.state.welcomeText.isWelcomeTextVisible
     }
   }
 }
