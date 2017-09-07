@@ -18,11 +18,10 @@ export default {
   },
   watch: {
     // whenever fullText changes, this function will run
-    /* eslint-disable no-undef */
     fullText: function (setFullText) {
       if (String(this.fullText).length >= 3) {
         this.$store.commit('setFullText', this.fullText)
-        this.$store.commit('executeSearch')
+        this.$store.dispatch('executeSearch')
       } else {
         this.$store.commit('setFullText', '')
       }

@@ -11,7 +11,7 @@ export default {
       }
     },
     ifExist: function (string) {
-      if (string === null) {
+      if (!string) {
         return 'Non renseigné'
       }
     }

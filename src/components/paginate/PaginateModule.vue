@@ -27,7 +27,7 @@ export default {
   methods: {
     selectPage (pageNum) {
       this.$store.state.pageNumber = pageNum
-      this.$store.commit('executeSearch')
+      this.$store.dispatch('executeSearch')
     }
   }
 }

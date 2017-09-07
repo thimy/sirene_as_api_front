@@ -12,8 +12,6 @@
         </li>
       </ul>
       <p v-if="numberResults === 0">Aucun résultat trouvé</p>
-      <!-- {{debugSeeAllEtablissements}} -->
-      <!-- {{debugSeeResponseStatus}} -->
       <paginate-module></paginate-module>
     </div>
   </div>
@@ -45,12 +43,6 @@ export default {
     },
     numberResults () {
       return this.$store.getters.numberResults
-    // },
-    // debugSeeAllEtablissements () {
-    //   return store.state.storedResults
-    // },
-    // debugSeeResponseStatus () {
-    //   return store.state.storedStatus
     }
   },
   mixins: [Filters]

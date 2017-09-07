@@ -2,13 +2,12 @@
   <div>
     <router-link to=/>Revenir aux résultats</router-link>
     <div v-if="result">
-      <!-- debugResults : {{singleResult}} -->
       <p>Nom entreprise : {{result.nom_raison_sociale}}</p>
       <ul>
         <li> Siret : {{ result.siret }}</li>
         <li> Siren : {{ result.siren }}</li>
         <li> Clef NIC : {{ result.nic }}</li>
-        <li> Gérant : {{ fullOwnerName  | ifExist}}</li>
+        <li> Gérant : {{ fullOwnerName }}</li>
         <li> Code postal : {{ result.code_postal }}</li>
         <li> Cedex : {{ result.cedex | ifExist}}</li>
         <li> Departement : {{ result.departement }}</li>
@@ -26,7 +25,7 @@
 </template>
 
 <script>
-import Filters from '@/components/mixins/filters.js'
+import Filters from '@/components/mixins/filters'
 
 export default {
   name: 'Entreprise',
@@ -41,22 +40,22 @@ export default {
     },
     // Display nom only if present. Prenom is not required. Concatenate the two if presents.
     fullOwnerName () {
-      if (!this.result.nom) {
+      const nomOwner = this.result.nom
+      const prenomOwner = this.result.prenom
+      if (!nomOwner) {
         return null
       }
-      const nomOwner = this.result.nom.toUpperCase()
-      if (this.result.prenom !== undefined) {
-        return `${nomOwner}`
+      if (!prenomOwner) {
+        return nomOwner
       } else {
-        const prenomOwner = this.result.prenom.capitalize
-        return `${nomOwner}${' '}${prenomOwner}`
+        return `${nomOwner} ${prenomOwner}`
       }
     },
     formattedDate () {
       const year = this.result.date_creation.substring(0, 4)
       const month = this.result.date_creation.substring(4, 6)
       const day = this.result.date_creation.substring(6, 8)
-      return `${day}${'/'}${month}${'/'}${year}`
+      return `${day}/${month}/${year}`
     }
   },
   created () {
