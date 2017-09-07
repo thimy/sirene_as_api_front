@@ -6,7 +6,7 @@ export default {
       }
     },
     upperCase: function (string) {
-      if (string !== null) {
+      if (string) {
         return string.toUpperCase()
       }
     },
