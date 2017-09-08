@@ -1,4 +1,4 @@
-import store from '../index.js'
+import store from '@/store/index.js'
 
 const state = {
   storedResults: null,
@@ -42,9 +42,6 @@ const getters = {
       return ''
     }
   }
-  // isSearchTextVisible: state => {
-  //   return store.state.isSearchTextVisible || true
-  // }
 }
 
 const mutations = {
@@ -53,6 +50,12 @@ const mutations = {
   },
   clearResults (state) {
     state.storedResults = null
+  },
+  setStatus (state, value) {
+    state.storedStatus = value
+  },
+  setSinglePageResults (state, value) {
+    state.singlePageResult = value
   }
 }
 

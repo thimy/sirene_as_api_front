@@ -9,7 +9,6 @@ const mutations = {
     state.filterActivityCode = ''
   },
   setSearchFilters (state, filterSearch) {
-    console.log('WOOOOOH')
     if (filterSearch.name === 'Code Postal') {
       state.filterPostalCode = filterSearch.value
     }
