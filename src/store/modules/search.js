@@ -21,7 +21,7 @@ const getters = {
   },
   filtersToGet: state => {
     let filters = ''
-    if (store.state.filters.filterPostalCode !== '') {
+    if (store.state.filters.filterPostalCode) {
       filters = filters + '&code_postal=' + state.filterPostalCode
     }
     if (store.state.filters.filterActivityCode) {
