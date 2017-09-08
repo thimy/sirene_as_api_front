@@ -1,3 +1,5 @@
+import store from '@/store/index.js'
+
 const state = {
   isWelcomeTextVisible: true
 }
@@ -8,7 +10,14 @@ const mutations = {
   }
 }
 
+const actions = {
+  hideWelcomeText () {
+    store.commit('changeWelcomeTextVisibility', false)
+  }
+}
+
 export default {
   state,
-  mutations
+  mutations,
+  actions
 }

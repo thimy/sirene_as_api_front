@@ -1,6 +1,6 @@
 import Vue from 'vue'
+import constants from '@/constants'
 import store from '@/store/index.js'
-import constants from '@/constant'
 
 const state = {
   storedFullText: '',
@@ -24,7 +24,7 @@ const getters = {
     if (store.state.filters.filterPostalCode !== '') {
       filters = filters + '&code_postal=' + state.filterPostalCode
     }
-    if (store.state.filters.filterActivityCode !== '') {
+    if (store.state.filters.filterActivityCode) {
       filters = filters + '&activite_principale=' + state.filterActivityCode
     }
     return filters
@@ -35,30 +35,33 @@ const mutations = {
   setFullText (state, value) {
     state.storedFullText = value
   },
+  setPage (state, value) {
+    state.pageNumber = value
+  },
   executeSearchBySiret (state, siret) {
     Vue.http.get(state.baseAdressSiret + siret).then(response => {
-      store.state.results.singlePageResult = response.body
+      store.commit('setSinglePageResults', response.body)
     }, response => {
-      store.state.results.singlePageResult = null
+      store.commit('setSinglePageResults', null)
     })
   }
 }
 
 const actions = {
-  executeSearch (state) {
-    if (store.getters.infoMessage !== '') {
+  executeSearch () {
+    if (store.getters.infoMessage) {
       return false
     }
-    store.commit('changeWelcomeTextVisibility', false)
+    store.dispatch('hideWelcomeText')
     Vue.http.get(store.getters.adressToGet).then(response => {
-      store.state.results.storedStatus = response.status
-      store.state.results.storedResults = response.body
+      store.commit('setResults', response.body)
+      store.commit('setStatus', response.status)
     }, response => {
       if (state.pageNumber > 1) {
-        state.pageNumber = 1
+        store.commit('setPage', 1)
         store.dispatch('executeSearch')
       } else {
-        store.state.results.storedStatus = response.status
+        store.commit('setStatus', response.status)
       }
     })
   }
