@@ -23,12 +23,12 @@ export default {
   name: 'Results',
   data: function () {
     return {
-      initialPage: parseInt(this.$store.state.search.pageNumber) - 1
+      initialPage: parseInt(this.$store.state.search.pageNumber, 10) - 1
     }
   },
   computed: {
     totalPageNumber: function () {
-      return parseInt(this.$store.getters.totalPageNumber)
+      return parseInt(this.$store.getters.totalPageNumber, 10)
     }
   },
   methods: {
