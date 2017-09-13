@@ -50,10 +50,14 @@ export default {
     'Results': Results
   },
   created: function () {
-    this.$store.commit('setFullText', this.$route.query.fullText)
-    this.$store.commit('setPage', this.$route.query.page)
-    // Add filters commit here later
-    store.dispatch('requestSearch')
+    if (this.$route.query.page) {
+      this.$store.commit('setPage', this.$route.query.page)
+    }
+    // TODO: Add filters commit here later
+    if (this.$route.query.fullText) {
+      this.$store.commit('setFullText', this.$route.query.fullText)
+      store.dispatch('requestSearch')
+    }
   },
   data () {
     return {
@@ -80,12 +84,10 @@ export default {
     }
   },
   watch: {
-    // addQueryParamsToURL () {
-    //   this.$router.push({ path: 'search', query: { optionsToGet: 'test' } })
-    // }
     '$route' (to, from) {
-      console.log('Console logged !')
-      this.$store.dispatch('requestSearch')
+      if (this.$route.query.fullText) {
+        this.$store.dispatch('requestSearch')
+      }
     }
   }
 }

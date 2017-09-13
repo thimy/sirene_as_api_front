@@ -50,16 +50,6 @@ const mutations = {
     })
   }
 }
-//
-// const data = {
-//   routeQuery: ''
-// }
-//
-// const watch = {
-//   routeQuery: function () {
-//     store.dispatch('requestSearch')
-//   }
-// }
 
 const actions = {
   requestSearch () {
@@ -97,6 +87,4 @@ export default {
   getters,
   mutations,
   actions
-  // watch,
-  // data
 }

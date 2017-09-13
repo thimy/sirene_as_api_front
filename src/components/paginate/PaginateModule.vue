@@ -1,10 +1,12 @@
 <template>
   <paginate
+    ref="paginate"
     :container-class="'pagination'"
     :page-class = "'pagesButtons'"
     :prev-class="'pagesButtons'"
     :next-class="'pagesButtons'"
     :page-count="totalPageNumber"
+    :initial-page="initialPage"
     :prev-text="'Precédent'"
     :next-text="'Suivant'"
     :click-handler="selectPage">
@@ -19,9 +21,14 @@ Vue.component('paginate', Paginate)
 
 export default {
   name: 'Results',
+  data: function () {
+    return {
+      initialPage: parseInt(this.$store.state.search.pageNumber, 10) - 1
+    }
+  },
   computed: {
     totalPageNumber: function () {
-      return parseInt(this.$store.getters.totalPageNumber)
+      return parseInt(this.$store.getters.totalPageNumber, 10)
     }
   },
   methods: {
