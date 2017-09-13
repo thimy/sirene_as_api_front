@@ -1,6 +1,14 @@
 <template>
   <div>
-    <router-link to=/>Revenir aux résultats</router-link>
+    <router-link :to="{ path: '/search',
+      query: {
+        fullText: this.$store.state.search.storedFullText,
+        page: this.$store.state.search.pageNumber,
+        postalCode: this.$store.state.filters.filterPostalCode,
+        activityCode: this.$store.state.filters.filterActivityCode
+      }}">
+      Revenir aux résultats
+    </router-link>
     <div v-if="result">
       <p>Nom entreprise : {{result.nom_raison_sociale}}</p>
       <ul>

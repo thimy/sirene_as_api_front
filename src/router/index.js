@@ -6,10 +6,16 @@ import Entreprise from '@/components/Entreprise'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
-      path: '/',
-      name: 'Results',
+      path: '/search?*',
+      name: 'Search',
+      component: Results
+    },
+    {
+      path: '/search',
+      name: 'SearchEmpty',
       component: Results
     },
     {

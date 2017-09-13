@@ -5,6 +5,9 @@ import App from './App'
 import router from '@/router'
 import store from '@/store/index.js'
 import constants from '@/constants.js'
+import { sync } from 'vuex-router-sync'
+
+sync(store, router)
 
 require('@/style/app.scss')
 

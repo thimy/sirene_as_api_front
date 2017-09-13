@@ -1,31 +1,35 @@
 import Vue from 'vue'
 import constants from '@/constants'
 import store from '@/store/index.js'
+import router from '@/router/index.js'
 
 const state = {
   storedFullText: '',
+  pageNumber: 1,
   baseAdress: constants.baseAdress,
-  baseAdressSiret: constants.baseAdressSiret,
-  pageNumber: 1
+  baseAdressSiret: constants.baseAdressSiret
 }
 
 const getters = {
-  pageNumberToGet: state => {
-    return '?page=' + state.pageNumber
-  },
   adressToGet: state => {
-    return state.baseAdress + state.storedFullText + store.getters.optionsToGet
+    return state.baseAdress + store.getters.queryToGet
+  },
+  queryToGet: state => {
+    return store.state.route.query.fullText + store.getters.optionsToGet
+  },
+  pageNumberToGet: state => {
+    return '?page=' + store.state.route.query.page
   },
   optionsToGet: state => {
     return store.getters.pageNumberToGet + store.getters.filtersToGet
   },
   filtersToGet: state => {
     let filters = ''
-    if (store.state.filters.filterPostalCode) {
-      filters = filters + '&code_postal=' + state.filterPostalCode
+    if (store.state.route.query.postalCode) {
+      filters = filters + '&code_postal=' + store.state.route.query.postalCode
     }
-    if (store.state.filters.filterActivityCode) {
-      filters = filters + '&activite_principale=' + state.filterActivityCode
+    if (store.state.route.query.activityCode) {
+      filters = filters + '&activite_principale=' + store.state.route.query.activityCode
     }
     return filters
   }
@@ -48,6 +52,17 @@ const mutations = {
 }
 
 const actions = {
+  requestSearch () {
+    router.push({ path: 'search',
+      query: {
+        fullText: state.storedFullText,
+        page: state.pageNumber,
+        postalCode: store.state.filters.filterPostalCode,
+        activityCode: store.state.filters.filterActivityCode
+      }
+    })
+    store.dispatch('executeSearch')
+  },
   executeSearch () {
     if (store.getters.infoMessage) {
       return false
