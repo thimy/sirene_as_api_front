@@ -27,7 +27,7 @@ export default {
   methods: {
     selectPage (pageNum) {
       this.$store.state.search.pageNumber = pageNum
-      this.$store.dispatch('executeSearch')
+      this.$store.dispatch('requestSearch')
     }
   }
 }

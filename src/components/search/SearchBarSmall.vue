@@ -33,7 +33,7 @@ export default {
     /* eslint-disable no-undef */
     filterSearched: function (setFilterSearched) { // TODO: delete the param ?
       this.$store.commit('setSearchFilters', this.filterSearchPayload)
-      this.$store.dispatch('executeSearch')
+      this.$store.dispatch('requestSearch')
     }
   }
 }

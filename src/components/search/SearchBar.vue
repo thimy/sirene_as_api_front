@@ -21,7 +21,8 @@ export default {
     fullText: function (setFullText) {
       if (String(this.fullText).length >= 3) {
         this.$store.commit('setFullText', this.fullText)
-        this.$store.dispatch('executeSearch')
+        // this.$router.push({ name: 'Search', query: {text: this.fullText} })
+        this.$store.dispatch('requestSearch')
       } else {
         this.$store.commit('setFullText', '')
       }

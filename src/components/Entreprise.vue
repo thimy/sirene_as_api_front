@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link to=/>Revenir aux résultats</router-link>
+    <router-link to="">Revenir aux résultats</router-link>
     <div v-if="result">
       <p>Nom entreprise : {{result.nom_raison_sociale}}</p>
       <ul>
