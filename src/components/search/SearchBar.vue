@@ -11,19 +11,18 @@
 export default {
   name: 'SearchBar',
   props: ['searchName'],
-  data () {
-    return {
-      fullText: ''
-    }
-  },
-  watch: {
-    // whenever fullText changes, this function will run
-    fullText: function (setFullText) {
-      if (String(this.fullText).length >= 3) {
-        this.$store.commit('setFullText', this.fullText)
-        this.$store.dispatch('requestSearch')
-      } else {
-        this.$store.commit('setFullText', '')
+  computed: {
+    fullText: {
+      get () {
+        return this.$store.state.search.storedFullText
+      },
+      set (fullText) {
+        if (String(fullText).length >= 3) {
+          this.$store.commit('setFullText', fullText)
+          this.$store.dispatch('requestSearch')
+        } else {
+          this.$store.commit('setFullText', '')
+        }
       }
     }
   }

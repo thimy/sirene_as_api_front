@@ -2,7 +2,9 @@
   <nav class="navbar">
     <div class="container">
       <router-link to="/">
-        <img class="logo" src="../assets/img/logo.svg" alt="entreprise.data.gouv.fr" />
+        <span v-on:click="clearHomepage">
+          <img class="logo" src="../assets/img/logo.svg" alt="entreprise.data.gouv.fr" />
+        </span>
       </router-link>
     </div>
   </nav>
@@ -10,7 +12,13 @@
 
 <script>
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  methods: {
+    clearHomepage () {
+      this.$store.commit('setFullText', '')
+      this.$store.commit('changeWelcomeTextVisibility', true)
+    }
+  }
 }
 </script>
 
