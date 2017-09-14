@@ -23,7 +23,7 @@ export default {
   name: 'Results',
   data: function () {
     return {
-      initialPage: parseInt(this.$store.state.search.pageNumber, 10) - 1
+      initialPage: parseInt(this.$store.state.route.query.page, 10) - 1
     }
   },
   computed: {
@@ -33,8 +33,12 @@ export default {
   },
   methods: {
     selectPage (pageNum) {
-      this.$store.state.search.pageNumber = pageNum
-      this.$store.dispatch('requestSearch')
+      if (this.$store.state.route.query.fullText) {
+        this.$store.state.search.pageNumber = pageNum
+        this.$store.dispatch('requestSearch')
+      } else {
+        this.$store.dispatch('goToClearedHomePage')
+      }
     }
   }
 }

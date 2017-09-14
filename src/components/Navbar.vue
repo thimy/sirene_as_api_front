@@ -1,11 +1,9 @@
 <template>
   <nav class="navbar">
     <div class="container">
-      <router-link to="/">
-        <span v-on:click="clearHomepage">
-          <img class="logo" src="../assets/img/logo.svg" alt="entreprise.data.gouv.fr" />
-        </span>
-      </router-link>
+      <span v-on:click="clearHomepage">
+        <img class="logo" src="../assets/img/logo.svg" alt="entreprise.data.gouv.fr" />
+      </span>
     </div>
   </nav>
 </template>
@@ -15,8 +13,7 @@ export default {
   name: 'Navbar',
   methods: {
     clearHomepage () {
-      this.$store.commit('setFullText', '')
-      this.$store.commit('changeWelcomeTextVisibility', true)
+      this.$store.dispatch('goToClearedHomePage')
     }
   }
 }
