@@ -5,6 +5,7 @@ import VueResource from 'vue-resource'
 import filters from './modules/filters'
 import results from './modules/results'
 import search from './modules/search'
+import categories from './modules/categories'
 import welcomeText from './modules/welcomeText'
 
 Vue.use(Vuex)
@@ -15,6 +16,7 @@ export default new Vuex.Store({
     filters,
     results,
     search,
+    categories,
     welcomeText
   }
 })

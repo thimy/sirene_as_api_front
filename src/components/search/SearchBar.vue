@@ -21,7 +21,7 @@ export default {
           this.$store.commit('setFullText', fullText)
           this.$store.dispatch('requestSearch')
         } else {
-          this.$store.commit('setFullText', '')
+          this.$store.commit('clearResults')
         }
       }
     }

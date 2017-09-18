@@ -39,7 +39,7 @@ import SearchBar from '@/components/search/SearchBar'
 import SearchBarSmall from '@/components/search/SearchBarSmall'
 import SearchCategories from '@/components/search/SearchCategories'
 import Results from '@/components/Results.vue'
-import store from '@/store/index.js'
+// import store from '@/store/index.js'
 
 export default {
   name: 'Search',
@@ -56,7 +56,7 @@ export default {
     // TODO: Add filters commit here later
     if (this.$route.query.fullText) {
       this.$store.commit('setFullText', this.$route.query.fullText)
-      store.dispatch('requestSearch')
+      this.$store.dispatch('requestSearch')
     }
   },
   data () {

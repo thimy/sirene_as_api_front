@@ -2,6 +2,10 @@ import Vue from 'vue'
 import constants from '@/constants'
 import store from '@/store/index.js'
 import router from '@/router/index.js'
+import lodash from 'lodash'
+import VueLodash from 'vue-lodash/dist/vue-lodash.min'
+
+Vue.use(VueLodash, lodash)
 
 const state = {
   storedFullText: '',
@@ -21,7 +25,19 @@ const getters = {
     return '?page=' + store.state.route.query.page
   },
   optionsToGet: state => {
-    return store.getters.pageNumberToGet + store.getters.filtersToGet
+    return store.getters.pageNumberToGet + store.getters.filtersToGet + store.getters.categoryToGet
+  },
+  categoryToGet: state => {
+    switch (store.state.route.query.category) {
+      case 'all':
+        return ''
+      case 'entreprises':
+        return '&is_entrepreneur_individuel=yes'
+      case 'entreprisesIndividuelles':
+        return '&is_entrepreneur_individuel=no'
+      case 'associations':
+        return '&is_ess=O'
+    }
   },
   filtersToGet: state => {
     let filters = ''
@@ -32,6 +48,9 @@ const getters = {
       filters = filters + '&activite_principale=' + store.state.route.query.activityCode
     }
     return filters
+  },
+  adressToGetWithoutCategories: state => {
+    return state.baseAdress + store.state.route.query.fullText + store.getters.pageNumberToGet + store.getters.filtersToGet
   }
 }
 
@@ -58,10 +77,12 @@ const actions = {
         fullText: state.storedFullText,
         page: state.pageNumber,
         postalCode: store.state.filters.filterPostalCode,
-        activityCode: store.state.filters.filterActivityCode
+        activityCode: store.state.filters.filterActivityCode,
+        category: store.state.categories.focusedCategory
       }
     })
     store.dispatch('executeSearch')
+    store.dispatch('executeNumberSearches')
   },
   executeSearch () {
     if (store.getters.infoMessage) {
@@ -78,6 +99,20 @@ const actions = {
       } else {
         store.commit('setStatus', response.status)
       }
+    })
+  },
+  executeNumberSearches () {
+    const categories =
+      [{name: 'all', query: ''},
+       {name: 'entreprises', query: '&is_entrepreneur_individuel=yes'},
+       {name: 'entreprisesIndividuelles', query: '&is_entrepreneur_individuel=no'},
+       {name: 'associations', query: '&is_ess=O'}]
+    categories.forEach(function (category) {
+      Vue.http.get(store.getters.adressToGetWithoutCategories + category.query).then(response => {
+        store.commit('setNumberCategory', {name: category.name, value: response.body.total_results})
+      }, response => {
+        store.commit('setNumberCategory', {name: category.name, value: 0})
+      })
     })
   }
 }
