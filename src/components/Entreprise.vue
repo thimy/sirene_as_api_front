@@ -69,6 +69,11 @@ export default {
   created () {
     this.$store.commit('executeSearchBySiret', this.$route.params.siret)
   },
-  mixins: [Filters]
+  mixins: [Filters],
+  watch: {
+    '$route' (to, from) {
+      this.$store.commit('executeSearchBySiret', this.$route.params.siret)
+    }
+  }
 }
 </script>
