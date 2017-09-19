@@ -2,13 +2,10 @@ import Vue from 'vue'
 import constants from '@/constants'
 import store from '@/store/index.js'
 import router from '@/router/index.js'
-import lodash from 'lodash'
-import VueLodash from 'vue-lodash/dist/vue-lodash.min'
-
-Vue.use(VueLodash, lodash)
 
 const state = {
   storedFullText: '',
+  storedSiret: '',
   pageNumber: 1,
   baseAdress: constants.baseAdress,
   baseAdressSiret: constants.baseAdressSiret
@@ -58,10 +55,14 @@ const mutations = {
   setFullText (state, value) {
     state.storedFullText = value
   },
+  setSiret (state, value) {
+    state.storedSiret = value
+  },
   setPage (state, value) {
     state.pageNumber = value
   },
   executeSearchBySiret (state, siret) {
+    store.dispatch('hideWelcomeText')
     Vue.http.get(state.baseAdressSiret + siret).then(response => {
       store.commit('setSinglePageResults', response.body)
     }, response => {
@@ -72,7 +73,7 @@ const mutations = {
 
 const actions = {
   requestSearch () {
-    router.push({ path: 'search',
+    router.push({ path: '/search',
       query: {
         fullText: state.storedFullText,
         page: state.pageNumber,

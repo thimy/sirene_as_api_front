@@ -26,8 +26,6 @@
 </template>
 
 <script>
-import store from '@/store/index.js'
-
 export default {
   name: 'SearchCategories',
   data () {
@@ -58,7 +56,7 @@ export default {
           this.emphasizeEntreprisesIndividuelles = true
           break
       }
-      store.dispatch('emphasizeCategory', dataToEmphasize)
+      this.$store.dispatch('emphasizeCategory', dataToEmphasize)
     }
   },
   computed: {

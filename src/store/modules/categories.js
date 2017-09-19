@@ -1,7 +1,3 @@
-// import Vue from 'vue'
-import store from '@/store/index.js'
-// import router from '@/router/index.js'
-
 const state = {
   focusedCategory: 'all',
   numberResultsAll: 0,
@@ -9,21 +5,6 @@ const state = {
   numberResultsEntreprisesIndividuelles: 0,
   numberResultsAssociations: 0
 }
-//
-// const getters = {
-//   numberResultsAll: state => {
-//     return 0
-//   },
-//   numberResultsEntreprises: state => {
-//     return -1
-//   },
-//   numberResultsEntreprisesIndividuelles: state => {
-//     return -2
-//   },
-//   numberResultsAssociations: state => {
-//     return -3
-//   }
-// }
 
 const mutations = {
   focusCategory (state, category) {
@@ -49,14 +30,13 @@ const mutations = {
 
 const actions = {
   emphasizeCategory (state, category) {
-    store.commit('focusCategory', category)
-    store.dispatch('requestSearch')
+    this.$store.commit('focusCategory', category)
+    this.$store.dispatch('requestSearch')
   }
 }
 
 export default {
   state,
-  // getters,
   mutations,
   actions
 }

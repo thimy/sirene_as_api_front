@@ -39,7 +39,6 @@ import SearchBar from '@/components/search/SearchBar'
 import SearchBarSmall from '@/components/search/SearchBarSmall'
 import SearchCategories from '@/components/search/SearchCategories'
 import Results from '@/components/Results.vue'
-// import store from '@/store/index.js'
 
 export default {
   name: 'Search',

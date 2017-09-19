@@ -17,11 +17,19 @@ export default {
         return this.$store.state.search.storedFullText
       },
       set (fullText) {
+        if (!fullText) {
+          this.$store.dispatch('goToClearedHomePage')
+        }
+        if (fullText.match(/^\d{3}/)) {
+          this.$store.commit('setSiret', fullText)
+        }
+        if (fullText.match(/^\d{14}/)) {
+          this.$router.push({ path: `/entreprise/${fullText}` })
+          return
+        }
         if (String(fullText).length >= 3) {
           this.$store.commit('setFullText', fullText)
           this.$store.dispatch('requestSearch')
-        } else {
-          this.$store.commit('clearResults')
         }
       }
     }
