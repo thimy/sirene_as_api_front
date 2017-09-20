@@ -10,7 +10,7 @@
       Revenir aux résultats
     </router-link>
     <div v-if="result">
-      <p>Nom entreprise : {{result.nom_raison_sociale}}</p>
+      <p>Nom entreprise : {{result.nom_raison_sociale | removeExtraChars}}</p>
       <ul>
         <li> Siret : {{ result.siret }}</li>
         <li> Siren : {{ result.siren }}</li>
