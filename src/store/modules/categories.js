@@ -1,3 +1,5 @@
+import store from '@/store/index.js'
+
 const state = {
   focusedCategory: 'all',
   numberResultsAll: 0,
@@ -30,8 +32,8 @@ const mutations = {
 
 const actions = {
   emphasizeCategory (state, category) {
-    this.$store.commit('focusCategory', category)
-    this.$store.dispatch('requestSearch')
+    store.commit('focusCategory', category)
+    store.dispatch('requestSearch')
   }
 }
 
