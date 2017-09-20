@@ -2,7 +2,7 @@
   <nav class="navbar">
     <div class="container">
       <span v-on:click="clearHomepage">
-        <img class="logo" src="../assets/img/logo.svg" alt="entreprise.data.gouv.fr" />
+        <img class="logo" src="../assets/img/entreprise.svg" alt="entreprise.data.gouv.fr" />
       </span>
     </div>
   </nav>

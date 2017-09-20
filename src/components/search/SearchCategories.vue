@@ -3,17 +3,22 @@
     <ul class="results__categories">
       <li v-bind:class="{emphasize_this: emphasizeAll}"
           v-on:click="changeFocus('all')">
-        <p>Tous les résultats ({{numberResults}})</p>
+        <p>Tous les résultats ({{numberResultsAll}})</p>
         <div class="results__white_div"></div>
       </li>
       <li v-bind:class="{emphasize_this: emphasizeEntreprises}"
           v-on:click="changeFocus('entreprises')">
-        <p>Entreprises ({{numberResults}})</p>
+        <p>Entreprises ({{numberResultsEntreprises}})</p>
+        <div class="results__white_div"></div>
+      </li>
+      <li v-bind:class="{emphasize_this: emphasizeEntreprisesIndividuelles}"
+          v-on:click="changeFocus('entreprisesIndividuelles')">
+        <p>Entreprises Individuelles ({{numberResultsEntreprisesIndividuelles}})</p>
         <div class="results__white_div"></div>
       </li>
       <li v-bind:class="{emphasize_this: emphasizeAssociations}"
           v-on:click="changeFocus('associations')">
-        <p>Associations ({{numberResults}})</p>
+        <p>Associations ({{numberResultsAssociations}})</p>
         <div class="results__white_div"></div>
       </li>
     </ul>
@@ -27,7 +32,8 @@ export default {
     return {
       emphasizeAll: true,
       emphasizeEntreprises: false,
-      emphasizeAssociations: false
+      emphasizeAssociations: false,
+      emphasizeEntreprisesIndividuelles: false
     }
   },
   methods: {
@@ -35,6 +41,7 @@ export default {
       this.emphasizeAll = false
       this.emphasizeEntreprises = false
       this.emphasizeAssociations = false
+      this.emphasizeEntreprisesIndividuelles = false
       switch (dataToEmphasize) {
         case 'all':
           this.emphasizeAll = true
@@ -45,7 +52,11 @@ export default {
         case 'associations':
           this.emphasizeAssociations = true
           break
+        case 'entreprisesIndividuelles':
+          this.emphasizeEntreprisesIndividuelles = true
+          break
       }
+      this.$store.dispatch('emphasizeCategory', dataToEmphasize)
     }
   },
   computed: {
@@ -56,8 +67,17 @@ export default {
       }
       return myClass
     },
-    numberResults () {
-      return this.$store.getters.numberResults
+    numberResultsAll () {
+      return this.$store.state.categories.numberResultsAll
+    },
+    numberResultsEntreprises () {
+      return this.$store.state.categories.numberResultsEntreprises
+    },
+    numberResultsEntreprisesIndividuelles () {
+      return this.$store.state.categories.numberResultsEntreprisesIndividuelles
+    },
+    numberResultsAssociations () {
+      return this.$store.state.categories.numberResultsAssociations
     }
   }
 }
