@@ -14,6 +14,12 @@ export default {
       if (!string) {
         return 'Non renseigné'
       }
+    },
+    removeExtraChars: function (string) {
+      const withoutAsterisk = string.replace(/\*/, ' ')
+      const withoutAsteriskOrSlash = withoutAsterisk.replace(/\//g, ' ')
+      // Remove potential space at end of string
+      return withoutAsteriskOrSlash.replace(/ $/, '')
     }
   }
 }

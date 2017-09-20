@@ -5,7 +5,7 @@
       <ul>
         <li v-for="result in storedResultsEtablissements">
           <router-link tag="div" :to="{ name: 'Entreprise', params: {siret: result['siret']}}" id="result-box">
-            <p class="title">{{result['nom_raison_sociale'] | capitalize }}</p>
+            <p class="title">{{result['nom_raison_sociale'] | capitalize | removeExtraChars}}</p>
             <p>{{result['libelle_activite_principale_entreprise']}}</p>
             <p>{{result['code_postal']}} {{result['libelle_commune'] | capitalize}}</p>
           </router-link>
