@@ -29,9 +29,9 @@ const getters = {
       case 'all':
         return ''
       case 'entreprises':
-        return '&is_entrepreneur_individuel=yes'
-      case 'entreprisesIndividuelles':
         return '&is_entrepreneur_individuel=no'
+      case 'entreprisesIndividuelles':
+        return '&is_entrepreneur_individuel=yes'
       case 'associations':
         return '&is_ess=O'
     }
