@@ -23,13 +23,10 @@
       </div>
     </div>
     <!-- TODO Factorize here  -->
-    <div class='informations-index' v-if="showWelcomeText">
-      <p>Les données de la base Sirene sont accessibles publiquement.</p>
-      <a href="#">Telecharger les données brutes.</a>
-      <br><br>
-      <p>Vous souhaitez immatriculer votre entreprise ou mettre a jour sa situation ?</p>
-      <a href="#">Faire une demande a l'INSEE</a>
-    </div>
+    <template v-if="showWelcomeText">
+      <Api />
+      <PublicAdministration />
+    </template>
     <!-- end factorize -->
   </div>
 </template>
@@ -39,6 +36,8 @@ import SearchBar from '@/components/search/SearchBar'
 import SearchBarSmall from '@/components/search/SearchBarSmall'
 import SearchCategories from '@/components/search/SearchCategories'
 import Results from '@/components/Results.vue'
+import Api from '@/components/home/Api.vue'
+import PublicAdministration from '@/components/home/PublicAdministration.vue'
 
 export default {
   name: 'Search',
@@ -46,7 +45,9 @@ export default {
     'SearchBar': SearchBar,
     'SearchBarSmall': SearchBarSmall,
     'SearchCategories': SearchCategories,
-    'Results': Results
+    'Results': Results,
+    'Api': Api,
+    'PublicAdministration': PublicAdministration
   },
   created: function () {
     if (this.$route.query.page) {
@@ -96,7 +97,7 @@ export default {
 <style lang="scss" scoped>
 
   .search {
-    padding: 3em;
+    padding: 3em 0;
     text-align: center;
     background: linear-gradient(180deg, $color-light-blue, $color-medium-blue);
     box-sizing: content-box;

@@ -19,14 +19,15 @@ $font-path: '../assets/fonts/';
 }
 
 @font-face {
-  font-family: "TeX Gyre Adventor";
-  src: url($font_path +"TeX Gyre Adventor/texgyreadventor-bold.otf");
+  font-family: "Evolventa";
+  src: url($font_path +"Evolventa/Evolventa-Bold.ttf");
   font-weight: 800;
 }
 
 body {
   font-family: 'Source Sans Pro', 'Arial', sans-serif;
   font-size: 16px;
+  line-height: 1.5em;
   -webkit-font-smoothing: antialiased;
 
   @include breakpoint($mobile) {
@@ -35,7 +36,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'TeX Gyre Adventor', sans-serif;
+  font-family: 'Evolventa', sans-serif;
   line-height: 1.3em;
 }
 
