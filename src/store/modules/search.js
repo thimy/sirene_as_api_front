@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import constants from '@/constants'
 import store from '@/store/index.js'
 import router from '@/router/index.js'
 
@@ -7,8 +6,9 @@ const state = {
   storedFullText: '',
   storedSiret: '',
   pageNumber: 1,
-  baseAdress: constants.baseAdress,
-  baseAdressSiret: constants.baseAdressSiret
+  baseAdress: process.env.BASE_ADRESS,
+  baseAdressSiret: process.env.BASE_ADRESS_SIRET,
+  baseAdressSiren: process.env.BASE_ADRESS_SIREN
 }
 
 const getters = {

@@ -4,7 +4,6 @@ import Vue from 'vue'
 import App from './App'
 import router from '@/router'
 import store from '@/store/index.js'
-import constants from '@/constants.js'
 import { sync } from 'vuex-router-sync'
 
 sync(store, router)
@@ -18,7 +17,6 @@ new Vue({
   el: '#app',
   router,
   store,
-  constants,
   template: '<App/>',
   components: { App }
 })
