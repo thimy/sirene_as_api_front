@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Results from '@/components/Results'
-import Entreprise from '@/components/Entreprise'
+import Etablissement from '@/components/Etablissement'
 
 Vue.use(Router)
 
@@ -20,8 +20,8 @@ export default new Router({
     },
     {
       path: '/entreprise/:siret',
-      name: 'Entreprise',
-      component: Entreprise
+      name: 'Etablissement',
+      component: Etablissement
     }
   ]
 })
