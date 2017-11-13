@@ -36,7 +36,7 @@
 import Filters from '@/components/mixins/filters'
 
 export default {
-  name: 'Entreprise',
+  name: 'Etablissement',
   computed: {
     result () {
       return this.$store.getters.singlePageResultEtablissement
