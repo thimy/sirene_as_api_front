@@ -83,7 +83,6 @@ const actions = {
       }
     })
     store.dispatch('executeSearch')
-    store.dispatch('executeNumberSearches')
   },
   executeSearch () {
     if (store.getters.infoMessage) {
@@ -100,20 +99,6 @@ const actions = {
       } else {
         store.commit('setStatus', response.status)
       }
-    })
-  },
-  executeNumberSearches () {
-    const categories =
-      [{name: 'all', query: ''},
-       {name: 'entreprises', query: '&is_entrepreneur_individuel=yes'},
-       {name: 'entreprisesIndividuelles', query: '&is_entrepreneur_individuel=no'},
-       {name: 'associations', query: '&is_ess=O'}]
-    categories.forEach(function (category) {
-      Vue.http.get(store.getters.adressToGetWithoutCategories + category.query).then(response => {
-        store.commit('setNumberCategory', {name: category.name, value: response.body.total_results})
-      }, response => {
-        store.commit('setNumberCategory', {name: category.name, value: 0})
-      })
     })
   }
 }

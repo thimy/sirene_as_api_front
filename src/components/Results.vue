@@ -2,6 +2,7 @@
   <div class="container">
     <div v-if="isSearchNotEmpty">
       <p>{{informationMessage}}</p>
+      <p>Résultats : {{numberResults}}</p>
       <ul>
         <li v-for="result in storedResultsEtablissements">
           <router-link tag="div" :to="{ name: 'Etablissement', params: {siret: result['siret']}}" id="result-box">
