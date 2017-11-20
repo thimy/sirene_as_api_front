@@ -1,39 +1,49 @@
-# sirene_as_api_front
+# SIRENE_as_api_front
 
-> Front-end pour l'API sirene
+Dans le cadre du SPD, (Service Public de la Donnée), certains jeux de données
+dont le fichier SIRENE sont devenus publics.
 
-## Build Setup
+Le projet SIRENE_as_api a pour vocation de mettre en valeur la donnée brute en
+la servant sous forme d'API.
+
+Le projet se découpe en trois sous-projets :
+
+  - Une API Ruby on Rails qui importe les fichiers de données
+    mis à disposition par l'INSEE : [sirene_as_api](https://github.com/sgmap/sirene_as_api)
+  - Un script capable de déployer l'API automatiquement : [sirene_as_api_ansible](https://github.com/sgmap/sirene_as_api_ansible)
+  - Une interface web de recherche exploitant l'API en Vue.js : [sirene_as_api_front](https://github.com/sgmap/sirene_as_api_front)
+
+
+## Lancer le serveur front
+
+Vous aurez besoin du gestionnaire de paquets npm.
 
 ``` bash
-# install dependencies
+# installer les dépendances
 npm install
 
-# serve with hot reload at localhost:8080
+# Lance le serveur en développement sur localhost:8080
 npm run dev
 
-# build for production with minification
+# Build pour la production
 npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
+# Lancer les tests unitaires
 npm run unit
 
-# run all tests
+# Lancer tous les tests
 npm test
 ```
-## Run in dev mode :
+## Exécution en local
 
 ``` bash
+# Aprés avoir lancé le front-end avec la commande
+npm run dev
 
-# Launch back-end : in sirene_as_api folder, run
+# Lancer le back-end : dans le dossier sirene_as_api, exécuter :
 rails s
 
-# Back-end is launched on localhost:3000
-# Launch SOLR server :
+# Lancer le serveur SOLR :
 rake sunspot:solr:start
 
-# Finally, go to sirene_as_api_front folder and start npm :
-npm run dev
-# Front-end load automatically on localhost:8080
+```
