@@ -1,6 +1,7 @@
 <template>
   <div>
     <navbar></navbar>
+    <flash-notice></flash-notice>
     <search></search>
     <router-view></router-view>
     <footer-etalab></footer-etalab>
@@ -13,6 +14,7 @@ import Search from '@/components/Search'
 import Results from '@/components/Results'
 import Etablissement from '@/components/Etablissement'
 import FooterEtalab from '@/components/FooterEtalab'
+import FlashNotice from '@/components/FlashNotice'
 
 export default {
   name: 'app',
@@ -21,7 +23,8 @@ export default {
     'Search': Search,
     'Results': Results,
     'Etablissement': Etablissement,
-    'FooterEtalab': FooterEtalab
+    'FooterEtalab': FooterEtalab,
+    'FlashNotice': FlashNotice
   }
 }
 </script>
