@@ -3,22 +3,22 @@
     <ul class="results__categories">
       <li v-bind:class="{emphasize_this: emphasizeAll}"
           v-on:click="changeFocus('all')">
-        <p>Tous les résultats ({{numberResultsAll}})</p>
+        <p>Tous les résultats</p>
         <div class="results__white_div"></div>
       </li>
       <li v-bind:class="{emphasize_this: emphasizeEntreprises}"
           v-on:click="changeFocus('entreprises')">
-        <p>Entreprises ({{numberResultsEntreprises}})</p>
+        <p>Entreprises</p>
         <div class="results__white_div"></div>
       </li>
       <li v-bind:class="{emphasize_this: emphasizeEntreprisesIndividuelles}"
           v-on:click="changeFocus('entreprisesIndividuelles')">
-        <p>Entreprises Individuelles ({{numberResultsEntreprisesIndividuelles}})</p>
+        <p>Entreprises Individuelles</p>
         <div class="results__white_div"></div>
       </li>
       <li v-bind:class="{emphasize_this: emphasizeAssociations}"
           v-on:click="changeFocus('associations')">
-        <p>Associations ({{numberResultsAssociations}})</p>
+        <p>Associations</p>
         <div class="results__white_div"></div>
       </li>
     </ul>
@@ -66,18 +66,6 @@ export default {
         myClass = 'hide_this'
       }
       return myClass
-    },
-    numberResultsAll () {
-      return this.$store.state.categories.numberResultsAll
-    },
-    numberResultsEntreprises () {
-      return this.$store.state.categories.numberResultsEntreprises
-    },
-    numberResultsEntreprisesIndividuelles () {
-      return this.$store.state.categories.numberResultsEntreprisesIndividuelles
-    },
-    numberResultsAssociations () {
-      return this.$store.state.categories.numberResultsAssociations
     }
   }
 }
