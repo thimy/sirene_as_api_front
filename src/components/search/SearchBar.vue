@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import debounce from 'lodash/debounce'
+
 export default {
   name: 'SearchBar',
   props: ['searchName'],
@@ -29,10 +31,15 @@ export default {
         }
         if (String(fullText).length >= 3) {
           this.$store.commit('setFullText', fullText)
-          this.$store.dispatch('requestSearch')
+          this.delayedRequestSearch()
         }
       }
     }
+  },
+  methods: {
+    delayedRequestSearch: debounce(function () {
+      this.$store.dispatch('requestSearch')
+    }, 500)
   }
 }
 </script>
