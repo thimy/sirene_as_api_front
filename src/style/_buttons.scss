@@ -1,3 +1,6 @@
+@import '_variables.scss';
+@import '_typography.scss';
+
 $button-color-dark: darken($color-light-blue, 3);
 
 .button {
