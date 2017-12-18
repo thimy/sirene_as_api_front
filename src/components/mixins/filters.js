@@ -16,6 +16,9 @@ export default {
       }
     },
     removeExtraChars: function (string) {
+      if (!string) {
+        return null
+      }
       const withoutAsterisk = string.replace(/\*/, ' ')
       const withoutAsteriskOrSlash = withoutAsterisk.replace(/\//g, ' ')
       // Remove potential space at end of string

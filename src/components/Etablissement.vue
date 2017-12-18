@@ -60,6 +60,9 @@ export default {
       }
     },
     formattedDate () {
+      if (!this.result.date_creation) {
+        return null
+      }
       const year = this.result.date_creation.substring(0, 4)
       const month = this.result.date_creation.substring(4, 6)
       const day = this.result.date_creation.substring(6, 8)
