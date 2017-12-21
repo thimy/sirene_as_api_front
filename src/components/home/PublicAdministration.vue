@@ -1,5 +1,5 @@
 <template>
-  <div class="public-administration">
+  <section class="section-grey text-center public-administration">
     <div class="container">
         <p>
           Vous êtes une administration publique ?<br />
@@ -7,7 +7,7 @@
         </p>
         <a class="button">Demander un accès</a>
       </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -22,8 +22,9 @@ export default {
   text-align: center;
 }
 
-.public-administration .button {
-  margin-top: 2em;
+.public-administration p {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 </style>

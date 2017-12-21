@@ -3,23 +3,17 @@
     <ul class="results__categories">
       <li v-bind:class="{emphasize_this: emphasizeAll}"
           v-on:click="changeFocus('all')">
-        <p>Tous les résultats</p>
-        <div class="results__white_div"></div>
+        Tous les résultats
       </li>
       <li v-bind:class="{emphasize_this: emphasizeEntreprises}"
           v-on:click="changeFocus('entreprises')">
-        <p>Entreprises</p>
-        <div class="results__white_div"></div>
+        Entreprises
       </li>
       <li v-bind:class="{emphasize_this: emphasizeEntreprisesIndividuelles}"
-          v-on:click="changeFocus('entreprisesIndividuelles')">
-        <p>Entreprises Individuelles</p>
-        <div class="results__white_div"></div>
+          v-on:click="changeFocus('entreprisesIndividuelles')">Entreprises individuelles
       </li>
       <li v-bind:class="{emphasize_this: emphasizeAssociations}"
-          v-on:click="changeFocus('associations')">
-        <p>Associations</p>
-        <div class="results__white_div"></div>
+          v-on:click="changeFocus('associations')">Associations
       </li>
     </ul>
   </div>
@@ -77,19 +71,17 @@ export default {
   display: flex;
   align-items: flex-end;
   position: relative;
-  top: 3em;
   cursor: pointer;
-  li {
-    list-style: none;
-    display: inline;
-    font-weight: $fw-regular;
-    font-size: $fs-small;
-    margin-right: 3.5em;
-  }
-  .results__white_div {
-    background-color: transparent;
-    height: 0.3em;
-  }
+  margin-top: 2em;
+  margin-bottom: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.results__categories li {
+  padding-bottom: 1em;
+  border-bottom: 4px solid $color-white;
+  margin: 0 1em;
 }
 
 .hide_this {

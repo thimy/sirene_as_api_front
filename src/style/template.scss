@@ -125,7 +125,7 @@ button.button:active,
 button.button:visited {
   display: inline-block;
   margin: 0 auto;
-  padding: 0.5em 3em;
+  padding: 0.5em 2em;
   color: #fff;
   background-color: #0081d5;
   border-radius: 5px;
@@ -275,7 +275,7 @@ button.button:active {
 }
 
 .hero__container {
-  height: 38vh;
+  min-height: 38vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -291,6 +291,7 @@ button.button:active {
           align-items: center;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  padding: 2em;
 }
 
 .hero__white-background {

@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div class="search light-text">
-      <div class="container">
+    <div class="hero">
+      <div class="hero__container container" v-bind:class="[showWelcomeText ? '' : 'hero__compact' ]">
         <transition name="fade">
-          <div class="search__text" v-if="showWelcomeText">
+          <div class="text-center" v-if="showWelcomeText">
             <h1 class="search__title">
               Retrouvez toutes les informations concernant les entreprises et associations de France
             </h1>
-            <p class="search__subtitle">La plus grande base de données sur l'état civil des entreprises françaises est maintenant accessible à tous, sans frais.<br /><router-link to="/">Plus d'informations</router-link>.</p>
+            <p class="search__subtitle">La plus grande base de données sur l'état civil des entreprises françaises est maintenant accessible à tous, sans frais.</p>
           </div>
         </transition>
         <SearchBar searchName="Recherche par nom"></SearchBar>
@@ -96,19 +96,18 @@ export default {
 
 <style lang="scss" scoped>
 
-  .search {
-    padding: 3em 0;
-    text-align: center;
-    background: linear-gradient(180deg, $color-light-blue, $color-medium-blue);
+  .hero {
+    background: linear-gradient(180deg, $color-light-blue, $color-blue);
     box-sizing: content-box;
   }
 
-  .search__subtitle {
-    margin: 2em 0;
+  .hero__compact {
+    min-height: initial;
+    padding-bottom: 0;
   }
 
-  .marged-top {
-    margin-top: 1em;
+  .hero h1, .hero p {
+    color: $color-white;
   }
 
   #filter-button {
