@@ -1,7 +1,7 @@
 <template>
-  <div class="search__wrapper">
+  <div class="form__group">
     <input type="text" name="search" placeholder="Recherche" v-model="fullText"/>
-    <button class="transparent-button">
+    <button class="overlay-button">
       <svg class="icon icon-search"><use xlink:href="#icon-search"></use></svg>
     </button>
   </div>
@@ -45,21 +45,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .search__wrapper {
-    position: relative;
-  }
-
-  input {
-    width: 100%;
-  }
-
-  .transparent-button {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-  }
-
-  .icon-search {
-    color: $color-light-gray;
+  .form__group {
+    width: 35em;
+    max-width: 100%;
   }
 </style>
