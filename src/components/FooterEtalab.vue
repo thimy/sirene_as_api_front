@@ -11,10 +11,10 @@
         </ul>
       </div>
       <ul class="footer__links">
-        <li><h2>entreprise.data.gouv.fr</h2></li>
-        <li>Données de référence</li>
-        <li>Conditions générales d'utilisation</li>
-        <li>API</li>
+        <li><h2><a href="https://entreprise.api.gouv.fr/website">entreprise.data.gouv.fr</a></h2></li>
+        <li><a href="https://www.data.gouv.fr/fr/datasets/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/">Données de référence</a></li>
+        <li><a href="https://github.com/sgmap/sirene_as_api/blob/master/LICENSE">Conditions générales d'utilisation</a></li>
+        <li><a href="https://www.apientreprise.fr/">API</a></li>
       </ul>
       <ul class="footer__links"></ul>
     </div>
