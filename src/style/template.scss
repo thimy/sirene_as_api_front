@@ -75,7 +75,6 @@ body {
 
 a,
 button {
-  outline: none;
   cursor: pointer;
 }
 
@@ -97,7 +96,7 @@ pre {
 
 code {
   background: #ebeff3;
-  border-radius: 5px;
+  border-radius: 3px;
   padding: 0.5em;
   font-family: 'Courier New';
   word-break: break-word;
@@ -128,7 +127,7 @@ button.button:visited {
   padding: 0.5em 2em;
   color: #fff;
   background-color: #0081d5;
-  border-radius: 5px;
+  border-radius: 3px;
   -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .3);
           box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .3);
   border: 1px solid transparent;
@@ -207,6 +206,48 @@ button.button:active {
   font-family: "Evolventa";
   src: url("fonts/Evolventa/Evolventa-Bold.ttf");
   font-weight: 800;
+}
+
+.notification {
+  color: #0081d5;
+  background: #b4e1fa;
+  border: 1px solid #0081d5;
+  border-radius: 3px;
+  padding: 1em;
+  margin-bottom: 1em;
+  position: relative;
+}
+
+.notification.success {
+  color: #03bd5b;
+  background: #daf5e7;
+  border: 1px solid #03bd5b;
+}
+
+.notification.warning {
+  color: #ff9947;
+  background: #fff0e4;
+  border: 1px solid #ff9947;
+}
+
+.notification.error {
+  color: #d1335b;
+  background: #f8e1e7;
+  border: 1px solid #d1335b;
+}
+
+.notification .close {
+  border: 0;
+  background: 0;
+  color: currentColor;
+  position: absolute;
+  right: 1em;
+}
+
+.notification .icon {
+  fill: currentColor;
+  width: 20px;
+  height: 20px;
 }
 
 .footer {
@@ -534,7 +575,7 @@ select {
   font: inherit;
   line-height: 1.6;
   color: #1c1c1c;
-  border-radius: 5px;
+  border-radius: 3px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border: 1px solid #adb9c9;
@@ -651,7 +692,7 @@ select {
   background-position: center right 1em;
   background-size: 15px;
   padding-right: 45px;
-  border-radius: 5px;
+  border-radius: 3px;
   width: auto;
 }
 
@@ -805,5 +846,4 @@ article {
   margin: 0 auto;
 }
 
-/* template-specific style 
-@import "template.css"*/
+/* template-specific style */

@@ -1,20 +1,23 @@
 <template>
   <div class="container">
-    <div v-if="isSearchNotEmpty">
-      <p>{{informationMessage}}</p>
-      <p>Résultats : {{numberResults}}</p>
+    <template v-if="isSearchNotEmpty">
+      <div class="notification" v-if="informationMessage">
+        {{informationMessage}}
+        <button class="close" aria-label="Fermer"><svg class="icon icon-cross"><use xlink:href="#icon-cross"></use></svg></button>
+      </div>
+      <h3>{{resultsNumberSentence}}</h3>
       <ul>
-        <li v-for="result in storedResultsEtablissements">
-          <router-link tag="div" :to="{ name: 'Etablissement', params: {siret: result['siret']}}" id="result-box">
-            <p class="title">{{result['nom_raison_sociale'] | capitalize | removeExtraChars}}</p>
+        <li v-for="result in storedResultsEtablissements" class="panel">
+          <router-link tag="div" :to="{ name: 'Etablissement', params: {siret: result['siret']}}">
+            <h4 class="title">{{result['nom_raison_sociale'] | capitalize | removeExtraChars}}</h4>
             <p>{{result['libelle_activite_principale_entreprise']}}</p>
             <p>{{result['code_postal']}} {{result['libelle_commune'] | capitalize}}</p>
           </router-link>
         </li>
       </ul>
-      <p v-if="numberResults === 0">Aucun résultat trouvé</p>
-      <paginate-module></paginate-module>
-    </div>
+      <p v-if="!numberResults">Aucun résultat trouvé</p>
+      <paginate-module v-if="numberResults"></paginate-module>
+    </template>
   </div>
 </template>
 
@@ -37,13 +40,22 @@ export default {
       return this.$store.getters.infoMessage
     },
     isSearchNotEmpty: function () {
-      return this.$store.state.storedFullText !== ''
+      return this.$store.state.search.storedFullText !== ''
     },
     storedResultsEtablissements () {
       return this.$store.getters.storedResultsEtablissements
     },
     numberResults () {
       return this.$store.getters.numberResults
+    },
+    resultsNumberSentence () {
+      if (this.numberResults === undefined) {
+        return ''
+      }
+      const results = this.numberResults > 1 ? 'résultats'
+                                             : 'résultat'
+
+      return `${this.numberResults} ${results} pour "${this.$store.state.search.storedFullText}"`
     }
   },
   mixins: [Filters]
@@ -54,37 +66,28 @@ export default {
 <style lang="scss" scoped>
 
   .title {
-    font-weight: $fw-bold;
-    font-size: $fs-medium;
+    margin: 0.15em;
   }
 
   p {
-    font-weight: $fw-regular;
-    font-size: $fs-normal;
     margin: 0.15em;
   }
 
   ul {
     list-style: none;
+    padding: 0;
+    margin: 2em 0;
   }
 
   .container {
-    padding-bottom: 1em;
+    padding-top: 2em;
+    padding-bottom: 2em;
   }
 
-  #result-box {
-    @extend %box-shadow;
+  .panel {
+    margin-bottom: 2em;
     cursor: pointer;
-    border: $border-color 1px solid;
-    border-radius: $border-radius;
-    background-color: $color-white;
-    margin: 1.5em 0em 1.5em 0em;
-    width: 100%;
-    padding: 15px;
-  }
-
-  %box-shadow {
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+    padding: 1em;
   }
 
 </style>
