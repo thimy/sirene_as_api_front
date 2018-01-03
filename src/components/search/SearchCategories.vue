@@ -1,18 +1,18 @@
 <template>
   <div :class="hideObjectIfNoSearch">
     <ul class="results__categories">
-      <li v-bind:class="{emphasize_this: emphasizeAll}"
+      <li v-bind:class="{active: emphasizeAll}"
           v-on:click="changeFocus('all')">
         Tous les résultats
       </li>
-      <li v-bind:class="{emphasize_this: emphasizeEntreprises}"
+      <li v-bind:class="{active: emphasizeEntreprises}"
           v-on:click="changeFocus('entreprises')">
         Entreprises
       </li>
-      <li v-bind:class="{emphasize_this: emphasizeEntreprisesIndividuelles}"
+      <li v-bind:class="{active: emphasizeEntreprisesIndividuelles}"
           v-on:click="changeFocus('entreprisesIndividuelles')">Entreprises individuelles
       </li>
-      <li v-bind:class="{emphasize_this: emphasizeAssociations}"
+      <li v-bind:class="{active: emphasizeAssociations}"
           v-on:click="changeFocus('associations')">Associations
       </li>
     </ul>
@@ -57,7 +57,7 @@ export default {
     hideObjectIfNoSearch: function () {
       let myClass = ''
       if (this.$store.state.storedFullText === '') {
-        myClass = 'hide_this'
+        myClass = 'hidden'
       }
       return myClass
     }
@@ -80,19 +80,22 @@ export default {
 
 .results__categories li {
   padding-bottom: 1em;
-  border-bottom: 4px solid $color-white;
   margin: 0 1em;
+  position: relative;
 }
 
-.hide_this {
+.results__categories li.active::after {
+  width: 100%;
+  height: 3px;
+  background: $color-white;
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+}
+
+.hidden {
   display: none !important;
-}
-
-.emphasize_this {
-  font-weight: $fw-bold !important;
-  .results__white_div {
-    background-color: $color-white !important;
-  }
 }
 
 </style>
