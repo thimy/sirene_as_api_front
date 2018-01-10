@@ -19,7 +19,7 @@
           <SearchBarSmall searchName="Code Postal" v-if="toggleFilters"></SearchBarSmall>
           <SearchBarSmall searchName="Activite Principale" v-if="toggleFilters"></SearchBarSmall>
         </div>
-        <search-categories v-if="!showWelcomeText"></search-categories>
+        <search-categories v-if="showSearchCategories"></search-categories>
       </div>
     </div>
     <!-- TODO Factorize here  -->
@@ -81,6 +81,9 @@ export default {
     },
     showWelcomeText () {
       return this.$store.state.welcomeText.isWelcomeTextVisible
+    },
+    showSearchCategories () {
+      return this.$route.path === '/search' && this.$store.state.storedFullText !== ''
     }
   },
   watch: {
@@ -99,6 +102,11 @@ export default {
   .hero {
     background: linear-gradient(180deg, $color-light-blue, $color-blue);
     box-sizing: content-box;
+  }
+
+  .hero__container {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .hero__compact {
