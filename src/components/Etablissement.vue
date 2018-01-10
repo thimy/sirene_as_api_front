@@ -1,34 +1,34 @@
 <template>
-  <div>
-    <router-link :to="{ path: '/search',
-      query: {
-        fullText: this.$store.state.search.storedFullText,
-        page: this.$store.state.search.pageNumber,
-        postalCode: this.$store.state.filters.filterPostalCode,
-        activityCode: this.$store.state.filters.filterActivityCode
-      }}">
-      Revenir aux résultats
-    </router-link>
-    <div v-if="result">
-      <p>Nom entreprise : {{result.nom_raison_sociale | removeExtraChars}}</p>
-      <ul>
-        <li> Siret : {{ result.siret }}</li>
-        <li> Siren : {{ result.siren }}</li>
-        <li> Clef NIC : {{ result.nic }}</li>
-        <li> Gérant : {{ fullOwnerName }}</li>
-        <li> Code postal : {{ result.code_postal }}</li>
-        <li> Cedex : {{ result.cedex | ifExist}}</li>
-        <li> Departement : {{ result.departement }}</li>
-        <li> Date de création : {{ result.date_creation }}</li>
-        <li> Numéro TVA Intracommunautaire : {{ tvaIntracommunautaire }}
-        <li> Téléphone : {{ result.telephone | ifExist}}</li>
-        <li> Email : {{ result.email | ifExist}}</li>
-        <li> Code activité principale : {{ result.activite_principale_entreprise }}</li>
-        <li> Libellé activité principale : {{ result.libelle_activite_principale_entreprise }}</li>
-        <li> Tranche effectif salarié : {{ result.libelle_tranche_effectif_salarie }}</li>
-        <li> Date de création : {{ formattedDate }}</li>
-      </ul>
-    </div>
+  <div class="company">
+    <section class="section-white">
+      <div class="container">
+        <h2>{{result.nom_raison_sociale | removeExtraChars}} <span class="company__siren">({{ result.siren }})</span></h2>
+        <h4 class="company__industry"> {{ result.libelle_activite_principale_entreprise }}</h4>
+      </div>
+    </section>
+    <section class="section-grey">
+      <div class="container company-container">
+        <div v-if="result" class="panel">
+            <div class="company__item"><div class="company__item-key">Gérant</div><div class="company__item-value"> {{ fullOwnerName | ifExist }}</div></div>
+            <div class="company__item"><div class="company__item-key">Adresse</div><div class="company__item-value"> {{ result.l4_normalisee }} </div></div>
+            <div class="company__item"><div class="company__item-key">Ville</div><div class="company__item-value"> {{ result.code_postal }} {{result.libelle_commune}}</div></div>
+            <div class="company__item"><div class="company__item-key">Cedex</div><div class="company__item-value"> {{ result.cedex | ifExist}}</div></div>
+            <div class="company__item"><div class="company__item-key">Date de création</div><div class="company__item-value"> {{ formattedDate }}</div></div>
+            <div class="company__item"><div class="company__item-key">Téléphone</div><div class="company__item-value"> {{ result.telephone | ifExist}}</div></div>
+            <div class="company__item"><div class="company__item-key">Email</div><div class="company__item-value"> {{ result.email | ifExist}}</div></div>
+            <div class="company__item"><div class="company__item-key">Tranche d'effectif salariés</div><div class="company__item-value"> {{ result.libelle_tranche_effectif_salarie }}</div></div>
+        </div>
+        <div class="panel">
+          <ul class="company__info-list">
+            <div class="company__item"><div class="company__item-key">Siret</div><div class="company__item-value"> {{ result.siret }}</div></div>
+            <div class="company__item"><div class="company__item-key">Siren</div><div class="company__item-value"> {{ result.siren }}</div></div>
+            <div class="company__item"><div class="company__item-key">Clef NIC</div><div class="company__item-value"> {{ result.nic }}</div></div>
+            <div class="company__item"><div class="company__item-key">Activité principale</div><div class="company__item-value"> {{ result.activite_principale_entreprise }} - {{ result.libelle_activite_principale_entreprise }}</div></div>
+            <div class="company__item"><div class="company__item-key">N° TVA Intracommunautaire</div><div class="company__item-value"> {{ tvaIntracommunautaire }}</div></div>
+          </ul>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -80,3 +80,74 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .section-white {
+    padding: 0;
+  }
+
+  .company__industry,
+  .company__siren {
+    color: #8393a7;
+  }
+
+  .section-grey {
+    padding: 0;
+  }
+
+  .container {
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+
+  .company-container {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .panel {
+    margin: 0 1em;
+    width: 100%;
+  }
+
+  .company__info-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .company__item {
+    margin-bottom: 1em;
+  }
+
+  .company__item-key {
+    display: block;
+    color: #8393a7;
+    margin-right: 1em;
+  }
+
+  .panel:first-child {
+    margin-left: 0;
+  }
+
+  .panel:last-child {
+    margin-right: 0;
+  }
+
+  @media (max-width: $tablet) {
+    .company-container {
+      flex-direction: column;
+    }
+
+    .panel {
+      margin-left: 0;
+      margin-right: 0;
+      width: auto;
+    }
+
+    .panel:first-child {
+      margin-bottom: 2em;
+    }
+  }
+</style>

@@ -20,6 +20,15 @@
           <SearchBarSmall searchName="Activite Principale" v-if="toggleFilters"></SearchBarSmall>
         </div>
         <search-categories v-if="showSearchCategories"></search-categories>
+        <router-link v-if="showBackToResultsButton" class="back-to-results" :to="{ path: '/search',
+          query: {
+            fullText: this.$store.state.search.storedFullText,
+            page: this.$store.state.search.pageNumber,
+            postalCode: this.$store.state.filters.filterPostalCode,
+            activityCode: this.$store.state.filters.filterActivityCode
+          }}">
+          ← Revenir aux résultats
+        </router-link>
       </div>
     </div>
     <!-- TODO Factorize here  -->
@@ -84,6 +93,9 @@ export default {
     },
     showSearchCategories () {
       return this.$route.path === '/search' && this.$store.state.storedFullText !== ''
+    },
+    showBackToResultsButton () {
+      return this.$route.path.includes('/entreprise')
     }
   },
   watch: {
@@ -132,6 +144,13 @@ export default {
 
   .informations-index {
     text-align: center;
+  }
+
+  .back-to-results {
+    color: $color-white;
+    display: block;
+    width: 100%;
+    margin: 2em 0 1em;
   }
 
 </style>
