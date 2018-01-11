@@ -19,7 +19,16 @@
           <SearchBarSmall searchName="Code Postal" v-if="toggleFilters"></SearchBarSmall>
           <SearchBarSmall searchName="Activite Principale" v-if="toggleFilters"></SearchBarSmall>
         </div>
-        <search-categories v-if="!showWelcomeText"></search-categories>
+        <search-categories v-if="showSearchCategories"></search-categories>
+        <router-link v-if="showBackToResultsButton" class="back-to-results" :to="{ path: '/search',
+          query: {
+            fullText: this.$store.state.search.storedFullText,
+            page: this.$store.state.search.pageNumber,
+            postalCode: this.$store.state.filters.filterPostalCode,
+            activityCode: this.$store.state.filters.filterActivityCode
+          }}">
+          ← Revenir aux résultats
+        </router-link>
       </div>
     </div>
     <!-- TODO Factorize here  -->
@@ -81,6 +90,12 @@ export default {
     },
     showWelcomeText () {
       return this.$store.state.welcomeText.isWelcomeTextVisible
+    },
+    showSearchCategories () {
+      return this.$route.path === '/search' && this.$store.state.storedFullText !== ''
+    },
+    showBackToResultsButton () {
+      return this.$route.path.includes('/entreprise')
     }
   },
   watch: {
@@ -99,6 +114,11 @@ export default {
   .hero {
     background: linear-gradient(180deg, $color-light-blue, $color-blue);
     box-sizing: content-box;
+  }
+
+  .hero__container {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .hero__compact {
@@ -124,6 +144,13 @@ export default {
 
   .informations-index {
     text-align: center;
+  }
+
+  .back-to-results {
+    color: $color-white;
+    display: block;
+    width: 100%;
+    margin: 2em 0 1em;
   }
 
 </style>

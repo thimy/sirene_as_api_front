@@ -1,22 +1,20 @@
 <template>
-  <div :class="hideObjectIfNoSearch">
-    <ul class="results__categories">
-      <li v-bind:class="{active: emphasizeAll}"
-          v-on:click="changeFocus('all')">
-        Tous les résultats
-      </li>
-      <li v-bind:class="{active: emphasizeEntreprises}"
-          v-on:click="changeFocus('entreprises')">
-        Entreprises
-      </li>
-      <li v-bind:class="{active: emphasizeEntreprisesIndividuelles}"
-          v-on:click="changeFocus('entreprisesIndividuelles')">Entreprises individuelles
-      </li>
-      <li v-bind:class="{active: emphasizeAssociations}"
-          v-on:click="changeFocus('associations')">Associations
-      </li>
-    </ul>
-  </div>
+  <ul class="results__categories">
+    <li v-bind:class="{active: emphasizeAll}"
+        v-on:click="changeFocus('all')">
+      Tous les résultats
+    </li>
+    <li v-bind:class="{active: emphasizeEntreprises}"
+        v-on:click="changeFocus('entreprises')">
+      Entreprises
+    </li>
+    <li v-bind:class="{active: emphasizeEntreprisesIndividuelles}"
+        v-on:click="changeFocus('entreprisesIndividuelles')">Entreprises individuelles
+    </li>
+    <li v-bind:class="{active: emphasizeAssociations}"
+        v-on:click="changeFocus('associations')">Associations
+    </li>
+  </ul>
 </template>
 
 <script>
@@ -52,15 +50,6 @@ export default {
       }
       this.$store.dispatch('emphasizeCategory', dataToEmphasize)
     }
-  },
-  computed: {
-    hideObjectIfNoSearch: function () {
-      let myClass = ''
-      if (this.$store.state.storedFullText === '') {
-        myClass = 'hidden'
-      }
-      return myClass
-    }
   }
 }
 </script>
@@ -76,6 +65,7 @@ export default {
   margin-bottom: 0;
   padding: 0;
   list-style-type: none;
+  width: 100%;
 }
 
 .results__categories li {
