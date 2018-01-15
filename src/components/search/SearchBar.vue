@@ -30,13 +30,18 @@ export default {
           return
         }
         if (String(fullText).length >= 3) {
-          this.$store.commit('setFullText', fullText)
+          this.$store.commit('setQuerySuggestions', fullText) // Suggestion search
+          this.instantSuggestionSearch()
+          this.$store.commit('setFullText', fullText) // Standard search
           this.delayedRequestSearch()
         }
       }
     }
   },
   methods: {
+    instantSuggestionSearch: function () {
+      this.$store.dispatch('executeSearchSuggestions')
+    },
     delayedRequestSearch: debounce(function () {
       this.$store.dispatch('requestSearch')
     }, 500)

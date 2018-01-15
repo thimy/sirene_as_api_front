@@ -61,7 +61,7 @@ const mutations = {
   setPage (state, value) {
     state.pageNumber = value
   },
-  executeSearchBySiret (state, siret) {
+  executeSearchBySiret (state, siret) { // TODO: Move to actions ?
     store.dispatch('hideWelcomeText')
     Vue.http.get(state.baseAdressSiret + siret).then(response => {
       store.commit('setSinglePageResults', response.body)
