@@ -2,7 +2,7 @@ import Vue from 'vue'
 import store from '@/store/index.js'
 
 const state = {
-  storedSuggestions: '',
+  storedSuggestions: {},
   baseAdressSuggestions: process.env.BASE_ADRESS_SUGGESTIONS,
   querySuggestions: ''
 }

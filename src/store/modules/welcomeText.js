@@ -18,6 +18,7 @@ const actions = {
   goToClearedHomePage () {
     router.push({ path: `/` })
     store.commit('setFullText', '')
+    store.commit('setStoredSuggestions', '')
     store.commit('changeWelcomeTextVisibility', true)
   }
 }
