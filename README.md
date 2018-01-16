@@ -1,3 +1,4 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/19e7d5ccc05ae6ad3327/maintainability)](https://codeclimate.com/github/Samuelfaure/sirene_as_api_front/maintainability)
 # SIRENE_as_api_front
 
 Dans le cadre du SPD, (Service Public de la Donnée), certains jeux de données
@@ -47,3 +48,6 @@ rails s
 rake sunspot:solr:start
 
 ```
+## Licence
+
+MIT
