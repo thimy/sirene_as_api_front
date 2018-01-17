@@ -4,7 +4,8 @@ import store from '@/store/index.js'
 const state = {
   storedSuggestions: {},
   baseAdressSuggestions: process.env.BASE_ADRESS_SUGGESTIONS,
-  querySuggestions: ''
+  querySuggestions: '',
+  suggestActive: ''
 }
 
 const getters = {
@@ -19,6 +20,9 @@ const mutations = {
   },
   setStoredSuggestions (state, suggestions) {
     state.storedSuggestions = suggestions
+  },
+  setSuggestActive (state, suggestion) {
+    state.querySuggestions = suggestion
   }
 }
 
@@ -30,6 +34,9 @@ const actions = {
     }, response => {
       store.commit('setStoredSuggestions', null)
     })
+  },
+  hideSuggestions () {
+    store.commit('setStoredSuggestions', '')
   }
 }
 

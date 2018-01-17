@@ -85,10 +85,8 @@ const actions = {
     store.dispatch('executeSearch')
   },
   executeSearch () {
-    if (store.getters.infoMessage) {
-      return false
-    }
     store.dispatch('hideWelcomeText')
+    store.dispatch('hideSuggestions')
     Vue.http.get(store.getters.adressToGet).then(response => {
       store.commit('setResults', response.body)
       store.commit('setStatus', response.status)
