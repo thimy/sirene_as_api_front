@@ -31,11 +31,6 @@ export default {
   components: {
     'PaginateModule': PaginateModule
   },
-  // data () {
-  //   return {
-  //     noSearchWasMade: true
-  //   }
-  // },
   computed: {
     informationMessage () {
       return this.$store.getters.infoMessage

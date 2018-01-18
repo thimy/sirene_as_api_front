@@ -64,14 +64,6 @@ const mutations = {
   },
   setPage (state, value) {
     state.pageNumber = value
-  },
-  executeSearchBySiret (state, siret) { // TODO: Move to actions ?
-    store.dispatch('hideWelcomeText')
-    Vue.http.get(state.baseAdressSiret + siret).then(response => {
-      store.commit('setSinglePageResults', response.body)
-    }, response => {
-      store.commit('setSinglePageResults', null)
-    })
   }
 }
 
@@ -102,6 +94,14 @@ const actions = {
       } else {
         store.commit('setStatus', response.status)
       }
+    })
+  },
+  executeSearchBySiret (dispatch, siret) {
+    store.dispatch('hideWelcomeText')
+    Vue.http.get(dispatch.state.baseAdressSiret + siret).then(response => {
+      store.commit('setSinglePageResults', response.body)
+    }, response => {
+      store.commit('setSinglePageResults', null)
     })
   }
 }

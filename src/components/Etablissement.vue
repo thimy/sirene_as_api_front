@@ -70,13 +70,13 @@ export default {
     }
   },
   created () {
-    this.$store.commit('executeSearchBySiret', this.$route.params.siret)
+    this.$store.dispatch('executeSearchBySiret', this.$route.params.siret)
     this.$store.dispatch('hideSuggestions')
   },
   mixins: [Filters],
   watch: {
     '$route' (to, from) {
-      this.$store.commit('executeSearchBySiret', this.$route.params.siret)
+      this.$store.dispatch('executeSearchBySiret', this.$route.params.siret)
     }
   }
 }

@@ -23,15 +23,11 @@
 
 <script>
 import Filters from '@/components/mixins/filters.js'
+import Suggestions from '@/components/mixins/suggestions.js'
 
 export default {
   name: 'SearchBar',
   props: ['searchName'],
-  data () {
-    return {
-      suggestCount: -1
-    }
-  },
   computed: {
     fullText: {
       get: function () {
@@ -47,31 +43,6 @@ export default {
           this.$store.dispatch('executeSearchSuggestions')
         }
       }
-    },
-    suggestions: {
-      get: function () {
-        const storedSuggestions = this.$store.state.suggestions.storedSuggestions
-        if (storedSuggestions && storedSuggestions.suggestions) {
-          if (storedSuggestions.suggestions.length > this.maxSuggestions) {
-            return storedSuggestions.suggestions.splice(0, this.maxSuggestions)
-          }
-          return storedSuggestions.suggestions
-        }
-        return false
-      }
-    },
-    maxSuggestions: {
-      get: function () {
-        const storedSuggestions = this.$store.state.suggestions.storedSuggestions
-        if (!storedSuggestions) {
-          return 0
-        }
-        if (storedSuggestions.suggestions.length < 5) {
-          return storedSuggestions.suggestions.length
-        } else {
-          return 5
-        }
-      }
     }
   },
   methods: {
@@ -81,43 +52,17 @@ export default {
         this.$router.push({ path: `/entreprise/${this.fullText}` })
         return
       }
-      if (this.currentSuggestion()) { // This search the current suggestion if selected
-        this.$store.commit('setFullText', this.currentSuggestion())
+      const currentSuggestion = this.currentSuggestion()
+      if (currentSuggestion) { // This search the current suggestion if selected
+        this.$store.commit('setFullText', currentSuggestion)
       } else {
         this.$store.commit('setFullText', this.fullText)
       }
       this.$store.dispatch('requestSearch')
       this.suggestCount = -1
-    },
-    currentSuggestion: function () {
-      if (this.suggestCount >= 0) {
-        return this.suggestions[this.suggestCount]
-      }
-    },
-    hasSuggestions: function () {
-      return this.suggestions && this.suggestions.length > 0
-    },
-    suggestActive: function (index) {
-      return index === this.suggestCount
-    },
-    suggestReset: function () {
-      this.$store.dispatch('hideSuggestions')
-    },
-    suggestDown: function () {
-      if (this.suggestCount < (this.maxSuggestions - 1)) {
-        this.suggestCount += 1
-      }
-    },
-    suggestUp: function () {
-      if (this.suggestCount > -1) {
-        this.suggestCount -= 1
-      }
-    },
-    suggestEnter: function () { // On enter, save the current suggestion and put it as fullText
-      this.requestSearch()
     }
   },
-  mixins: [Filters]
+  mixins: [Filters, Suggestions]
 }
 </script>
 
@@ -133,18 +78,18 @@ export default {
     margin: 0;
   }
 
-  .suggestion__box {
+  .suggestion__box { // REVIEW : Stole this CSS from 'input' from template.scss
       width: 90%;
       outline: none;
       padding: 8px 14px;
       font: inherit;
       line-height: 1.6;
-      color: #1c1c1c;
+      color: $color-black;
       border-radius: 3px;
       -webkit-box-sizing: border-box;
               box-sizing: border-box;
-      border: 1px solid #adb9c9;
-      background: #fff;
+      border: 1px solid $color-grey-blue;
+      background: $color-white;
       vertical-align: middle;
       position: relative;
   }
