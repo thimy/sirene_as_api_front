@@ -15,7 +15,7 @@
           </router-link>
         </li>
       </ul>
-      <p v-if="!numberResults">Aucun résultat trouvé</p>
+      <p v-if="showNoResultMessage">Aucun résultat trouvé</p>
       <paginate-module v-if="numberResults"></paginate-module>
     </template>
   </div>
@@ -24,22 +24,23 @@
 <script>
 import PaginateModule from '@/components/paginate/PaginateModule.vue'
 import Filters from '@/components/mixins/filters.js'
+import debounce from 'lodash/debounce'
 
 export default {
   name: 'Results',
   components: {
     'PaginateModule': PaginateModule
   },
-  data () {
-    return {
-      noSearchWasMade: true
-    }
-  },
+  // data () {
+  //   return {
+  //     noSearchWasMade: true
+  //   }
+  // },
   computed: {
-    informationMessage: function () {
+    informationMessage () {
       return this.$store.getters.infoMessage
     },
-    isSearchNotEmpty: function () {
+    isSearchNotEmpty () {
       return this.$store.state.search.storedFullText !== ''
     },
     storedResultsEtablissements () {
@@ -48,6 +49,9 @@ export default {
     numberResults () {
       return this.$store.getters.numberResults
     },
+    showNoResultMessage: debounce(function () {
+      this.numberResults === 0
+    }, 200), // Wait 200 ms not finding any result before saying there are no results
     resultsNumberSentence () {
       if (this.numberResults === undefined) {
         return ''
@@ -55,7 +59,7 @@ export default {
       const results = this.numberResults > 1 ? 'résultats'
                                              : 'résultat'
 
-      return `${this.numberResults} ${results} pour "${this.$store.state.search.storedFullText}"`
+      return `${this.numberResults} ${results} pour "${this.$store.state.search.storedLastFullText}"`
     }
   },
   mixins: [Filters]

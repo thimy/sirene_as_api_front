@@ -92,7 +92,7 @@ export default {
       return this.$store.state.welcomeText.isWelcomeTextVisible
     },
     showSearchCategories () {
-      return this.$route.path === '/search' && this.$store.state.storedFullText !== ''
+      return this.$store.state.welcomeText.showSearchCategories
     },
     showBackToResultsButton () {
       return this.$route.path.includes('/entreprise')

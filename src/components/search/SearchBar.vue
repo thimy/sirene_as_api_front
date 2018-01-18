@@ -12,6 +12,7 @@
     <ul v-show="suggestions">
       <li class="suggestion__box"
           v-for="suggestion, index in suggestions"
+          :key="index"
           v-bind:class="{'active': suggestActive(index)}">
         <span>{{ suggestion | capitalize | removeExtraChars}}</span>
       </li>
@@ -21,7 +22,6 @@
 </template>
 
 <script>
-// import debounce from 'lodash/debounce' // TODO: delete lodash from package
 import Filters from '@/components/mixins/filters.js'
 
 export default {
@@ -51,32 +51,43 @@ export default {
     suggestions: {
       get: function () {
         const storedSuggestions = this.$store.state.suggestions.storedSuggestions
-        const maxSuggestions = 5
         if (storedSuggestions && storedSuggestions.suggestions) {
-          if (storedSuggestions.suggestions.length > maxSuggestions) {
-            return storedSuggestions.suggestions.splice(0, maxSuggestions)
+          if (storedSuggestions.suggestions.length > this.maxSuggestions) {
+            return storedSuggestions.suggestions.splice(0, this.maxSuggestions)
           }
           return storedSuggestions.suggestions
         }
         return false
       }
+    },
+    maxSuggestions: {
+      get: function () {
+        const storedSuggestions = this.$store.state.suggestions.storedSuggestions
+        if (!storedSuggestions) {
+          return 0
+        }
+        if (storedSuggestions.suggestions.length < 5) {
+          return storedSuggestions.suggestions.length
+        } else {
+          return 5
+        }
+      }
     }
   },
   methods: {
     requestSearch: function () {
-      if (this.fullText.match(/^\d{3}/)) {
+      if (this.fullText.match(/^\d{14}/)) { // This is siret search
         this.$store.commit('setSiret', this.fullText)
-      }
-      if (this.fullText.match(/^\d{14}/)) {
         this.$router.push({ path: `/entreprise/${this.fullText}` })
         return
       }
-      if (this.currentSuggestion()) {
+      if (this.currentSuggestion()) { // This search the current suggestion if selected
         this.$store.commit('setFullText', this.currentSuggestion())
       } else {
         this.$store.commit('setFullText', this.fullText)
       }
       this.$store.dispatch('requestSearch')
+      this.suggestCount = -1
     },
     currentSuggestion: function () {
       if (this.suggestCount >= 0) {
@@ -93,7 +104,7 @@ export default {
       this.$store.dispatch('hideSuggestions')
     },
     suggestDown: function () {
-      if (this.suggestCount < 4) { // TODO: replace with maxSuggestions || suggestions.length
+      if (this.suggestCount < (this.maxSuggestions - 1)) {
         this.suggestCount += 1
       }
     },

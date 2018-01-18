@@ -4,6 +4,7 @@ import router from '@/router/index.js'
 
 const state = {
   storedFullText: '',
+  storedLastFullText: '',
   storedSiret: '',
   pageNumber: 1,
   baseAdress: process.env.BASE_ADRESS,
@@ -55,6 +56,9 @@ const mutations = {
   setFullText (state, value) {
     state.storedFullText = value
   },
+  setLastFullText (state, value) {
+    state.storedLastFullText = value
+  },
   setSiret (state, value) {
     state.storedSiret = value
   },
@@ -83,6 +87,7 @@ const actions = {
       }
     })
     store.dispatch('executeSearch')
+    store.commit('setLastFullText', state.storedFullText)
   },
   executeSearch () {
     store.dispatch('hideWelcomeText')
