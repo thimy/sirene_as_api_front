@@ -6,6 +6,7 @@
         <button class="close" aria-label="Fermer"><svg class="icon icon-cross"><use xlink:href="#icon-cross"></use></svg></button>
       </div>
       <h3>{{resultsNumberSentence}}</h3>
+      <did-you-mean></did-you-mean>
       <ul>
         <li v-for="result in storedResultsEtablissements" class="panel">
           <router-link tag="div" :to="{ name: 'Etablissement', params: {siret: result['siret']}}">
@@ -22,13 +23,15 @@
 </template>
 
 <script>
-import PaginateModule from '@/components/paginate/PaginateModule.vue'
+import PaginateModule from '@/components/results/ResultsPaginateModule'
+import DidYouMean from '@/components/results/ResultsDidYoumean'
 import Filters from '@/components/mixins/filters.js'
 
 export default {
   name: 'Results',
   components: {
-    'PaginateModule': PaginateModule
+    'PaginateModule': PaginateModule,
+    'DidYouMean': DidYouMean
   },
   data () {
     return {
@@ -36,10 +39,10 @@ export default {
     }
   },
   computed: {
-    informationMessage: function () {
+    informationMessage () {
       return this.$store.getters.infoMessage
     },
-    isSearchNotEmpty: function () {
+    isSearchNotEmpty () {
       return this.$store.state.search.storedFullText !== ''
     },
     storedResultsEtablissements () {
@@ -54,7 +57,6 @@ export default {
       }
       const results = this.numberResults > 1 ? 'résultats'
                                              : 'résultat'
-
       return `${this.numberResults} ${results} pour "${this.$store.state.search.storedFullText}"`
     }
   },

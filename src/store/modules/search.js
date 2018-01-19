@@ -84,22 +84,25 @@ const actions = {
     })
     store.dispatch('executeSearch')
   },
-  executeSearch () {
+  executeSearch () { // Calling this action won't update the router
     if (store.getters.infoMessage) {
       return false
     }
     store.dispatch('hideWelcomeText')
     Vue.http.get(store.getters.adressToGet).then(response => {
-      store.commit('setResults', response.body)
-      store.commit('setStatus', response.status)
+      store.dispatch('setResponse', response)
     }, response => {
       if (state.pageNumber > 1) {
         store.commit('setPage', 1)
         store.dispatch('executeSearch')
       } else {
-        store.commit('setStatus', response.status)
+        store.dispatch('setResponse', response)
       }
     })
+  },
+  setResponse (dispatch, response) {
+    store.commit('setResults', response.body)
+    store.commit('setStatus', response.status)
   }
 }
 

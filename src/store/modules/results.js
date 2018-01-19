@@ -7,19 +7,23 @@ const state = {
 }
 
 const getters = {
+  storedSpellcheck: state => {
+    if (state.storedStatus && state.storedResults) {
+      return state.storedResults.spellcheck
+    }
+    return null
+  },
   storedResultsEtablissements: state => {
     if (state.storedResults) {
       return state.storedResults.etablissement
-    } else {
-      return null
     }
+    return null
   },
   singlePageResultEtablissement: state => {
     if (state.singlePageResult) {
       return state.singlePageResult.etablissement
-    } else {
-      return null
     }
+    return null
   },
   numberResults: state => {
     if (state.storedStatus === 404) {
