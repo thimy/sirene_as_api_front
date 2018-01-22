@@ -34,6 +34,11 @@ export default {
     'PaginateModule': PaginateModule,
     'DidYouMean': DidYouMean
   },
+  beforeUpdate () { // If only one result, go to page Etablissement
+    if (this.$store.getters.onlyOneResult) {
+      this.$router.push({ name: 'Etablissement', params: {siret: this.storedResultsEtablissements[0]['siret']} })
+    }
+  },
   computed: {
     informationMessage () {
       return this.$store.getters.infoMessage

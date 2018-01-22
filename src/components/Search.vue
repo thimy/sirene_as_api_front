@@ -94,8 +94,11 @@ export default {
     showSearchCategories () {
       return this.$store.state.welcomeText.showSearchCategories
     },
-    showBackToResultsButton () {
-      return this.$route.path.includes('/entreprise')
+    showBackToResultsButton () { // show back button only on etablissement page and more than one result
+      return this.$route.path.includes('/entreprise') && this.moreThanOneResult
+    },
+    moreThanOneResult () {
+      return !(this.$store.getters.onlyOneResult)
     }
   },
   watch: {
