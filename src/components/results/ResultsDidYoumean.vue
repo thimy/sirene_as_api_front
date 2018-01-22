@@ -11,10 +11,7 @@ export default {
   name: 'ResultsDidYoumean',
   computed: {
     didYouMean () {
-      if (this.$store.getters.storedSpellcheck) {
-        return this.$store.getters.storedSpellcheck
-      }
-      return null
+      return this.$store.getters.storedSpellcheck
     }
   },
   methods: {
