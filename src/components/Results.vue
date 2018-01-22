@@ -35,6 +35,11 @@ export default {
       noSearchWasMade: true
     }
   },
+  beforeUpdate () { // If only one result, go to page Etablissement
+    if (this.$store.getters.onlyOneResult) {
+      this.$router.push({ name: 'Etablissement', params: {siret: this.storedResultsEtablissements[0]['siret']} })
+    }
+  },
   computed: {
     informationMessage: function () {
       return this.$store.getters.infoMessage

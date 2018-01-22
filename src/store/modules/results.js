@@ -41,6 +41,9 @@ const getters = {
     } else {
       return ''
     }
+  },
+  onlyOneResult: state => {
+    return store.getters.numberResults === 1
   }
 }
 
