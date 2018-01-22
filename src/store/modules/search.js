@@ -4,6 +4,7 @@ import router from '@/router/index.js'
 
 const state = {
   storedFullText: '',
+  storedLastFullText: '',
   storedSiret: '',
   pageNumber: 1,
   baseAdress: process.env.BASE_ADRESS,
@@ -55,19 +56,14 @@ const mutations = {
   setFullText (state, value) {
     state.storedFullText = value
   },
+  setLastFullText (state, value) {
+    state.storedLastFullText = value
+  },
   setSiret (state, value) {
     state.storedSiret = value
   },
   setPage (state, value) {
     state.pageNumber = value
-  },
-  executeSearchBySiret (state, siret) {
-    store.dispatch('hideWelcomeText')
-    Vue.http.get(state.baseAdressSiret + siret).then(response => {
-      store.commit('setSinglePageResults', response.body)
-    }, response => {
-      store.commit('setSinglePageResults', null)
-    })
   }
 }
 
@@ -83,12 +79,14 @@ const actions = {
       }
     })
     store.dispatch('executeSearch')
+    store.commit('setLastFullText', state.storedFullText)
   },
   executeSearch () { // Calling this action won't update the router
     if (store.getters.infoMessage) {
       return false
     }
     store.dispatch('hideWelcomeText')
+    store.dispatch('hideSuggestions')
     Vue.http.get(store.getters.adressToGet).then(response => {
       store.dispatch('setResponse', response)
     }, response => {
@@ -103,6 +101,14 @@ const actions = {
   setResponse (dispatch, response) {
     store.commit('setResults', response.body)
     store.commit('setStatus', response.status)
+  },
+  executeSearchBySiret (dispatch, siret) {
+    store.dispatch('hideWelcomeText')
+    Vue.http.get(dispatch.state.baseAdressSiret + siret).then(response => {
+      store.commit('setSinglePageResults', response.body)
+    }, response => {
+      store.commit('setSinglePageResults', null)
+    })
   }
 }
 

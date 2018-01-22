@@ -16,8 +16,8 @@
             Filtres
             <svg class="icon icon-equalizer"><use xlink:href="#icon-equalizer"></use></svg>
           </button>
-          <SearchBarSmall searchName="Code Postal" v-if="toggleFilters"></SearchBarSmall>
-          <SearchBarSmall searchName="Activite Principale" v-if="toggleFilters"></SearchBarSmall>
+          <SearchFilters searchName="Code Postal" v-if="toggleFilters"></SearchFilters>
+          <SearchFilters searchName="Activite Principale" v-if="toggleFilters"></SearchFilters>
         </div>
         <search-categories v-if="showSearchCategories"></search-categories>
         <router-link v-if="showBackToResultsButton" class="back-to-results" :to="{ path: '/search',
@@ -42,7 +42,7 @@
 
 <script>
 import SearchBar from '@/components/search/SearchBar'
-import SearchBarSmall from '@/components/search/SearchBarSmall'
+import SearchFilters from '@/components/search/SearchFilters'
 import SearchCategories from '@/components/search/SearchCategories'
 import Results from '@/components/Results.vue'
 import Api from '@/components/home/Api.vue'
@@ -52,7 +52,7 @@ export default {
   name: 'Search',
   components: {
     'SearchBar': SearchBar,
-    'SearchBarSmall': SearchBarSmall,
+    'SearchFilters': SearchFilters,
     'SearchCategories': SearchCategories,
     'Results': Results,
     'Api': Api,
@@ -92,7 +92,7 @@ export default {
       return this.$store.state.welcomeText.isWelcomeTextVisible
     },
     showSearchCategories () {
-      return this.$route.path === '/search' && this.$store.state.storedFullText !== ''
+      return this.$store.state.welcomeText.showSearchCategories
     },
     showBackToResultsButton () {
       return this.$route.path.includes('/entreprise')

@@ -16,7 +16,7 @@
           </router-link>
         </li>
       </ul>
-      <p v-if="!numberResults">Aucun résultat trouvé</p>
+      <p v-if="showNoResultMessage">Aucun résultat trouvé</p>
       <paginate-module v-if="numberResults"></paginate-module>
     </template>
   </div>
@@ -26,17 +26,13 @@
 import PaginateModule from '@/components/results/ResultsPaginateModule'
 import DidYouMean from '@/components/results/ResultsDidYoumean'
 import Filters from '@/components/mixins/filters.js'
+import debounce from 'lodash/debounce'
 
 export default {
   name: 'Results',
   components: {
     'PaginateModule': PaginateModule,
     'DidYouMean': DidYouMean
-  },
-  data () {
-    return {
-      noSearchWasMade: true
-    }
   },
   computed: {
     informationMessage () {
@@ -51,13 +47,16 @@ export default {
     numberResults () {
       return this.$store.getters.numberResults
     },
+    showNoResultMessage: debounce(function () {
+      this.numberResults === 0
+    }, 200), // Wait 200 ms not finding any result before saying there are no results
     resultsNumberSentence () {
       if (this.numberResults === undefined) {
         return ''
       }
       const results = this.numberResults > 1 ? 'résultats'
                                              : 'résultat'
-      return `${this.numberResults} ${results} pour "${this.$store.state.search.storedFullText}"`
+      return `${this.numberResults} ${results} pour "${this.$store.state.search.storedLastFullText}"`
     }
   },
   mixins: [Filters]
