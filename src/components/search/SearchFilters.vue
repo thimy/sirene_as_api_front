@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'SearchBarSmall',
+  name: 'SearchFilters',
   props: ['searchName'],
   data () {
     return {
