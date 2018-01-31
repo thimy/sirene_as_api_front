@@ -1,5 +1,6 @@
 <template>
   <div class="company">
+
     <section class="section-white">
       <div class="container">
         <h2>{{result.nom_raison_sociale | removeExtraChars}} <span class="company__siren">({{ result.siren }})</span></h2>
@@ -8,6 +9,7 @@
     </section>
 
     <section class="section-grey">
+<<<<<<< 9f19c038ca8b532196222900cc70ea8c53126181
       <div class="container company-container">
         <etablissement-panel-contact></etablissement-panel-contact>
         <etablissement-panel-info></etablissement-panel-info>
@@ -15,21 +17,33 @@
       <div class="container company-container__extra">
         <etablissement-panel-children></etablissement-panel-children>
       </div>
+=======
+      <etablissement-panel-self class="container company-container"></etablissement-panel-self>
+      <etablissement-panel-children class="container company-container__extra"></etablissement-panel-children>
+>>>>>>> Added children on page Etablissement
     </section>
   </div>
 </template>
 
 <script>
 import Filters from '@/components/mixins/filters'
+<<<<<<< 9f19c038ca8b532196222900cc70ea8c53126181
 import EtablissementPanelContact from '@/components/etablissement/EtablissementPanelContact'
 import EtablissementPanelInfo from '@/components/etablissement/EtablissementPanelInfo'
+=======
+import EtablissementPanelSelf from '@/components/etablissement/EtablissementPanelSelf'
+>>>>>>> Added children on page Etablissement
 import EtablissementPanelChildren from '@/components/etablissement/EtablissementPanelChildren'
 
 export default {
   name: 'Etablissement',
   components: {
+<<<<<<< 9f19c038ca8b532196222900cc70ea8c53126181
     'EtablissementPanelContact': EtablissementPanelContact,
     'EtablissementPanelInfo': EtablissementPanelInfo,
+=======
+    'EtablissementPanelSelf': EtablissementPanelSelf,
+>>>>>>> Added children on page Etablissement
     'EtablissementPanelChildren': EtablissementPanelChildren
   },
   computed: {
