@@ -81,41 +81,49 @@ const actions = {
     store.dispatch('executeSearch')
     store.commit('setLastFullText', state.storedFullText)
   },
-  executeSearch () { // Calling this action won't update the router
-    if (store.getters.infoMessage) {
-      return false
-    }
-    store.dispatch('hideWelcomeText')
-    store.dispatch('hideSuggestions')
-    Vue.http.get(store.getters.adressToGet).then(response => {
-      store.dispatch('setResponse', response)
-    }, response => {
-      if (state.pageNumber > 1) {
-        store.commit('setPage', 1)
-        store.dispatch('executeSearch')
-      } else {
-        store.dispatch('setResponse', response)
-      }
-    })
+  async executeSearch () { // Calling this action directly won't update the router
+    store.dispatch('resetApplicationState')
+    store.commit('setResultsAreLoading', true)
+    await store.dispatch('sendAPIRequest', store.getters.adressToGet)
+      .then(response => {
+          store.dispatch('setResponse', response)
+        })
+      .catch(notFound => {
+        if (state.pageNumber > 1) {
+          store.commit('setPage', 1)
+          store.dispatch('executeSearch')
+        } else {
+          store.dispatch('setResponse', notFound)
+        }
+      })
+    store.commit('setResultsAreLoading', false)
   },
-  setResponse (dispatch, response) {
-    store.commit('setResults', response.body)
-    store.commit('setStatus', response.status)
+  async executeSearchBySiret(dispatch, siret) {
+    store.dispatch('resetApplicationState')
+    store.commit('setSiretLoading', true)
+    await store.dispatch('sendAPIRequest', dispatch.state.baseAdressSiret + siret)
+      .then(response => {
+        store.dispatch('setResponseSinglePage', response)
+      })
+      .catch((notFound) => {
+        store.dispatch('setResponseSinglePage', notFound)
+      })
+    store.commit('setSiretLoading', false)
   },
-  executeSearchBySiret (dispatch, siret) {
-    store.dispatch('hideWelcomeText')
-    Vue.http.get(dispatch.state.baseAdressSiret + siret).then(response => {
-      store.commit('setSinglePageResults', response.body)
-    }, response => {
-      store.commit('setSinglePageResults', null)
-    })
+  async executeSearchBySiren(dispatch, siren) {
+    store.dispatch('resetApplicationState')
+    store.commit('setSirenLoading', true)
+    await store.dispatch('sendAPIRequest', dispatch.state.baseAdressSiren + siren)
+      .then(response => {
+        store.dispatch('setResponseSiren', response)
+      })
+      .catch((notFound) => {
+        store.dispatch('setResponseSiren', notFound)
+      })
+    store.commit('setSirenLoading', false)
   },
-  executeSearchBySiren (dispatch, siren) {
-    Vue.http.get(dispatch.state.baseAdressSiren + siren).then(response => {
-      store.commit('setSirenResults', response.body)
-    }, response => {
-      store.commit('setSirenResults', null)
-    })
+  sendAPIRequest: async function (dispatch, query) {
+    return await Vue.http.get(query)
   }
 }
 

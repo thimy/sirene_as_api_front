@@ -18,8 +18,12 @@ describe('Etablissement.vue', () => {
   })
 
   // Start test suite //
+  const etablissement = wrapperEtablissement.vm
   it('should compute the full name correctly', () => {
-    expect(wrapperEtablissement.vm.fullOwnerName).to.equal('Michel Forever')
+    expect(etablissement.fullOwnerName).to.equal('Michel Forever')
+  }),
+  it('should compute the TVA number correctly', () => {
+    expect(etablissement.tvaIntracommunautaire).to.equal('FR80833057201')
   })
 })
 
@@ -40,7 +44,14 @@ function createMockStore () {
       executeSearchBySiret () { return null }
     },
     getters: {
-      singlePageResultEtablissement: state => { return {nom: 'Michel', prenom: 'Forever'} }
+      singlePageResultEtablissement: state => {
+        return {
+          nom: 'Michel',
+          prenom: 'Forever',
+          siret: '83305720100018',
+          siren: '833057201'
+        }
+      }
     }
   })
 }

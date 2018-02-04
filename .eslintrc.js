@@ -24,6 +24,8 @@ module.exports = {
     'generator-star-spacing': 0,
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+    // Allow console log during development
+    'no-console': process.env.NODE_ENV === 'production' ? 2 : 0,
     // Ignore no-unused-vars for variable 'state' and 'response', for Vuex compatibility
     'no-unused-vars': ['error', {
       'argsIgnorePattern': '^response$|^state$'

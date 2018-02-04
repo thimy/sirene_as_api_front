@@ -3,7 +3,9 @@ import store from '@/store/index.js'
 const state = {
   storedResults: null,
   singlePageResult: null,
-  storedStatus: null
+  storedStatus: null,
+  storedStatusSiret: null,
+  storedStatusSiren: null
 }
 
 const getters = {
@@ -20,10 +22,10 @@ const getters = {
     return null
   },
   singlePageResultEtablissement: state => {
-    if (state.singlePageResult) {
-      return state.singlePageResult.etablissement
+    if (!state.singlePageResult) {
+      return null
     }
-    return null
+    return state.singlePageResult.etablissement
   },
   numberResults: state => {
     if (state.storedStatus === 404) {
@@ -61,13 +63,38 @@ const mutations = {
   setStatus (state, value) {
     state.storedStatus = value
   },
+  setStatusSiret(state, value) {
+    state.storedStatusSiret = value
+  },
+  setStatusSiren(state, value) {
+    state.storedStatusSiren = value
+  },
   setSinglePageResults (state, value) {
     state.singlePageResult = value
+  }
+}
+
+const actions = {
+  setResponse(dispatch, response) {
+    store.commit('setResults', response.body)
+    store.commit('setStatus', response.status)
+    if (response.status === 500 || response.status === 0) {
+      store.commit('setError500', true)
+    }
+  },
+  setResponseSinglePage(dispatch, response) {
+    store.commit('setSinglePageResults', response.body)
+    store.commit('setStatusSiret', response.status)
+  },
+  setResponseSiren(dispatch, response) {
+    store.commit('setSirenResults', response.body)
+    store.commit('setStatusSiren', response.status)
   }
 }
 
 export default {
   state,
   getters,
-  mutations
+  mutations,
+  actions
 }

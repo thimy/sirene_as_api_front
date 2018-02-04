@@ -1,5 +1,5 @@
 <template>
-  <div class="panel">
+  <div class="company__panel panel">
       <div class="company__item"><div class="company__item-key">Gérant</div><div class="company__item-value"> {{ fullOwnerName | ifExist }}</div></div>
       <div class="company__item"><div class="company__item-key">Adresse</div><div class="company__item-value"> {{ result.l4_normalisee }} </div></div>
       <div class="company__item"><div class="company__item-key">Ville</div><div class="company__item-value"> {{ result.code_postal }} {{result.libelle_commune}}</div></div>

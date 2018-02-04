@@ -10,10 +10,10 @@ const getters = {
     return state.sirenResults.siege_social[0]
   },
   storedSirenTotalResults: state => {
-    return state.sirenResults.total_results
+    return state.sirenResults && state.sirenResults.total_results
   },
   storedSirenChildren: state => {
-    return state.sirenResults.other_etablissements_sirets
+    return state.sirenResults && state.sirenResults.other_etablissements_sirets
   }
 }
 
