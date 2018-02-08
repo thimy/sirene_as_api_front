@@ -109,6 +109,13 @@ const actions = {
     }, response => {
       store.commit('setSinglePageResults', null)
     })
+  },
+  executeSearchBySiren (dispatch, siren) {
+    Vue.http.get(dispatch.state.baseAdressSiren + siren).then(response => {
+      store.commit('setSirenResults', response.body)
+    }, response => {
+      store.commit('setSirenResults', null)
+    })
   }
 }
 
