@@ -6,7 +6,7 @@
         <p>Ce site est un travail en cours, actuellement en pré-alpha. Vous pouvez le consulter librement.</p>
       </div>
       <div class="flash-notice__close">
-        <img class="flash-notice__icon" src="../assets/img/icons/remove.svg" v-on:click="displayFlashNotice = false"></img>
+        <img class="flash-notice__icon" src="../assets/img/icons/remove.svg" v-on:click="displayFlashNotice = false">
       </div>
     </div>
   </div>
