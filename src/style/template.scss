@@ -89,6 +89,28 @@ a:active {
   transition: color 0.2s ease-out;
 }
 
+small {
+  font-size: 0.875em;
+}
+
+.tag-list {
+  padding: 0;
+  margin: 0;
+}
+
+.tag {
+  background: #0081d5;
+  border-radius: 3px;
+  display: inline-block;
+  padding: 0.3em 0.8em;
+  margin-right: 0.5em;
+  color: #fff;
+}
+
+.tag a {
+  color: #fff;
+}
+
 pre {
   display: block;
   margin-top: 1em;
@@ -128,8 +150,6 @@ button.button:visited {
   color: #fff;
   background-color: #0081d5;
   border-radius: 3px;
-  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .3);
-          box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .3);
   border: 1px solid transparent;
   border-bottom: 2px solid #006cb0;
   font-family: "Evolventa", "Trebuchet MS", sans-serif;
@@ -153,8 +173,6 @@ button.button:active {
           transform: translateY(2px);
   border-bottom: 0;
   margin-bottom: 2px;
-  -webkit-box-shadow: none;
-          box-shadow: none;
 }
 
 .container {
@@ -218,24 +236,6 @@ button.button:active {
   position: relative;
 }
 
-.notification.success {
-  color: #03bd5b;
-  background: #daf5e7;
-  border: 1px solid #03bd5b;
-}
-
-.notification.warning {
-  color: #ff9947;
-  background: #fff0e4;
-  border: 1px solid #ff9947;
-}
-
-.notification.error {
-  color: #d1335b;
-  background: #f8e1e7;
-  border: 1px solid #d1335b;
-}
-
 .notification .close {
   border: 0;
   background: 0;
@@ -248,6 +248,41 @@ button.button:active {
   fill: currentColor;
   width: 20px;
   height: 20px;
+}
+
+.notification.closable {
+  padding-right: 3em;
+}
+
+.notification.full-width {
+  width: 100%;
+  margin-bottom: 0;
+  text-align: center;
+  border: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.notification.full-width.closable .close {
+  right: unset;
+}
+
+.notification.success {
+  color: #03bd5b;
+  background: #daf5e7;
+  border-color: #03bd5b;
+}
+
+.notification.warning {
+  color: #ff9947;
+  background: #fff0e4;
+  border-color: #ff9947;
+}
+
+.notification.error {
+  color: #d1335b;
+  background: #f8e1e7;
+  border-color: #d1335b;
 }
 
 .footer {
@@ -306,13 +341,9 @@ button.button:active {
 .hero {
   width: 100%;
   color: #fff;
-  background-color: #ebeff3;
-  background-blend-mode: darken;
-  background-image: url(images/background.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
+  background: #45adc5;
+  background: -webkit-gradient(linear, left top, right top, from(#c969a6), color-stop(15%, #e795a8), color-stop(43%, #a4cfcd), color-stop(65%, #45adc5), to(#265c9f));
+  background: linear-gradient(to right, #c969a6 0%, #e795a8 15%, #a4cfcd 43%, #45adc5 65%, #265c9f 100%);
 }
 
 .hero__container {
@@ -513,10 +544,34 @@ button.button:active {
   -webkit-box-shadow: 0 1px 4px #c9d3df;
           box-shadow: 0 1px 4px #c9d3df;
   padding: 2em;
+  position: relative;
 }
 
 .panel h1:first-of-type {
   margin-top: 0;
+}
+
+.panel__header:after {
+  content: '';
+  display: block;
+  width: calc(100% + 4em);
+  position: relative;
+  left: -2em;
+  border-bottom: 1px solid #adb9c9;
+  margin-bottom: 2em;
+}
+
+.panel__header h3 {
+  display: inline-block;
+}
+
+.panel__header h3:first-of-type {
+  margin-top: 0;
+}
+
+.panel__header-extra {
+  margin-left: 1em;
+  color: #8393a7;
 }
 
 section {
@@ -758,6 +813,27 @@ fieldset {
   width: 15px;
 }
 
+.input__group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.input__group .icon-button,
+.input__group .icon-button:active {
+  margin-left: 1em;
+  padding: 0 0.8em;
+}
+
+.input__group .icon-button .icon {
+  width: 16px;
+  height: 16px;
+}
+
 .documentation {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -773,7 +849,7 @@ fieldset {
   border-right: 1px solid #c9d3df;
 }
 
-.side-pane ul {
+.side-pane .side-pane__menu {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -783,7 +859,7 @@ fieldset {
   padding: 0 1em;
 }
 
-.side-pane .side-pane__link a {
+.side-pane .side-pane__link {
   padding: 0.5em 1em;
   display: block;
   width: 100%;
@@ -794,15 +870,79 @@ fieldset {
   color: #26353f;
 }
 
-.side-pane .side-pane__link:hover a {
+.side-pane li:hover .side-pane__link {
+  background: #c9d3df;
+}
+
+.side-pane li.active .side-pane__link {
+  background: #0081d5;
+  color: #fff;
+}
+
+.side-pane li.side-pane__dropdown .side-pane__link {
+  background: url("images/icons/arrow-right.svg") no-repeat;
+  -webkit-transition: background ease-out 0.5s;
+  transition: background ease-out 0.5s;
+  background-position: center right 1em;
+  background-size: 15px 15px;
+}
+
+.side-pane li.side-pane__dropdown:hover .side-pane__link {
+  background: #c9d3df url("images/icons/arrow-right.svg") no-repeat;
+  -webkit-transition: background ease-out 0.5s;
+  transition: background ease-out 0.5s;
+  background-position: center right 1em;
+  background-size: 15px 15px;
+}
+
+.side-pane li.unfolded.side-pane__dropdown .side-pane__link,
+.side-pane li.unfolded.side-pane__dropdown:hover .side-pane__link {
+  background-image: url("images/icons/arrow-down.svg");
+  background-color: transparent;
+}
+
+.side-pane li.unfolded.active.side-pane__dropdown .side-pane__link {
+  background-color: #0081d5;
+}
+
+.side-pane__dropdown.unfolded .side-pane__submenu {
+  display: block;
+}
+
+.side-pane__submenu {
+  padding-left: 2em;
+  margin-bottom: 0.5em;
+  display: none;
+}
+
+.side-pane__sublink, 
+.side-pane__sublink:visited {
+  padding: 0.5em;
+  list-style-type: none;
+  color: #53657d;
+  border-radius: 5px;
+}
+
+.side-pane__submenu li {
+  list-style-type: none;
+  margin: 1em 0;
+}
+
+.side-pane__submenu .side-pane__sublink:hover {
+  color: #26353f;
   background: #c9d3df;
   -webkit-transition: background ease-out 0.5s;
   transition: background ease-out 0.5s;
 }
 
-.side-pane .side-pane__link.active a {
-  background: #0081d5;
-  color: #fff;
+.side-pane__submenu li.active {
+  list-style-type: disc;
+  color: #0081d5;
+}
+
+.side-pane__submenu li.active .side-pane__sublink {
+  font-weight: 700;
+  color: #26353f;
 }
 
 .main-pane {
