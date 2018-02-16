@@ -28,11 +28,10 @@ const getters = {
     return state.singlePageResult.etablissement
   },
   numberResults: state => {
-    if (state.storedStatus === 404) {
-      store.commit('clearResults')
-      return 0
-    } else if (state.storedResults) {
+    if (state.storedResults && state.storedStatus != 404) {
       return state.storedResults.total_results
+    } else {
+      return 0
     }
   },
   totalPageNumber: state => {
@@ -78,17 +77,25 @@ const actions = {
   setResponse(dispatch, response) {
     store.commit('setResults', response.body)
     store.commit('setStatus', response.status)
-    if (response.status === 500 || response.status === 0) {
-      store.commit('setError500', true)
-    }
+    store.dispatch('redirectWhenNoResult', response)
   },
   setResponseSinglePage(dispatch, response) {
     store.commit('setSinglePageResults', response.body)
     store.commit('setStatusSiret', response.status)
+    store.dispatch('redirectWhenNoResult', response)
   },
   setResponseSiren(dispatch, response) {
     store.commit('setSirenResults', response.body)
     store.commit('setStatusSiren', response.status)
+    store.dispatch('redirectWhenNoResult', response)
+  },
+  redirectWhenNoResult(dispatch, response) {
+    if (response.status === 500 || response.status === 0) {
+      store.commit('setError500', true)
+    }
+    if (response.status === 404) {
+      store.commit('setEmptyState', true)
+    }
   }
 }
 

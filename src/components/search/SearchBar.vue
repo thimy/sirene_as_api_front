@@ -1,6 +1,6 @@
 <template>
   <div class="form__group">
-    <input type="text" name="search" placeholder="Nom, SIRET, SIREN, Adresse..." v-model="fullText"
+    <input type="text" name="search" placeholder="Nom, SIREN, SIRET, adresse..." v-model="fullText"
       @keydown.down="suggestDown"
       @keydown.up.prevent="suggestUp"
       @keydown.esc="suggestReset"
@@ -27,6 +27,7 @@
 <script>
 import Filters from '@/components/mixins/filters.js'
 import Suggestions from '@/components/mixins/suggestions.js'
+import RegExps from '@/components/mixins/regExps.js'
 
 export default {
   name: 'SearchBar',
@@ -51,11 +52,18 @@ export default {
   },
   methods: {
     requestSearch: function () {
-      if (this.fullText.match(/^\d{14}/)) { // This is siret search
-        this.$store.commit('setSiret', this.fullText)
-        this.$router.push({ path: `/entreprise/${this.fullText}` })
-        return
+      const isSiret = this.isSiret(this.fullText)
+      const isSiren = this.isSiren(this.fullText)
+
+      if (isSiret || isSiren) {
+        this.fullText = this.removeSeparators(this.fullText)
+        isSiret ? this.requestSiretSearch() : this.requestSirenSearch()
+      } else {
+        this.requestFullTextSearch()
       }
+      this.$store.commit('clearResults')
+    },
+    requestFullTextSearch: function () {
       const currentSuggestion = this.currentSuggestion()
       if (currentSuggestion) { // This search the current suggestion if selected
         this.$store.commit('setFullText', currentSuggestion)
@@ -64,9 +72,23 @@ export default {
       }
       this.$store.dispatch('requestSearch')
       this.suggestCount = -1
+    },
+    requestSiretSearch: function () {
+      this.$store.commit('setSiret', this.fullText)
+      this.$router.push({ path: `/entreprise/${this.fullText}` })
+    },
+    requestSirenSearch: function (siren) {
+      this.$store.dispatch('executeSearchBySiren', this.fullText)
+        .then(response => {
+          const siegeSiret = this.$store.getters.storedSirenSiege.siret
+          this.$router.push({ path: `/entreprise/${siegeSiret}` })
+        })
+        .catch((notFound) => {
+          this.$store.dispatch('setResponse', notFound)
+        })
     }
   },
-  mixins: [Filters, Suggestions]
+  mixins: [Filters, Suggestions, RegExps]
 }
 </script>
 

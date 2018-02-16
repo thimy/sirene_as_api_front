@@ -87,6 +87,7 @@ const actions = {
     await store.dispatch('sendAPIRequest', store.getters.adressToGet)
       .then(response => {
           store.dispatch('setResponse', response)
+          store.commit('setResultsAreLoading', false)
         })
       .catch(notFound => {
         if (state.pageNumber > 1) {
@@ -94,24 +95,28 @@ const actions = {
           store.dispatch('executeSearch')
         } else {
           store.dispatch('setResponse', notFound)
+          store.commit('setResultsAreLoading', false)
         }
       })
-    store.commit('setResultsAreLoading', false)
+  },
+  async executeSearchEtablissement(dispatch, siret) {
+    await store.dispatch('executeSearchBySiret', siret)
+    store.dispatch('executeSearchBySiren', store.getters.singlePageResultEtablissement.siren)
   },
   async executeSearchBySiret(dispatch, siret) {
-    store.dispatch('resetApplicationState')
+    await store.dispatch('resetApplicationState')
     store.commit('setSiretLoading', true)
     await store.dispatch('sendAPIRequest', dispatch.state.baseAdressSiret + siret)
       .then(response => {
         store.dispatch('setResponseSinglePage', response)
       })
-      .catch((notFound) => {
+      .catch(notFound => {
         store.dispatch('setResponseSinglePage', notFound)
       })
     store.commit('setSiretLoading', false)
   },
   async executeSearchBySiren(dispatch, siren) {
-    store.dispatch('resetApplicationState')
+    await store.dispatch('resetApplicationState')
     store.commit('setSirenLoading', true)
     await store.dispatch('sendAPIRequest', dispatch.state.baseAdressSiren + siren)
       .then(response => {

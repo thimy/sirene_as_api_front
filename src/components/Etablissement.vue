@@ -1,7 +1,7 @@
 <template>
-  <loader class="container" v-if="isEtablissementLoading"></loader>
-  <server-error class="container" v-else-if="isError"></server-error>
+  <server-error class="container" v-if="isError"></server-error>
   <not-found class="container" v-else-if="isNotFound"></not-found>
+  <loader class="container" v-else-if="isEtablissementLoading"></loader>
   <div v-else class="company">
     <section class="section-white">
       <div class="container">
@@ -76,24 +76,20 @@ export default {
       return this.$store.getters.isEtablissementLoading
     },
     isNotFound () {
-      return this.$store.state.results.storedStatusSiret === 404
+      return this.$store.state.application.emptyState
     },
     isError () {
-      const status = this.$store.state.results.storedStatusSiret
-      return status === 500 || status === 0
+      return this.$store.state.application.error500
     }
   },
   beforeCreate () {
     this.$store.dispatch('hideSuggestions')
-    this.$store.dispatch('executeSearchBySiret', this.$route.params.siret)
-    // Search using the siren number derived from siret so we don't need to wait siret search results :
-    const sirenFromSiret = this.$route.params.siret.substring(0, 9)
-    this.$store.dispatch('executeSearchBySiren', sirenFromSiret)
+    this.$store.dispatch('executeSearchEtablissement', this.$route.params.siret)
   },
   mixins: [Filters],
   watch: {
     '$route' (to, from) {
-      this.$store.dispatch('executeSearchBySiret', this.$route.params.siret)
+      this.$store.dispatch('executeSearchEtablissement', this.$route.params.siret)
     }
   }
 }

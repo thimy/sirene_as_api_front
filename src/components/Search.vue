@@ -101,12 +101,9 @@ export default {
       // show back button only on etablissement page
       return this.$route.path.includes('/entreprise')
       // only if there is more than one result
-        && this.moreThanOneResult
+        && this.$store.getters.numberResults > 1
       // only if we aren't on a 404 // 500 error situation
         && this.$store.state.results.storedStatus === 200
-    },
-    moreThanOneResult () {
-      return !(this.$store.getters.onlyOneResult)
     }
   },
   watch: {
