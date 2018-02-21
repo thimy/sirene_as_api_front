@@ -11,9 +11,10 @@
 
     <ul v-show="suggestions">
       <li class="suggestion__box"
-          v-for="suggestion, index in suggestions"
+          v-for="(suggestion, index) in suggestions"
           :key="index"
-          v-bind:class="{'active': suggestActive(index)}">
+          v-bind:class="{'active': suggestActive(index)}"
+          @click="suggestSelectAndEnter(index)">
         <span>{{ suggestion | capitalize | removeExtraChars}}</span>
       </li>
       <!-- Filling with hidden divs so search bar will always be same size -->
