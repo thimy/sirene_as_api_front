@@ -2,7 +2,7 @@
   <div class="form__group">
     <input type="text" name="search" placeholder="Recherche" v-model="fullText"
       @keydown.down="suggestDown"
-      @keydown.up="suggestUp"
+      @keydown.up.prevent="suggestUp"
       @keydown.esc="suggestReset"
       @keydown.enter="suggestEnter"/>
     <button class="overlay-button">
@@ -17,8 +17,10 @@
           @click="suggestSelectAndEnter(index)">
         <span>{{ suggestion | capitalize | removeExtraChars}}</span>
       </li>
+      <!-- Filling with hidden divs so search bar will always be same size -->
+      <!-- eslint-disable-next-line -->
+      <li class="suggestion__box hidden" v-for="index in suggestionNumberToMax"></li>
     </ul>
-
   </div>
 </template>
 
@@ -40,6 +42,7 @@ export default {
           this.$store.dispatch('goToClearedHomePage')
         }
         if (String(fullText).length >= 3) {
+          this.resetIndexSuggestion()
           this.$store.commit('setQuerySuggestions', fullText)
           this.$store.dispatch('executeSearchSuggestions')
         }
@@ -79,8 +82,8 @@ export default {
     margin: 0;
   }
 
-  .suggestion__box { // REVIEW : Stole this CSS from 'input' from template.scss
-      width: 90%;
+  .suggestion__box {
+      min-height: 2.7em;
       outline: none;
       padding: 8px 14px;
       font: inherit;
@@ -93,6 +96,10 @@ export default {
       background: $color-white;
       vertical-align: middle;
       position: relative;
+  }
+
+  .hidden {
+    visibility: hidden;
   }
 
   .active {

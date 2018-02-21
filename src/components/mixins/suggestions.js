@@ -11,7 +11,7 @@ export default {
         const storedSuggestions = this.$store.state.suggestions.storedSuggestions
         if (storedSuggestions) {
           if (storedSuggestions.length > this.suggestionNumber) {
-            return storedSuggestions.splice(0, this.suggestionNumber)
+            return storedSuggestions.slice(0, this.suggestionNumber)
           }
           return storedSuggestions
         }
@@ -30,6 +30,9 @@ export default {
           return this.maxSuggestions
         }
       }
+    },
+    suggestionNumberToMax () {
+      return this.maxSuggestions - this.suggestionNumber
     }
   },
   methods: {
@@ -63,6 +66,9 @@ export default {
     suggestSelectAndEnter: function (selectedIndex) {
       this.suggestCount = selectedIndex
       this.requestSearch()
+    },
+    resetIndexSuggestion: function () {
+      this.suggestCount = -1
     }
-  },
+  }
 }

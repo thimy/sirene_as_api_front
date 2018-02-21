@@ -1,5 +1,5 @@
 <template>
-  <div class="panel">
+  <div class="company__panel panel">
     <div v-if="isSiegeSocial" class="company__item">
       <div class="company__item-key">Cet établissement est le siège social</div>
     </div>
@@ -9,9 +9,11 @@
       </router-link>
     </div>
     <div v-if="haveChildrenEtablissements" class="company__item lineup">
-        <div class="company__item-key">Etablissements enfants : {{ totalResultsOtherSirens }} résultats ({{ maxChildrenEtablissementsToShow }} affichés)</div>
-        <div class="company__item-link" v-if="!visibleChildren" @click="showAllChildren">Afficher la totalité</div>
-        <div class="company__item-link" v-if="visibleChildren" @click="hideAllChildren">Réduire</div>
+      <div class="company__item-key">Etablissements enfants : {{ totalResultsOtherSirens }} résultats ({{ maxChildrenEtablissements }} affichés)</div>
+      <template v-if="thereAreMoreThanMaxChildren">
+        <div class="company__item-link" v-show="!visibleChildren" @click="showAllChildren">Afficher la totalité</div>
+        <div class="company__item-link" v-show="visibleChildren" @click="hideAllChildren">Réduire</div>
+      </template>
       <ul>
         <router-link tag="li"
                       class="company__item-link"
@@ -41,7 +43,7 @@ export default {
       return this.$store.getters.singlePageResultEtablissement
     },
     resultSiegeSocial () {
-      return this.$store.getters.storedSirenSiege
+      return this.$store.getters.storedSirenSiege || { siret: 0 }
     },
     resultOtherSirens () {
       const maxResults = this.maxChildrenEtablissementsToShow
@@ -54,6 +56,9 @@ export default {
       // Total result minus Siege Social
       return this.$store.getters.storedSirenTotalResults - 1
     },
+    maxChildrenEtablissements () {
+      return Math.min(this.totalResultsOtherSirens, this.maxChildrenEtablissementsToShow)
+    },
     isSiegeSocial () {
       if (!this.result || !this.$store.getters.storedSirenSiege) {
         return
@@ -64,6 +69,9 @@ export default {
         return true
       }
       return false
+    },
+    thereAreMoreThanMaxChildren () {
+      return this.totalResultsOtherSirens >= this.maxChildrenEtablissementsToShow
     }
   },
   methods: {

@@ -2,6 +2,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VueResource from 'vue-resource'
+import application from './modules/application'
 import filters from './modules/filters'
 import results from './modules/results'
 import resultsSiren from './modules/resultsSiren'
@@ -15,6 +16,7 @@ Vue.use(VueResource)
 
 export default new Vuex.Store({
   modules: {
+    application,
     filters,
     results,
     resultsSiren,

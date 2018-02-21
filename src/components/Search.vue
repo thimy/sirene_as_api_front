@@ -1,6 +1,9 @@
 <template>
   <div>
     <div class="hero">
+          <div class="notification full-width">
+            Ce site est un travail en cours, actuellement en beta. Vous pouvez le consulter librement.
+          </div>
       <div class="hero__container container" v-bind:class="[showWelcomeText ? '' : 'hero__compact' ]">
         <transition name="fade">
           <div class="text-center" v-if="showWelcomeText">
@@ -94,8 +97,13 @@ export default {
     showSearchCategories () {
       return this.$store.state.welcomeText.showSearchCategories
     },
-    showBackToResultsButton () { // show back button only on etablissement page and more than one result
-      return this.$route.path.includes('/entreprise') && this.moreThanOneResult
+    showBackToResultsButton () {
+      // show back button only on etablissement page
+      return this.$route.path.includes('/entreprise')
+      // only if there is more than one result
+        && this.moreThanOneResult
+      // only if we aren't on a 404 // 500 error situation
+        && this.$store.state.results.storedStatus === 200
     },
     moreThanOneResult () {
       return !(this.$store.getters.onlyOneResult)
