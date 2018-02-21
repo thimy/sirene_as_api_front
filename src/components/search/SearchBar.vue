@@ -1,6 +1,6 @@
 <template>
   <div class="form__group">
-    <input type="text" name="search" placeholder="Recherche" v-model="fullText"
+    <input type="text" name="search" placeholder="Nom, SIRET, SIREN, Adresse..." v-model="fullText"
       @keydown.down="suggestDown"
       @keydown.up.prevent="suggestUp"
       @keydown.esc="suggestReset"
