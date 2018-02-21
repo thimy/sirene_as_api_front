@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <template v-if="isSearchNotEmpty">
+    <loader v-if="resultsAreLoading"></loader>
+    <server-error v-else-if="serverError"></server-error>
+    <template v-else-if="isSearchNotEmpty">
       <div class="notification" v-if="informationMessage">
         {{informationMessage}}
         <button class="close" aria-label="Fermer"><svg class="icon icon-cross"><use xlink:href="#icon-cross"></use></svg></button>
@@ -8,7 +10,7 @@
       <h3>{{resultsNumberSentence}}</h3>
       <did-you-mean></did-you-mean>
       <ul>
-        <li v-for="result in storedResultsEtablissements" class="panel">
+        <li v-for="result in storedResultsEtablissements" :key="result.siret" class="panel">
           <router-link tag="div" :to="{ name: 'Etablissement', params: {siret: result['siret']}}">
             <h4 class="title">{{result['nom_raison_sociale'] | capitalize | removeExtraChars}}</h4>
             <p>{{result['libelle_activite_principale_entreprise']}}</p>
@@ -25,19 +27,17 @@
 <script>
 import PaginateModule from '@/components/results/ResultsPaginateModule'
 import DidYouMean from '@/components/results/ResultsDidYoumean'
+import Loader from '@/components/modules/Loader'
+import ServerError from '@/components/modules/ServerError'
 import Filters from '@/components/mixins/filters.js'
-import debounce from 'lodash/debounce'
 
 export default {
   name: 'Results',
   components: {
     'PaginateModule': PaginateModule,
-    'DidYouMean': DidYouMean
-  },
-  beforeUpdate () { // If only one result, go to page Etablissement
-    if (this.$store.getters.onlyOneResult) {
-      this.$router.push({ name: 'Etablissement', params: {siret: this.storedResultsEtablissements[0]['siret']} })
-    }
+    'DidYouMean': DidYouMean,
+    'Loader': Loader,
+    'ServerError': ServerError
   },
   computed: {
     informationMessage () {
@@ -52,16 +52,26 @@ export default {
     numberResults () {
       return this.$store.getters.numberResults
     },
-    showNoResultMessage: debounce(function () {
-      this.numberResults === 0
-    }, 200), // Wait 200 ms not finding any result before saying there are no results
+    showNoResultMessage () {
+      return (this.isLoading === false && this.numberResults === 0)
+    },
     resultsNumberSentence () {
       if (this.numberResults === undefined) {
         return ''
       }
-      const results = this.numberResults > 1 ? 'résultats'
-                                             : 'résultat'
-      return `${this.numberResults} ${results} pour "${this.$store.state.search.storedLastFullText}"`
+      return `${this.numberResults} résultats pour "${this.$store.state.search.storedLastFullText}"`
+    },
+    resultsAreLoading () {
+      return this.$store.state.application.resultsAreLoading
+    },
+    serverError () {
+      return this.$store.state.application.error500
+    }
+  },
+  beforeUpdate () {
+    // If only one result, go to page Etablissement
+    if (this.$store.getters.onlyOneResult) {
+      this.$router.push({ name: 'Etablissement', params: {siret: this.storedResultsEtablissements[0]['siret']} })
     }
   },
   mixins: [Filters]

@@ -1,4 +1,4 @@
-  .panel {
+  .company__panel {
     margin: 0 1em;
     width: 100%;
   }
@@ -32,11 +32,11 @@
     content: '\00a0\2022\00a0\00a0';
   }
 
-  .panel:first-child {
+  .company__panel:first-child {
     margin-left: 0;
   }
 
-  .panel:last-child {
+  .company__panel:last-child {
     margin-right: 0;
   }
 
@@ -44,12 +44,12 @@
     .company-container {
       flex-direction: column;
     }
-    .panel {
+    .company__panel {
       margin-left: 0;
       margin-right: 0;
       width: auto;
     }
-    .panel:first-child {
+    .company__panel:first-child {
       margin-bottom: 2em;
     }
   }

@@ -1,5 +1,5 @@
 <template>
-  <div class="panel">
+  <div class="company__panel panel">
     <ul class="company__info-list">
       <div class="company__item"><div class="company__item-key">Siret</div><div class="company__item-value"> {{ result.siret }}</div></div>
       <div class="company__item"><div class="company__item-key">Siren</div><div class="company__item-value"> {{ result.siren }}</div></div>
