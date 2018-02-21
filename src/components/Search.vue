@@ -2,7 +2,7 @@
   <div>
     <div class="hero">
           <div class="notification full-width">
-            Ce site est un travail en cours, actuellement en pré-alpha. Vous pouvez le consulter librement.
+            Ce site est un travail en cours, actuellement en beta. Vous pouvez le consulter librement.
           </div>
       <div class="hero__container container" v-bind:class="[showWelcomeText ? '' : 'hero__compact' ]">
         <transition name="fade">
