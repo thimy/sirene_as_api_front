@@ -4,14 +4,14 @@
       <div class="row">
         <div class="column">
           <p>Vous pouvez, si vous le souhaitez, interroger directement l'API Sirene qui est accessible à tous.</p>
-          <a class="button" href="https://github.com/sgmap/sirene_as_api/blob/master/README.md">Voir la documentation</a>
+          <a class="button" href="https://github.com/sgmap/sirene_as_api/blob/master/README.md">Documentation de l'API</a>
         </div>
         <div class="column api__image">
           <img src="../../assets/img/man-at-desktop.svg" alt="" width="200" />
         </div>
         <div class="column">
-          <p>Notre API est open-source, installez votre propre instance en récupérant les sources sur Github.</p>
-          <a class="button" href="https://github.com/sgmap/sirene_as_api">Voir le code sur Github</a>
+          <p>Téléchargez les données de référence sur le site data.gouv.fr</p>
+          <a class="button" href="https://www.data.gouv.fr/reference">Données de référence</a>
         </div>
       </div>
     </div>
@@ -30,11 +30,15 @@ export default {
   padding: 4em 0;
 }
 
-.api .column {
+.api {
   min-width: 200px;
 }
 
 .api__image {
   margin: 2em 1em;
+}
+
+.column {
+  min-width: 300px;
 }
 </style>
