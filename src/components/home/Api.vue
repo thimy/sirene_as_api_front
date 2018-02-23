@@ -3,14 +3,14 @@
     <div class="container">
       <div class="row">
         <div class="column">
-          <p>Vous pouvez, si vous le souhaitez, interroger directement l'API Sirene qui est accessible à tous.</p>
+          <p>Vous pouvez, si vous le souhaitez, interroger directement l'API Sirene</p>
           <a class="button" href="https://github.com/sgmap/sirene_as_api/blob/master/README.md">Documentation de l'API</a>
         </div>
         <div class="column api__image">
           <img src="../../assets/img/man-at-desktop.svg" alt="" width="200" />
         </div>
         <div class="column">
-          <p>Téléchargez les données de référence sur le site data.gouv.fr</p>
+          <p>Téléchargez les données de référence Sirene sur le site data.gouv.fr</p>
           <a class="button" href="https://www.data.gouv.fr/reference">Données de référence</a>
         </div>
       </div>
@@ -30,7 +30,7 @@ export default {
   padding: 4em 0;
 }
 
-.api {
+.api .column{
   min-width: 200px;
 }
 
@@ -38,7 +38,4 @@ export default {
   margin: 2em 1em;
 }
 
-.column {
-  min-width: 300px;
-}
 </style>
