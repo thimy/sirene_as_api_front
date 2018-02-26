@@ -5,7 +5,7 @@ const state = {
   sirenIsLoading: true,
   siretIsLoading: true,
   error500: false,
-  emptyState: false,
+  noResultFound: false,
 }
 
 const mutations = {
@@ -21,8 +21,8 @@ const mutations = {
   setError500(state, value) {
     state.error500 = value
   },
-  setEmptyState(state, value) {
-    state.emptyState = value
+  setnoResultFound(state, value) {
+    state.noResultFound = value
   }
 }
 
@@ -31,7 +31,7 @@ const actions = {
     store.dispatch('hideWelcomeText')
     store.dispatch('hideSuggestions')
     store.commit('setError500', false)
-    store.commit('setEmptyState', false)
+    store.commit('setnoResultFound', false)
   }
 }
 

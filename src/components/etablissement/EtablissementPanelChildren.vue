@@ -4,7 +4,7 @@
       <div class="company__item-key">Cet établissement est le siège social</div>
     </div>
     <div v-if="!isSiegeSocial" class="company__item">Siège social :
-      <router-link tag="div" class="company__item-link" :to="{ name: 'Etablissement', params: {siret: resultSiegeSocial.siret}}">
+      <router-link tag="div" class="company__item-link" :to="{ name: 'Etablissement', params: {searchId: resultSiegeSocial.siret}}">
         {{ resultSiegeSocial.nom_raison_sociale }}
       </router-link>
     </div>
@@ -17,7 +17,7 @@
       <ul>
         <router-link tag="li"
                       class="company__item-link"
-                      :to="{ name: 'Etablissement', params: {siret: siret}}"
+                      :to="{ name: 'Etablissement', params: {searchId: siret}}"
                       v-for="siret in resultOtherSirens"
                       :key="siret">
           {{ siret }}

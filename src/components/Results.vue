@@ -11,7 +11,7 @@
       <did-you-mean></did-you-mean>
       <ul>
         <li v-for="result in storedResultsEtablissements" :key="result.siret" class="panel">
-          <router-link tag="div" :to="{ name: 'Etablissement', params: {siret: result['siret']}}">
+          <router-link tag="div" :to="{ name: 'Etablissement', params: {searchId: result['siret']}}">
             <h4 class="title">{{result['nom_raison_sociale'] | capitalize | removeExtraChars}}</h4>
             <p>{{result['libelle_activite_principale_entreprise']}}</p>
             <p>{{result['code_postal']}} {{result['libelle_commune'] | capitalize}}</p>

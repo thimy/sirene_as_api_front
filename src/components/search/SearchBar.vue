@@ -77,7 +77,7 @@ export default {
       this.$store.commit('setSiret', this.fullText)
       this.$router.push({ path: `/entreprise/${this.fullText}` })
     },
-    requestSirenSearch: function (siren) {
+    requestSirenSearch: function () {
       this.$store.dispatch('executeSearchBySiren', this.fullText)
         .then(response => {
           const siegeSiret = this.$store.getters.storedSirenSiege.siret

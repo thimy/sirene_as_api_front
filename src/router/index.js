@@ -19,7 +19,7 @@ export default new Router({
       component: Results
     },
     {
-      path: '/entreprise/:siret',
+      path: '/entreprise/:searchId',
       name: 'Etablissement',
       component: Etablissement
     }

@@ -94,7 +94,7 @@ const actions = {
       store.commit('setError500', true)
     }
     if (response.status === 404) {
-      store.commit('setEmptyState', true)
+      store.commit('setnoResultFound', true)
     }
   }
 }

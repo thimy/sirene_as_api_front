@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import store from '@/store/index.js'
 import router from '@/router/index.js'
+import regExps from '@/components/mixins/regExps.js'
 
 const state = {
   storedFullText: '',
@@ -23,36 +24,8 @@ const getters = {
     return '?page=' + store.state.route.query.page
   },
   optionsToGet: state => {
-    return store.getters.pageNumberToGet 
-      // + store.getters.filtersToGet
-      // + store.getters.categoryToGet
-  },
-  // Categories and filters deactivated for now
-  // categoryToGet: state => {
-  //   switch (store.state.route.query.category) {
-  //     case 'all':
-  //       return ''
-  //     case 'entreprises':
-  //       return '&is_entrepreneur_individuel=no'
-  //     case 'entreprisesIndividuelles':
-  //       return '&is_entrepreneur_individuel=yes'
-  //     case 'associations':
-  //       return '&is_ess=O'
-  //   }
-  // },
-  // filtersToGet: state => {
-  //   let filters = ''
-  //   if (store.state.route.query.postalCode) {
-  //     filters = filters + '&code_postal=' + store.state.route.query.postalCode
-  //   }
-  //   if (store.state.route.query.activityCode) {
-  //     filters = filters + '&activite_principale=' + store.state.route.query.activityCode
-  //   }
-  //   return filters
-  // },
-  // adressToGetWithoutCategories: state => {
-  //   return state.baseAdress + store.state.route.query.fullText + store.getters.pageNumberToGet + store.getters.filtersToGet
-  // }
+    return store.getters.pageNumberToGet
+  }
 }
 
 const mutations = {
@@ -76,10 +49,6 @@ const actions = {
       query: {
         fullText: state.storedFullText,
         page: state.pageNumber
-        // Filters and Categories deactivated for now
-        // postalCode: store.state.filters.filterPostalCode,
-        // activityCode: store.state.filters.filterActivityCode,
-        // category: store.state.categories.focusedCategory
       }
     })
     store.dispatch('executeSearchResults')
@@ -103,10 +72,20 @@ const actions = {
       })
     store.commit('setResultsAreLoading', false)
   },
-  async executeSearchEtablissement(dispatch, siret) {
+  async executeSearchEtablissement(dispatch, searchId) {
     await store.dispatch('resetApplicationState')
-    await store.dispatch('executeSearchBySiret', siret)
-    store.dispatch('executeSearchBySiren', store.getters.singlePageResultEtablissement.siren)
+    const isSiret = regExps.methods.isSiret(searchId)
+    const isSiren = regExps.methods.isSiren(searchId)
+
+    if (isSiret) {
+      await store.dispatch('executeSearchBySiret', searchId)
+      store.dispatch('executeSearchBySiren', store.getters.singlePageResultEtablissement.siren)
+    } else if (isSiren) {
+      await store.dispatch('executeSearchBySiren', searchId)
+      store.dispatch('executeSearchBySiret', store.getters.storedSirenSiege.siret)
+    } else {
+      store.commit('setnoResultFound', true)
+    }
   },
   async executeSearchBySiret(dispatch, siret) {
     await store.commit('setSiretLoading', true)

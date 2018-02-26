@@ -76,7 +76,7 @@ export default {
       return this.$store.getters.isEtablissementLoading
     },
     isNotFound () {
-      return this.$store.state.application.emptyState
+      return this.$store.state.application.noResultFound
     },
     isError () {
       return this.$store.state.application.error500
@@ -84,12 +84,12 @@ export default {
   },
   beforeCreate () {
     this.$store.dispatch('hideSuggestions')
-    this.$store.dispatch('executeSearchEtablissement', this.$route.params.siret)
+    this.$store.dispatch('executeSearchEtablissement', this.$route.params.searchId)
   },
   mixins: [Filters],
   watch: {
     '$route' (to, from) {
-      this.$store.dispatch('executeSearchEtablissement', this.$route.params.siret)
+      this.$store.dispatch('executeSearchEtablissement', this.$route.params.searchId)
     }
   }
 }
