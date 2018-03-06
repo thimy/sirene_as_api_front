@@ -14,21 +14,10 @@
           </div>
         </transition>
         <SearchBar searchName="Recherche par nom"></SearchBar>
-        <div class="filters">
-          <button class="btn btn-default" id="filter-button" v-on:click="filterButton">
-            Filtres
-            <svg class="icon icon-equalizer"><use xlink:href="#icon-equalizer"></use></svg>
-          </button>
-          <SearchFilters searchName="Code Postal" v-if="toggleFilters"></SearchFilters>
-          <SearchFilters searchName="Activite Principale" v-if="toggleFilters"></SearchFilters>
-        </div>
-        <search-categories v-if="showSearchCategories"></search-categories>
         <router-link v-if="showBackToResultsButton" class="back-to-results" :to="{ path: '/search',
           query: {
             fullText: this.$store.state.search.storedFullText,
-            page: this.$store.state.search.pageNumber,
-            postalCode: this.$store.state.filters.filterPostalCode,
-            activityCode: this.$store.state.filters.filterActivityCode
+            page: this.$store.state.search.pageNumber
           }}">
           ← Revenir aux résultats
         </router-link>
@@ -45,8 +34,6 @@
 
 <script>
 import SearchBar from '@/components/search/SearchBar'
-import SearchFilters from '@/components/search/SearchFilters'
-import SearchCategories from '@/components/search/SearchCategories'
 import Results from '@/components/Results.vue'
 import Api from '@/components/home/Api.vue'
 import PublicAdministration from '@/components/home/PublicAdministration.vue'
@@ -55,8 +42,6 @@ export default {
   name: 'Search',
   components: {
     'SearchBar': SearchBar,
-    'SearchFilters': SearchFilters,
-    'SearchCategories': SearchCategories,
     'Results': Results,
     'Api': Api,
     'PublicAdministration': PublicAdministration
@@ -78,11 +63,6 @@ export default {
     }
   },
   methods: {
-    filterButton () {
-      this.toggleFilters = !this.toggleFilters
-      this.$store.commit('clearFilters')
-      this.$store.dispatch('executeSearch')
-    },
     clearButton () {
       this.$store.commit('clearResults')
     }
@@ -94,19 +74,13 @@ export default {
     showWelcomeText () {
       return this.$store.state.welcomeText.isWelcomeTextVisible
     },
-    showSearchCategories () {
-      return this.$store.state.welcomeText.showSearchCategories
-    },
     showBackToResultsButton () {
       // show back button only on etablissement page
       return this.$route.path.includes('/entreprise')
       // only if there is more than one result
-        && this.moreThanOneResult
+        && this.$store.getters.numberResults > 1
       // only if we aren't on a 404 // 500 error situation
         && this.$store.state.results.storedStatus === 200
-    },
-    moreThanOneResult () {
-      return !(this.$store.getters.onlyOneResult)
     }
   },
   watch: {
@@ -141,16 +115,8 @@ export default {
     color: $color-white;
   }
 
-  #filter-button {
-    margin: 1em;
-  }
-
   .icon-equalizer {
     font-size: 23px;
-  }
-
-  .filters {
-    display: none;
   }
 
   .informations-index {

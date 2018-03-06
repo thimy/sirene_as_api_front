@@ -4,7 +4,8 @@ const state = {
   resultsAreLoading: true,
   sirenIsLoading: true,
   siretIsLoading: true,
-  error500: false
+  error500: false,
+  noResultFound: false,
 }
 
 const mutations = {
@@ -19,6 +20,9 @@ const mutations = {
   },
   setError500(state, value) {
     state.error500 = value
+  },
+  setnoResultFound(state, value) {
+    state.noResultFound = value
   }
 }
 
@@ -27,13 +31,14 @@ const actions = {
     store.dispatch('hideWelcomeText')
     store.dispatch('hideSuggestions')
     store.commit('setError500', false)
+    store.commit('setnoResultFound', false)
   }
 }
 
 const getters = {
   // If Siret OR Siren search are loading, the Etablissement page is loading :
   isEtablissementLoading: state => {
-    return (state.sirenIsLoading && state.siretIsLoading)
+    return (state.sirenIsLoading || state.siretIsLoading)
   },
 }
 

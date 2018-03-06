@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import store from '@/store/index.js'
 import router from '@/router/index.js'
+import regExps from '@/components/mixins/regExps.js'
 
 const state = {
   storedFullText: '',
@@ -23,32 +24,7 @@ const getters = {
     return '?page=' + store.state.route.query.page
   },
   optionsToGet: state => {
-    return store.getters.pageNumberToGet + store.getters.filtersToGet + store.getters.categoryToGet
-  },
-  categoryToGet: state => {
-    switch (store.state.route.query.category) {
-      case 'all':
-        return ''
-      case 'entreprises':
-        return '&is_entrepreneur_individuel=no'
-      case 'entreprisesIndividuelles':
-        return '&is_entrepreneur_individuel=yes'
-      case 'associations':
-        return '&is_ess=O'
-    }
-  },
-  filtersToGet: state => {
-    let filters = ''
-    if (store.state.route.query.postalCode) {
-      filters = filters + '&code_postal=' + store.state.route.query.postalCode
-    }
-    if (store.state.route.query.activityCode) {
-      filters = filters + '&activite_principale=' + store.state.route.query.activityCode
-    }
-    return filters
-  },
-  adressToGetWithoutCategories: state => {
-    return state.baseAdress + store.state.route.query.fullText + store.getters.pageNumberToGet + store.getters.filtersToGet
+    return store.getters.pageNumberToGet
   }
 }
 
@@ -72,47 +48,58 @@ const actions = {
     router.push({ path: '/search',
       query: {
         fullText: state.storedFullText,
-        page: state.pageNumber,
-        postalCode: store.state.filters.filterPostalCode,
-        activityCode: store.state.filters.filterActivityCode,
-        category: store.state.categories.focusedCategory
+        page: state.pageNumber
       }
     })
-    store.dispatch('executeSearch')
+    store.dispatch('executeSearchResults')
+    // We save the last fulltext searched, so Results page display correctly name of last search
     store.commit('setLastFullText', state.storedFullText)
   },
-  async executeSearch () { // Calling this action directly won't update the router
-    store.dispatch('resetApplicationState')
-    store.commit('setResultsAreLoading', true)
+  async executeSearchResults () { // Calling this action directly won't update the router
+    await store.dispatch('resetApplicationState')
+    await store.commit('setResultsAreLoading', true)
     await store.dispatch('sendAPIRequest', store.getters.adressToGet)
       .then(response => {
           store.dispatch('setResponse', response)
         })
       .catch(notFound => {
-        if (state.pageNumber > 1) {
+        if (store.state.pageNumber > 1) {
           store.commit('setPage', 1)
-          store.dispatch('executeSearch')
+          store.dispatch('executeSearchResults')
         } else {
           store.dispatch('setResponse', notFound)
         }
       })
     store.commit('setResultsAreLoading', false)
   },
+  async executeSearchEtablissement(dispatch, searchId) {
+    await store.dispatch('resetApplicationState')
+    const isSiret = regExps.methods.isSiret(searchId)
+    const isSiren = regExps.methods.isSiren(searchId)
+
+    if (isSiret) {
+      await store.dispatch('executeSearchBySiret', searchId)
+      store.dispatch('executeSearchBySiren', store.getters.singlePageResultEtablissement.siren)
+    } else if (isSiren) {
+      await store.dispatch('executeSearchBySiren', searchId)
+      store.dispatch('executeSearchBySiret', store.getters.storedSirenSiege.siret)
+    } else {
+      store.commit('setnoResultFound', true)
+    }
+  },
   async executeSearchBySiret(dispatch, siret) {
-    store.dispatch('resetApplicationState')
-    store.commit('setSiretLoading', true)
+    await store.commit('setSiretLoading', true)
     await store.dispatch('sendAPIRequest', dispatch.state.baseAdressSiret + siret)
       .then(response => {
         store.dispatch('setResponseSinglePage', response)
       })
-      .catch((notFound) => {
+      .catch(notFound => {
         store.dispatch('setResponseSinglePage', notFound)
       })
     store.commit('setSiretLoading', false)
   },
   async executeSearchBySiren(dispatch, siren) {
-    store.dispatch('resetApplicationState')
-    store.commit('setSirenLoading', true)
+    await store.commit('setSirenLoading', true)
     await store.dispatch('sendAPIRequest', dispatch.state.baseAdressSiren + siren)
       .then(response => {
         store.dispatch('setResponseSiren', response)
