@@ -52,6 +52,8 @@ export default {
   },
   methods: {
     requestSearch: function () {
+      this.trackInMatomo()
+
       const isSiret = this.isSiret(this.fullText)
       const isSiren = this.isSiren(this.fullText)
 
@@ -86,6 +88,9 @@ export default {
         .catch((notFound) => {
           this.$store.dispatch('setResponse', notFound)
         })
+    },
+    trackInMatomo: function () {
+      _paq.push([this.fullText, false, false])
     }
   },
   mixins: [Filters, Suggestions, RegExps]
