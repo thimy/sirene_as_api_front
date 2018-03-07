@@ -8,7 +8,7 @@
         <transition name="fade">
           <div class="text-center" v-if="showWelcomeText">
             <h1 class="search__title">
-              Retrouvez toutes les informations concernant les entreprises et associations de France
+              Retrouvez toutes les informations concernant les entreprises de France
             </h1>
             <p class="search__subtitle">La plus grande base de données sur l'état civil des entreprises françaises est maintenant accessible à tous, sans frais.</p>
           </div>
