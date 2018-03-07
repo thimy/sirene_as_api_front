@@ -71,7 +71,7 @@ export default {
   beforeUpdate () {
     // If only one result, go to page Etablissement
     if (this.$store.getters.onlyOneResult) {
-      this.$router.push({ name: 'Etablissement', params: {siret: this.storedResultsEtablissements[0]['siret']} })
+      this.$router.push({ name: 'Etablissement', params: {searchId: this.storedResultsEtablissements[0]['siret']} })
     }
   },
   mixins: [Filters]
