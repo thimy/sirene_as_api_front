@@ -5,21 +5,82 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 export const getters = {
-  singlePageResultEtablissement: jest.fn().mockReturnValue([{}])
+  adressToGet: jest.fn().mockReturnValue([{}]),
+  numberResults: jest.fn().mockReturnValue([{}]),
+  isEtablissementLoading: jest.fn().mockReturnValue([{}]),
+  queryToGet: jest.fn().mockReturnValue([{}]),
+  optionsToGet: jest.fn().mockReturnValue([{}]),
+  pageNumberToGet: jest.fn().mockReturnValue([{}]),
+  singlePageResultEtablissement: jest.fn().mockReturnValue([{ siret: jest.fn().mockReturnValue([{}])}]),
+  storedSirenSiege: jest.fn().mockReturnValue([{ siret: jest.fn().mockReturnValue([{}])}]),
+  storedSpellcheck: jest.fn().mockReturnValue([{}]),
+  storedResultsEtablissements: jest.fn().mockReturnValue([{}]),
+  totalPageNumber: jest.fn().mockReturnValue([{}]),
+  onlyOneResult: jest.fn().mockReturnValue([{}]),
+  suggestionAdressToGet: jest.fn().mockReturnValue([{}])
 }
 
 export const mutations = {
-  addItems: jest.fn()
+  clearResults: jest.fn(),
+  setFullText: jest.fn(),
+  setQuerySuggestions: jest.fn(),
+  setResultsAreLoading: jest.fn(),
+  setSiretLoading: jest.fn(),
+  setnoResultFound: jest.fn(),
+  setResults: jest.fn(),
+  setStatus: jest.fn(),
+  setStatusSiret: jest.fn(),
+  setStatusSiren: jest.fn(),
+  setSinglePageResults: jest.fn(),
+  setSirenResults: jest.fn(),
+  setLastFullText: jest.fn(),
+  setSiret: jest.fn(),
+  setPage: jest.fn(),
+  setStoredSuggestions: jest.fn(),
+  setSuggestActive: jest.fn(),
+  changeWelcomeTextVisibility: jest.fn()
 }
 
 export const actions = {
   hideSuggestions: jest.fn(),
   executeSearchBySiret: jest.fn(),
-  executeSearchBySiren: jest.fn()
+  executeSearchBySiren: jest.fn(),
+  executeSearchSuggestions: jest.fn(),
+  executeSearchEtablissement: jest.fn(),
+  goToClearedHomePage: jest.fn(),
+  requestSearch: jest.fn(),
+  resetApplicationState: jest.fn(),
+  setResponse: jest.fn(),
+  setResponseSinglePage: jest.fn(),
+  setResponseSiren: jest.fn(),
+  redirectWhenNoResult: jest.fn(),
+  filterAndStoreSuggestions: jest.fn(),
+  hideWelcomeText: jest.fn(),
+  showSearchCategories: jest.fn()
 }
 
 export const state = {
-  results: jest.fn().mockReturnValue([{}])
+  results: jest.fn().mockReturnValue([{}]),
+  search: jest.fn().mockReturnValue([{}]),
+  suggestions: jest.fn().mockReturnValue([{}]),
+  application: jest.fn().mockReturnValue([{}]),
+  resultsAreLoading: jest.fn().mockReturnValue([{}]),
+  sirenIsLoading: jest.fn().mockReturnValue([{}]),
+  siretIsLoading: jest.fn().mockReturnValue([{}]),
+  error500: jest.fn().mockReturnValue([{}]),
+  noResultFound: jest.fn().mockReturnValue([{}]),
+  storedSuggestions: jest.fn().mockReturnValue([{}]),
+  baseAdressSuggestions: jest.fn().mockReturnValue([{}]),
+  querySuggestions: jest.fn().mockReturnValue([{}]),
+  suggestActive: jest.fn().mockReturnValue([{}]),
+  storedResults: jest.fn().mockReturnValue([{}]),
+  singlePageResult: jest.fn().mockReturnValue([{}]),
+  storedStatus: jest.fn().mockReturnValue([{}]),
+  storedStatusSiret: jest.fn().mockReturnValue([{}]),
+  storedStatusSiren: jest.fn().mockReturnValue([{}]),
+  sirenResults: jest.fn().mockReturnValue([{}]),
+  isWelcomeTextVisible: jest.fn().mockReturnValue([{}])
+
 }
 
 // eslint-disable-next-line no-underscore-dangle

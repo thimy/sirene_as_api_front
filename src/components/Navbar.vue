@@ -14,8 +14,7 @@ export default {
   methods: {
     clearHomepage () {
       this.$store.dispatch('goToClearedHomePage')
-    }
-  }
+  }}
 }
 </script>
 

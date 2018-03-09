@@ -1,7 +1,7 @@
 import { createLocalVue, shallow } from '@vue/test-utils'
+import { __createMocks as createStoreMocks } from '@/store/index.js'
 import Vuex from 'vuex'
 import Etablissement from '@/components/Etablissement'
-import { __createMocks as createStoreMocks } from '@/store/index.js';
 
 const localVue = createLocalVue()
 localVue.use(Vuex)

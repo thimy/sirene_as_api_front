@@ -39,14 +39,6 @@ const getters = {
       return state.storedResults.total_pages
     }
   },
-  infoMessagePostalCode: state => {
-    const postalCodeLength = String(store.state.filters.filterPostalCode).length
-    if (postalCodeLength < 5 && postalCodeLength > 0) {
-      return 'En attente du code postal...'
-    } else {
-      return ''
-    }
-  },
   onlyOneResult: state => {
     return store.getters.numberResults === 1
   }

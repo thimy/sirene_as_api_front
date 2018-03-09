@@ -19,7 +19,7 @@
       </li>
       <!-- Filling with hidden divs so search bar will always be same size -->
       <!-- eslint-disable-next-line -->
-      <li class="suggestion__box hidden" v-for="index in suggestionNumberToMax"></li>
+      <li class="hidden suggestion__box" v-for="index in suggestionNumberToMax"></li>
     </ul>
   </div>
 </template>
