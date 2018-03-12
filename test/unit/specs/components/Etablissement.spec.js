@@ -19,7 +19,7 @@ describe('Etablissement.vue', () => {
   
   // Create a fresh store and wrapper instance for every test case.
   beforeEach(() => {
-    storeMocks = createStoreMocks();
+    storeMocks = createStoreMocks()
     
     wrapperEtablissement = shallow(Etablissement, {
       localVue,

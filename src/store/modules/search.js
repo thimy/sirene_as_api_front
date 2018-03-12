@@ -14,7 +14,7 @@ const state = {
 }
 
 const getters = {
-  adressToGet: function(state) {
+  adressToGet: state => {
     return state.baseAdress + store.getters.queryToGet
   },
   queryToGet: state => {

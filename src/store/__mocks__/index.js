@@ -80,7 +80,6 @@ export const state = {
   storedStatusSiren: jest.fn().mockReturnValue([{}]),
   sirenResults: jest.fn().mockReturnValue([{}]),
   isWelcomeTextVisible: jest.fn().mockReturnValue([{}])
-
 }
 
 // eslint-disable-next-line no-underscore-dangle
