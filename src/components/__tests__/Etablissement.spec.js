@@ -33,7 +33,8 @@ describe('Etablissement.vue', () => {
     etablissement.result.nom = 'Michel'
     etablissement.result.prenom = 'Forever'
     expect(etablissement.fullOwnerName).toEqual('Michel Forever')
-  }),
+  })
+
   test('it should compute the TVA number correctly', () => {
     etablissement.result.siren = '833057201'
     expect(etablissement.tvaIntracommunautaire).toEqual('FR80833057201')

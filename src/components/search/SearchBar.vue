@@ -26,7 +26,7 @@
 
 <script>
 import Filters from '@/components/mixins/filters.js'
-import Suggestions from '@/components/mixins/suggestions.js'
+import SuggestionsHelpers from '@/components/mixins/suggestionsHelpers.js'
 import RegExps from '@/components/mixins/regExps.js'
 
 export default {
@@ -88,7 +88,7 @@ export default {
         })
     }
   },
-  mixins: [Filters, Suggestions, RegExps]
+  mixins: [Filters, SuggestionsHelpers, RegExps]
 }
 </script>
 
