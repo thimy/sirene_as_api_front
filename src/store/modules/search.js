@@ -55,22 +55,26 @@ const actions = {
     // We save the last fulltext searched, so Results page display correctly name of last search
     store.commit('setLastFullText', state.storedFullText)
   },
-  async executeSearchResults () { // Calling this action directly won't update the router
+  // Calling this action directly won't update the router
+  async executeSearchResults () {
     await store.dispatch('resetApplicationState')
     await store.commit('setResultsAreLoading', true)
-    await store.dispatch('sendAPIRequest', store.getters.adressToGet)
+    await store.dispatch('executeSearchResultsCallAPI')
+    store.commit('setResultsAreLoading', false)
+  },
+  async executeSearchResultsCallAPI() {
+    store.dispatch('sendAPIRequest', store.getters.adressToGet)
       .then(response => {
-          store.dispatch('setResponse', response)
-        })
+        store.dispatch('setResponse', response)
+      })
       .catch(notFound => {
         if (store.state.pageNumber > 1) {
           store.commit('setPage', 1)
-          store.dispatch('executeSearchResults')
+          store.dispatch('executeSearchResultsCallAPI')
         } else {
           store.dispatch('setResponse', notFound)
         }
       })
-    store.commit('setResultsAreLoading', false)
   },
   async executeSearchEtablissement(dispatch, searchId) {
     await store.dispatch('resetApplicationState')
@@ -84,7 +88,7 @@ const actions = {
       await store.dispatch('executeSearchBySiren', searchId)
       store.dispatch('executeSearchBySiret', store.getters.storedSirenSiege.siret)
     } else {
-      store.commit('setnoResultFound', true)
+      store.commit('setNoResultFound', true)
     }
   },
   async executeSearchBySiret(dispatch, siret) {

@@ -86,7 +86,7 @@ const actions = {
       store.commit('setError500', true)
     }
     if (response.status === 404) {
-      store.commit('setnoResultFound', true)
+      store.commit('setNoResultFound', true)
     }
   }
 }
