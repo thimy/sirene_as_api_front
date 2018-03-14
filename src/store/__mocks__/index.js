@@ -13,7 +13,7 @@ export const getters = {
   pageNumberToGet: jest.fn().mockReturnValue([{}]),
   singlePageResultEtablissement: jest.fn().mockReturnValue([{ siret: 'mock-siret' }]),
   storedSirenSiege: jest.fn().mockReturnValue([{ siret: jest.fn().mockReturnValue([{}])}]),
-  storedSpellcheck: jest.fn().mockReturnValue([{}]),
+  storedSpellcheck: jest.fn().mockReturnValue('mock-spellcheck'),
   storedResultsEtablissements: jest.fn().mockReturnValue([{}]),
   totalPageNumber: jest.fn().mockReturnValue([{}]),
   onlyOneResult: jest.fn().mockReturnValue([{}]),

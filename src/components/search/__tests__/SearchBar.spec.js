@@ -1,7 +1,7 @@
 import { createLocalVue, shallow } from '@vue/test-utils'
 import Vuex from 'vuex'
 import SearchBar from '@/components/search/SearchBar'
-import { __createMocks as createStoreMocks } from '@/store/index.js';
+import { __createMocks as createStoreMocks } from '@/store/index.js'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)

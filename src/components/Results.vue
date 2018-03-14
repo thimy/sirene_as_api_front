@@ -26,7 +26,7 @@
 
 <script>
 import PaginateModule from '@/components/results/ResultsPaginateModule'
-import DidYouMean from '@/components/results/ResultsDidYoumean'
+import DidYouMean from '@/components/results/ResultsDidYouMean'
 import Loader from '@/components/modules/Loader'
 import ServerError from '@/components/modules/ServerError'
 import Filters from '@/components/mixins/filters.js'
