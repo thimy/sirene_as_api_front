@@ -38,7 +38,7 @@ describe('welcomeText.js', () => {
 
   test('Action goToClearedHomePage hide suggestions', () => {
     welcomeText.actions.goToClearedHomePage()
-    expect(store.dispatch).toBeCalledWith('hideSuggestions')
+    expect(store.commit).toBeCalledWith('setStoredSuggestions', '')
   })
 
   test('Action goToClearedHomePage reset fullText to empty string', () => {
@@ -50,6 +50,4 @@ describe('welcomeText.js', () => {
     welcomeText.actions.goToClearedHomePage()
     expect(store.commit).toBeCalledWith('changeWelcomeTextVisibility', true)
   })
-
-  // test(showSearchCategories)
 })

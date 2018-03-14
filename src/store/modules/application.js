@@ -29,7 +29,7 @@ const mutations = {
 const actions = {
   resetApplicationState() {
     store.dispatch('hideWelcomeText')
-    store.dispatch('hideSuggestions')
+    store.commit('setStoredSuggestions', '')
     store.commit('setError500', false)
     store.commit('setNoResultFound', false)
   }

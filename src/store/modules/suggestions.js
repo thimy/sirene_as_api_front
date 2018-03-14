@@ -32,12 +32,9 @@ const actions = {
     Vue.http.get(this.getters.suggestionAdressToGet).then(response => {
       store.dispatch('filterAndStoreSuggestions', response.body)
     }, response => {
-      store.commit('setStoredSuggestions', null)
+      store.commit('setStoredSuggestions', '')
     })
   }, 50), // delay between suggestion searches
-  hideSuggestions: function () {
-    store.commit('setStoredSuggestions', '')
-  },
   filterAndStoreSuggestions: function (state, suggestionsObject) {
     const suggestionsArray = suggestionsObject.suggestions
     const filteredSuggestions = suggestionsArray.map(filterMixin.filters.removeExtraChars)

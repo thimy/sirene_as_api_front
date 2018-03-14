@@ -27,7 +27,7 @@ describe('SearchBar.vue', () => {
 
   test('When searching over/equal 3 chars, a request for suggestions should be made', () => {
     wrapperSearchBar.setData({ fullText: 'maRequete' })
-    expect(storeMocks.actions.executeSearchSuggestions.mock.calls).toHaveLength(1)
+    expect(storeMocks.actions.executeSearchSuggestions).toHaveBeenCalled()
   }),
 
   test('If the request for suggestions return >= 5 results, 5 suggestions should be displayed', () => {
@@ -41,15 +41,30 @@ describe('SearchBar.vue', () => {
 
   test('If the request for suggestions return 3 results, 3 suggestions should be displayed + 2 hidden', () => {
     storeMocks.state.suggestions.storedSuggestions = ['Suggest1', 'Suggest2', 'Suggest3']
-    // Need to update twice before suggestions are rendered
-    wrapperSearchBar.update()
     wrapperSearchBar.update()
     expect(wrapperSearchBar.findAll('li' + '.suggestion__box')).toHaveLength(5)
     expect(wrapperSearchBar.findAll('li' + '.suggestion__box' + '.hidden')).toHaveLength(2)
   }),
 
+  test('Pressing escape key reset storedSuggestions', () => {
+    storeMocks.state.suggestions.storedSuggestions = ['Suggest1', 'Suggest2', 'Suggest3']
+    wrapperSearchBar.update()
+    wrapperSearchBar.find('input').trigger('keydown.esc')
+    expect(storeMocks.mutations.setStoredSuggestions).toHaveBeenCalledWith(storeMocks.state, '')
+  }),
+
+  test("When storedSuggestion is '', no suggestions are displayed" , () => {
+    storeMocks.state.suggestions.storedSuggestions = ''
+    wrapperSearchBar.update()
+    const suggestionsWrappers = wrapperSearchBar.findAll('li' + '.suggestion__box').wrappers
+    // Suggestions are rendered in virtual DOM but not attached to document (displayed)
+    Array.prototype.forEach.call(suggestionsWrappers, (element) =>
+      expect(element.options.attachedToDocument).toBeFalsy())
+  }),
+
   test('I can highlight a suggestion by using keydown', () => {
     storeMocks.state.suggestions.storedSuggestions = ['Suggest1', 'Suggest2', 'Suggest3']
+    wrapperSearchBar.update()
     // We go down 3 times to get Suggest3
     wrapperSearchBar.find('input').trigger('keydown.down')
     wrapperSearchBar.find('input').trigger('keydown.down')

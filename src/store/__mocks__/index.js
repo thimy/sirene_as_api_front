@@ -7,11 +7,11 @@ Vue.use(Vuex)
 export const getters = {
   adressToGet: jest.fn().mockReturnValue([{}]),
   numberResults: jest.fn().mockReturnValue([{}]),
-  isEtablissementLoading: jest.fn().mockReturnValue([{}]),
+  isEtablissementLoading: jest.fn().mockReturnValue([ 'mock-etablissement-loading' ]),
   queryToGet: jest.fn().mockReturnValue([{}]),
   optionsToGet: jest.fn().mockReturnValue([{}]),
   pageNumberToGet: jest.fn().mockReturnValue([{}]),
-  singlePageResultEtablissement: jest.fn().mockReturnValue([{ siret: jest.fn().mockReturnValue([{}])}]),
+  singlePageResultEtablissement: jest.fn().mockReturnValue([{ siret: 'mock-siret' }]),
   storedSirenSiege: jest.fn().mockReturnValue([{ siret: jest.fn().mockReturnValue([{}])}]),
   storedSpellcheck: jest.fn().mockReturnValue([{}]),
   storedResultsEtablissements: jest.fn().mockReturnValue([{}]),
@@ -42,7 +42,6 @@ export const mutations = {
 }
 
 export const actions = {
-  hideSuggestions: jest.fn(),
   executeSearchBySiret: jest.fn(),
   executeSearchBySiren: jest.fn(),
   executeSearchSuggestions: jest.fn(),
@@ -65,12 +64,10 @@ export const state = {
   results: jest.fn().mockReturnValue([{}]),
   search: jest.fn().mockReturnValue([{}]),
   suggestions: jest.fn().mockReturnValue([{}]),
-  application: jest.fn().mockReturnValue([{}]),
+  application: jest.fn().mockReturnValue([{ noResultFound: 'mock-noResult', error500: 'mock-error500'}]),
   resultsAreLoading: jest.fn().mockReturnValue([{}]),
   sirenIsLoading: jest.fn().mockReturnValue([{}]),
   siretIsLoading: jest.fn().mockReturnValue([{}]),
-  error500: jest.fn().mockReturnValue([{}]),
-  noResultFound: jest.fn().mockReturnValue([{}]),
   storedSuggestions: jest.fn().mockReturnValue([{}]),
   baseAdressSuggestions: jest.fn().mockReturnValue([{}]),
   querySuggestions: jest.fn().mockReturnValue([{}]),
@@ -100,7 +97,7 @@ export function __createMocks(custom = { getters: {}, mutations: {}, actions: {}
       getters: mockGetters,
       mutations: mockMutations,
       actions: mockActions,
-      state: mockState,
+      state: mockState
     }),
   }
 }

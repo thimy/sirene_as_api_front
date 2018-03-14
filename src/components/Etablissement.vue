@@ -83,7 +83,7 @@ export default {
     }
   },
   beforeCreate () {
-    this.$store.dispatch('hideSuggestions')
+    this.$store.commit('setStoredSuggestions', '')
     this.$store.dispatch('executeSearchEtablissement', this.$route.params.searchId)
   },
   mixins: [Filters],

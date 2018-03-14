@@ -47,7 +47,7 @@ describe('application.js actions', () => {
   test('resetApplicationState correctly reset the application state', () => {
     Application.actions.resetApplicationState()
     expect(store.dispatch).toBeCalledWith('hideWelcomeText')
-    expect(store.dispatch).toBeCalledWith('hideSuggestions')
+    expect(store.commit).toBeCalledWith('setStoredSuggestions', '')
     expect(store.commit).toBeCalledWith('setError500', false)
     expect(store.commit).toBeCalledWith('setNoResultFound', false)
   })

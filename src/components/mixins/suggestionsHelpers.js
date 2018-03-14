@@ -40,6 +40,7 @@ export default {
       if (this.suggestCount >= 0) {
         return this.suggestions[this.suggestCount]
       }
+      return null
     },
     hasSuggestions: function () {
       return this.suggestions && this.suggestions.length > 0
@@ -48,7 +49,7 @@ export default {
       return index === this.suggestCount
     },
     suggestReset: function () {
-      this.$store.dispatch('hideSuggestions')
+      this.$store.commit('setStoredSuggestions', '')
     },
     suggestDown: function () {
       if (this.suggestCount < (this.suggestionNumber - 1)) {
