@@ -3,7 +3,6 @@ import Vuex from 'vuex'
 import { __createMocks as createStoreMocks } from '@/store/index.js'
 import { createLocalVue, shallow } from '@vue/test-utils'
 
-
 const localVue = createLocalVue()
 localVue.use(Vuex)
 jest.mock('@/store/index.js')
@@ -31,6 +30,7 @@ describe('ResultsDidYouMean.vue', () => {
     wrapperDYM.vm.didYouMeanSearch(didYouMean)
     expect(storeMocks.mutations.setFullText).toHaveBeenCalledWith(storeMocks.state, didYouMean)
   })
+
   test('Method didYouMeanSearch launch requestSearch', () => {
     const didYouMean = 'mock-didYouMean'
     wrapperDYM.vm.didYouMeanSearch(didYouMean)

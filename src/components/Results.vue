@@ -40,9 +40,6 @@ export default {
     'ServerError': ServerError
   },
   computed: {
-    informationMessage () {
-      return this.$store.getters.infoMessage
-    },
     isSearchNotEmpty () {
       return this.$store.state.search.storedFullText !== ''
     },
@@ -53,7 +50,7 @@ export default {
       return this.$store.getters.numberResults
     },
     showNoResultMessage () {
-      return (this.isLoading === false && this.numberResults === 0)
+      return this.numberResults === 0
     },
     resultsNumberSentence () {
       if (this.numberResults === undefined) {
@@ -73,6 +70,7 @@ export default {
     if (this.$store.getters.onlyOneResult) {
       this.$router.push({ name: 'Etablissement', params: {searchId: this.storedResultsEtablissements[0]['siret']} })
     }
+    return
   },
   mixins: [Filters]
 }
