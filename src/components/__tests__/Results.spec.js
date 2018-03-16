@@ -1,5 +1,5 @@
 import Results from '@/components/Results.vue'
-import { createLocalVue, shallow } from '@vue/test-utils'
+import { createLocalVue, shallow, mount, RouterLinkStub } from '@vue/test-utils'
 import { __createMocks as createStoreMocks } from '@/store/index.js'
 import Vuex from 'vuex'
 
@@ -122,6 +122,7 @@ describe('Results.vue', () => {
     wrapperResults.update()
     expect(wrapperResults.vm.$router.push).toHaveBeenCalledWith({ "name": "Etablissement", "params": { "searchId": 'mock-siret1' } })
   })
+
   test('If more than one result, doest push router', () => {
     wrapperResults = shallow(Results, {
       localVue,
@@ -143,3 +144,35 @@ describe('Results.vue', () => {
     expect(wrapperResults.vm.$router.push.mock.calls).toHaveLength(0)
   })
 })
+
+describe('Results.vue snapshot testing', () => {
+  // Snapshot testing
+  localVue.component('router-link', RouterLinkStub);
+  const $router = {
+    params: 'mock-params',
+    push: jest.fn()
+  }
+  const wrapperResults = mount(Results, {
+    localVue,
+    store: {
+      state: {
+        search: 'mock-search',
+        application: 'mock-application',
+        route: {
+          query: 'mock-query'
+        }
+      },
+      getters: {
+        numberResults: 1,
+        onlyOneResult: true,
+        storedResultsEtablissements: [{ name: 'mock-etablissement', siret: 'mock-siret1' }]
+      }
+    },
+    mocks: { $router }
+  })
+
+  test('It match the snapshot', () => {
+    expect(wrapperResults.vm.$el).toMatchSnapshot()
+  })
+})
+

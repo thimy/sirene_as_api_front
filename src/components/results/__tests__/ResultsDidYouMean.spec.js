@@ -1,7 +1,7 @@
 import ResultsDidYouMean from '@/components/results/ResultsDidYouMean.vue'
 import Vuex from 'vuex'
 import { __createMocks as createStoreMocks } from '@/store/index.js'
-import { createLocalVue, shallow } from '@vue/test-utils'
+import { createLocalVue, shallow, mount } from '@vue/test-utils'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)
@@ -35,5 +35,18 @@ describe('ResultsDidYouMean.vue', () => {
     const didYouMean = 'mock-didYouMean'
     wrapperDYM.vm.didYouMeanSearch(didYouMean)
     expect(storeMocks.actions.requestSearch).toHaveBeenCalled()
+  })
+})
+
+describe('ResultsDidYouMean.vue Snapshot test', () => {
+  const storeMocks = createStoreMocks()
+
+  const wrapperDYM = mount(ResultsDidYouMean, {
+      localVue,
+      store: storeMocks.store
+    })
+
+  test('Snapshot test', () => {
+    expect(wrapperDYM.vm.$el).toMatchSnapshot()
   })
 }) 

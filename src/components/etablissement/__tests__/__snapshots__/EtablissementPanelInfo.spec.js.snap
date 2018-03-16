@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EtablissementPanelInfo.vue snapshot It match the snapshot 1`] = `
+<div
+  class="company__panel panel"
+>
+  <ul
+    class="company__info-list"
+  >
+    <div
+      class="company__item"
+    >
+      <div
+        class="company__item-key"
+      >
+        Siret
+      </div>
+      <div
+        class="company__item-value"
+      >
+         mock-siret
+      </div>
+    </div>
+     
+    <div
+      class="company__item"
+    >
+      <div
+        class="company__item-key"
+      >
+        Siren
+      </div>
+      <div
+        class="company__item-value"
+      >
+         833057201
+      </div>
+    </div>
+     
+    <div
+      class="company__item"
+    >
+      <div
+        class="company__item-key"
+      >
+        Clef NIC
+      </div>
+      <div
+        class="company__item-value"
+      >
+         
+      </div>
+    </div>
+     
+    <div
+      class="company__item"
+    >
+      <div
+        class="company__item-key"
+      >
+        Activité principale
+      </div>
+      <div
+        class="company__item-value"
+      >
+          - 
+      </div>
+    </div>
+     
+    <div
+      class="company__item"
+    >
+      <div
+        class="company__item-key"
+      >
+        N° TVA Intracommunautaire
+      </div>
+      <div
+        class="company__item-value"
+      >
+         FR80833057201
+      </div>
+    </div>
+  </ul>
+</div>
+`;

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search.vue snapshot It match the snapshot 1`] = `
+<div>
+  <div
+    class="hero"
+  >
+    <div
+      class="notification full-width"
+    >
+      
+          Ce site est un travail en cours, actuellement en beta. Vous pouvez le consulter librement.
+        
+    </div>
+     
+    <div
+      class="hero__container container hero__compact"
+    >
+      <!---->
+       
+      <!---->
+       
+      <!---->
+    </div>
+  </div>
+   
+  <!---->
+</div>
+`;

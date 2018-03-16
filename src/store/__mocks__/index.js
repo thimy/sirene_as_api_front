@@ -12,7 +12,7 @@ export const getters = {
   optionsToGet: jest.fn().mockReturnValue([{}]),
   pageNumberToGet: jest.fn().mockReturnValue([{}]),
   queryToGet: jest.fn().mockReturnValue([{}]),
-  singlePageResultEtablissement: jest.fn().mockReturnValue([{ siret: 'mock-siret' }]),
+  singlePageResultEtablissement: jest.fn().mockReturnValue({ siret: 'mock-siret', siren: '833057201' }),
   storedResultsEtablissements: jest.fn().mockReturnValue([{ name: 'mock-etablissement', siret: 'mock-siret1' }]),
   storedSirenSiege: jest.fn().mockReturnValue([{ siret: jest.fn().mockReturnValue([{}]) }]),
   storedSpellcheck: jest.fn().mockReturnValue('mock-spellcheck'),
@@ -63,9 +63,9 @@ export const actions = {
 export const state = {
   application: jest.fn().mockReturnValue([{ noResultFound: 'mock-noResult', resultsAreLoading: 'mock-resultsAreLoading', error500: 'mock-error500'}]),
   baseAdressSuggestions: jest.fn().mockReturnValue([{}]),
-  isWelcomeTextVisible: jest.fn().mockReturnValue([{}]),
+  welcomeText: jest.fn().mockReturnValue([{ isWelcomeTextVisible: jest.fn().mockReturnValue([{}]) }]),
   querySuggestions: jest.fn().mockReturnValue([{}]),
-  results: jest.fn().mockReturnValue([{}]),
+  results: jest.fn().mockReturnValue({ siren: '833057201'}),
   resultsAreLoading: jest.fn().mockReturnValue('mock-resultsAreLoading'),
   search: { storedFullText: 'mock-storedFullText', storedLastFullText: 'mock-storedLastFullText'},
   singlePageResult: jest.fn().mockReturnValue([{}]),
@@ -98,7 +98,7 @@ export function __createMocks(custom = { getters: {}, mutations: {}, actions: {}
       mutations: mockMutations,
       actions: mockActions,
       state: mockState
-    }),
+    })
   }
 }
 

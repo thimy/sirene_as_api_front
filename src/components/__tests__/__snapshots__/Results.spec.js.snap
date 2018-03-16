@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Results.vue snapshot testing It match the snapshot 1`] = `
+<div
+  class="container"
+>
+  <!---->
+   
+  <h3>
+    1 résultats pour "undefined"
+  </h3>
+   
+  <!---->
+   
+  <ul>
+    <li
+      class="panel"
+    >
+      <div>
+        <h4
+          class="title"
+        >
+          
+        </h4>
+         
+        <p>
+          
+        </p>
+         
+        <p>
+           
+        </p>
+      </div>
+    </li>
+  </ul>
+   
+  <!---->
+   
+  <ul
+    class="pagination"
+    data-v-82963a40=""
+  >
+    <li
+      class="pagesButtons"
+      data-v-82963a40=""
+    >
+      <a
+        data-v-82963a40=""
+        tabindex="0"
+      >
+        Precédent
+      </a>
+    </li>
+      
+    <li
+      class="pagesButtons"
+      data-v-82963a40=""
+    >
+      <a
+        data-v-82963a40=""
+        tabindex="0"
+      >
+        Suivant
+      </a>
+    </li>
+  </ul>
+</div>
+`;
