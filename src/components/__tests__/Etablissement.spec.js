@@ -81,8 +81,8 @@ describe('Etablissement.vue', () => {
 })
 
 describe('Etablissement.vue Snapshot testing', () => {
-  localVue.component('router-link', RouterLinkStub);
-  localVue.component('router-view', RouterViewStub);
+  localVue.component('router-link', RouterLinkStub)
+  localVue.component('router-view', RouterViewStub)
 
   const storeMocks = createStoreMocks()
   const $route = {
@@ -95,37 +95,10 @@ describe('Etablissement.vue Snapshot testing', () => {
     localVue,
     store: storeMocks.store,
     mocks: { $route },
-    stubs: ['loader', 'router-view']
+    stubs: ['loader']
   })
 
   test('It match the snapshot', () => {
     expect(wrapperEtablissement.vm.$el).toMatchSnapshot()
   })
 })
-
-// describe('Etablissement.vue display', () => {
-//   let storeMocks
-//   let wrapperEtablissement
-//   let etablissement
-//   let $route = {
-//     params: {
-//       siret: '83305720100018',
-//       searchId: 'mock-searchId'
-//     }
-//   }
-
-//   beforeEach(() => {
-//     storeMocks = createStoreMocks()
-
-//     wrapperEtablissement = mount(Etablissement, {
-//       localVue,
-//       store: storeMocks.store,
-//       mocks: { $route }
-//     })
-//     etablissement = wrapperEtablissement.vm
-//   })
-//   test('Display only the loader if isLoading is true', () => {
-//     console.log(wrapperEtablissement.html())
-//     expect(wrapperEtablissement.html()).toBe()
-//   })
-// })

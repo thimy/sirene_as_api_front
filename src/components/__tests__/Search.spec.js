@@ -252,6 +252,9 @@ describe('Results.vue', () => {
     expect(storeMocks.mutations.setFullText).toHaveBeenCalledWith(storeMocks.state, 'mock-fullText')
     expect(storeMocks.actions.requestSearch).toHaveBeenCalled()
   })
+
+  // TODO: test when router-link will be testable
+  test('Clicking back to results buttons goes back to result page')
 })
 
 describe('Search.vue snapshot', () => {
@@ -267,14 +270,17 @@ describe('Search.vue snapshot', () => {
     }
   }
 
-  const wrapperSearch = shallow(Search, {
+  const wrapperSearch = mount(Search, {
     localVue,
     store: storeMocks.store,
     mocks: { $route },
     stubs: ['router-link', 'router-view']
   })
 
-  test('It match the snapshot', () => {
+  test('It match the snapshot when there arent results', () => {
     expect(wrapperSearch.vm.$el).toMatchSnapshot()
   })
+
+  // TODO: test when router-link will be testable
+  test('It match the snapshot when there are results')
 })

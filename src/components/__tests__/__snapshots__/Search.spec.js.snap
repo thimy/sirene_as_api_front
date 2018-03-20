@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Search.vue snapshot It match the snapshot 1`] = `
+exports[`Search.vue snapshot It match the snapshot when there arent results 1`] = `
 <div>
   <div
     class="hero"
@@ -18,7 +18,48 @@ exports[`Search.vue snapshot It match the snapshot 1`] = `
     >
       <!---->
        
-      <!---->
+      <div
+        class="form__group"
+      >
+        <input
+          name="search"
+          placeholder="Nom, SIREN, SIRET, adresse..."
+          type="text"
+        />
+         
+        <button
+          class="overlay-button"
+        >
+          <svg
+            class="icon icon-search"
+          >
+            <use
+              xlink:href="#icon-search"
+            />
+          </svg>
+        </button>
+         
+        <ul
+          style="display: none;"
+        >
+           
+          <li
+            class="hidden suggestion__box"
+          />
+          <li
+            class="hidden suggestion__box"
+          />
+          <li
+            class="hidden suggestion__box"
+          />
+          <li
+            class="hidden suggestion__box"
+          />
+          <li
+            class="hidden suggestion__box"
+          />
+        </ul>
+      </div>
        
       <!---->
     </div>

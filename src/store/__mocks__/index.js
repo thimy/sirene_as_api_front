@@ -14,10 +14,11 @@ export const getters = {
   queryToGet: jest.fn().mockReturnValue([{}]),
   singlePageResultEtablissement: jest.fn().mockReturnValue({ siret: 'mock-siret', siren: '833057201' }),
   storedResultsEtablissements: jest.fn().mockReturnValue([{ name: 'mock-etablissement', siret: 'mock-siret1' }]),
-  storedSirenSiege: jest.fn().mockReturnValue([{ siret: jest.fn().mockReturnValue([{}]) }]),
+  storedSirenChildren: jest.fn().mockReturnValue([{}]),
+  storedSirenSiege: jest.fn().mockReturnValue({ siret: 'mock-storedSirenSiegeSiret' }),
   storedSpellcheck: jest.fn().mockReturnValue('mock-spellcheck'),
   suggestionAdressToGet: jest.fn().mockReturnValue([{}]),
-  totalPageNumber: jest.fn().mockReturnValue([{}])
+  totalPageNumber: jest.fn().mockReturnValue('10goToClearedHomePage')
 }
 
 export const mutations = {
@@ -67,6 +68,7 @@ export const state = {
   querySuggestions: jest.fn().mockReturnValue([{}]),
   results: jest.fn().mockReturnValue({ siren: '833057201'}),
   resultsAreLoading: jest.fn().mockReturnValue('mock-resultsAreLoading'),
+  route: { query: { fullText: 'mock-fullText', page: '5' }},
   search: { storedFullText: 'mock-storedFullText', storedLastFullText: 'mock-storedLastFullText'},
   singlePageResult: jest.fn().mockReturnValue([{}]),
   sirenIsLoading: jest.fn().mockReturnValue([{}]),

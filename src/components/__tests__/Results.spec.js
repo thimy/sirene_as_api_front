@@ -143,6 +143,9 @@ describe('Results.vue', () => {
     wrapperResults.update()
     expect(wrapperResults.vm.$router.push.mock.calls).toHaveLength(0)
   })
+
+  // TODO: Test when able to test router-link
+  test('Clicking on a result goes to this etablissement page')
 })
 
 describe('Results.vue snapshot testing', () => {

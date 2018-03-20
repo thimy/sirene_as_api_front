@@ -10,16 +10,21 @@ jest.mock('@/store/index.js')
 describe('SearchBar.vue', () => {
   let storeMocks
   let wrapperSearchBar
+  const $router = {
+    push: jest.fn()
+  }
 
   beforeEach(() => {
     storeMocks = createStoreMocks()
     
     wrapperSearchBar = shallow(SearchBar, {
       localVue,
-      store: storeMocks.store
+      store: storeMocks.store,
+      mocks: { $router }
     })
   })
 
+  // Tests for Suggestions
   test('When searching under 3 chars, a request for suggestions should NOT be made', () => {
     wrapperSearchBar.setData({ fullText: 'ma' })
     expect(storeMocks.actions.executeSearchSuggestions.mock.calls).toHaveLength(0)
@@ -126,5 +131,78 @@ describe('SearchBar.vue', () => {
     wrapperSearchBar.find('li:nth-child(2)').trigger('click')
     expect(wrapperSearchBar.vm.currentSuggestion()).toBe('Suggest2')
     expect(wrapperSearchBar.vm.requestSearch.mock.calls).toHaveLength(1)
+  })
+  // End Tests for Suggestions
+
+  // Start Tests for Methods
+
+  test('Method requestSirenSearch dispatch executeSearchBySiren with fullText', () => {
+    wrapperSearchBar.vm.requestSirenSearch()
+    expect(storeMocks.actions.executeSearchBySiren.mock.calls[0][1]).toBe('mock-storedFullText')
+  })
+
+  test('Method requestSirenSearch push router to siegeSiret (if requestSirenSearch was successful)', () => {
+    wrapperSearchBar.vm.requestSirenSearch()
+    expect(wrapperSearchBar.vm.$router.push).toHaveBeenCalledWith({ path: `/entreprise/mock-storedSirenSiegeSiret` })
+  })
+
+  // TODO
+  test('Method requestSirenSearch set response at notFound (if requestSirenSearch was not successful)')
+
+  test('Method requestSiretSearch set siret as fullText then push router to fullText', () => {
+    wrapperSearchBar.vm.requestSiretSearch()
+    expect(storeMocks.mutations.setSiret).toHaveBeenCalledWith(storeMocks.state, 'mock-storedFullText')
+    expect(wrapperSearchBar.vm.$router.push).toHaveBeenCalledWith({ path: `/entreprise/mock-storedFullText` })
+  })
+
+  test('Method requestFullTextSearch search suggestion if it is set', () => {
+    wrapperSearchBar.vm.currentSuggestion = jest.fn().mockImplementation(() => { return 'mock-suggest' })
+    wrapperSearchBar.vm.requestFullTextSearch()
+    expect(wrapperSearchBar.vm.currentSuggestion).toHaveBeenCalled()
+    expect(storeMocks.mutations.setFullText).toHaveBeenCalledWith(storeMocks.state, 'mock-suggest')
+  })
+
+  test('Method requestFullTextSearch search fullText if suggestion not set', () => {
+    wrapperSearchBar.vm.currentSuggestion = jest.fn().mockImplementation(() => { return null })
+    wrapperSearchBar.vm.requestFullTextSearch()
+    expect(storeMocks.mutations.setFullText).toHaveBeenCalledWith(storeMocks.state, 'mock-storedFullText')
+  })
+
+  test('Method requestFullTextSearch request a search', () => {
+    wrapperSearchBar.vm.requestFullTextSearch()
+    expect(storeMocks.actions.requestSearch).toHaveBeenCalled()
+  })
+
+  test('Method requestFullTextSearch sets suggestCount at -1', () => {
+    wrapperSearchBar.vm.requestFullTextSearch()
+    expect(wrapperSearchBar.vm.suggestCount).toBe(-1)
+  })
+
+  test('Method requestSearch remove separators and requestSiretSearch if fullText is siret', () => {
+    wrapperSearchBar.vm.removeSeparators = jest.fn()
+    wrapperSearchBar.vm.requestSiretSearch = jest.fn()
+    wrapperSearchBar.vm.isSiret = jest.fn().mockReturnValue(true)
+    wrapperSearchBar.vm.isSiren = jest.fn().mockReturnValue(false)
+    wrapperSearchBar.vm.requestSearch()
+    expect(wrapperSearchBar.vm.removeSeparators).toHaveBeenCalledWith('mock-storedFullText')
+    expect(wrapperSearchBar.vm.requestSiretSearch).toHaveBeenCalled()
+  })
+
+  test('Method requestSearch remove separators if fullText is siren', () => {
+    wrapperSearchBar.vm.removeSeparators = jest.fn()
+    wrapperSearchBar.vm.requestSirenSearch = jest.fn()
+    wrapperSearchBar.vm.isSiret = jest.fn().mockReturnValue(false)
+    wrapperSearchBar.vm.isSiren = jest.fn().mockReturnValue(true)
+    wrapperSearchBar.vm.requestSearch()
+    expect(wrapperSearchBar.vm.removeSeparators).toHaveBeenCalledWith('mock-storedFullText')
+    expect(wrapperSearchBar.vm.requestSirenSearch).toHaveBeenCalled()
+  })
+
+  test('Method requestSearch launch requestFullTextSearch if fullText not siret nor siren', () => {
+    wrapperSearchBar.vm.requestFullTextSearch = jest.fn()
+    wrapperSearchBar.vm.isSiret = jest.fn().mockReturnValue(false)
+    wrapperSearchBar.vm.isSiren = jest.fn().mockReturnValue(false)
+    wrapperSearchBar.vm.requestSearch()
+    expect(wrapperSearchBar.vm.requestFullTextSearch).toHaveBeenCalled()
   })
 })

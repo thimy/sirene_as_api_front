@@ -34,7 +34,7 @@ export default {
   methods: {
     selectPage (pageNum) {
       if (this.$store.state.route.query.fullText) {
-        this.$store.state.search.pageNumber = pageNum
+        this.$store.commit('setPage', pageNum)
         this.$store.dispatch('requestSearch')
       } else {
         this.$store.dispatch('goToClearedHomePage')

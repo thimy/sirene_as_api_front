@@ -83,7 +83,7 @@ export default {
           const siegeSiret = this.$store.getters.storedSirenSiege.siret
           this.$router.push({ path: `/entreprise/${siegeSiret}` })
         })
-        .catch((notFound) => {
+        .catch(notFound => {
           this.$store.dispatch('setResponse', notFound)
         })
     }
