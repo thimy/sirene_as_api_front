@@ -22,10 +22,10 @@ const getters = {
     return null
   },
   singlePageResultEtablissement: state => {
-    if (!state.singlePageResult) {
-      return null
+    if (state.singlePageResult) {
+      return state.singlePageResult.etablissement
     }
-    return state.singlePageResult.etablissement
+    return null
   },
   numberResults: state => {
     if (state.storedResults && state.storedStatus != 404) {

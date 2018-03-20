@@ -1,4 +1,4 @@
-import { createLocalVue, shallow } from '@vue/test-utils'
+import { createLocalVue, shallow, mount } from '@vue/test-utils'
 import Vuex from 'vuex'
 import SearchBar from '@/components/search/SearchBar'
 import { __createMocks as createStoreMocks } from '@/store/index.js'
@@ -204,5 +204,18 @@ describe('SearchBar.vue', () => {
     wrapperSearchBar.vm.isSiren = jest.fn().mockReturnValue(false)
     wrapperSearchBar.vm.requestSearch()
     expect(wrapperSearchBar.vm.requestFullTextSearch).toHaveBeenCalled()
+  })
+})
+
+describe('SearchBar.vue snapshot', () => {
+  const storeMocks = createStoreMocks()
+
+  const wrapperSearchBar = mount(SearchBar, {
+    localVue,
+    store: storeMocks.store
+  })
+
+  test('Snapshot test', () => {
+    expect(wrapperSearchBar.vm.$el).toMatchSnapshot()
   })
 })

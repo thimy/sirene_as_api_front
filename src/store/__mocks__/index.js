@@ -38,8 +38,7 @@ export const mutations = {
   setStatus: jest.fn(),
   setStatusSiren: jest.fn(),
   setStatusSiret: jest.fn(),
-  setStoredSuggestions: jest.fn(),
-  setSuggestActive: jest.fn()
+  setStoredSuggestions: jest.fn()
 }
 
 export const actions = {

@@ -4,10 +4,10 @@ const state = {
 
 const getters = {
   storedSirenSiege: state => {
-    if (!state.sirenResults || !state.sirenResults.siege_social) {
-      return null
+    if (state.sirenResults && state.sirenResults.siege_social) {
+      return state.sirenResults.siege_social[0]
     }
-    return state.sirenResults.siege_social[0]
+    return null
   },
   storedSirenTotalResults: state => {
     return state.sirenResults && state.sirenResults.total_results

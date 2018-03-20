@@ -22,9 +22,6 @@ const mutations = {
   },
   setStoredSuggestions (state, suggestions) {
     state.storedSuggestions = suggestions
-  },
-  setSuggestActive (state, suggestion) {
-    state.querySuggestions = suggestion
   }
 }
 const actions = {
