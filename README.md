@@ -2,6 +2,8 @@
 
 # SIRENE_as_api_front
 
+Ce site est disponible en ligne : [Entreprise.data.gouv.fr](https://entreprise.data.gouv.fr)
+
 Dans le cadre du SPD, (Service Public de la Donnée), certains jeux de données
 dont le fichier SIRENE sont devenus publics.
 
@@ -14,7 +16,6 @@ Le projet se découpe en trois sous-projets :
     mis à disposition par l'INSEE : [sirene_as_api](https://github.com/sgmap/sirene_as_api)
   - Un script capable de déployer l'API automatiquement : [sirene_as_api_ansible](https://github.com/sgmap/sirene_as_api_ansible)
   - Une interface web de recherche exploitant l'API en Vue.js : [sirene_as_api_front](https://github.com/sgmap/sirene_as_api_front)
-
 
 ## Lancer le serveur front
 
@@ -30,10 +31,6 @@ npm run dev
 # Build pour la production
 npm run build
 
-# Lancer les tests unitaires
-npm run unit
-
-# Lancer tous les tests
 npm test
 ```
 ## Exécution en local
@@ -51,4 +48,4 @@ rake sunspot:solr:start
 ```
 ## Licence
 
-MIT
+Ce projet est sous [license MIT](https://fr.wikipedia.org/wiki/Licence_MIT)
