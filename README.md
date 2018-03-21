@@ -1,4 +1,5 @@
-[![Maintainability](https://api.codeclimate.com/v1/badges/19e7d5ccc05ae6ad3327/maintainability)](https://codeclimate.com/github/Samuelfaure/sirene_as_api_front/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/155b98b38add2c148346/maintainability)](https://codeclimate.com/github/betagouv/sirene_as_api_front/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/155b98b38add2c148346/test_coverage)](https://codeclimate.com/github/betagouv/sirene_as_api_front/test_coverage)
+
 # SIRENE_as_api_front
 
 Dans le cadre du SPD, (Service Public de la Donnée), certains jeux de données
