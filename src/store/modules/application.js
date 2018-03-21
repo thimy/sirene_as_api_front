@@ -21,7 +21,7 @@ const mutations = {
   setError500(state, value) {
     state.error500 = value
   },
-  setnoResultFound(state, value) {
+  setNoResultFound(state, value) {
     state.noResultFound = value
   }
 }
@@ -29,9 +29,9 @@ const mutations = {
 const actions = {
   resetApplicationState() {
     store.dispatch('hideWelcomeText')
-    store.dispatch('hideSuggestions')
+    store.commit('setStoredSuggestions', '')
     store.commit('setError500', false)
-    store.commit('setnoResultFound', false)
+    store.commit('setNoResultFound', false)
   }
 }
 

@@ -62,11 +62,6 @@ export default {
       results: null
     }
   },
-  methods: {
-    clearButton () {
-      this.$store.commit('clearResults')
-    }
-  },
   computed: {
     isSearchNotEmpty: function () {
       return this.$store.state.storedFullText !== ''

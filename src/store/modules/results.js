@@ -22,10 +22,10 @@ const getters = {
     return null
   },
   singlePageResultEtablissement: state => {
-    if (!state.singlePageResult) {
-      return null
+    if (state.singlePageResult) {
+      return state.singlePageResult.etablissement
     }
-    return state.singlePageResult.etablissement
+    return null
   },
   numberResults: state => {
     if (state.storedResults && state.storedStatus != 404) {
@@ -37,14 +37,6 @@ const getters = {
   totalPageNumber: state => {
     if (state.storedResults) {
       return state.storedResults.total_pages
-    }
-  },
-  infoMessagePostalCode: state => {
-    const postalCodeLength = String(store.state.filters.filterPostalCode).length
-    if (postalCodeLength < 5 && postalCodeLength > 0) {
-      return 'En attente du code postal...'
-    } else {
-      return ''
     }
   },
   onlyOneResult: state => {
@@ -94,7 +86,7 @@ const actions = {
       store.commit('setError500', true)
     }
     if (response.status === 404) {
-      store.commit('setnoResultFound', true)
+      store.commit('setNoResultFound', true)
     }
   }
 }

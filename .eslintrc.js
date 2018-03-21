@@ -10,7 +10,8 @@ module.exports = {
     browser: true,
     node: true,
     es6: true,
-    amd: true
+    amd: true,
+    jest: true
   },
   // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
   extends: ["eslint:recommended", "plugin:vue/recommended"],

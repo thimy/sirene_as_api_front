@@ -19,14 +19,14 @@
       </li>
       <!-- Filling with hidden divs so search bar will always be same size -->
       <!-- eslint-disable-next-line -->
-      <li class="suggestion__box hidden" v-for="index in suggestionNumberToMax"></li>
+      <li class="hidden suggestion__box" v-for="index in suggestionNumberToMax"></li>
     </ul>
   </div>
 </template>
 
 <script>
 import Filters from '@/components/mixins/filters.js'
-import Suggestions from '@/components/mixins/suggestions.js'
+import SuggestionsHelpers from '@/components/mixins/suggestionsHelpers.js'
 import RegExps from '@/components/mixins/regExps.js'
 
 export default {
@@ -83,12 +83,12 @@ export default {
           const siegeSiret = this.$store.getters.storedSirenSiege.siret
           this.$router.push({ path: `/entreprise/${siegeSiret}` })
         })
-        .catch((notFound) => {
+        .catch(notFound => {
           this.$store.dispatch('setResponse', notFound)
         })
     }
   },
-  mixins: [Filters, Suggestions, RegExps]
+  mixins: [Filters, SuggestionsHelpers, RegExps]
 }
 </script>
 

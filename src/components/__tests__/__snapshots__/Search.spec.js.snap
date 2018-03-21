@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search.vue snapshot It match the snapshot when there arent results 1`] = `
+<div>
+  <div
+    class="hero"
+  >
+    <div
+      class="notification full-width"
+    >
+      
+          Ce site est un travail en cours, actuellement en beta. Vous pouvez le consulter librement.
+        
+    </div>
+     
+    <div
+      class="hero__container container hero__compact"
+    >
+      <!---->
+       
+      <div
+        class="form__group"
+      >
+        <input
+          name="search"
+          placeholder="Nom, SIREN, SIRET, adresse..."
+          type="text"
+        />
+         
+        <button
+          class="overlay-button"
+        >
+          <svg
+            class="icon icon-search"
+          >
+            <use
+              xlink:href="#icon-search"
+            />
+          </svg>
+        </button>
+         
+        <ul
+          style="display: none;"
+        >
+           
+          <li
+            class="hidden suggestion__box"
+          />
+          <li
+            class="hidden suggestion__box"
+          />
+          <li
+            class="hidden suggestion__box"
+          />
+          <li
+            class="hidden suggestion__box"
+          />
+          <li
+            class="hidden suggestion__box"
+          />
+        </ul>
+      </div>
+       
+      <!---->
+    </div>
+  </div>
+   
+  <!---->
+</div>
+`;

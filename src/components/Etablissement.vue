@@ -45,33 +45,6 @@ export default {
     result () {
       return this.$store.getters.singlePageResultEtablissement
     },
-    tvaIntracommunautaire () {
-      const tvaKey = (12 + 3 * (this.result.siren % 97)) % 97
-      const tvaNumber = `${tvaKey}${this.result.siren}`
-      return `FR${tvaNumber}`
-    },
-    // Display nom only if present. Prenom is not required. Concatenate the two if presents.
-    fullOwnerName () {
-      const nomOwner = this.result.nom
-      const prenomOwner = this.result.prenom
-      if (!nomOwner) {
-        return null
-      }
-      if (!prenomOwner) {
-        return nomOwner
-      } else {
-        return `${nomOwner} ${prenomOwner}`
-      }
-    },
-    formattedDate () {
-      if (!this.result.date_creation) {
-        return null
-      }
-      const year = this.result.date_creation.substring(0, 4)
-      const month = this.result.date_creation.substring(4, 6)
-      const day = this.result.date_creation.substring(6, 8)
-      return `${day}/${month}/${year}`
-    },
     isEtablissementLoading () {
       return this.$store.getters.isEtablissementLoading
     },
@@ -83,7 +56,7 @@ export default {
     }
   },
   beforeCreate () {
-    this.$store.dispatch('hideSuggestions')
+    this.$store.commit('setStoredSuggestions', '')
     this.$store.dispatch('executeSearchEtablissement', this.$route.params.searchId)
   },
   mixins: [Filters],

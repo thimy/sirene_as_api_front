@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResultsDidYouMean.vue Snapshot test Snapshot test 1`] = `
+<div>
+  <h4>
+     Essayez avec cette orthographe :
+    
+    <span
+      class="did-you-mean"
+    >
+      mock-spellcheck
+    </span>
+  </h4>
+</div>
+`;

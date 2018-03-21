@@ -17,12 +17,9 @@ const actions = {
   },
   goToClearedHomePage () {
     router.push({ path: `/` })
-    store.dispatch('hideSuggestions')
+    store.commit('setStoredSuggestions', '')
     store.commit('setFullText', '')
     store.commit('changeWelcomeTextVisibility', true)
-  },
-  showSearchCategories () {
-    return this.$route.path === '/search' && store.state.search.storedFullText !== ''
   }
 }
 

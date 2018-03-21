@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Results.vue snapshot testing It match the snapshot 1`] = `
+<nav
+  class="nav"
+>
+  <div
+    class="nav__container"
+  >
+    <a
+      class="nav__link"
+    >
+      <img
+        alt="entreprise.data.gouv.fr"
+        class="nav__logo"
+        src="../assets/img/entreprise.svg"
+      />
+    </a>
+  </div>
+</nav>
+`;
