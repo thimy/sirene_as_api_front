@@ -68,7 +68,8 @@ export default {
       if (currentSuggestion) { // This search the current suggestion if selected
         this.$store.commit('setFullText', currentSuggestion)
       } else {
-        this.$store.commit('setFullText', this.fullText)
+        const fullTextNoDiacritics = this.removeDiacritics(this.fullText)
+        this.$store.commit('setFullText', fullTextNoDiacritics)
       }
       this.$store.dispatch('requestSearch')
       this.suggestCount = -1

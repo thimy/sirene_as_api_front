@@ -117,4 +117,31 @@ describe('regExps.js', () => {
     const processedValidWithSeparator = validWithSeparators.map(input => RegExps.methods.removeSeparators(input))
     expect(processedValidWithSeparator).toEqual(validWithoutSeparators)
   })
+
+  const fullTextWithDiacritics = [
+    'établissement',
+    'rançon',
+    'Monétisation',
+    'énèrgumene',
+    'Start-up',
+    'ÉRIC ZÄTIER',
+    'Gérard SPROÜT',
+    'Ôh My Güt'
+  ]
+
+  const fullTextExpected = [
+    'etablissement',
+    'rancon',
+    'Monetisation',
+    'energumene',
+    'Start-up',
+    'ERIC ZATIER',
+    'Gerard SPROUT',
+    'Oh My Gut'
+  ]
+
+  test('removeDiacritics correctly remove diacritics from fullText', () => {
+    const fullTextWithoutDiacritics = fullTextWithDiacritics.map(input => RegExps.methods.removeDiacritics(input))
+    expect(fullTextWithoutDiacritics).toEqual(fullTextExpected)
+  })
 })
