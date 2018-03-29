@@ -39,7 +39,8 @@ jest.mock('@/router/index.js', () => ({
 describe('search.js getters', () => {
   // This state is in the tested module and therefore is separated from outside module mocks
   const state = {
-    baseAdress: 'http://mock-domain.com/'
+    baseAdress: 'http://mock-domain.com/',
+    pageNumber: 'mock-pageNumber-'
   }
 
   test('The adress getter gets the right adress', () => {
@@ -51,7 +52,7 @@ describe('search.js getters', () => {
   })
 
   test('The page getter gets the right page string', () => {
-    expect(Search.getters.pageNumberToGet()).toBe('?page=mock-pageNumber-')
+    expect(Search.getters.pageNumberToGet(state)).toBe('?page=mock-pageNumber-')
   })
 
   test('The options getter gets the right options', () => {

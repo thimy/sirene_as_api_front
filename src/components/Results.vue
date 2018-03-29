@@ -3,10 +3,6 @@
     <loader v-if="resultsAreLoading"></loader>
     <server-error v-else-if="serverError"></server-error>
     <template v-else-if="isSearchNotEmpty">
-      <div class="notification" v-if="informationMessage">
-        {{informationMessage}}
-        <button class="close" aria-label="Fermer"><svg class="icon icon-cross"><use xlink:href="#icon-cross"></use></svg></button>
-      </div>
       <h3>{{resultsNumberSentence}}</h3>
       <did-you-mean></did-you-mean>
       <ul>
