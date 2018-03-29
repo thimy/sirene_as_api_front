@@ -122,7 +122,7 @@ describe('regExps.js', () => {
     'établissement',
     'rançon',
     'Monétisation',
-    'énèrgumene',
+    'énergumène',
     'Start-up',
     'ÉRIC ZÄTIER',
     'Gérard SPROÜT',

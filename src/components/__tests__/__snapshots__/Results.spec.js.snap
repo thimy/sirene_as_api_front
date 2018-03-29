@@ -4,8 +4,6 @@ exports[`Results.vue snapshot testing It match the snapshot 1`] = `
 <div
   class="container"
 >
-  <!---->
-   
   <h3>
     1 résultats pour "undefined"
   </h3>
