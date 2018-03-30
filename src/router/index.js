@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import Results from '@/components/Results'
 import Etablissement from '@/components/Etablissement'
 import LegalNotes from '@/components/LegalNotes'
+import ApiDoc from '@/components/ApiDoc'
 
 Vue.use(Router)
 
@@ -37,6 +38,11 @@ export default new Router({
       path: '/mentions_legales',
       name: 'LegalNotes',
       component: LegalNotes
+    },
+    {
+      path: '/api_doc',
+      name: 'ApiDoc',
+      component: ApiDoc
     }
   ]
 })
