@@ -21,7 +21,7 @@ const getters = {
     return store.state.route.query.fullText + store.getters.optionsToGet
   },
   pageNumberToGet: state => {
-    return '?page=' + store.state.route.query.page
+    return '?page=' + state.pageNumber
   },
   optionsToGet: state => {
     return store.getters.pageNumberToGet
@@ -67,10 +67,10 @@ const actions = {
       .then(response => {
         store.dispatch('setResponse', response)
       })
-      .catch(notFound => {
-        if (store.state.pageNumber > 1) {
-          store.commit('setPage', 1)
-          store.dispatch('executeSearchResultsCallAPI')
+      .catch(async notFound => {
+        if (state.pageNumber > 1) {
+          await store.commit('setPage', 1)
+          store.dispatch('requestSearch')
         } else {
           store.dispatch('setResponse', notFound)
         }
