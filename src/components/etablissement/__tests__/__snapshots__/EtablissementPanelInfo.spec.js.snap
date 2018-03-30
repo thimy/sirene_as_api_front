@@ -73,6 +73,21 @@ exports[`EtablissementPanelInfo.vue snapshot It match the snapshot 1`] = `
       <div
         class="company__item-key"
       >
+        Nature juridique
+      </div>
+      <div
+        class="company__item-value"
+      >
+         
+      </div>
+    </div>
+     
+    <div
+      class="company__item"
+    >
+      <div
+        class="company__item-key"
+      >
         N° TVA Intracommunautaire
       </div>
       <div

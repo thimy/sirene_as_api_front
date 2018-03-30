@@ -185,10 +185,8 @@ exports[`App.vue It match the snapshot 1`] = `
         </li>
          
         <li>
-          <a
-            href="https://github.com/sgmap/sirene_as_api/blob/master/LICENSE"
-          >
-            Conditions générales d'utilisation
+          <a>
+            Mentions légales
           </a>
         </li>
          
@@ -200,10 +198,6 @@ exports[`App.vue It match the snapshot 1`] = `
           </a>
         </li>
       </ul>
-       
-      <ul
-        class="footer__links"
-      />
     </div>
   </footer>
 </div>

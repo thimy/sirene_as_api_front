@@ -168,6 +168,12 @@ describe('SearchBar.vue', () => {
     expect(storeMocks.mutations.setFullText).toHaveBeenCalledWith(storeMocks.state, 'mock-storedFullText')
   })
 
+  test('Method requestFullTextSearch remove diacritics', () => {
+    wrapperSearchBar.vm.removeDiacritics = jest.fn().mockImplementation(() => { return 'removed-diacritics' })
+    wrapperSearchBar.vm.requestFullTextSearch()
+    expect(storeMocks.mutations.setFullText).toHaveBeenCalledWith(storeMocks.state, 'removed-diacritics')
+  })
+
   test('Method requestFullTextSearch request a search', () => {
     wrapperSearchBar.vm.requestFullTextSearch()
     expect(storeMocks.actions.requestSearch).toHaveBeenCalled()
