@@ -7,7 +7,7 @@
           <router-link class="button" :to="{ name: 'ApiDoc'}">Documentation de l'API</router-link>
         </div>
         <div class="column api__image">
-          <img src="../../assets/img/man-at-desktop.svg" alt="" width="200" />
+          <img src="../../assets/img/man-at-desktop.svg" alt="man-at-desktop" width="200" />
         </div>
         <div class="column">
           <p>Téléchargez les données de référence Sirene sur le site data.gouv.fr</p>
