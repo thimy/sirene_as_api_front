@@ -16,7 +16,7 @@
             Ce site web et son API sont développés en open-source : vous pouvez <a href="https://github.com/betagouv/sirene_as_api">télécharger le code sur GitHub</a>.
           </p>
           <h2>Puis-je interroger directement l'API Sirene ?</h2>
-          <p>Bien sûr ! Pas la peine d'être un développeur. Cette documentation est faite pour vous.</p>
+          <p>Bien sûr ! Pas besoin d'être développeur. Cette documentation est faite pour vous.</p>
         </div>
         <div class="column__icon">
           <img src="../assets/img/icons/three-gears.svg" alt="gears">
@@ -39,6 +39,11 @@
           <p>
             Vous devez faire pour cela une requête Web. L'adresse de notre API est : <a href="https://sirene.entreprise.api.gouv.fr/">https://sirene.entreprise.api.gouv.fr/</a><br>
             Attention, vous devez rajouter votre requête sur l'adresse !
+          </p>
+          <h3>Format de réponse</h3>
+          <p>
+            L'API vous renverra les informations demandées au format JSON (code 200).<br>
+            Vous recevrez un code 404 si aucun établissement n'est trouvé, ou un 500 si notre serveur n'est pas fonctionnel (par exemple pendant une maintenance).
           </p>
         </div>
       </div>
@@ -123,8 +128,12 @@
                 <td>`yes` pour Oui, `no` pour Non</td>
               </tr>
             </tbody>
-          </table>    
-        </div>    
+          </table>
+          <p>
+            Ces options sont disponibles pour le moment uniquement sur la recherche Texte.<br>
+            Notre API est en constante évolution, n'hésitez pas à nous écrire pour demander davantage d'options correspondant à vos besoins !
+          </p>
+        </div>
       </div>
     </section>
     <section class="section-white">
@@ -132,8 +141,40 @@
         <div class="column">
           <h2>Un cas d'utilisation avancée</h2>
           <p>
-            J'ouvre un commerce (Boulangerie) dans la région de Toulon. Je souhaite vérifier où sont situés les autres commerces.
+            J'ouvre un commerce (Boulangerie) dans la région de Toulon. Je souhaite vérifier où sont situés les autres commerces.<br>
+            Je constitue ma requête de la manière suivante :
           </p>
+          <ul class="spaced-list">
+            <li>
+              D'abord, l'adresse de base pour la recherche full-text :<br>
+              <a href="https://sirene.entreprise.api.gouv.fr/v1/full_text">https://sirene.entreprise.api.gouv.fr/v1/full_text</a>
+            </li>
+            <li>Je ne me soucie pas du nom, donc je met un astérisque :<br>
+            <a href="https://sirene.entreprise.api.gouv.fr/v1/full_text/*">https://sirene.entreprise.api.gouv.fr/v1/full_text/*</a><br>
+              Ma requête me renvoie pour le moment tous les établissements.
+            </li>
+            <li>
+              Je rajoute un <strong>?</strong> pour passer aux paramètres, puis les paramètres <code>activité_principale</code> et <code>code_postal</code>, séparés par un <strong>&</strong> :<br>
+              <a href="https://sirene.entreprise.api.gouv.fr/v1/full_text/*?activite_principale=CODE_ACTIVITE&code_postal=MON_CODE_POSTAL">https://sirene.entreprise.api.gouv.fr/v1/full_text/*?activite_principale=CODE_ACTIVITE&code_postal=MON_CODE_POSTAL</a>
+            </li>
+            <li>
+              Enfin, je renseigne le code activité pour les boulangeries. Je peux trouver cette information <router-link :to="{ name: 'CodesNAF'}">sur cette page</router-link>.<br>
+              L'INSEE propose également un <a href="https://www.insee.fr/fr/information/2406147">moteur de recherche</a> avec des informations supplémentaires.<br>
+            </li>
+            <li>    
+              Le code pour les boulangeries est le 1071C, et le code postal de Toulon est le 83000. Ma requête sera donc :
+              <api-doc-input :request=exempleBoulangerie1></api-doc-input>
+              Il y a environ 60 établissements de boulangerie à Toulon.
+            </li>
+            <li>
+              Comme précisé plus haut, les résultats sont paginés. Je récupère par défaut les 10 premiers, mais je peux changer cela avec les paramètres
+              <code>page</code> et <code>per_page</code> :<br>
+              <api-doc-input :request=exempleBoulangerie2></api-doc-input>
+            </li>
+          </ul>
+        </div>
+        <div class="column__icon">
+          <img src="../assets/img/icons/croissant.svg" alt="croissant">
         </div>
       </div>
     </section>
@@ -145,19 +186,40 @@
         <div class="column__right">
           <h2>Découvrez les autres APIs et jeux de données Data.gouv</h2>
           <p>
-            <a href="https://data.gouv.fr">Data.gouv.fr</a> met a votre disposition de nombreux jeux de données &lt;&lt;Open Data&gt;&gt;
+            <a href="https://data.gouv.fr">Data.gouv.fr</a> met a votre disposition de nombreux jeux de données "Open Data".<br>
+            Quelques exemples :
+          </p>
+          <ul>
+            <li>
+              <a href="https://www.data.gouv.fr/fr/datasets/resultats-de-lintegralite-des-elections-depuis-2001/">Les résultats électoraux</a>
+            </li>
+            <li>
+              <a href="https://www.data.gouv.fr/fr/datasets/fichier-des-prenoms-edition-2016/">Le fichier des prénoms</a>
+            </li>
+            <li>
+              <a href="https://www.data.gouv.fr/fr/datasets/secteurs-de-localisation-de-la-loutre-dans-le-jura/">Les secteurs de localisation de la loutre dans le Jura</a>
+            </li>
+          </ul>
+          <p>
+            Vous pouvez également consulter des réutilisations utiles de ces jeux de données.
           </p>
           <h3>La mission Etalab</h3>
+          <p>
+            Etalab coordonne la politique d’ouverture et de partage des données publiques (“open data”). <a href="https://www.etalab.gouv.fr/en/qui-sommes-nous">Plus d'informations.</a>
+          </p>
         </div>
       </div>
     </section>
     <section class="section-white">
       <div class="container">
-        <div class="column__full">
+        <div class="column__full center">
           <h2>Découvrez l'API Entreprise, toutes les informations sur les sociétés.</h2>
+          <div class="column__img">
+            <img src="../assets/img/city.svg" alt="city">
+          </div>
           <h3>Vous justifiez d'une mission de service public ? L'API Entreprise est pour vous.</h3>
           <p>
-            Dans le respect du principe du "Dites le nous une seule fois", la DINSIC a mis en place l'API Entreprise,
+            Dans le respect du principe "Dites le nous une seule fois", la DINSIC a mis en place l'API Entreprise,
             l'API qui aggrège les informations sur les entreprises.<br>
             Obtenez les Greffes, Certificats, Liasses fiscales, Attestations sociales, et bien plus encore...
           </p>
@@ -186,6 +248,8 @@ export default {
       exempleFullText2: baseAdress + "full_text/montpellier?page=2&per_page=20",
       exempleSiret2: baseAdress + "siret/21310555400017",
       exempleSiren: baseAdress + "siren/213105554",
+      exempleBoulangerie1: baseAdress + "full_text/*?activite_principale=1071C&code_postal=83000",
+      exempleBoulangerie2: baseAdress + "full_text/*?activite_principale=1071C&code_postal=83000&per_page=70"
     }
   },
   created() {
@@ -222,12 +286,21 @@ p {
   min-width: 100%;
 }
 
+.center {
+  align-items: center;
+  text-align: center;
+}
+
 .column__right {
   min-width: 40em;
   display: flex;
   flex-direction: column;
   text-align: right;
   align-self: flex-end;
+}
+
+.column__right > ul {
+  direction:rtl;
 }
 
 .column__icon {
@@ -237,11 +310,22 @@ p {
   justify-content: center;
 }
 
+.column__img {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .apidoc__input {
   margin: 1em 0 1em 0;
 }
 
-h1, h2, h3 {
+.spaced-list > li {
+  margin: 1em 0 1em 0;
+}
+
+h3 {
   margin-bottom: 0;
 }
 

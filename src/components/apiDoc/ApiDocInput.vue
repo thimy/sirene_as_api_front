@@ -1,6 +1,6 @@
 <template>
   <div class="apidoc__input">
-    <input :value=request v-on:keyup.enter=activateLink>
+    <input v-model=request v-on:keyup.enter=activateLink>
     <a ref="goToButton" class="button" v-bind:href="request">GET</a>
   </div>
 </template>
@@ -10,6 +10,7 @@ export default {
   name: 'ApiDocInput',
   props: ['request'],
   methods: {
+    // Pressing enter will activate the click
     activateLink () { this.$refs.goToButton.click() }
   }
 }

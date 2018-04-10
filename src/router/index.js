@@ -5,6 +5,7 @@ import Results from '@/components/Results'
 import Etablissement from '@/components/Etablissement'
 import LegalNotes from '@/components/LegalNotes'
 import ApiDoc from '@/components/ApiDoc'
+import CodesNAF from '@/components/CodesNAF'
 
 Vue.use(Router)
 
@@ -43,6 +44,11 @@ export default new Router({
       path: '/api_doc',
       name: 'ApiDoc',
       component: ApiDoc
-    }
+    },
+    {
+      path: '/codes_naf',
+      name: 'CodesNAF',
+      component: CodesNAF
+    },
   ]
 })
