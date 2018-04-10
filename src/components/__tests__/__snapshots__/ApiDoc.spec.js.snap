@@ -1,0 +1,744 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
+<div>
+  <section
+    class="section-white"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="column"
+      >
+        <h1>
+          Documentation de l'API Sirene
+        </h1>
+         
+        <h2>
+          Qu'est-ce que l'API Sirene ?
+        </h2>
+         
+        <p>
+          
+        Dans le cadre du Service Public de la Donnée, de nombreux jeux de données s'ouvrent au grand public.
+          <br />
+          
+        La base de données SIRENE sur les entreprises et associations est donc maintenant 
+          <strong>
+            Open data
+          </strong>
+          .
+        Vous pouvez consulter la base de donnée librement et gratuitement !
+      
+        </p>
+         
+        <h2>
+          Comment fonctionne Entreprise.data.gouv.fr ?
+        </h2>
+         
+        <p>
+          
+        Ce site web interroge l'API Sirene développée par 
+          <a
+            href="https://www.data.gouv.fr/fr/organizations/etalab/"
+          >
+            Étalab
+          </a>
+          .
+        Ce site web et son API sont open-source : vous pouvez 
+          <a
+            href="https://github.com/betagouv/sirene_as_api"
+          >
+            télécharger le code sur GitHub
+          </a>
+          .
+      
+        </p>
+      </div>
+       
+      <div
+        class="column__icon"
+      >
+        <img
+          alt=""
+          src="@/assets/img/icons/three-gears.svg"
+        />
+      </div>
+    </div>
+  </section>
+   
+  <section
+    class="section-grey"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="column__icon"
+      >
+        <img
+          alt=""
+          src="@/assets/img/icons/computer-user.svg"
+        />
+      </div>
+       
+      <div
+        class="column__right"
+      >
+        <h2>
+          Maitrisez l'API Sirene.
+        </h2>
+         
+        <h3>
+          Comment interroger l'API ?
+        </h3>
+         
+        <p>
+          
+        Vous devez faire pour cela une requête GET. L'adresse de notre API est : 
+          <a
+            href="https://sirene.entreprise.api.gouv.fr/"
+          >
+            https://sirene.entreprise.api.gouv.fr/
+          </a>
+          <br />
+          
+        Attention, vous devez rajouter votre requête sur l'adresse.
+      
+        </p>
+         
+        <h3>
+          Format de réponse
+        </h3>
+         
+        <p>
+          
+        L'API vous renverra les informations demandées au format JSON (code 200).
+          <br />
+          
+        Vous recevrez un code 404 si aucun établissement n'est trouvé, ou un 500 si notre serveur n'est pas fonctionnel (par exemple pendant une maintenance).
+      
+        </p>
+         
+        <h3>
+          Limite de requêtes
+        </h3>
+         
+        <p>
+          
+        Notre serveur accepte 2000 requêtes / 10 minutes. Au delà, vous risquez un bannissement de votre IP.
+          <br />
+          
+        Pour effectuer davantage de requêtes, vous pouvez installer votre propre copie de l'API.
+        Un 
+          <a
+            href="https://github.com/betagouv/sirene_as_api_ansible"
+          >
+            script ansible
+          </a>
+           est à votre disposition pour cela.
+      
+        </p>
+      </div>
+    </div>
+  </section>
+   
+  <section
+    class="section-white"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="column__full"
+      >
+        <h2>
+          Exemple de requête :
+        </h2>
+         
+        <p>
+          
+        L'adresse à taper pour une requête est : 
+          <strong>
+            Adresse + Version + Informations
+          </strong>
+          <br />
+           
+          <strong>
+            Exemple :
+          </strong>
+           Je souhaite accéder aux informations sur la mairie de Montpellier, dont le siret est le 21340172201787. Je me rend sur 
+          <a
+            href="https://sirene.entreprise.api.gouv.fr/v1/siret/21340172201787/"
+          >
+            https://sirene.entreprise.api.gouv.fr/v1/siret/21340172201787
+          </a>
+        </p>
+         
+        <p>
+          Essayez avec n'importe quel siret :
+        </p>
+         
+        <div
+          class="apidoc__input"
+        >
+          <input />
+           
+          <a
+            class="button"
+            href="https://sirene.entreprise.api.gouv.fr/v1/siret/<VOTRE_SIRET>"
+          >
+            GET
+          </a>
+        </div>
+         
+        <h2>
+          Quatre moyens d'interroger l'API.
+        </h2>
+         
+        <h3>
+          Recherche Texte :
+        </h3>
+         
+        <p>
+          
+        La recherche texte permet de trouver un établissement depuis son nom (raison sociale ou nom commercial), son adresse,
+        son enseigne, sa commune, son activité.
+          <br />
+           
+          <strong>
+            Exemple de recherches possible :
+          </strong>
+           "Boulangerie Paris", "Charcuterie Sanzot", "20 avenue de ségur"
+      
+        </p>
+         
+        <p>
+          
+        Les résultats sont paginés : l'API renvoie par défaut les 10 premiers établissements, soit la première page avec 10 résultats par page.
+        Ces valeurs peuvent être changées en précisant dans la requête les paramètres 
+          <em>
+            page
+          </em>
+           et 
+          <em>
+            per_page
+          </em>
+          <br />
+            
+        Vous pouvez demander jusqu'à 100 résultats par page.
+          <br />
+           
+          <strong>
+            Exemple :
+          </strong>
+           je souhaite chercher les établissements de Montpellier, je tape la requête suivante :
+      
+        </p>
+         
+        <div
+          class="apidoc__input"
+        >
+          <input />
+           
+          <a
+            class="button"
+            href="https://sirene.entreprise.api.gouv.fr/v1/full_text/montpellier"
+          >
+            GET
+          </a>
+        </div>
+         
+        <p>
+          J'obtiens les 10 premiers résultats. Je souhaite maintenant les résultats 20 à 40, je tape :
+        </p>
+         
+        <div
+          class="apidoc__input"
+        >
+          <input />
+           
+          <a
+            class="button"
+            href="https://sirene.entreprise.api.gouv.fr/v1/full_text/montpellier?page=2&per_page=20"
+          >
+            GET
+          </a>
+        </div>
+         
+        <h3>
+          Recherche par Siret :
+        </h3>
+         
+        <p>
+          
+        La recherche par Siret permet de trouver un établissement directement depuis son numéro Siret, unique à chaque établissement.
+          <br />
+           
+        Exemple pour l'établissement de la Mairie de Toulouse :
+      
+        </p>
+         
+        <div
+          class="apidoc__input"
+        >
+          <input />
+           
+          <a
+            class="button"
+            href="https://sirene.entreprise.api.gouv.fr/v1/siret/21310555400017"
+          >
+            GET
+          </a>
+        </div>
+         
+        <h3>
+          Recherche par Siren :
+        </h3>
+         
+        <p>
+          
+        La recherche par Siren permet de trouver tous les établissement dérivés d'un Siren.
+          <br />
+          
+        Les informations sur le siège social correspondant à ce Siren, le numéro de TVA Intracommunautaire, ainsi que des informations sur les établissements enfants,
+        tels leur nombre et leur Sirets, seront renvoyées.
+          <br />
+          
+        Exemple, encore une fois pour Toulouse :
+      
+        </p>
+         
+        <div
+          class="apidoc__input"
+        >
+          <input />
+           
+          <a
+            class="button"
+            href="https://sirene.entreprise.api.gouv.fr/v1/siren/213105554"
+          >
+            GET
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+   
+  <section
+    class="section-grey"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="column__right"
+      >
+        <h2>
+          Des recherches textes plus puissantes
+        </h2>
+         
+        <p>
+          
+        De nombreuses options sont exploitables pour trouver exactement ce dont vous avez besoin.
+          <br />
+          
+        Vous pouvez vous réferer au tableau suivant :
+      
+        </p>
+         
+        <table>
+          <thead>
+            <tr>
+              <th>
+                Filtrage désiré
+              </th>
+               
+              <th>
+                Paramètre requête
+              </th>
+               
+              <th>
+                Valeur du paramètre
+              </th>
+            </tr>
+          </thead>
+           
+          <tbody>
+            <tr>
+              <td>
+                Activité principale de l'entreprise
+              </td>
+               
+              <td>
+                <code>
+                  activite_principale
+                </code>
+              </td>
+               
+              <td>
+                Le code \`activité principale\` désiré
+              </td>
+            </tr>
+             
+            <tr>
+              <td>
+                Code Postal
+              </td>
+               
+              <td>
+                <code>
+                  code_postal
+                </code>
+              </td>
+               
+              <td>
+                Le code postal désiré
+              </td>
+            </tr>
+             
+            <tr>
+              <td>
+                Appartenance au champs de l'économie sociale et solidaire
+              </td>
+               
+              <td>
+                <code>
+                  is_ess
+                </code>
+              </td>
+               
+              <td>
+                \`O\` pour Oui, \`N\` pour Non, \`I\` pour Invalide
+              </td>
+            </tr>
+             
+            <tr>
+              <td>
+                Entreprises individuelles
+              </td>
+               
+              <td>
+                <code>
+                  is_entrepreneur_individuel
+                </code>
+              </td>
+               
+              <td>
+                \`yes\` pour Oui, \`no\` pour Non
+              </td>
+            </tr>
+          </tbody>
+        </table>
+         
+        <p>
+          
+        Ces options sont disponibles pour le moment uniquement sur la recherche Texte.
+          <br />
+          
+        Notre API est en constante évolution, n'hésitez pas à nous écrire pour demander davantage d'options correspondant à vos besoins !
+      
+        </p>
+      </div>
+    </div>
+  </section>
+   
+  <section
+    class="section-white"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="column"
+      >
+        <h2>
+          Un cas d'utilisation avancée.
+        </h2>
+         
+        <p>
+          
+        J'ouvre un commerce (Boulangerie) dans la région de Toulon. Je souhaite vérifier où sont situés les autres commerces.
+          <br />
+          
+        Je constitue ma requête de la manière suivante :
+      
+        </p>
+         
+        <ul
+          class="spaced-list"
+        >
+          <li>
+            
+          L'adresse de base pour la recherche Texte :
+            <br />
+             
+            <a
+              href="https://sirene.entreprise.api.gouv.fr/v1/full_text"
+            >
+              https://sirene.entreprise.api.gouv.fr/v1/full_text
+            </a>
+          </li>
+           
+          <li>
+            Je ne me soucie pas du nom, donc je met un astérisque :
+            <br />
+             
+            <a
+              href="https://sirene.entreprise.api.gouv.fr/v1/full_text/*"
+            >
+              https://sirene.entreprise.api.gouv.fr/v1/full_text/*
+            </a>
+            <br />
+            
+          Ma requête me renvoie pour le moment tous les établissements.
+        
+          </li>
+           
+          <li>
+            <p>
+              
+            Je rajoute un 
+              <strong>
+                ?
+              </strong>
+               pour passer aux paramètres, puis les paramètres 
+              <code>
+                activité_principale
+              </code>
+               et 
+              <code>
+                code_postal
+              </code>
+              , séparés par un 
+              <strong>
+                &
+              </strong>
+              .
+          
+            </p>
+             
+            <p>
+              
+            Je renseigne le code activité (code NAF) pour les boulangeries.
+              <br />
+              
+            Je peux trouver cette information 
+              <a>
+                sur cette page
+              </a>
+              .
+              <br />
+                
+            L'INSEE propose également un 
+              <a
+                href="https://www.insee.fr/fr/information/2406147"
+              >
+                moteur de recherche
+              </a>
+               avec des informations supplémentaires.
+              <br />
+              <br />
+            </p>
+             
+            <p>
+              
+            Le code pour les boulangeries est le 1071C, et le code postal de Toulon est le 83000. Ma requête sera donc :
+          
+            </p>
+             
+            <div
+              class="apidoc__input"
+            >
+              <input />
+               
+              <a
+                class="button"
+                href="https://sirene.entreprise.api.gouv.fr/v1/full_text/*?activite_principale=1071C&code_postal=83000"
+              >
+                GET
+              </a>
+            </div>
+             
+            <p>
+              
+            Comme on peut le voir, il y a environ 60 établissements de boulangerie à Toulon.
+          
+            </p>
+          </li>
+           
+          <li>
+            <p>
+              
+            Comme précisé plus haut, les résultats sont paginés. Je récupère par défaut les 10 premiers, mais je peux changer cela avec les paramètres
+            
+              <code>
+                page
+              </code>
+               et 
+              <code>
+                per_page
+              </code>
+               :
+              <br />
+            </p>
+             
+            <div
+              class="apidoc__input"
+            >
+              <input />
+               
+              <a
+                class="button"
+                href="https://sirene.entreprise.api.gouv.fr/v1/full_text/*?activite_principale=1071C&code_postal=83000&per_page=70"
+              >
+                GET
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+       
+      <div
+        class="column__icon"
+      >
+        <img
+          alt="illustration boulangerie"
+          src="@/assets/img/icons/croissant.svg"
+        />
+      </div>
+    </div>
+  </section>
+   
+  <section
+    class="section-grey"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="column__icon"
+      >
+        <img
+          alt=""
+          src="@/assets/img/icons/statistics-on-a-screen.svg"
+        />
+      </div>
+       
+      <div
+        class="column__right"
+      >
+        <h2>
+          Découvrez les autres APIs et jeux de données Data.gouv .
+        </h2>
+         
+        <p>
+          <a
+            href="https://data.gouv.fr"
+          >
+            Data.gouv.fr
+          </a>
+           met a votre disposition de nombreux jeux de données "Open Data".
+          <br />
+          
+        Quelques exemples :
+      
+        </p>
+         
+        <ul>
+          <li>
+            <a
+              href="https://www.data.gouv.fr/fr/datasets/resultats-de-lintegralite-des-elections-depuis-2001/"
+            >
+              Les résultats électoraux
+            </a>
+          </li>
+           
+          <li>
+            <a
+              href="https://www.data.gouv.fr/fr/datasets/fichier-des-prenoms-edition-2016/"
+            >
+              Le fichier des prénoms
+            </a>
+          </li>
+           
+          <li>
+            <a
+              href="https://www.data.gouv.fr/fr/datasets/secteurs-de-localisation-de-la-loutre-dans-le-jura/"
+            >
+              Les secteurs de localisation de la loutre dans le Jura
+            </a>
+          </li>
+        </ul>
+         
+        <p>
+          
+        Vous pouvez également consulter des réutilisations utiles de ces jeux de données.
+      
+        </p>
+         
+        <h3>
+          La mission Etalab
+        </h3>
+         
+        <p>
+          
+        Etalab coordonne la politique d’ouverture et de partage des données publiques (“open data”). 
+          <a
+            href="https://www.etalab.gouv.fr/en/qui-sommes-nous"
+          >
+            Plus d'informations.
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+   
+  <section
+    class="section-white"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="column__full center"
+      >
+        <h2>
+          Découvrez l'API Entreprise, toutes les informations sur les sociétés.
+        </h2>
+         
+        <div
+          class="column__img"
+        >
+          <img
+            alt=""
+            src="@/assets/img/city.svg"
+          />
+        </div>
+         
+        <h3>
+          Vous justifiez d'une mission de service public ? L'API Entreprise est pour vous.
+        </h3>
+         
+        <p>
+          
+        Dans le respect du principe "Dites le nous une seule fois", la DINSIC a mis en place l'API Entreprise,
+        l'API qui aggrège les informations sur les entreprises.
+          <br />
+          
+        Obtenez les Greffes, Certificats, Liasses fiscales, Attestations sociales, et bien plus encore...
+      
+        </p>
+         
+        <a
+          class="button"
+          href="https://entreprise.api.gouv.fr/website"
+        >
+          Demander un accès
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+`;

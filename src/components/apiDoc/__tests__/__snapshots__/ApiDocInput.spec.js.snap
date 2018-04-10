@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApiDocInput.vue snapshot testing It match the snapshot 1`] = `
+<div
+  class="apidoc__input"
+>
+  <input />
+   
+  <a
+    class="button"
+  >
+    GET
+  </a>
+</div>
+`;

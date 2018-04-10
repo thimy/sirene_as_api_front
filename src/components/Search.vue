@@ -13,11 +13,7 @@
         </div>
       </transition>
       <SearchBar searchName="Recherche par nom"></SearchBar>
-      <router-link v-if="showBackToResultsButton" class="back-to-results" :to="{ path: '/search',
-        query: {
-          fullText: this.$store.state.search.storedFullText,
-          page: this.$store.state.search.pageNumber
-        }}">
+      <router-link v-if="showBackToResultsButton" class="back-to-results" :to="{ path: pathBack, query: queryBack }">
         ← Revenir aux résultats
       </router-link>
     </div>
@@ -47,11 +43,16 @@ export default {
   data () {
     return {
       toggleFilters: true,
-      results: null
+      results: null,
+      pathBack: '/search',
+      queryBack: {
+        fullText: this.$store.getters.storedFullText,
+        page: this.$store.getters.pageNumber
+      }
     }
   },
   computed: {
-    isSearchNotEmpty: function () {
+    isSearchNotEmpty () {
       return this.$store.state.storedFullText !== ''
     },
     showWelcomeText () {

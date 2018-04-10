@@ -50,5 +50,16 @@ export default new Router({
       name: 'CodesNAF',
       component: CodesNAF
     },
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition) {
+      // Scroll to top when arriving on component CodesNAF
+    if (to.name === 'CodesNAF') {
+      return {
+        x: 0,
+        y: 0
+      }
+    } else if (savedPosition) {
+      return savedPosition
+    }
+  }
 })

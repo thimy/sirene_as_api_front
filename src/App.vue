@@ -28,7 +28,7 @@ export default {
   },
   computed: {
     showWelcomeText () {
-      return this.$store.state.welcomeText.isWelcomeTextVisible
+      return this.$store.getters.isWelcomeTextVisible
     }
   }
 }
