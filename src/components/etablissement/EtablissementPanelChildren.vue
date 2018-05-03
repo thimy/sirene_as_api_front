@@ -5,7 +5,7 @@
     </div>
     <div v-if="!isSiegeSocial" class="company__item">Siège social :
       <router-link tag="div" class="company__item-link" :to="{ name: 'Etablissement', params: {searchId: resultSiegeSocial.siret}}">
-        {{ resultSiegeSocial.nom_raison_sociale }}
+        {{ resultSiegeSocial.nom_raison_sociale | removeExtraChars }}
       </router-link>
     </div>
     <div v-if="haveChildrenEtablissements" class="company__item lineup">
@@ -29,6 +29,7 @@
 
 <script>
 import Constants from '@/constants.js'
+import Filters from '@/components/mixins/filters'
 
 export default {
   name: 'EtablissementPanelChildren',
@@ -83,6 +84,7 @@ export default {
       this.maxChildrenEtablissementsToShow = Constants.ETABLISSEMENT_SHOW_MAX_CHILDREN_SIRETS
       this.visibleChildren = false
     }
-  }
+  },
+  mixins: [Filters]
 }
 </script>
