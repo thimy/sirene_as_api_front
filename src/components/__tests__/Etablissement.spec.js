@@ -6,6 +6,7 @@ import Etablissement from '@/components/Etablissement'
 const localVue = createLocalVue()
 localVue.use(Vuex)
 jest.mock('@/store/index.js')
+jest.mock('mapbox-gl', () => jest.fn())
 
 describe('Etablissement.vue', () => {
   let storeMocks
@@ -39,6 +40,23 @@ describe('Etablissement.vue', () => {
 
   test('Computed value isError returns the right getter', () => {
     expect(etablissement.isError).toBe(storeMocks.store.state.application.isError)
+  })
+
+  test('Computed value coordinates returns the coordinates if both longitude and latitude exists', () => {
+    etablissement.result.longitude = -30
+    etablissement.result.latitude = -42
+    wrapperEtablissement.update()
+    expect(etablissement.coordinates).toEqual([-30, -42])
+
+    etablissement.result.longitude = -30
+    etablissement.result.latitude = null
+    wrapperEtablissement.update()
+    expect(etablissement.coordinates).toBeNull()
+
+    etablissement.result.longitude = null
+    etablissement.result.latitude = -42
+    wrapperEtablissement.update()
+    expect(etablissement.coordinates).toBeNull()
   })
 
   test('Before creation, methods, suggestions are reset and executeSearchEtablissement were called', () => {

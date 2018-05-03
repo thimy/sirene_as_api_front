@@ -13,6 +13,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "mapbox-gl": "^0.45.0-beta.1",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.7",
     "sass-resources-loader": "^1.3.3",

@@ -7,6 +7,7 @@ const localVue = createLocalVue()
 localVue.use(Vuex)
 localVue.component('router-link', RouterLinkStub)
 jest.mock('@/store/index.js')
+jest.mock('mapbox-gl', () => jest.fn())
 
 describe('App.vue', () => {
   const storeMocks = createStoreMocks()

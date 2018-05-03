@@ -15,8 +15,11 @@
         <etablissement-panel-contact></etablissement-panel-contact>
         <etablissement-panel-info></etablissement-panel-info>
       </div>
-      <div class="container company-container__extra">
+      <div class="container company-container company-container__extra">
         <etablissement-panel-children></etablissement-panel-children>
+      </div>
+      <div class="container company-container company-container__map">
+        <etablissement-map :positionEtablissement='coordinates'></etablissement-map>
       </div>
     </section>
   </div>
@@ -30,6 +33,7 @@ import NotFound from '@/components/etablissement/EtablissementNotFound'
 import EtablissementPanelContact from '@/components/etablissement/EtablissementPanelContact'
 import EtablissementPanelInfo from '@/components/etablissement/EtablissementPanelInfo'
 import EtablissementPanelChildren from '@/components/etablissement/EtablissementPanelChildren'
+import EtablissementMap from '@/components/etablissement/EtablissementMap'
 
 export default {
   name: 'Etablissement',
@@ -39,7 +43,8 @@ export default {
     'NotFound': NotFound,
     'EtablissementPanelContact': EtablissementPanelContact,
     'EtablissementPanelInfo': EtablissementPanelInfo,
-    'EtablissementPanelChildren': EtablissementPanelChildren
+    'EtablissementPanelChildren': EtablissementPanelChildren,
+    'EtablissementMap': EtablissementMap
   },
   computed: {
     result () {
@@ -53,6 +58,12 @@ export default {
     },
     isError () {
       return this.$store.state.application.error500
+    },
+    coordinates () {
+      if (this.result && this.result.longitude && this.result.latitude) {
+        return [this.result.longitude, this.result.latitude]
+      }
+      return null
     }
   },
   beforeCreate () {
@@ -94,10 +105,15 @@ export default {
   }
 
   .company-container__extra {
-    @extend .company-container;
     padding-top: 0;
     margin-top: 0;
   }
+
+  .company-container__map {
+    padding-top: 0;
+    margin-top: 0;
+  }
+
 
   @media (max-width: $tablet) {
     .company-container {
