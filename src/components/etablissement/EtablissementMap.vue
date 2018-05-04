@@ -41,8 +41,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '/node_modules/mapbox-gl/dist/mapbox-gl.css';
-
   #map {
     padding: 0;
     height: 400px;
