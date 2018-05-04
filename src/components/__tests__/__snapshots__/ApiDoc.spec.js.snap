@@ -336,7 +336,7 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
         class="column__right"
       >
         <h2>
-          Des recherches textes plus puissantes
+          Des recherches textes plus puissantes.
         </h2>
          
         <p>
