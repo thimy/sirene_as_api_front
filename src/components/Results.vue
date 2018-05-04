@@ -9,6 +9,7 @@
         <li v-for="result in storedResultsEtablissements" :key="result.siret" class="panel">
           <router-link tag="div" :to="{ name: 'Etablissement', params: {searchId: result['siret']}}">
             <h4 class="title">{{result['nom_raison_sociale'] | capitalize | removeExtraChars}}</h4>
+            <span class="subtitle" v-if="result['l2_normalisee']">{{result['l2_normalisee'] | capitalize | removeExtraChars }}</span>
             <p>{{result['libelle_activite_principale_entreprise']}}</p>
             <p>{{result['code_postal']}} {{result['libelle_commune'] | capitalize}}</p>
           </router-link>
@@ -76,7 +77,14 @@ export default {
 <style lang="scss" scoped>
 
   .title {
+    display: inline;
     margin: 0.15em;
+  }
+
+  .subtitle {
+    display: inline;
+    margin-left: 5px;
+    font-family: "Evolventa", "Trebuchet MS", sans-serif;
   }
 
   p {
