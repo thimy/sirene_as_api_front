@@ -25,6 +25,12 @@ const getters = {
   },
   optionsToGet: state => {
     return store.getters.pageNumberToGet
+  },
+  storedFullText: state => {
+    return state.storedFullText
+  },
+  pageNumber: state => {
+    return state.pageNumber
   }
 }
 

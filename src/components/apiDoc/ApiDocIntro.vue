@@ -1,0 +1,51 @@
+<template>
+  <section class="section-white">
+    <div class="container">
+      <div class="column">
+        <h1>Documentation de l'API Sirene</h1>
+        <h2>Qu'est-ce que l'API Sirene ?</h2>
+        <p>
+          Dans le cadre du Service Public de la Donnée, de nombreux jeux de données s'ouvrent au grand public.<br>
+          La base de données SIRENE sur les entreprises et associations est donc maintenant <strong>Open data</strong>.
+          Vous pouvez consulter la base de donnée librement et gratuitement !
+        </p>
+        <h2>Comment fonctionne Entreprise.data.gouv.fr ?</h2>
+        <p>
+          Ce site web interroge l'API Sirene développée par <a href="https://www.data.gouv.fr/fr/organizations/etalab/">Étalab</a>.
+          Ce site web et son API sont open-source : vous pouvez <a href="https://github.com/betagouv/sirene_as_api">télécharger le code sur GitHub</a>.
+        </p>
+      </div>
+      <div class="column__icon">
+        <img src="@/assets/img/icons/three-gears.svg" alt="">
+      </div>
+    </div>
+  </section>
+</template>
+
+<script>
+export default {
+  name: 'ApiDocIntro'
+}
+</script>
+
+<style lang="scss" scoped>
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.column__icon {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+</style>

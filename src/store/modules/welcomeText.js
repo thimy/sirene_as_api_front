@@ -23,8 +23,15 @@ const actions = {
   }
 }
 
+const getters = {
+  isWelcomeTextVisible: state => {
+    return state.isWelcomeTextVisible
+  }
+}
+
 export default {
   state,
   mutations,
-  actions
+  actions,
+  getters
 }
