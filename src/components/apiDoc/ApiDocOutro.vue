@@ -12,7 +12,7 @@
           l'API qui aggrège les informations sur les entreprises.<br>
           Obtenez les Greffes, Certificats, Liasses fiscales, Attestations sociales, et bien plus encore...
         </p>
-        <a class="button" href="https://entreprise.api.gouv.fr/website">Demander un accès</a>
+        <a class="button" href="https://entreprise.api.gouv.fr/">Demander un accès</a>
       </div>
     </div>
   </section>

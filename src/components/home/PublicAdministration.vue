@@ -5,7 +5,7 @@
           Vous êtes une administration publique ?<br />
           Demandez votre accès spécial à API Entreprise pour obtenir des informations supplémentaires sur les sociétés
         </p>
-        <a class="button" href="https://www.apientreprise.fr/">Demander un accès</a>
+        <a class="button" href="https://entreprise.api.gouv.fr/">Demander un accès</a>
       </div>
   </section>
 </template>
