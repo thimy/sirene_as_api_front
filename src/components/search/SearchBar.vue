@@ -18,7 +18,6 @@
         <span>{{ suggestion | capitalize | removeExtraChars}}</span>
       </li>
       <!-- Filling with hidden divs so search bar will always be same size -->
-      <!-- eslint-disable-next-line -->
       <li class="hidden suggestion__box" v-for="index in suggestionNumberToMax"></li>
     </ul>
   </div>
@@ -48,9 +47,17 @@ export default {
           this.$store.dispatch('executeSearchSuggestions')
         }
       }
-    }
+    },
+    isSearchNotEmpty () {
+      return this.$store.state.search.storedFullText !== ''
+    },
   },
   methods: {
+    requestSearchIfNotEmpty: function() {
+      if (this.isSearchNotEmpty) {
+        this.requestSearch()
+      }
+    },
     requestSearch: function () {
       const isSiret = this.isSiret(this.fullText)
       const isSiren = this.isSiren(this.fullText)

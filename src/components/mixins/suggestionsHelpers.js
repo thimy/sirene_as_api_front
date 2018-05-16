@@ -62,11 +62,11 @@ export default {
       }
     },
     suggestEnter: function () { // On enter, save the current suggestion and put it as fullText
-      this.requestSearch()
+      this.requestSearchIfNotEmpty()
     },
     suggestSelectAndEnter: function (selectedIndex) {
       this.suggestCount = selectedIndex
-      this.requestSearch()
+      this.requestSearchIfNotEmpty()
     },
     resetIndexSuggestion: function () {
       this.suggestCount = -1

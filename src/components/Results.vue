@@ -2,7 +2,7 @@
   <div class="container">
     <loader v-if="resultsAreLoading"></loader>
     <server-error v-else-if="serverError"></server-error>
-    <template v-else-if="isSearchNotEmpty">
+    <template v-else>
       <h3>{{resultsNumberSentence}}</h3>
       <did-you-mean></did-you-mean>
       <ul>
