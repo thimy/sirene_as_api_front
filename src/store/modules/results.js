@@ -70,6 +70,7 @@ const actions = {
     store.commit('setResults', response.body)
     store.commit('setStatus', response.status)
     store.dispatch('redirectWhenNoResult', response)
+    store.commit('setResultsAreLoading', false)
   },
   setResponseSinglePage(dispatch, response) {
     store.commit('setSinglePageResults', response.body)

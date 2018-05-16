@@ -144,7 +144,7 @@ describe('results.js mutations', () => {
 })
 
 describe('results.js actions', () => {
-  test('Action setResponse set results, set status, and launch redirectWhenNoresult', () => {
+  test('Action setResponse set results, set status, launch redirectWhenNoresult, unset the loader', () => {
     const dispatch = 'mock-dispatch'
     const response = {
       body: 'mock-body',
@@ -154,6 +154,7 @@ describe('results.js actions', () => {
     expect(store.commit).toHaveBeenCalledWith('setResults', 'mock-body')
     expect(store.commit).toHaveBeenCalledWith('setStatus', 'mock-status')
     expect(store.dispatch).toHaveBeenCalledWith('redirectWhenNoResult', response)
+    expect(store.commit).toHaveBeenCalledWith('setResultsAreLoading', false)
   })
 
   test('Action setResponseSinglePage commit setSinglePageStatus, setStatusSiret and launch redirectWhenNoResults', () => {

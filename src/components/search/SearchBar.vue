@@ -55,6 +55,7 @@ export default {
   methods: {
     requestSearchIfNotEmpty: function() {
       if (this.isSearchNotEmpty) {
+        this.$store.commit('setResultsAreLoading', true)
         this.requestSearch()
       }
     },

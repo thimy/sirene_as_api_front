@@ -64,9 +64,9 @@ const actions = {
   // Calling this action directly won't update the router
   async executeSearchResults () {
     await store.dispatch('resetApplicationState')
+    // We start the loader here and stop later during action setResponse
     await store.commit('setResultsAreLoading', true)
-    await store.dispatch('executeSearchResultsCallAPI')
-    store.commit('setResultsAreLoading', false)
+    store.dispatch('executeSearchResultsCallAPI')
   },
   async executeSearchResultsCallAPI() {
     store.dispatch('sendAPIRequest', store.getters.adressToGet)
