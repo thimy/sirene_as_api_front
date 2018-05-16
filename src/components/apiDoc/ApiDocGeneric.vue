@@ -34,17 +34,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .container {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  flex-direction: column;
+  @media screen and (min-width: $tablet) {
+    flex-direction: row;
+  }
 }
 
 .column__icon {
-  width: 20%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+
+  @media screen and (max-width: $tablet) {
+    align-items: center;
+    width: 100%;
+    order: 1;
+  }
+  @media screen and (min-width: $tablet) {
+    flex-direction: column;
+    width: 20%;
+    order: 0;
+  }
 }
 
 .column__right {

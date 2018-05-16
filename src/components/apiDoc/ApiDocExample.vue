@@ -5,7 +5,8 @@
         <h2>Exemple de requête :</h2>
         <p>
           L'adresse à taper pour une requête est : <strong>Adresse + Version + Informations</strong><br>
-          <strong>Exemple :</strong> Je souhaite accéder aux informations sur la mairie de Montpellier, dont le siret est le 21340172201787. Je me rend sur <a href="https://sirene.entreprise.api.gouv.fr/v1/siret/21340172201787/">https://sirene.entreprise.api.gouv.fr/v1/siret/21340172201787</a>
+          <strong>Exemple :</strong> Je souhaite accéder aux informations sur la mairie de Montpellier, dont le siret est le 21340172201787.
+          Je me rend sur <a class="dont-break-out" href="https://sirene.entreprise.api.gouv.fr/v1/siret/21340172201787/">https://sirene.entreprise.api.gouv.fr/v1/siret/21340172201787</a>
         </p>
         <p>Essayez avec n'importe quel siret :</p>
         <api-doc-input :request=exempleSiret1></api-doc-input>
@@ -73,9 +74,26 @@ export default {
   justify-content: space-between;
 }
 
+h2 {
+  margin-top: 40px;
+}
+
 h3 {
   margin-bottom: 0;
 }
+
+// With the help of https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/
+.dont-break-out {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
 
 .column__full {
   display: flex;
