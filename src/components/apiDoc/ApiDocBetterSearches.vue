@@ -70,7 +70,7 @@ export default {
 // Table style
 table {
   background-color: $color-white;
-  margin: 25px auto;
+  margin: 25px 0px auto;
   border-collapse: collapse;
   border: 1px solid $color-white;
   border-bottom: 2px solid $color-light-blue;
@@ -90,14 +90,20 @@ table {
   th, td {
     color: $color-dark-grey;
     border: 1px solid $color-light-grey;
-    padding: 12px 35px;
     border-collapse: collapse;
+    padding: none;
+    @media screen and (min-width: $tablet) {
+      padding: 12px 35px;
+    }
   }
   th {
     background: $color-light-blue;
     color: $color-white;
     text-transform: uppercase;
-    font-size: 1.2em;
+    font-size: 1em;
+    @media screen and (min-width: $tablet) {
+      font-size: 1.2em;
+    }
     &.last {
       border-right: none;
     }

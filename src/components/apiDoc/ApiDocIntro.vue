@@ -31,8 +31,11 @@ export default {
 <style lang="scss" scoped>
 .container {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  flex-direction: column;
+  @media screen and (min-width: $tablet) {
+    flex-direction: row;
+  }
 }
 
 .column {
@@ -41,10 +44,14 @@ export default {
 }
 
 .column__icon {
-  width: 20%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  width: 100%;
+  @media screen and (min-width: $tablet) {
+    flex-direction: column;
+    width: 20%;
+  }
 }
 
 

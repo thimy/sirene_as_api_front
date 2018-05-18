@@ -5,7 +5,7 @@
         <img src="@/assets/img/icons/statistics-on-a-screen.svg" alt="">
       </div>
       <div class="column__right">
-        <h2>Découvrez les autres APIs et jeux de données Data.gouv .</h2>
+        <h2>Découvrez les autres APIs et jeux de données Data.gouv</h2>
         <p>
           <a href="https://data.gouv.fr">Data.gouv.fr</a> met a votre disposition de nombreux jeux de données "Open Data".<br>
           Quelques exemples :
