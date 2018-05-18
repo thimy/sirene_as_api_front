@@ -53,7 +53,8 @@ export default {
       if (this.numberResults === undefined) {
         return ''
       }
-      return `${this.numberResults} résultats pour "${this.$store.state.search.storedLastFullText}"`
+      const numberResultsFormatted = Filters.methods.frenchNumberFormat(this.numberResults)
+      return `${numberResultsFormatted} résultats pour "${this.$store.state.search.storedLastFullText}"`
     },
     resultsAreLoading () {
       return this.$store.state.application.resultsAreLoading

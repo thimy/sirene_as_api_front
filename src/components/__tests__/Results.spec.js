@@ -71,7 +71,7 @@ describe('Results.vue', () => {
   })
 
   test('Computed value resultNumberSentence forms the right sentence', () => {
-    expect(results.resultsNumberSentence).toBe("mock-numberResults résultats pour \"mock-storedLastFullText\"")
+    expect(results.resultsNumberSentence).toBe("mock-numberResults 6 123 456 résultats pour \"mock-storedLastFullText\"")
     wrapperResults = shallow(Results, {
       localVue,
       store: {

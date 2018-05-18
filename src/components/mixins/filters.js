@@ -27,5 +27,20 @@ export default {
       // Remove potential double spaces and potential space at end of string
       return withoutAsteriskOrSlash.replace(/ {2}/g, ' ').replace(/ $/, '')
     }
+  },
+  methods: {
+    insert(string, index, value) {
+      return (string.slice(0, index) + value + string.slice(index))
+    },
+    frenchNumberFormat: function(input) {
+      let string = input.toString()
+      if (string.length >= 7) {
+        string = this.insert(string, -6, ' ')
+      }
+      if (string.length >= 4) {
+        string = this.insert(string, -3, ' ')
+      }
+      return string
+    }
   }
 }
