@@ -52,14 +52,11 @@ export default new Router({
     },
   ],
   scrollBehavior(to, from, savedPosition) {
-      // Scroll to top when arriving on component CodesNAF
-    if (to.name === 'CodesNAF') {
-      return {
-        x: 0,
-        y: 0
-      }
-    } else if (savedPosition) {
+    // Scroll to top when arriving on a component
+    if (savedPosition) {
       return savedPosition
+    } else {
+      return { x: 0, y: 0}
     }
   }
 })
