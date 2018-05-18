@@ -95,6 +95,10 @@ export default {
     list-style: none;
     padding: 0;
     margin: 2em 0;
+
+    li:hover {
+      background-color: $color-lightest-grey;
+    }
   }
 
   .container {
