@@ -29,18 +29,8 @@ export default {
     }
   },
   methods: {
-    insert(string, index, value) {
-      return (string.slice(0, index) + value + string.slice(index))
-    },
     frenchNumberFormat: function(input) {
-      let string = input.toString()
-      if (string.length >= 7) {
-        string = this.insert(string, -6, ' ')
-      }
-      if (string.length >= 4) {
-        string = this.insert(string, -3, ' ')
-      }
-      return string
+      return new Intl.NumberFormat('fr-FR').format(input)
     }
   }
 }
