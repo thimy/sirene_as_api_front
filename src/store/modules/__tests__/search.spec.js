@@ -116,10 +116,9 @@ describe('search.js action requestSearch', () => {
 })
 
 describe('search.js action executeSearchResults', () => {
-  test('Action executeSearchResults set up loading screen then unset it', done => {
+  test('Action executeSearchResults set up loading screen', done => {
     Search.actions.executeSearchResults().then(() => {
       expect(store.commit).toHaveBeenCalledWith('setResultsAreLoading', true)
-      expect(store.commit).toHaveBeenCalledWith('setResultsAreLoading', false)
       done()
     })
   })
