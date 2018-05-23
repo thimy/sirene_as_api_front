@@ -7,7 +7,7 @@ Vue.use(Vuex)
 export const getters = {
   adressToGet: jest.fn().mockReturnValue([{}]),
   isEtablissementLoading: jest.fn().mockReturnValue(['mock-etablissement-loading']),
-  numberResults: jest.fn().mockReturnValue('mock-numberResults'),
+  numberResults: jest.fn().mockReturnValue('6123456'),
   onlyOneResult: jest.fn().mockReturnValue([{}]),
   optionsToGet: jest.fn().mockReturnValue([{}]),
   pageNumberToGet: jest.fn().mockReturnValue([{}]),

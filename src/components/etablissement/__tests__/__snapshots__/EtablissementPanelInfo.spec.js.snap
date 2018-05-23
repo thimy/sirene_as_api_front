@@ -13,7 +13,7 @@ exports[`EtablissementPanelInfo.vue snapshot It match the snapshot 1`] = `
       <div
         class="company__item-key"
       >
-        Siret
+        SIRET
       </div>
       <div
         class="company__item-value"
@@ -28,7 +28,7 @@ exports[`EtablissementPanelInfo.vue snapshot It match the snapshot 1`] = `
       <div
         class="company__item-key"
       >
-        Siren
+        SIREN
       </div>
       <div
         class="company__item-value"
@@ -78,7 +78,7 @@ exports[`EtablissementPanelInfo.vue snapshot It match the snapshot 1`] = `
       <div
         class="company__item-value"
       >
-         
+         Non renseigné
       </div>
     </div>
      

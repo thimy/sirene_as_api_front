@@ -70,8 +70,9 @@ describe('Results.vue', () => {
     expect(wrapperResults.vm.showNoResultMessage).toBeTruthy()
   })
 
+  // Here we should expect 6 123 456 not 6,123,456 vue Jest is currently bugging with Intl
   test('Computed value resultNumberSentence forms the right sentence', () => {
-    expect(results.resultsNumberSentence).toBe("mock-numberResults résultats pour \"mock-storedLastFullText\"")
+    expect(results.resultsNumberSentence).toBe("6,123,456 résultats pour \"mock-storedLastFullText\"")
     wrapperResults = shallow(Results, {
       localVue,
       store: {
