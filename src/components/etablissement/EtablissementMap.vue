@@ -8,10 +8,11 @@
 <script>
 import Vue from 'vue'
 import mapboxgl from 'mapbox-gl'
+import mapOtherMarkers from '@/components/mixins/mapOtherMarkers'
 
 export default {
   name: 'EtablisssementMap',
-  props: ['positionEtablissement'],
+  props: ['positionEtablissement', 'siret'],
   data () {
     return {
       mapboxglSupported: mapboxgl.supported(),
@@ -21,8 +22,12 @@ export default {
           container: 'map',
           style: json.body,
           center: this.positionEtablissement,
-          zoom: 14
+          zoom: 12
         }
+      },
+      markers:  {
+        red: { color: '#C0392B' },
+        blue: { color: '#5DADE2' }
       }
     }
   },
@@ -34,13 +39,15 @@ export default {
       let map = new mapboxgl.Map(this.mapOptions(json))
       this.$refs.map = map
       this.addEtablissementMarker(map)
+      this.addOtherMarkers(map, this.siret)
     },
     addEtablissementMarker (map) {
-      new mapboxgl.Marker()
+      new mapboxgl.Marker(this.markers.red)
         .setLngLat(this.positionEtablissement) 
         .addTo(map)
     }
-  }
+  },
+  mixins: [mapOtherMarkers]
 }
 </script>
 

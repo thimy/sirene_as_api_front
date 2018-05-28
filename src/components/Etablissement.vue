@@ -20,7 +20,7 @@
         <etablissement-panel-children></etablissement-panel-children>
       </div>
       <div class="container company-container company-container__map">
-        <etablissement-map :positionEtablissement='coordinates'></etablissement-map>
+        <etablissement-map :positionEtablissement='coordinates' :siret='this.result.siret'></etablissement-map>
       </div>
     </section>
   </div>
