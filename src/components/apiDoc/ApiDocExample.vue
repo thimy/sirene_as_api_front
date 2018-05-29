@@ -40,6 +40,9 @@
           Exemple, encore une fois pour Toulouse :
         </p>
         <api-doc-input :request=exempleSiren></api-doc-input>
+        <p><strong>02/06/2018 - Attention : </strong> les informations sur le siège social sont maintenant renvoyées dans un hash,
+        contre un tableau de hashes précédemment.
+        </p>
       </div>
     </div>
   </section>

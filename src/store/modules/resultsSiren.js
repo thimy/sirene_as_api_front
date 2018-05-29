@@ -5,7 +5,7 @@ const state = {
 const getters = {
   storedSirenSiege: state => {
     if (state.sirenResults && state.sirenResults.siege_social) {
-      return state.sirenResults.siege_social[0]
+      return state.sirenResults.siege_social
     }
     return null
   },
