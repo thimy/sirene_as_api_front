@@ -22,12 +22,14 @@ export default {
           container: 'map',
           style: json.body,
           center: this.positionEtablissement,
-          zoom: 12
+          zoom: 13
         }
       },
       markers:  {
         red: { color: '#C0392B' },
-        blue: { color: '#5DADE2' }
+        darkBlue: { color: '#274492' },
+        blue: { color: '#0081d5' },
+        lightBlue: { color: '#1e90da' }
       }
     }
   },
@@ -35,11 +37,11 @@ export default {
     Vue.http.get(this.mapTilesEtalab).then((json) => { this.initMap(json) })
   },
   methods: {
-    initMap (json) {
-      let map = new mapboxgl.Map(this.mapOptions(json))
-      this.$refs.map = map
-      this.addEtablissementMarker(map)
+    initMap: async function (json) {
+      let map = await new mapboxgl.Map(this.mapOptions(json))
+      // addOtherMarkets first so the etablissement marker will be on top
       this.addOtherMarkers(map, this.siret)
+      this.addEtablissementMarker(map)
     },
     addEtablissementMarker (map) {
       new mapboxgl.Marker(this.markers.red)
