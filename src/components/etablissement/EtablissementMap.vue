@@ -9,10 +9,12 @@
 import Vue from 'vue'
 import mapboxgl from 'mapbox-gl'
 import mapOtherMarkers from '@/components/mixins/mapOtherMarkers'
+import colors from '@/components/mixins/colors'
+import Filters from '@/components/mixins/filters'
 
 export default {
   name: 'EtablisssementMap',
-  props: ['positionEtablissement', 'siret'],
+  props: ['positionEtablissement', 'etablissement'],
   data () {
     return {
       mapboxglSupported: mapboxgl.supported(),
@@ -25,12 +27,9 @@ export default {
           zoom: 13
         }
       },
-      markers:  {
-        red: { color: '#C0392B' },
-        darkBlue: { color: '#274492' },
-        blue: { color: '#0081d5' },
-        lightBlue: { color: '#1e90da' }
-      }
+      etablissementPopup: new mapboxgl.Popup({
+        closeButton: true
+      })
     }
   },
   mounted () {
@@ -40,16 +39,25 @@ export default {
     initMap: async function (json) {
       let map = await new mapboxgl.Map(this.mapOptions(json))
       // addOtherMarkets first so the etablissement marker will be on top
-      this.addOtherMarkers(map, this.siret)
+      this.addOtherMarkers(map, this.etablissement.siret)
       this.addEtablissementMarker(map)
+      this.addPopupEtablissement(this.etablissement)
     },
     addEtablissementMarker (map) {
-      new mapboxgl.Marker(this.markers.red)
+      new mapboxgl.Marker({color: colors.red})
         .setLngLat(this.positionEtablissement) 
+        .setPopup(this.etablissementPopup)
         .addTo(map)
+    },
+    addPopupEtablissement (etablissement) {
+      this.etablissementPopup.setHTML(
+        "<p><strong>Raison Sociale</strong> :  " + (Filters.filters.removeExtraChars(etablissement.nom_raison_sociale)) + "</p>"
+        + "<p><strong>Siret</strong> :  " + etablissement.siret+ "</p>"
+        + "<p><strong>Activité</strong> :  " + etablissement.libelle_activite_principale_entreprise + "</p>"
+      )
     }
   },
-  mixins: [mapOtherMarkers]
+  mixins: [mapOtherMarkers, Filters]
 }
 </script>
 
@@ -66,4 +74,9 @@ export default {
   .panel__message {
     color: $color-dark-grey
   }
+
+  .mapboxgl-popup {
+    max-width: 200px;
+}
+
 </style>

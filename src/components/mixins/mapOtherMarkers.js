@@ -1,4 +1,4 @@
-// import mapboxgl from 'mapbox-gl'
+import colors from '@/components/mixins/colors'
 import Vue from 'vue'
 
 export default {
@@ -36,9 +36,9 @@ export default {
           "circle-color": [
               "step",
               ["get", "point_count"],
-              this.markers.lightBlue.color,
-              10, this.markers.blue.color,
-              50, this.markers.darkBlue.color
+              colors.lightBlue,
+              10, colors.blue,
+              50, colors.darkBlue
           ],
           "circle-radius": [
               "step",
@@ -60,7 +60,7 @@ export default {
             "text-size": 12
         },
         paint: {
-          "text-color": "#FFFFFF"
+          "text-color": colors.white
         }
       })
       map.addLayer({
@@ -69,25 +69,16 @@ export default {
         source: "etablissements",
         filter: ["!has", "point_count"],
         paint: {
-            "circle-color": "#11b4da",
+            "circle-color": colors.lighterBlue,
             "circle-radius": 4,
             "circle-stroke-width": 1,
-            "circle-stroke-color": "#fff"
+            "circle-stroke-color": colors.white
         }
       })
     },
-    // parseEtablissements: function(data) {
-    //   const etablissements = data.body.etablissements
-    //   return etablissements
-    // },
-    // addOtherMarker: function(map, etablissement) {
-    //   new mapboxgl.Marker(this.markers.blue)
-    //     .setLngLat([etablissement.longitude, etablissement.latitude]) 
-    //     .addTo(map)
-    //},
     nearEtablissementQuery (siret) {
       // a affiner
-      return this.baseAdressNearEtablissement + siret + '?only_same_activity=true' + '&per_page=100' + '&radius=5'
+      return this.baseAdressNearEtablissement + siret + '?only_same_activity=true' + '&radius=5'
     }
   }
 }
