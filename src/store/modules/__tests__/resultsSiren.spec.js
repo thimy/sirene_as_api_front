@@ -10,7 +10,7 @@ describe('resultSiren.js getters', () => {
   test('the storedSirenSiege getter return the siege social if there is sirenResults and sirenResults.siege_social', () => {
     const state = {
       sirenResults: {
-        siege_social: ['mock-siegeSocial']
+        siege_social: 'mock-siegeSocial'
       }
     }
     expect(ResultsSiren.getters.storedSirenSiege(state)).toBe('mock-siegeSocial')
