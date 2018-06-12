@@ -1,5 +1,8 @@
 <template>
-  <div class="panel" id="map" ref="map"></div>
+  <div v-if="mapboxglSupported" class="panel" id="map" ref="map"></div>
+  <div v-else class="panel">
+    <p class="panel__message">Votre navigateur ne supporte pas WebGL et ne peut pas afficher la carte de l'établissement.</p>
+  </div>
 </template>
 
 <script>
@@ -11,6 +14,7 @@ export default {
   props: ['positionEtablissement'],
   data () {
     return {
+      mapboxglSupported: mapboxgl.supported(),
       mapTilesEtalab: 'https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json',
       mapOptions (json) { 
         return {
@@ -44,6 +48,13 @@ export default {
   #map {
     padding: 0;
     height: 400px;
-    width: 100%;
+  }
+
+  .panel {
+    width: 100%
+  }
+
+  .panel__message {
+    color: $color-dark-grey
   }
 </style>

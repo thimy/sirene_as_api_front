@@ -1,10 +1,7 @@
 import Results from '@/store/modules/results'
 import store from '@/store/index.js'
-// import router from '@/router/index.js'
-// import Vue from 'vue'
 
 jest.mock('@/store/modules/results.js')
-// jest.mock('@/store/index.js')
 
 jest.mock('@/store/index.js', () => ({
   getters: {

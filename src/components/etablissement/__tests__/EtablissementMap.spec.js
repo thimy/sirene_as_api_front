@@ -5,9 +5,26 @@ import VueResource from 'vue-resource';
 
 Vue.use(VueResource);
 
-jest.mock('mapbox-gl', () => jest.fn())
+jest.mock('mapbox-gl', () => ({
+  supported: jest.fn()
+    .mockImplementationOnce(() => {return false})
+    .mockImplementationOnce(() => {return true})
+}))
 
-describe('EtablissementMap.vue snapshot', () => {
+describe('EtablissementMap.vue snapshot when no webgl', () => {
+
+  const localVue = createLocalVue()
+
+  const wrapperEtablissementMap = mount(EtablissementMap, {
+    localVue
+  })
+
+  test('It match the snapshot', () => {
+    expect(wrapperEtablissementMap.vm.$el).toMatchSnapshot()
+  })
+})
+
+describe('EtablissementMap.vue snapshot when webgl', () => {
 
   const localVue = createLocalVue()
 
