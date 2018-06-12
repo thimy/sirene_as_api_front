@@ -29,16 +29,14 @@ describe('EtablissementPanelChildren.vue', () => {
   })
 
   test('If company is social siege, the page display this information', () => {
-    storeMocks.store.getters.storedSirenSiege.siret = 'mock-siegeSocialSiret'
-    wrapperEPC.vm.result.siret = 'mock-siegeSocialSiret'
+    wrapperEPC.vm.result.is_siege = '1'
     wrapperEPC.update()
     expect(wrapperEPC.vm.isSiegeSocial).toBeTruthy()
     expect(wrapperEPC.find(".company__item-key").text()).toBe('Cet établissement est le siège social')
   })
 
   test('If company is not social siege, the page dont display this information', () => {
-    storeMocks.store.getters.storedSirenSiege.siret = 'mock-siegeSocialSiret'
-    wrapperEPC.vm.result.siret = 'mock-otherSiegeSocialSiret'
+    wrapperEPC.vm.result.is_siege = '0'
     wrapperEPC.update()
     expect(wrapperEPC.vm.isSiegeSocial).toBeFalsy()
   })

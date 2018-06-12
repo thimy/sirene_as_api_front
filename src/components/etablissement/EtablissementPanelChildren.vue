@@ -61,12 +61,10 @@ export default {
       return Math.min(this.totalResultsOtherSirens, this.maxChildrenEtablissementsToShow)
     },
     isSiegeSocial () {
-      if (!this.result || !this.$store.getters.storedSirenSiege) {
+      if (!this.result) {
         return
       }
-      const siretCurrent = this.result.siret
-      const siretSiegeSocial = this.$store.getters.storedSirenSiege.siret
-      if (siretCurrent === siretSiegeSocial) {
+      if (this.result.is_siege == '1') {
         return true
       }
       return false
