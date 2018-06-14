@@ -17,22 +17,6 @@ Le projet se découpe en trois sous-projets :
   - Un script capable de déployer l'API automatiquement : [sirene_as_api_ansible](https://github.com/sgmap/sirene_as_api_ansible)
   - Une interface web de recherche exploitant l'API en Vue.js : [sirene_as_api_front](https://github.com/sgmap/sirene_as_api_front)
 
-## Lancer le serveur front
-
-Vous aurez besoin du gestionnaire de paquets npm.
-
-``` bash
-# installer les dépendances
-npm install
-
-# Lance le serveur en développement sur localhost:8080
-npm run dev
-
-# Build pour la production
-npm run build
-
-npm test
-```
 ## Exécution en local
 
 ``` bash
@@ -44,6 +28,17 @@ rails s
 
 # Lancer le serveur SOLR :
 rake sunspot:solr:start
+
+```
+
+## Dev
+
+``` bash
+# Lancer les tests
+npm run test
+
+# Construire pour la production
+npm run build
 
 ```
 ## Licence
