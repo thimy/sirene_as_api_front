@@ -112,7 +112,7 @@ export default {
           diacriticsMap[letters[j]] = diacriticsRemovalMap[i].base
         }
       }
-
+      // eslint-disable-next-line no-control-regex 
         return str.replace(/[^\u0000-\u007E]/g, function(a){
            return diacriticsMap[a] || a 
         })
