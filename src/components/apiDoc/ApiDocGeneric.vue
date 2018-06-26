@@ -18,11 +18,18 @@
         </p>
         <h3>Limite de requêtes</h3>
         <p>
-          Notre serveur accepte 2000 requêtes / 10 minutes. Au delà, vous risquez un bannissement de votre IP.<br>
-          Pour effectuer davantage de requêtes, vous pouvez installer votre propre copie de l'API.
-          Un <a href="https://github.com/betagouv/sirene_as_api_ansible">script ansible</a> est à votre disposition pour cela.
+          Notre serveur accepte 2000 requêtes / 10 minutes. Au delà, vous risquez un bannissement de votre IP.
         </p>
       </div>
+    </div>
+    <div class="container container__subtext">
+      <h2>Installer votre propre version de l'API Sirene</h2>
+      <p>
+        Si vos besoins excèdent les limites de nos serveurs, par exemple pour si vous voulez effectuer davantage de requêtes, vous pouvez installer votre propre copie de l'API.
+        Un <a href="https://github.com/betagouv/sirene_as_api_ansible">script ansible</a> est à votre disposition pour vous faciliter la tâche.<br>
+        Le manuel d'installation de l'API se trouve <a href="https://github.com/betagouv/sirene_as_api">sur github</a>.
+        Vous pouvez de même lancer <a href="https://github.com/betagouv/sirene_as_api_front">votre installation</a> du site Entreprise.data.gouv.fr.
+      </p>
     </div>
   </section>
 </template>
@@ -48,11 +55,10 @@ export default {
   display: flex;
   justify-content: center;
 
-  @media screen and (max-width: $tablet) {
-    align-items: center;
-    width: 100%;
-    order: 1;
-  }
+  align-items: center;
+  width: 100%;
+  order: 1;
+
   @media screen and (min-width: $tablet) {
     flex-direction: column;
     width: 20%;
@@ -64,6 +70,15 @@ export default {
   display: flex;
   flex-direction: column;
   align-self: flex-end;
+}
+
+.container__subtext {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  > p {
+    max-width: 100%;
+  }
 }
 
 h3 {

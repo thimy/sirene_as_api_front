@@ -4,6 +4,7 @@
     <api-doc-generic></api-doc-generic>
     <api-doc-example :baseAdress=baseAdress></api-doc-example>
     <api-doc-better-searches></api-doc-better-searches>
+    <api-doc-geospace :baseAdress=baseAdress></api-doc-geospace>
     <api-doc-use-case :baseAdress=baseAdress></api-doc-use-case>
     <api-doc-others></api-doc-others>
     <api-doc-outro></api-doc-outro>
@@ -15,6 +16,7 @@ import ApiDocIntro from '@/components/apiDoc/ApiDocIntro'
 import ApiDocGeneric from '@/components/apiDoc/ApiDocGeneric'
 import ApiDocExample from '@/components/apiDoc/ApiDocExample'
 import ApiDocBetterSearches from '@/components/apiDoc/ApiDocBetterSearches'
+import ApiDocGeospace from '@/components/apiDoc/ApiDocGeospace'
 import ApiDocUseCase from '@/components/apiDoc/ApiDocUseCase'
 import ApiDocOthers from '@/components/apiDoc/ApiDocOthers'
 import ApiDocOutro from '@/components/apiDoc/ApiDocOutro'
@@ -26,6 +28,7 @@ export default {
     'ApiDocGeneric': ApiDocGeneric,
     'ApiDocExample': ApiDocExample,
     'ApiDocBetterSearches': ApiDocBetterSearches,
+    'ApiDocGeospace': ApiDocGeospace,
     'ApiDocUseCase': ApiDocUseCase,
     'ApiDocOthers': ApiDocOthers,
     'ApiDocOutro': ApiDocOutro

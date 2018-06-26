@@ -97,7 +97,6 @@ h3 {
   hyphens: auto;
 }
 
-
 .column__full {
   display: flex;
   flex-direction: column;

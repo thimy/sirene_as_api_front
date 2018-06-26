@@ -1,5 +1,5 @@
 <template>
-  <section class="section-grey">
+  <section class="section-white">
     <div class="container">
       <div class="column__icon">
         <img src="@/assets/img/icons/statistics-on-a-screen.svg" alt="">

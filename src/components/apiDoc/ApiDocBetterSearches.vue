@@ -17,7 +17,7 @@
           </thead>
           <tbody>
             <tr>
-              <td>Activité principale de l'entreprise</td>
+              <td>Activité principale de l'entreprise (code NAF)</td>
               <td><code>activite_principale</code></td>
               <td>Le code `activité principale` désiré</td> 
             </tr>
@@ -25,6 +25,16 @@
               <td>Code Postal</td>
               <td><code>code_postal</code></td> 
               <td>Le code postal désiré</td>
+            </tr>
+            <tr>
+              <td>Code commune INSEE</td>
+              <td><code>code_commune</code></td> 
+              <td>Le code INSEE de la commune désiré</td>
+            </tr>
+            <tr>
+              <td>Departement</td>
+              <td><code>departement</code></td> 
+              <td>Le numéro de département à 2 chiffres désiré</td>
             </tr>
             <tr>
               <td>Appartenance au champs de l'économie sociale et solidaire</td>

@@ -41,6 +41,7 @@ npm run test
 npm run build
 
 ```
+
 ## Licence
 
 Ce projet est sous [license MIT](https://fr.wikipedia.org/wiki/Licence_MIT)

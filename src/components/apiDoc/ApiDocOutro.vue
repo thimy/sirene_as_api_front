@@ -1,5 +1,5 @@
 <template>
-  <section class="section-white">
+  <section class="section-grey">
     <div class="container">
       <div class="column__full center">
         <h2>Découvrez l'API Entreprise, toutes les informations sur les sociétés.</h2>
