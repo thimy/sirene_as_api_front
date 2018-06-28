@@ -10,7 +10,6 @@ import Vue from 'vue'
 import mapboxgl from 'mapbox-gl'
 import mapOtherMarkers from '@/components/mixins/mapOtherMarkers'
 import colors from '@/components/mixins/colors'
-import Filters from '@/components/mixins/filters'
 
 export default {
   name: 'EtablisssementMap',
@@ -41,23 +40,16 @@ export default {
       // addOtherMarkets first so the etablissement marker will be on top
       this.addOtherMarkers(map, this.etablissement.siret)
       this.addEtablissementMarker(map)
-      this.addPopupEtablissement(this.etablissement)
+      mapOtherMarkers.methods.addPopupContent(this.etablissementPopup, this.etablissement)
     },
     addEtablissementMarker (map) {
       new mapboxgl.Marker({color: colors.red})
         .setLngLat(this.positionEtablissement) 
         .setPopup(this.etablissementPopup)
         .addTo(map)
-    },
-    addPopupEtablissement (etablissement) {
-      this.etablissementPopup.setHTML(
-        "<p><strong>Raison Sociale</strong> :  " + (Filters.filters.removeExtraChars(etablissement.nom_raison_sociale)) + "</p>"
-        + "<p><strong>Siret</strong> :  " + etablissement.siret+ "</p>"
-        + "<p><strong>Activité</strong> :  " + etablissement.libelle_activite_principale_entreprise + "</p>"
-      )
     }
   },
-  mixins: [mapOtherMarkers, Filters]
+  mixins: [mapOtherMarkers]
 }
 </script>
 

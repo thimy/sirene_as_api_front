@@ -1,5 +1,7 @@
 import colors from '@/components/mixins/colors'
 import Vue from 'vue'
+import mapboxgl from 'mapbox-gl'
+import Filters from '@/components/mixins/filters'
 
 export default {
   data () {
@@ -12,6 +14,7 @@ export default {
       const response = await this.getMarkersData(siret)
       this.addSourceEtablissements(map, response.body)
       this.addLayerEtablissements(map)
+      this.addPopupsEtablissements(map)
     },
     getMarkersData: async function (siret) {
       const query = this.nearEtablissementQuery(siret)
@@ -43,7 +46,7 @@ export default {
           "circle-radius": [
               "step",
               ["get", "point_count"],
-              7, 10,
+              9, 10,
               15, 50,
               23
           ]
@@ -70,15 +73,39 @@ export default {
         filter: ["!has", "point_count"],
         paint: {
             "circle-color": colors.lighterBlue,
-            "circle-radius": 4,
+            "circle-radius": 5,
             "circle-stroke-width": 1,
             "circle-stroke-color": colors.white
         }
       })
     },
+    addPopupsEtablissements (map) {
+      const vm = this
+      map.on('click', function(click) {
+        const renderedFeatures = map.queryRenderedFeatures(click.point, {
+          layers: ['unclustered-point']
+        })
+        if (!renderedFeatures.length) {
+          return
+        }      
+        const etablissementsPoints = renderedFeatures[0];
+        const etablissementPopup = new mapboxgl.Popup()
+          .setLngLat(etablissementsPoints.geometry.coordinates)
+          .setLngLat(etablissementsPoints.geometry.coordinates)
+          .addTo(map)
+        vm.addPopupContent(etablissementPopup, etablissementsPoints.properties)
+      })
+    },
     nearEtablissementQuery (siret) {
-      // a affiner
-      return this.baseAdressNearEtablissement + siret + '?only_same_activity=true' + '&radius=5'
+      return this.baseAdressNearEtablissement + siret + '?only_same_activity=true'
+    },
+    addPopupContent (popup, etablissement) {
+      popup.setHTML(
+        "<p><strong>Raison Sociale</strong> :  " + (Filters.filters.removeExtraChars(etablissement.nom_raison_sociale)) + "</p>"
+        + "<p><strong>Siret</strong> :  " + etablissement.siret+ "</p>"
+        + "<p><strong>Activité</strong> :  " + etablissement.libelle_activite_principale + "</p>"
+      )
     }
-  }
+  },
+  mixins: [Filters]
 }
