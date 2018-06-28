@@ -30,6 +30,11 @@ export default {
       })
     },
     addLayerEtablissements: function (map) {
+      this.addLayerClusters(map)
+      this.addLayerClustersText(map)
+      this.addLayerPoints(map)
+    },
+    addLayerClusters (map) {
       map.addLayer({
         id: "clusters",
         type: "circle",
@@ -52,6 +57,8 @@ export default {
           ]
         }
       })
+    },
+    addLayerClustersText (map) {
       map.addLayer({
         id: "cluster-count",
         type: "symbol",
@@ -66,6 +73,8 @@ export default {
           "text-color": colors.white
         }
       })
+    },
+    addLayerPoints (map) {
       map.addLayer({
         id: "unclustered-point",
         type: "circle",

@@ -58,7 +58,22 @@ exports[`EtablissementPanelInfo.vue snapshot It match the snapshot 1`] = `
       <div
         class="company__item-key"
       >
-        Activité principale
+        Activité principale Etablissement
+      </div>
+      <div
+        class="company__item-value"
+      >
+          - 
+      </div>
+    </div>
+     
+    <div
+      class="company__item"
+    >
+      <div
+        class="company__item-key"
+      >
+        Activité principale Entreprise
       </div>
       <div
         class="company__item-value"

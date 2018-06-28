@@ -8,7 +8,8 @@ Vue.use(VueResource);
 jest.mock('mapbox-gl', () => ({
   supported: jest.fn()
     .mockImplementationOnce(() => {return false})
-    .mockImplementationOnce(() => {return true})
+    .mockImplementationOnce(() => {return true}),
+  Popup: jest.fn()
 }))
 
 describe('EtablissementMap.vue snapshot when no webgl', () => {
