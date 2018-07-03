@@ -6,7 +6,7 @@
         <h2>Qu'est-ce que l'API Sirene ?</h2>
         <p>
           Dans le cadre du Service Public de la Donnée, de nombreux jeux de données s'ouvrent au grand public.<br>
-          La base de données SIRENE sur les entreprises et associations est donc maintenant <strong>Open data</strong>.
+          La base de données SIRENE sur les entreprises est donc maintenant <strong>Open data</strong>.
           Vous pouvez consulter la base de donnée librement et gratuitement !
         </p>
         <h2>Comment fonctionne Entreprise.data.gouv.fr ?</h2>

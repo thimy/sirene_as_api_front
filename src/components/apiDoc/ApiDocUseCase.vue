@@ -1,5 +1,5 @@
 <template>
-  <section class="section-white">
+  <section class="section-grey">
     <div class="container">
       <div class="column">
         <h2>Un cas d'utilisation avancée.</h2>
@@ -43,7 +43,7 @@
         </ul>
       </div>
       <div class="column__icon">
-        <img src="@/assets/img/icons/croissant.svg" alt="illustration boulangerie">
+        <img src="@/assets/img/icons/croissant.svg" alt="">
       </div>
     </div>
   </section>
