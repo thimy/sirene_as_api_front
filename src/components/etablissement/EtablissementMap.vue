@@ -8,10 +8,12 @@
 <script>
 import Vue from 'vue'
 import mapboxgl from 'mapbox-gl'
+import mapOtherMarkers from '@/components/mixins/mapOtherMarkers'
+import colors from '@/components/mixins/colors'
 
 export default {
   name: 'EtablisssementMap',
-  props: ['positionEtablissement'],
+  props: ['positionEtablissement', 'etablissement'],
   data () {
     return {
       mapboxglSupported: mapboxgl.supported(),
@@ -21,26 +23,33 @@ export default {
           container: 'map',
           style: json.body,
           center: this.positionEtablissement,
-          zoom: 14
+          zoom: 13
         }
-      }
+      },
+      etablissementPopup: new mapboxgl.Popup({
+        closeButton: true
+      })
     }
   },
   mounted () {
     Vue.http.get(this.mapTilesEtalab).then((json) => { this.initMap(json) })
   },
   methods: {
-    initMap (json) {
-      let map = new mapboxgl.Map(this.mapOptions(json))
-      this.$refs.map = map
+    initMap: async function (json) {
+      let map = await new mapboxgl.Map(this.mapOptions(json))
+      // addOtherMarkets first so the etablissement marker will be on top
+      this.addOtherMarkers(map, this.etablissement.siret)
       this.addEtablissementMarker(map)
+      mapOtherMarkers.methods.addPopupContent(this.etablissementPopup, this.etablissement)
     },
     addEtablissementMarker (map) {
-      new mapboxgl.Marker()
+      new mapboxgl.Marker({color: colors.red})
         .setLngLat(this.positionEtablissement) 
+        .setPopup(this.etablissementPopup)
         .addTo(map)
     }
-  }
+  },
+  mixins: [mapOtherMarkers]
 }
 </script>
 
@@ -57,4 +66,9 @@ export default {
   .panel__message {
     color: $color-dark-grey
   }
+
+  .mapboxgl-popup {
+    max-width: 200px;
+}
+
 </style>
