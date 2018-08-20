@@ -12,16 +12,16 @@ describe('Etablissement.vue', () => {
   let storeMocks
   let wrapperEtablissement
   let etablissement
-  let $route = { 
+  let $route = {
     params: {
       siret: '83305720100018',
       searchId: 'mock-searchId'
     }
   }
-  
+
   beforeEach(() => {
     storeMocks = createStoreMocks()
-    
+
     wrapperEtablissement = shallow(Etablissement, {
       localVue,
       store: storeMocks.store,
@@ -30,33 +30,12 @@ describe('Etablissement.vue', () => {
     etablissement = wrapperEtablissement.vm
   })
 
-  test('Computed value Result returns the right store getter', () => {
-    expect(etablissement.result).toBe(storeMocks.store.getters.singlePageResultEtablissement)
-  })
-
   test('Computed value isNotFound returns the right getter', () => {
     expect(etablissement.isNotFound).toBe(storeMocks.store.state.application.noResultFound)
   })
 
   test('Computed value isError returns the right getter', () => {
     expect(etablissement.isError).toBe(storeMocks.store.state.application.isError)
-  })
-
-  test('Computed value coordinates returns the coordinates if both longitude and latitude exists', () => {
-    etablissement.result.longitude = -30
-    etablissement.result.latitude = -42
-    wrapperEtablissement.update()
-    expect(etablissement.coordinates).toEqual([-30, -42])
-
-    etablissement.result.longitude = -30
-    etablissement.result.latitude = null
-    wrapperEtablissement.update()
-    expect(etablissement.coordinates).toBeNull()
-
-    etablissement.result.longitude = null
-    etablissement.result.latitude = -42
-    wrapperEtablissement.update()
-    expect(etablissement.coordinates).toBeNull()
   })
 
   test('Before creation, methods, suggestions are reset and executeSearchEtablissement were called', () => {

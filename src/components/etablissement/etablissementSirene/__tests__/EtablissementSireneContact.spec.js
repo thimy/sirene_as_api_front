@@ -1,4 +1,4 @@
-import EtablissementPanelContact from '@/components/etablissement/EtablissementPanelContact.vue'
+import EtablissementSireneContact from '@/components/etablissement/etablissementSirene/EtablissementSireneContact.vue'
 import { createLocalVue, shallow, mount } from '@vue/test-utils'
 import { __createMocks as createStoreMocks } from '@/store/index.js'
 import Vuex from 'vuex'
@@ -7,14 +7,14 @@ const localVue = createLocalVue()
 localVue.use(Vuex)
 jest.mock('@/store/index.js')
 
-describe('EtablissementPanelContact.vue', () => {
+describe('EtablissementSireneContact.vue', () => {
   let storeMocks
   let wrapperEPC
 
   beforeEach(() => {
     storeMocks = createStoreMocks()
   
-    wrapperEPC= shallow(EtablissementPanelContact, {
+    wrapperEPC= shallow(EtablissementSireneContact, {
       localVue,
       store: storeMocks.store
     })
@@ -54,11 +54,11 @@ describe('EtablissementPanelContact.vue', () => {
   })
 })
 
-describe('EtablissementPanelContact.vue snapshot', () => {
+describe('EtablissementSireneContact.vue snapshot', () => {
 
   const localVue = createLocalVue()
   const storeMocks = createStoreMocks()
-  const wrapperEPC = mount(EtablissementPanelContact, {
+  const wrapperEPC = mount(EtablissementSireneContact, {
     localVue,
     store: storeMocks.store
   })

@@ -7,7 +7,7 @@
 <script>
 
 export default {
-  name: 'EtablissementNotFound'
+  name: 'EtablissementSireneNotFound'
 }
 
 </script>

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EtablissementHeader.vue Snapshot testing It match the snapshot 1`] = `
+<div
+  class="company"
+>
+  <section
+    class="section-white"
+  >
+    <div
+      class="container"
+    >
+      <h2>
+         
+        <span
+          class="company__siren"
+        >
+          (833057201)
+        </span>
+      </h2>
+       
+      <div
+        class="subtitle"
+      >
+         
+      </div>
+       
+      <h4
+        class="company__industry"
+      >
+         
+      </h4>
+    </div>
+  </section>
+</div>
+`;

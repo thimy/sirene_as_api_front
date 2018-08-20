@@ -16,7 +16,7 @@
 import Filters from '@/components/mixins/filters'
 
 export default {
-  name: 'EtablissementPanelInfo',
+  name: 'EtablissementSireneInfo',
   computed: {
     result () {
       return this.$store.getters.singlePageResultEtablissement

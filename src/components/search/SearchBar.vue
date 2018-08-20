@@ -1,5 +1,10 @@
 <template>
   <div class="form__group">
+    <!-- <div class="form__select">
+      <span>Je recherche une :</span>
+      <input type="radio" name="search_type" value="sirene"> <span>Association</span>
+      <input type="radio" name="search_type" value="rna"> <span>Entreprise</span>
+    </div> -->
     <input type="text" name="search" placeholder="Nom, SIREN, SIRET, adresse..." v-model="fullText"
       @keydown.down="suggestDown"
       @keydown.up.prevent="suggestUp"
@@ -18,6 +23,7 @@
         <span>{{ suggestion | capitalize | removeExtraChars}}</span>
       </li>
       <!-- Filling with hidden divs so search bar will always be same size -->
+      <!-- :key="index" -->
       <li class="hidden suggestion__box" v-for="index in suggestionNumberToMax"></li>
     </ul>
   </div>
@@ -107,6 +113,14 @@ export default {
     max-width: 100%;
   }
 
+  .form__select {
+    margin-bottom: 5px;
+  }
+
+  .overlay-button {
+    padding-top: 27px;
+  }
+
   ul {
     list-style-type: none;
     padding: 0;
@@ -129,6 +143,7 @@ export default {
       position: relative;
   }
 
+  // TODO: is this called ?
   .hidden {
     visibility: hidden;
   }

@@ -1,4 +1,4 @@
-import EtablissementPanelChildren from '@/components/etablissement/EtablissementPanelChildren.vue'
+import EtablissementSireneChildren from '@/components/etablissement/etablissementSirene/EtablissementSireneChildren.vue'
 import { createLocalVue, shallow, mount, RouterLinkStub } from '@vue/test-utils'
 import { __createMocks as createStoreMocks } from '@/store/index.js'
 import Vuex from 'vuex'
@@ -9,23 +9,23 @@ jest.mock('@/store/index.js')
 jest.mock('@/router/index.js')
 localVue.component('router-link', RouterLinkStub)
 
-describe('EtablissementPanelChildren.vue', () => {
+describe('EtablissementSireneChildren.vue', () => {
   let storeMocks
   let wrapperEPC
-  let etablissementPanelChildren
+  let etablissementSireneChildren
 
   beforeEach(() => {
     storeMocks = createStoreMocks()
-  
-    wrapperEPC = shallow(EtablissementPanelChildren, {
+
+    wrapperEPC = shallow(EtablissementSireneChildren, {
       localVue,
       store: storeMocks.store
     })
-    etablissementPanelChildren = wrapperEPC.vm
+    etablissementSireneChildren = wrapperEPC.vm
   })
 
   test('Computed value Result returns the right store getter', () => {
-    expect(etablissementPanelChildren.result).toBe(storeMocks.store.getters.singlePageResultEtablissement)
+    expect(etablissementSireneChildren.result).toBe(storeMocks.store.getters.singlePageResultEtablissement)
   })
 
   test('If company is social siege, the page display this information', () => {
@@ -52,11 +52,11 @@ describe('EtablissementPanelChildren.vue', () => {
   test('clicking on hideAllChidren goes back to Max Children etablissement displayed')
 })
 
-describe('EtablissementPanelChildren.vue snapshot', () => {
+describe('EtablissementSireneChildren.vue snapshot', () => {
   localVue.component('router-link', RouterLinkStub)
 
   const storeMocks = createStoreMocks()
-  const wrapperEPC = mount(EtablissementPanelChildren, {
+  const wrapperEPC = mount(EtablissementSireneChildren, {
     localVue,
     store: storeMocks.store
   })

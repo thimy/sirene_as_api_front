@@ -1,4 +1,4 @@
-import EtablissementPanelInfo from '@/components/etablissement/EtablissementPanelInfo.vue'
+import EtablissementSireneInfo from '@/components/etablissement/etablissementSirene/EtablissementSireneInfo.vue'
 import { createLocalVue, shallow, mount } from '@vue/test-utils'
 import { __createMocks as createStoreMocks } from '@/store/index.js'
 import Vuex from 'vuex'
@@ -15,7 +15,7 @@ describe('EtablissementPanelInfo.vue', () => {
   beforeEach(() => {
     storeMocks = createStoreMocks()
   
-    wrapperEPI = shallow(EtablissementPanelInfo, {
+    wrapperEPI = shallow(EtablissementSireneInfo, {
       localVue,
       store: storeMocks.store
     })
@@ -35,7 +35,7 @@ describe('EtablissementPanelInfo.vue snapshot', () => {
 
   const localVue = createLocalVue()
   const storeMocks = createStoreMocks()
-  const wrapperEPI = mount(EtablissementPanelInfo, {
+  const wrapperEPI = mount(EtablissementSireneInfo, {
     localVue,
     store: storeMocks.store
   })

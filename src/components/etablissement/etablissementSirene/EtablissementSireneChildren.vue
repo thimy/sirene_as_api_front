@@ -32,7 +32,7 @@ import Constants from '@/constants.js'
 import Filters from '@/components/mixins/filters'
 
 export default {
-  name: 'EtablissementPanelChildren',
+  name: 'EtablissementSireneChildren',
   data () {
     return {
       maxChildrenEtablissementsToShow: Constants.ETABLISSEMENT_SHOW_MAX_CHILDREN_SIRETS,

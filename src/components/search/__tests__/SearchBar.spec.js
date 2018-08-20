@@ -16,7 +16,7 @@ describe('SearchBar.vue', () => {
 
   beforeEach(() => {
     storeMocks = createStoreMocks()
-    
+
     wrapperSearchBar = shallow(SearchBar, {
       localVue,
       store: storeMocks.store,
@@ -127,7 +127,7 @@ describe('SearchBar.vue', () => {
 
   test('I can click on a suggestion to launch a search', () => {
     storeMocks.state.suggestions.storedSuggestions = ['Suggest1', 'Suggest2', 'Suggest3']
-    wrapperSearchBar.vm.requestSearch = jest.fn()  
+    wrapperSearchBar.vm.requestSearch = jest.fn()
     wrapperSearchBar.find('li:nth-child(2)').trigger('click')
     expect(wrapperSearchBar.vm.currentSuggestion()).toBe('Suggest2')
     expect(wrapperSearchBar.vm.requestSearch.mock.calls).toHaveLength(1)
@@ -220,7 +220,7 @@ describe('SearchBar.vue', () => {
   })
 
   // Computed values
-  
+
   test('Computed value isSearchNotEmpty check if search is empty', () =>{
     storeMocks.store.state.search.storedFullText = ''
     expect(wrapperSearchBar.vm.isSearchNotEmpty).toBeFalsy()

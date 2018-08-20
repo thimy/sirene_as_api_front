@@ -12,13 +12,13 @@ import mapOtherMarkers from '@/components/mixins/mapOtherMarkers'
 import colors from '@/components/mixins/colors'
 
 export default {
-  name: 'EtablisssementMap',
+  name: 'EtablisssementSireneMap',
   props: ['positionEtablissement', 'etablissement'],
   data () {
     return {
       mapboxglSupported: mapboxgl.supported(),
       mapTilesEtalab: 'https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json',
-      mapOptions (json) { 
+      mapOptions (json) {
         return {
           container: 'map',
           style: json.body,
@@ -44,7 +44,7 @@ export default {
     },
     addEtablissementMarker (map) {
       new mapboxgl.Marker({color: colors.red})
-        .setLngLat(this.positionEtablissement) 
+        .setLngLat(this.positionEtablissement)
         .setPopup(this.etablissementPopup)
         .addTo(map)
     }
