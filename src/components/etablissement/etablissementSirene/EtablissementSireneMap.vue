@@ -71,4 +71,8 @@ export default {
     max-width: 200px;
 }
 
+  .panel {
+    border: 2px solid #b4e1fa;
+  }
+
 </style>

@@ -46,3 +46,10 @@ export default {
   mixins: [Filters]
 }
 </script>
+
+<style lang="scss" scoped>
+  .panel {
+    // border: 2px solid #b4e1fa;
+    border: 2px $color-light-pink solid;
+  }
+</style>

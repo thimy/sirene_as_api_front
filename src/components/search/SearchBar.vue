@@ -118,7 +118,7 @@ export default {
   }
 
   .overlay-button {
-    padding-top: 27px;
+    // padding-top: 27px; //TODO: Reactivate after implementing the radio buttons
   }
 
   ul {
