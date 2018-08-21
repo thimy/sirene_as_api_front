@@ -72,7 +72,7 @@ export default {
 }
 
   .panel {
-    border: 2px solid #b4e1fa;
+    border: 2px solid $color-lighter-blue;
   }
 
 </style>

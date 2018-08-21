@@ -5,7 +5,7 @@ import filterMixin from '@/components/mixins/filters'
 
 const state = {
   storedSuggestions: {},
-  baseAdressSuggestions: process.env.BASE_ADRESS_SUGGESTIONS,
+  baseAdressSuggestions: process.env.BASE_ADRESS_SIRENE_SUGGESTIONS,
   querySuggestions: '',
   suggestActive: ''
 }

@@ -10,26 +10,66 @@ exports[`EtablissementHeader.vue Snapshot testing It match the snapshot 1`] = `
     <div
       class="container"
     >
-      <h2>
-         
-        <span
-          class="company__siren"
-        >
-          (833057201)
-        </span>
-      </h2>
-       
       <div
-        class="subtitle"
+        class="title"
       >
+        <h2>
+           
+          <span
+            class="company__siren"
+          >
+            (833057201)
+          </span>
+        </h2>
          
+        <div
+          class="subtitle"
+        >
+           
+        </div>
+         
+        <h4
+          class="company__industry"
+        >
+           
+        </h4>
       </div>
        
-      <h4
-        class="company__industry"
+      <div
+        class="tabs"
       >
+        <div
+          class="api api__sirene"
+        >
+          <h4>
+            Base SIRENE
+          </h4>
+           
+          <h5>
+            Information disponible
+          </h5>
+           
+          <h5>
+            Dernière mise à jour : 01/08/2018
+          </h5>
+        </div>
          
-      </h4>
+        <div
+          class="api api__rna"
+        >
+          <h4>
+            Base RNA
+          </h4>
+           
+          <h5>
+            Information disponible
+          </h5>
+           
+          <h5>
+            Dernière mise à jour : 05/08/2018
+          </h5>
+        </div>
+      </div>
     </div>
   </section>
 </div>

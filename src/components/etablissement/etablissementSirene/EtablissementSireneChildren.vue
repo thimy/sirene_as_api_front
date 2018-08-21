@@ -90,6 +90,6 @@ export default {
 <style lang="scss" scoped>
   .panel {
     // width: 100%;
-    border: 2px solid #b4e1fa;
+    border: 2px solid $color-lighter-blue;
   }
 </style>

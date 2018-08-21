@@ -8,9 +8,9 @@ const state = {
   storedLastFullText: '',
   storedSiret: '',
   pageNumber: 1,
-  baseAdress: process.env.BASE_ADRESS,
-  baseAdressSiret: process.env.BASE_ADRESS_SIRET,
-  baseAdressSiren: process.env.BASE_ADRESS_SIREN
+  baseAdress: process.env.BASE_ADRESS_SIRENE_FULLTEXT,
+  baseAdressSiret: process.env.BASE_ADRESS_SIRENE_SIRET,
+  baseAdressSiren: process.env.BASE_ADRESS_SIRENE_SIREN
 }
 
 const getters = {
