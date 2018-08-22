@@ -40,8 +40,8 @@ export default {
     }
   },
   computed: {
-    result () {
-      return this.$store.getters.singlePageResultEtablissement
+    resultSirene () {
+      return this.$store.getters.singlePageEtablissementSirene
     },
     resultSiegeSocial () {
       return this.$store.getters.storedSirenSiege || { siret: 0 }
@@ -61,10 +61,10 @@ export default {
       return Math.min(this.totalResultsOtherSirens, this.maxChildrenEtablissementsToShow)
     },
     isSiegeSocial () {
-      if (!this.result) {
+      if (!this.resultSirene) {
         return
       }
-      if (this.result.is_siege == '1') {
+      if (this.resultSirene.is_siege == '1') {
         return true
       }
       return false

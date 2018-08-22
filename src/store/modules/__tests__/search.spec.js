@@ -10,7 +10,7 @@ jest.mock('@/store/index.js', () => ({
     queryToGet: 'mock-query-',
     optionsToGet: 'mock-options-',
     pageNumberToGet: 'mock-pageNumberToGet-',
-    singlePageResultEtablissement: {
+    singlePageEtablissementSirene: {
       siren: 'mock-siren'
     },
     storedSirenSiege: {
@@ -257,7 +257,7 @@ describe('search.js action  executeSearchBySiret', () => {
 
   test('It sets the correct response if successful', done => {
     Search.actions.executeSearchBySiret(dispatch, siret).then(() => {
-      expect(store.dispatch).toHaveBeenCalledWith('setResponseSinglePage', 'good-dispatch')
+      expect(store.dispatch).toHaveBeenCalledWith('setResponseSinglePage', {"api": "SIRENE", "response": "good-dispatch"})
       done()
     })
   })

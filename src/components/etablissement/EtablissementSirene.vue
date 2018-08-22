@@ -9,7 +9,7 @@
         <etablissement-sirene-children></etablissement-sirene-children>
       </div>
       <div class="container company-container company-container__map">
-        <etablissement-sirene-map :positionEtablissement='coordinates' :etablissement='this.result'></etablissement-sirene-map>
+        <etablissement-sirene-map :positionEtablissement='coordinates' :etablissement='this.resultSirene'></etablissement-sirene-map>
       </div>
     </section>
   </div>
@@ -31,12 +31,12 @@ export default {
     'EtablissementSireneMap': EtablissementSireneMap
   },
   computed: {
-    result () {
-      return this.$store.getters.singlePageResultEtablissement
+    resultSirene () {
+      return this.$store.getters.singlePageEtablissementSirene
     },
     coordinates () {
-      if (this.result && this.result.longitude && this.result.latitude) {
-        return [this.result.longitude, this.result.latitude]
+      if (this.resultSirene && this.resultSirene.longitude && this.resultSirene.latitude) {
+        return [this.resultSirene.longitude, this.resultSirene.latitude]
       }
       return null
     }

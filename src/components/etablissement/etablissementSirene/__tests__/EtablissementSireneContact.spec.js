@@ -13,7 +13,7 @@ describe('EtablissementSireneContact.vue', () => {
 
   beforeEach(() => {
     storeMocks = createStoreMocks()
-  
+
     wrapperEPC= shallow(EtablissementSireneContact, {
       localVue,
       store: storeMocks.store
@@ -27,28 +27,28 @@ describe('EtablissementSireneContact.vue', () => {
   })
 
   test('Computed value formattedDate compute the correct date if present', () => {
-    wrapperEPC.vm.result.date_creation = '20180201'
+    wrapperEPC.vm.resultSirene.date_creation = '20180201'
     wrapperEPC.update()
     expect(wrapperEPC.vm.formattedDate).toBe('01/02/2018')
   })
 
   test('it should compute the full name correctly if name and surname are present', () => {
-    wrapperEPC.vm.result.nom = 'Forever'
-    wrapperEPC.vm.result.prenom = 'Michel'
+    wrapperEPC.vm.resultSirene.nom = 'Forever'
+    wrapperEPC.vm.resultSirene.prenom = 'Michel'
     wrapperEPC.update()
     expect(wrapperEPC.vm.fullOwnerName).toEqual('Forever Michel')
   })
 
   test('it should display the name if only the name is present', () => {
-    wrapperEPC.vm.result.nom = 'Forever'
-    wrapperEPC.vm.result.prenom = null
+    wrapperEPC.vm.resultSirene.nom = 'Forever'
+    wrapperEPC.vm.resultSirene.prenom = null
     wrapperEPC.update()
     expect(wrapperEPC.vm.fullOwnerName).toEqual('Forever')
   })
 
   test('it shouldnt display the name if only the first name is present', () => {
-    wrapperEPC.vm.result.nom = null
-    wrapperEPC.vm.result.prenom = 'Michel'
+    wrapperEPC.vm.resultSirene.nom = null
+    wrapperEPC.vm.resultSirene.prenom = 'Michel'
     wrapperEPC.update()
     expect(wrapperEPC.vm.fullOwnerName).toEqual('')
   })

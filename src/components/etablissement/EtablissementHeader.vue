@@ -3,9 +3,9 @@
     <section class="section-white">
       <div class="container">
         <div class="title">
-          <h2>{{result.nom_raison_sociale | removeExtraChars}} <span class="company__siren">({{ result.siren }})</span></h2>
-          <div class="subtitle"> {{ result.l2_normalisee }}</div>
-          <h4 class="company__industry"> {{ result.libelle_activite_principale_entreprise }}</h4>
+          <h2>{{resultSirene.nom_raison_sociale | removeExtraChars}} <span class="company__siren">({{ resultSirene.siren }})</span></h2>
+          <div class="subtitle"> {{ resultSirene.l2_normalisee }}</div>
+          <h4 class="company__industry"> {{ resultSirene.libelle_activite_principale_entreprise }}</h4>
         </div>
         <div class="tabs">
           <div class="api api__sirene">
@@ -30,8 +30,8 @@ import Filters from '@/components/mixins/filters.js'
 export default {
   name: 'EtablissementSirene',
   computed: {
-    result () {
-      return this.$store.getters.singlePageResultEtablissement
+    resultSirene () {
+      return this.$store.getters.singlePageEtablissementSirene
     }
   },
   mixins: [Filters]

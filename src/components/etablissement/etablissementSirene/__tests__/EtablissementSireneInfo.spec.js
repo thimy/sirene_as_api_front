@@ -23,7 +23,7 @@ describe('EtablissementPanelInfo.vue', () => {
   })
 
   test('Computed value Result returns the right store getter', () => {
-    expect(etablissementPanelInfo.result).toBe(storeMocks.store.getters.singlePageResultEtablissement)
+    expect(etablissementPanelInfo.resultSirene).toBe(storeMocks.store.getters.singlePageEtablissementSirene)
   })
 
   test('tvaIntracommunautaire) is correctly computed', () => {

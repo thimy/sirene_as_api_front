@@ -25,18 +25,18 @@ describe('EtablissementSireneChildren.vue', () => {
   })
 
   test('Computed value Result returns the right store getter', () => {
-    expect(etablissementSireneChildren.result).toBe(storeMocks.store.getters.singlePageResultEtablissement)
+    expect(etablissementSireneChildren.resultSirene).toBe(storeMocks.store.getters.singlePageEtablissementSirene)
   })
 
   test('If company is social siege, the page display this information', () => {
-    wrapperEPC.vm.result.is_siege = '1'
+    wrapperEPC.vm.resultSirene.is_siege = '1'
     wrapperEPC.update()
     expect(wrapperEPC.vm.isSiegeSocial).toBeTruthy()
     expect(wrapperEPC.find(".company__item-key").text()).toBe('Cet établissement est le siège social')
   })
 
   test('If company is not social siege, the page dont display this information', () => {
-    wrapperEPC.vm.result.is_siege = '0'
+    wrapperEPC.vm.resultSirene.is_siege = '0'
     wrapperEPC.update()
     expect(wrapperEPC.vm.isSiegeSocial).toBeFalsy()
   })

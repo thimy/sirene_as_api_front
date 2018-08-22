@@ -89,7 +89,7 @@ const actions = {
 
     if (isSiret) {
       await store.dispatch('executeSearchBySiret', searchId)
-      store.dispatch('executeSearchBySiren', store.getters.singlePageResultEtablissement.siren)
+      store.dispatch('executeSearchBySiren', store.getters.singlePageEtablissementSirene.siren)
     } else if (isSiren) {
       await store.dispatch('executeSearchBySiren', searchId)
       store.dispatch('executeSearchBySiret', store.getters.storedSirenSiege.siret)
@@ -100,11 +100,11 @@ const actions = {
   async executeSearchBySiret(dispatch, siret) {
     await store.commit('setSiretLoading', true)
     await store.dispatch('sendAPIRequest', dispatch.state.baseAdressSiret + siret)
-      .then(response => {
-        store.dispatch('setResponseSinglePage', response)
+    .then(response => {
+        store.dispatch('setResponseSinglePage', {response: response, api: 'SIRENE'})
       })
       .catch(notFound => {
-        store.dispatch('setResponseSinglePage', notFound)
+        store.dispatch('setResponseSinglePage', {response: notFound, api: 'SIRENE'})
       })
     store.commit('setSiretLoading', false)
   },

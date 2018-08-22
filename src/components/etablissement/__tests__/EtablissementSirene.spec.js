@@ -26,22 +26,22 @@ describe('Etablissement.vue', () => {
   })
 
   test('Computed value Result returns the right store getter', () => {
-    expect(etablissement.result).toBe(storeMocks.store.getters.singlePageResultEtablissement)
+    expect(etablissement.resultSirene).toBe(storeMocks.store.getters.singlePageEtablissementSirene)
   })
 
   test('Computed value coordinates returns the coordinates if both longitude and latitude exists', () => {
-    etablissement.result.longitude = -30
-    etablissement.result.latitude = -42
+    etablissement.resultSirene.longitude = -30
+    etablissement.resultSirene.latitude = -42
     wrapperEtablissement.update()
     expect(etablissement.coordinates).toEqual([-30, -42])
 
-    etablissement.result.longitude = -30
-    etablissement.result.latitude = null
+    etablissement.resultSirene.longitude = -30
+    etablissement.resultSirene.latitude = null
     wrapperEtablissement.update()
     expect(etablissement.coordinates).toBeNull()
 
-    etablissement.result.longitude = null
-    etablissement.result.latitude = -42
+    etablissement.resultSirene.longitude = null
+    etablissement.resultSirene.latitude = -42
     wrapperEtablissement.update()
     expect(etablissement.coordinates).toBeNull()
   })

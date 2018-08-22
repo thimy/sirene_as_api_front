@@ -2,7 +2,10 @@ import store from '@/store/index.js'
 
 const state = {
   storedResults: null,
-  singlePageResult: null,
+  singlePageResult: {
+    rna: null,
+    sirene:  null
+  },
   storedStatus: null,
   storedStatusSiret: null,
   storedStatusSiren: null
@@ -21,9 +24,9 @@ const getters = {
     }
     return null
   },
-  singlePageResultEtablissement: state => {
-    if (state.singlePageResult) {
-      return state.singlePageResult.etablissement
+  singlePageEtablissementSirene: state => { // ex-singlePageResultEtablissement
+    if (state.singlePageResult.sirene) {
+      return state.singlePageResult.sirene.etablissement
     }
     return null
   },
@@ -60,8 +63,11 @@ const mutations = {
   setStatusSiren(state, value) {
     state.storedStatusSiren = value
   },
-  setSinglePageResults (state, value) {
-    state.singlePageResult = value
+  setSinglePageResultsSirene (state, value) {
+    state.singlePageResult.sirene = value
+  },
+  setSinglePageResultsRNA (state, value) {
+    state.singlePageResult.rna = value
   }
 }
 
@@ -72,9 +78,13 @@ const actions = {
     store.dispatch('redirectWhenNoResult', response)
     store.commit('setResultsAreLoading', false)
   },
-  setResponseSinglePage(dispatch, response) {
-    store.commit('setSinglePageResults', response.body)
-    store.commit('setStatusSiret', response.status)
+  setResponseSinglePage(dispatch, { response, api }) {
+    if (api == 'SIRENE') {
+      store.commit('setSinglePageResultsSirene', response.body)
+      store.commit('setStatusSiret', response.status)
+    } else if (api == 'RNA') {
+      store.commit('setSinglePageResultsRNA', response.body)
+    }
     store.dispatch('redirectWhenNoResult', response)
   },
   setResponseSiren(dispatch, response) {

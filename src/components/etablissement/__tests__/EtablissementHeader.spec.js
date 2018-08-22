@@ -26,7 +26,7 @@ describe('Etablissement.vue', () => {
   })
 
   test('Computed value Result returns the right store getter', () => {
-    expect(etablissement.result).toBe(storeMocks.store.getters.singlePageResultEtablissement)
+    expect(etablissement.resultSirene).toBe(storeMocks.store.getters.singlePageEtablissementSirene)
   })
 })
 
