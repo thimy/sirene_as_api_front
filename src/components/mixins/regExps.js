@@ -11,6 +11,20 @@ export default {
       const siren = RegExp(/^\d{9}$/)
       return (siren.test(input) || sirenWithSeparators.test(input))
     },
+    isIdAssociation: function (input) {
+      const idAssociationImport = RegExp(/^(\d(\d|[A-Z])\d[SP](\d{2}|AR|P)((-?(\d|[A-Z])\d{1,7})|\d)?|\d{3}S.[A-Z]{0,3})$/)
+      const idAssociationWaldec = RegExp(/^W\d[\dA-Z]\d{7}$/)
+      return (idAssociationImport.test(input) || idAssociationWaldec.test(input))
+    },
+    analyzeSearchID: function(searchId) {
+      if (this.isSiret(searchId)) {
+        return 'SIRET'
+      } else if (this.isSiren(searchId)) {
+        return 'SIREN'
+      } else if (this.isIdAssociation(searchId)) {
+        return 'ID_ASSOCIATION'
+      }
+    },
     removeSeparators: function (input) {
       return input.replace(/[.\-_ ]/g, '')
     },
@@ -112,10 +126,10 @@ export default {
           diacriticsMap[letters[j]] = diacriticsRemovalMap[i].base
         }
       }
-      // eslint-disable-next-line no-control-regex 
+      // eslint-disable-next-line no-control-regex
         return str.replace(/[^\u0000-\u007E]/g, function(a){
-           return diacriticsMap[a] || a 
+           return diacriticsMap[a] || a
         })
-    }   
+    }
   }
 }

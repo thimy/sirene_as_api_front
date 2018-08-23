@@ -67,6 +67,72 @@ describe('regExps.js', () => {
     })
   })
 
+  const areIdAssociation = [
+    '311S0573',
+    '751P00167806',
+    '632P0632013847',
+    '751P00156249',
+    '751P00153387',
+    '031S0031000493',
+    '313P21002',
+    '751P00009715',
+    '493S0493002190',
+    '842P0842208786',
+    '751P00158523',
+    '595P0595028505',
+    '751P00178947',
+    '051S85-006',
+    '051S85-0070',
+    '842P0842205203',
+    '9R4S9744003621',
+    '759SAR731',
+    '2A1P02A1000992',
+    '922P28',
+    '922P808',
+    '2B2P02B1003923',
+    '051Sk',
+    '051SVISO',
+    '242S2',
+    'W012000021',
+    'W9G2000687',
+    'W423003672',
+    'W893001415',
+    'W321001752',
+    'W9N3001202',
+    'W9M3000817',
+    'W9M1001776',
+    'W593000925',
+    'W771001183',
+    'W014000002'
+  ]
+
+  const areNotIdAssociation = [
+    '31S00573',
+    '7151P00167806',
+    '632P06320138479',
+    '7P001569',
+    '751E00153387',
+    '0351S003100493',
+    'E332006701',
+    'S313P212',
+    'W9G20006878',
+    'W42300367'
+  ]
+
+  test('it validates correct IdAssociation', () => {
+    areIdAssociation.forEach((id) => {
+      expect(RegExps.methods.isIdAssociation(id)).toBeTruthy()
+    })
+  })
+  test('it doesnt validate incorrect IdAssociation', () => {
+    areNotIdAssociation.forEach((id) => {
+      if (RegExps.methods.isIdAssociation(id) == true) {
+        console.log(id)
+      }
+      expect(RegExps.methods.isIdAssociation(id)).toBeFalsy()
+    })
+  })
+
   const validWithSeparators = [
     '83305720100018',
     '833057201.000 18',
@@ -145,3 +211,7 @@ describe('regExps.js', () => {
     expect(fullTextWithoutDiacritics).toEqual(fullTextExpected)
   })
 })
+
+
+
+

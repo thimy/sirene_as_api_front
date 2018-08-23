@@ -86,6 +86,7 @@ const actions = {
     await store.dispatch('resetApplicationState')
     const isSiret = regExps.methods.isSiret(searchId)
     const isSiren = regExps.methods.isSiren(searchId)
+    // const isAssociationID = regExps.methods.isAssociationID(searchId)
 
     if (isSiret) {
       await store.dispatch('executeSearchBySiret', searchId)
