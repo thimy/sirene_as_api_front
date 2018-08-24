@@ -11,5 +11,6 @@ module.exports = merge(prodEnv, {
   BASE_ADRESS_SIRENE_NEAR_ETABLISSEMENT: '"http://localhost:3000/v1/near_etablissement_geojson/"',
 
   BASE_ADRESS_RNA_FULLTEXT: '"http://localhost:3001/v1/full_text/"',
+  BASE_ADRESS_RNA_SIRET: '"http://localhost:3001/v1/siret/"',
   BASE_ADRESS_RNA_ID: '"http://localhost:3001/v1/id/"'
 })

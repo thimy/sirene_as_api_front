@@ -4,7 +4,8 @@
   <loader class="container" v-else-if="isEtablissementLoading"></loader>
   <div v-else class="company">
     <etablissement-header></etablissement-header>
-    <etablissement-sirene></etablissement-sirene>
+    <etablissement-sirene v-if="haveSireneInfo"></etablissement-sirene>
+    <etablissement-rna v-if="haveRNAInfo"></etablissement-rna>
   </div>
 </template>
 
@@ -13,8 +14,9 @@ import Filters from '@/components/mixins/filters'
 import Loader from '@/components/modules/Loader'
 import ServerError from '@/components/modules/ServerError'
 import NotFound from '@/components/etablissement/EtablissementNotFound'
-import EtablissementSirene from '@/components/etablissement/EtablissementSirene'
 import EtablissementHeader from '@/components/etablissement/EtablissementHeader'
+import EtablissementSirene from '@/components/etablissement/EtablissementSirene'
+import EtablissementRNA from '@/components/etablissement/EtablissementRNA'
 
 export default {
   name: 'Etablissement',
@@ -22,9 +24,10 @@ export default {
     'Loader': Loader,
     'ServerError': ServerError,
     'NotFound': NotFound,
+    'EtablissementHeader': EtablissementHeader,
     'EtablissementSirene': EtablissementSirene,
-    'EtablissementHeader': EtablissementHeader
-},
+    'EtablissementRna': EtablissementRNA
+  },
   computed: {
     isEtablissementLoading () {
       return this.$store.getters.isEtablissementLoading
@@ -34,6 +37,12 @@ export default {
     },
     isError () {
       return this.$store.state.application.error500
+    },
+    haveSireneInfo () {
+      return this.$store.getters.sireneAvailable
+    },
+    haveRNAInfo () {
+      return this.$store.getters.RNAAvailable
     }
   },
   beforeCreate () {

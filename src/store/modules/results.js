@@ -25,8 +25,14 @@ const getters = {
     return null
   },
   singlePageEtablissementSirene: state => { // ex-singlePageResultEtablissement
-    if (state.singlePageResult.sirene) {
-      return state.singlePageResult.sirene.etablissement
+    if (store.state.results.singlePageResult.sirene) {
+      return store.state.results.singlePageResult.sirene.etablissement
+    }
+    return null
+  },
+  singlePageEtablissementRNA: state => {
+    if (store.state.results.singlePageResult.rna) {
+      return store.state.results.singlePageResult.rna.association
     }
     return null
   },
@@ -60,9 +66,11 @@ const mutations = {
   setStatusSiret(state, value) {
     state.storedStatusSiret = value
   },
+  // TODO: move to resultsSiren
   setStatusSiren(state, value) {
     state.storedStatusSiren = value
   },
+  // TODO: move to resultsSiren
   setSinglePageResultsSirene (state, value) {
     state.singlePageResult.sirene = value
   },
@@ -87,6 +95,7 @@ const actions = {
     }
     store.dispatch('redirectWhenNoResult', response)
   },
+  // TODO: move to resultsSiren
   setResponseSiren(dispatch, response) {
     store.commit('setSirenResults', response.body)
     store.commit('setStatusSiren', response.status)

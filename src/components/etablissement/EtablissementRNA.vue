@@ -3,6 +3,7 @@
     <section class="section-grey">
       <div class="container company-container">
         <etablissement-rna-info></etablissement-rna-info>
+        <etablissement-rna-contact></etablissement-rna-contact>
       </div>
     </section>
   </div>
@@ -11,11 +12,13 @@
 <script>
 import Filters from '@/components/mixins/filters.js'
 import EtablissementRNAInfo from '@/components/etablissement/etablissementRNA/EtablissementRNAInfo'
+import EtablissementRNAContact from '@/components/etablissement/etablissementRNA/EtablissementRNAContact'
 
 export default {
   name: 'EtablissementSirene',
   components: {
-    'EtablissementRNAInfo': EtablissementRNAInfo
+    'EtablissementRnaInfo': EtablissementRNAInfo,
+    'EtablissementRnaContact': EtablissementRNAContact
   }
 }
 </script>

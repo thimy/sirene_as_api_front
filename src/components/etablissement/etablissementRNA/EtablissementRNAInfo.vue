@@ -1,9 +1,11 @@
 <template>
   <div class="company__panel panel">
     <ul class="company__info-list">
-      <div class="company__item"><div class="company__item-key">SIRET</div><div class="company__item-value"> {{ resultSirene.siret }}</div></div>
-      <div class="company__item"><div class="company__item-key">SIREN</div><div class="company__item-value"> {{ resultSirene.siren }}</div></div>
-      <div class="company__item"><div class="company__item-key">Clef NIC</div><div class="company__item-value"> {{ resultSirene.nic }}</div></div>
+      <div class="company__item"><div class="company__item-key">Numéro RNA :</div><div class="company__item-value"> {{ resultRNA.id_association }}</div></div>
+      <div class="company__item"><div class="company__item-key">Ancien Numéro RNA :</div><div class="company__item-value"> {{ resultRNA.id_ex_association }}</div></div>
+      <div class="company__item"><div class="company__item-key">Objet :</div><div class="company__item-value"> {{ resultRNA.objet }}</div></div>
+      <div class="company__item"><div class="company__item-key">Siret :</div><div class="company__item-value"> {{ resultRNA.siret | ifExist }}</div></div>
+
     </ul>
   </div>
 </template>
@@ -14,8 +16,8 @@ import Filters from '@/components/mixins/filters'
 export default {
   name: 'EtablissementRNAInfo',
   computed: {
-    resultSirene () {
-      return this.$store.getters.singlePageEtablissementSirene
+    resultRNA () {
+      return this.$store.getters.singlePageEtablissementRNA
     }
   },
   mixins: [Filters]

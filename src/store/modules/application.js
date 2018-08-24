@@ -4,6 +4,7 @@ const state = {
   resultsAreLoading: true,
   sirenIsLoading: true,
   siretIsLoading: true,
+  idAssociationisLoading: true,
   error500: false,
   noResultFound: false,
 }
@@ -17,6 +18,9 @@ const mutations = {
   },
   setSiretLoading(state, value) {
     state.siretIsLoading = value
+  },
+  setIdAssociationLoading(state, value) {
+    state.idAssociationisLoading = value
   },
   setError500(state, value) {
     state.error500 = value
@@ -36,10 +40,22 @@ const actions = {
 }
 
 const getters = {
-  // If Siret OR Siren search are loading, the Etablissement page is loading :
+  // If any search is loading, the Etablissement page is loading :
   isEtablissementLoading: state => {
-    return (state.sirenIsLoading || state.siretIsLoading)
+    return (state.sirenIsLoading || state.siretIsLoading || state.idAssociationIsLoading)
   },
+  sireneAvailable: () => {
+    if (store.state.results.singlePageResult) {
+      return store.state.results.singlePageResult.sirene
+    }
+    return null
+  },
+  RNAAvailable: () => {
+    if (store.state.results.singlePageResult) {
+      return store.state.results.singlePageResult.rna
+    }
+    return null
+  }
 }
 
 export default {

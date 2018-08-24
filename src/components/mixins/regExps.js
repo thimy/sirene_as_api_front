@@ -16,13 +16,15 @@ export default {
       const idAssociationWaldec = RegExp(/^W\d[\dA-Z]\d{7}$/)
       return (idAssociationImport.test(input) || idAssociationWaldec.test(input))
     },
-    analyzeSearchID: function(searchId) {
+    analyzeSearchId: function(searchId) {
       if (this.isSiret(searchId)) {
         return 'SIRET'
       } else if (this.isSiren(searchId)) {
         return 'SIREN'
       } else if (this.isIdAssociation(searchId)) {
         return 'ID_ASSOCIATION'
+      } else {
+        return null
       }
     },
     removeSeparators: function (input) {

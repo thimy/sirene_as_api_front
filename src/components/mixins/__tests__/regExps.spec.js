@@ -210,6 +210,14 @@ describe('regExps.js', () => {
     const fullTextWithoutDiacritics = fullTextWithDiacritics.map(input => RegExps.methods.removeDiacritics(input))
     expect(fullTextWithoutDiacritics).toEqual(fullTextExpected)
   })
+
+  test('analyzeSearchID works', () => {
+    expect(RegExps.methods.analyzeSearchId('833 057 201')).toBe('SIREN')
+    expect(RegExps.methods.analyzeSearchId('W9G2000687')).toBe('ID_ASSOCIATION')
+    expect(RegExps.methods.analyzeSearchId('051S85-0070')).toBe('ID_ASSOCIATION')
+    expect(RegExps.methods.analyzeSearchId('833 057 201 000 18')).toBe('SIRET')
+    expect(RegExps.methods.analyzeSearchId('256314')).toBeNull()
+  })
 })
 
 

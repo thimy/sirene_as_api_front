@@ -66,27 +66,24 @@ export default {
       }
     },
     requestSearch: function () {
-      const isSiret = this.isSiret(this.fullText)
-      const isSiren = this.isSiren(this.fullText)
+      const natureSearchId = this.analyzeSearchId(this.fullText)
 
-      if (isSiret || isSiren) {
-        this.fullText = this.removeSeparators(this.fullText)
-        isSiret ? this.requestSiretSearch() : this.requestSirenSearch()
-      } else {
-        this.requestFullTextSearch()
+      switch (natureSearchId) {
+        case 'SIRET':
+          this.fullText = this.removeSeparators(this.fullText)
+          this.requestSiretSearch()
+          break
+        case 'SIREN':
+          this.fullText = this.removeSeparators(this.fullText)
+          this.requestSirenSearch()
+          break
+        case 'ID_ASSOCIATION':
+          this.requestIdAssociationSearch()
+          break
+        default:
+          this.requestFullTextSearch()
       }
       this.$store.commit('clearResults')
-    },
-    requestFullTextSearch: function () {
-      const currentSuggestion = this.currentSuggestion()
-      if (currentSuggestion) { // This search the current suggestion if selected
-        this.$store.commit('setFullText', currentSuggestion)
-      } else {
-        const fullTextNoDiacritics = this.removeDiacritics(this.fullText)
-        this.$store.commit('setFullText', fullTextNoDiacritics)
-      }
-      this.$store.dispatch('requestSearch')
-      this.suggestCount = -1
     },
     requestSiretSearch: function () {
       this.$store.commit('setSiret', this.fullText)
@@ -101,6 +98,20 @@ export default {
         .catch(notFound => {
           this.$store.dispatch('setResponse', notFound)
         })
+    },
+    requestIdAssociationSearch: function() {
+      this.$router.push({ path: `/entreprise/${this.fullText}` })
+    },
+    requestFullTextSearch: function () {
+      const currentSuggestion = this.currentSuggestion()
+      if (currentSuggestion) { // This search the current suggestion if selected
+        this.$store.commit('setFullText', currentSuggestion)
+      } else {
+        const fullTextNoDiacritics = this.removeDiacritics(this.fullText)
+        this.$store.commit('setFullText', fullTextNoDiacritics)
+      }
+      this.$store.dispatch('requestSearch')
+      this.suggestCount = -1
     }
   },
   mixins: [Filters, SuggestionsHelpers, RegExps]
