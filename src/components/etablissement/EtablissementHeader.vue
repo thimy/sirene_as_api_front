@@ -12,15 +12,23 @@
           <h4 class="company__industry"> {{ resultRNA.titre_court}}</h4>
         </div>
         <div class="tabs">
-          <div class="api api__sirene">
+          <div v-if="haveSireneInfo" class="api api__sirene">
             <h4>Base SIRENE</h4>
             <h5>Information disponible</h5>
             <h5>Dernière mise à jour : 01/08/2018</h5>
           </div>
-          <div class="api api__rna">
+          <div v-else class="api api__unavailable">
+            <h4>Base SIRENE</h4>
+            <h5>Non disponible</h5>
+          </div>
+          <div v-if="haveRNAInfo" class="api api__rna">
             <h4>Base RNA</h4>
             <h5>Information disponible</h5>
-            <h5>Dernière mise à jour : 05/08/2018</h5>
+            <h5>Dernière mise à jour : {{ this.lastUpdateRNA }}</h5>
+          </div>
+          <div v-else class="api api__unavailable">
+            <h4>Base RNA</h4>
+            <h5>Non disponible</h5>
           </div>
         </div>
       </div>
@@ -48,6 +56,9 @@ export default {
     },
     haveRNAInfo () {
       return this.$store.getters.RNAAvailable
+    },
+    lastUpdateRNA () {
+      return this.resultRNA.updated_at.substring(0, 10)
     }
   },
   mixins: [Filters]
@@ -55,6 +66,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .tabs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
   .api {
     margin: 5px 0 5px 0;
     padding: 10px;
@@ -67,27 +84,22 @@ export default {
 
   .api__sirene {
     background-color: $color-light-blue;
-
-    h4, h5 {
-      color: $color-white;
-    }
-  }
-
-  .tabs {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    color: $color-white;
   }
 
   .api__rna {
     background-color: $color-light-pink;
-    // background-color: $color-light-grey;
-    // color: $color-darker-grey;
+    color: $color-white;
+  }
 
-    h4, h5 {
-      color: $color-white;
+  .api__unavailable {
+    background-color: $color-light-grey;
+    color: $color-darker-grey;
+    h5 {
+      padding-top: 5px;
     }
   }
+
   .section-white {
     padding: 0;
     // display: flex;

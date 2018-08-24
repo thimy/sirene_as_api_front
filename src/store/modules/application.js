@@ -34,6 +34,8 @@ const actions = {
   resetApplicationState() {
     store.dispatch('hideWelcomeText')
     store.commit('setStoredSuggestions', '')
+    store.commit('setSinglePageResultsSirene', null)
+    store.commit('setSinglePageResultsRNA', null)
     store.commit('setError500', false)
     store.commit('setNoResultFound', false)
   }
