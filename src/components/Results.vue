@@ -59,8 +59,9 @@ export default {
     resultsAreLoading () {
       return this.$store.state.application.resultsAreLoading
     },
+    // TODO: can do better here ?
     serverError () {
-      return this.$store.state.application.error500
+      return (this.$store.state.application.error500.rna && this.$store.state.application.error500.sirene)
     }
   },
   beforeUpdate () {

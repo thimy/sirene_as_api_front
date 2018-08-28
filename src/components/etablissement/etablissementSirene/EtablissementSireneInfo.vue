@@ -7,6 +7,7 @@
       <div class="company__item"><div class="company__item-key">Activité principale Etablissement</div><div class="company__item-value"> {{ resultSirene.activite_principale }} - {{ resultSirene.libelle_activite_principale }}</div></div>
       <div class="company__item"><div class="company__item-key">Activité principale Entreprise</div><div class="company__item-value"> {{ resultSirene.activite_principale_entreprise }} - {{ resultSirene.libelle_activite_principale_entreprise }}</div></div>
       <div class="company__item"><div class="company__item-key">Nature juridique</div><div class="company__item-value"> {{ resultSirene.libelle_nature_juridique_entreprise | ifExist }}</div></div>
+      <div class="company__item"><div class="company__item-key">Numéro RNA</div><div class="company__item-value"> {{ resultSirene.numero_rna | ifExist }}</div></div>
       <div class="company__item"><div class="company__item-key">N° TVA Intracommunautaire</div><div class="company__item-value"> {{ tvaIntracommunautaire }}</div></div>
     </ul>
   </div>

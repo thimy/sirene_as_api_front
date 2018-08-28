@@ -5,8 +5,14 @@ const state = {
   sirenIsLoading: true,
   siretIsLoading: true,
   idAssociationisLoading: true,
-  error500: false,
-  noResultFound: false,
+  error500: {
+    sirene: false,
+    rna: false
+  },
+  noResultFound: {
+    sirene: false,
+    rna: false
+  }
 }
 
 const mutations = {
@@ -22,11 +28,27 @@ const mutations = {
   setIdAssociationLoading(state, value) {
     state.idAssociationisLoading = value
   },
-  setError500(state, value) {
-    state.error500 = value
+  // TODO: put this in action, and/or factorize as object
+  setError500(state, { value, api }) {
+    if (api == 'ALL') {
+      state.error500.sirene = value
+      state.error500.rna = value
+    } else if (api == 'SIRENE') {
+      state.error500.sirene = value
+    } else if (api == 'RNA') {
+      state.error500.rna = value
+    }
   },
-  setNoResultFound(state, value) {
-    state.noResultFound = value
+  // TODO: put this in action, and/or factorize as object
+  setNoResultFound(state, { value, api }) {
+    if (api == 'ALL') {
+      state.noResultFound.sirene = value
+      state.noResultFound.rna = value
+    } else if (api == 'SIRENE') {
+      state.noResultFound.sirene = value
+    } else if (api == 'RNA') {
+      state.noResultFound.rna = value
+    }
   }
 }
 
@@ -36,8 +58,8 @@ const actions = {
     store.commit('setStoredSuggestions', '')
     store.commit('setSinglePageResultsSirene', null)
     store.commit('setSinglePageResultsRNA', null)
-    store.commit('setError500', false)
-    store.commit('setNoResultFound', false)
+    store.commit('setError500', { value: false, api: 'ALL' })
+    store.commit('setNoResultFound', { value: false, api: 'ALL' })
   }
 }
 
@@ -57,6 +79,12 @@ const getters = {
       return store.state.results.singlePageResult.rna
     }
     return null
+  },
+  allAPIError500: state => {
+    state.error500.rna && state.error500.sirene
+  },
+  allAPINotFound: state => {
+    state.noResultFound.rna && state.noResultFound.sirene
   }
 }
 

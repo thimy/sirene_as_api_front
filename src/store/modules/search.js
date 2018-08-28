@@ -1,3 +1,4 @@
+// TODO: Factorize this : searchFullText, searchEtablissement
 import Vue from 'vue'
 import store from '@/store/index.js'
 import router from '@/router/index.js'
@@ -17,21 +18,24 @@ const state = {
     'SIRENE': process.env.BASE_ADRESS_SIRENE_FULLTEXT,
     'RNA': process.env.BASE_ADRESS_RNA_FULLTEXT
   },
+  baseAdressRNAId: {
+    'SIRENE': process.env.BASE_ADRESS_SIRENE_ID_ASSOCIATION,
+    'RNA': process.env.BASE_ADRESS_RNA_ID_ASSOCIATION
+  },
   baseAdressSireneSiren: process.env.BASE_ADRESS_SIRENE_SIREN,
-  baseAdressRNAId: process.env.BASE_ADRESS_RNA_ID
 }
 
 const getters = {
   adressToGetFulltext: function (state, api) {
     return state.baseAdressFullText[api] + store.getters.queryToGet
   },
-  queryToGet: state => {
+  queryToGet: () => {
     return store.state.route.query.fullText + store.getters.optionsToGet
   },
   pageNumberToGet: state => {
     return '?page=' + state.pageNumber
   },
-  optionsToGet: state => {
+  optionsToGet: () => {
     return store.getters.pageNumberToGet
   },
   storedFullText: state => {
@@ -72,12 +76,12 @@ const actions = {
   // Calling this action directly won't update the router
   async executeSearchResults () {
     await store.dispatch('resetApplicationState')
-    // We start the loader here and stop later during action setResponse
     await store.commit('setResultsAreLoading', true)
-    store.dispatch('executeSearchResultsCallAPI', 'SIRENE') //TODO: change here later
+    await store.dispatch('executeSearchResultsCallAPI', 'SIRENE') //TODO: change here later for multiple-api fulltext
+    store.commit('setResultsAreLoading', false)
   },
   async executeSearchResultsCallAPI(dispatch, api) {
-    store.dispatch('sendAPIRequest', store.getters.adressToGetFullText(api))
+    store.dispatch('sendAPIRequest', getters.adressToGetFulltext(state, api))
       .then(response => {
         store.dispatch('setResponse', response)
       })
@@ -98,21 +102,24 @@ const actions = {
       case 'SIRET':
         await store.dispatch('executeSearchBySiret', { siret: searchId, api: 'SIRENE' })
         store.dispatch('executeSearchBySiren', store.getters.singlePageEtablissementSirene.siren)
+        store.dispatch('fromSireneRequestOtherAPIs', searchId)
         break
       case 'SIREN':
         await store.dispatch('executeSearchBySiren', searchId)
         store.dispatch('executeSearchBySiret', store.getters.storedSirenSiege.siret)
+        store.dispatch('fromSireneRequestOtherAPIs', store.getters.storedSirenSiege.siret)
         break
       case 'ID_ASSOCIATION':
-        await store.dispatch('executeSearchByIdAssociation', searchId)
+        await store.dispatch('executeSearchByIdAssociation', {id: searchId, api: 'RNA'})
+        store.dispatch('fromRNARequestOtherAPIs', searchId)
         break
       default:
-        store.commit('setNoResultFound', true)
+        store.commit('setNoResultFound', {value: true, api: 'ALL'})
     }
   },
   async executeSearchBySiret(dispatch, { siret, api }) {
     await store.commit('setSiretLoading', true)
-    await store.dispatch('sendAPIRequest', dispatch.state.baseAdressSiret[api] + siret)
+    await store.dispatch('sendAPIRequest', state.baseAdressSiret[api] + siret)
     .then(response => {
         store.dispatch('setResponseSinglePage', {response: response, api: api})
       })
@@ -121,19 +128,16 @@ const actions = {
       })
     store.commit('setSiretLoading', false)
   },
-  // This function is API-RNA only
-  async executeSearchByIdAssociation(dispatch, id) {
+  async executeSearchByIdAssociation(dispatch, { id, api }) {
     await store.commit('setIdAssociationLoading', true)
-    await store.dispatch('sendAPIRequest', dispatch.state.baseAdressRNAId + id)
+    await store.dispatch('sendAPIRequest', state.baseAdressRNAId[api] + id)
       .then(response => {
-        store.dispatch('setResponseSinglePage', {response: response, api: 'RNA'})
+        store.dispatch('setResponseSinglePage', {response: response, api: api})
       })
       .catch(notFound => {
-        store.dispatch('setResponseSinglePage', {response: notFound, api: 'RNA'})
+        store.dispatch('setResponseSinglePage', {response: notFound, api: api})
       })
     store.commit('setIdAssociationLoading', false)
-    store.commit('setSirenLoading', false) // TODO: Replace theses lines by complementary search
-    store.commit('setSiretLoading', false)
   },
   // This function is API-Sirene only
   async executeSearchBySiren(dispatch, siren) {

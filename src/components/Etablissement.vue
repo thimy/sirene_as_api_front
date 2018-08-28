@@ -33,10 +33,10 @@ export default {
       return this.$store.getters.isEtablissementLoading
     },
     isNotFound () {
-      return this.$store.state.application.noResultFound
+      return this.$store.getters.allAPINotFound
     },
     isError () {
-      return this.$store.state.application.error500
+      return this.$store.getters.allAPIError500
     },
     haveSireneInfo () {
       return this.$store.getters.sireneAvailable

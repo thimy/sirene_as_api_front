@@ -24,13 +24,13 @@ const getters = {
     }
     return null
   },
-  singlePageEtablissementSirene: state => { // ex-singlePageResultEtablissement
+  singlePageEtablissementSirene: () => { // ex-singlePageResultEtablissement
     if (store.state.results.singlePageResult.sirene) {
       return store.state.results.singlePageResult.sirene.etablissement
     }
     return null
   },
-  singlePageEtablissementRNA: state => {
+  singlePageEtablissementRNA: () => {
     if (store.state.results.singlePageResult.rna) {
       return store.state.results.singlePageResult.rna.association
     }
@@ -83,30 +83,30 @@ const actions = {
   setResponse(dispatch, response) {
     store.commit('setResults', response.body)
     store.commit('setStatus', response.status)
-    store.dispatch('redirectWhenNoResult', response)
-    store.commit('setResultsAreLoading', false)
   },
   setResponseSinglePage(dispatch, { response, api }) {
+    if (response.status === 500 || response.status === 0 || response.status === 404) {
+      store.dispatch('setNegativeResponse', { response: response, api: api })
+      return
+    }
     if (api == 'SIRENE') {
       store.commit('setSinglePageResultsSirene', response.body)
       store.commit('setStatusSiret', response.status)
     } else if (api == 'RNA') {
       store.commit('setSinglePageResultsRNA', response.body)
     }
-    store.dispatch('redirectWhenNoResult', response)
   },
   // TODO: move to resultsSiren
   setResponseSiren(dispatch, response) {
     store.commit('setSirenResults', response.body)
     store.commit('setStatusSiren', response.status)
-    store.dispatch('redirectWhenNoResult', response)
   },
-  redirectWhenNoResult(dispatch, response) {
+  setNegativeResponse(dispatch, { response, api }) { //ex-redirectWhenNoResult
     if (response.status === 500 || response.status === 0) {
-      store.commit('setError500', true)
+      store.commit('setError500', { error: true, api: api })
     }
     if (response.status === 404) {
-      store.commit('setNoResultFound', true)
+      store.commit('setNoResultFound', { error: true, api: api })
     }
   }
 }

@@ -126,9 +126,6 @@ describe('regExps.js', () => {
   })
   test('it doesnt validate incorrect IdAssociation', () => {
     areNotIdAssociation.forEach((id) => {
-      if (RegExps.methods.isIdAssociation(id) == true) {
-        console.log(id)
-      }
       expect(RegExps.methods.isIdAssociation(id)).toBeFalsy()
     })
   })

@@ -75,16 +75,11 @@ export default {
     justify-content: space-between;
   }
 
-  .company-container__extra {
-    padding-top: 0;
-    margin-top: 0;
-  }
-
+  .company-container__extra,
   .company-container__map {
     padding-top: 0;
     margin-top: 0;
   }
-
 
   @media (max-width: $tablet) {
     .company-container {

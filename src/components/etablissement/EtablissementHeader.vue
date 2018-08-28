@@ -15,7 +15,7 @@
           <div v-if="haveSireneInfo" class="api api__sirene">
             <h4>Base SIRENE</h4>
             <h5>Information disponible</h5>
-            <h5>Dernière mise à jour : 01/08/2018</h5>
+            <h5>Dernière mise à jour : {{ this.lastUpdateSirene }}</h5>
           </div>
           <div v-else class="api api__unavailable">
             <h4>Base SIRENE</h4>
@@ -56,6 +56,9 @@ export default {
     },
     haveRNAInfo () {
       return this.$store.getters.RNAAvailable
+    },
+    lastUpdateSirene () {
+      return this.resultSirene.updated_at.substring(0, 10)
     },
     lastUpdateRNA () {
       return this.resultRNA.updated_at.substring(0, 10)

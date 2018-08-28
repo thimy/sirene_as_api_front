@@ -6,6 +6,7 @@ import application from './modules/application'
 import results from './modules/results'
 import resultsSiren from './modules/resultsSiren'
 import search from './modules/search'
+import searchAdditionalInfo from './modules/searchAdditionalInfo'
 import suggestions from './modules/suggestions'
 import welcomeText from './modules/welcomeText'
 
@@ -18,6 +19,7 @@ export default new Vuex.Store({
     results,
     resultsSiren,
     search,
+    searchAdditionalInfo,
     suggestions,
     welcomeText
   }

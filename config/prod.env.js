@@ -7,6 +7,7 @@ module.exports = {
   // BASE_ADRESS_SIRENE_SIREN: '"https://sirene.entreprise.api.gouv.fr/v1/siren/"',
   // BASE_ADRESS_SIRENE_SUGGESTIONS: '"https://sirene.entreprise.api.gouv.fr/v1/suggest/"',
   // BASE_ADRESS_SIRENE_NEAR_ETABLISSEMENT: '"https://sirene.entreprise.api.gouv.fr/v1/near_etablissement_geojson/"',
+  // BASE_ADRESS_SIRENE_ID_ASSOCIATION: '"https://sirene.entreprise.api.gouv.fr/v1/rna/"',
 
   // BASE_ADRESS_RNA_FULLTEXT: '"http://rna.entreprise.api.gouv.fr/v1/full_text/"',
   // BASE_ADRESS_RNA_ID: '"http://rna.entreprise.api.gouv.fr/v1/id/"'
@@ -16,7 +17,8 @@ module.exports = {
   BASE_ADRESS_SIRENE_SIREN: '"https://sandbox.sirene.entreprise.api.gouv.fr/v1/siren/"',
   BASE_ADRESS_SIRENE_SUGGESTIONS: '"https://sandbox.sirene.entreprise.api.gouv.fr/v1/suggest/"',
   BASE_ADRESS_SIRENE_NEAR_ETABLISSEMENT: '"https://sandbox.sirene.entreprise.api.gouv.fr/v1/near_etablissement_geojson/"',
+  BASE_ADRESS_SIRENE_ID_ASSOCIATION: '"https://sandbox.sirene.entreprise.api.gouv.fr/v1/rna/"',
 
   BASE_ADRESS_RNA_FULLTEXT: '"http://sandbox.rna.entreprise.api.gouv.fr/v1/full_text/"',
-  BASE_ADRESS_RNA_ID: '"http://sandbox.rna.entreprise.api.gouv.fr/v1/id/"'
+  BASE_ADRESS_RNA_ID_ASSOCIATION: '"http://sandbox.rna.entreprise.api.gouv.fr/v1/id/"'
 }
