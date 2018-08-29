@@ -57,11 +57,11 @@ export default {
       return `${numberResultsFormatted} résultats pour "${this.$store.state.search.storedLastFullText}"`
     },
     resultsAreLoading () {
-      return this.$store.state.application.resultsAreLoading
+      return this.$store.state.application.isLoading['RESULTS']
     },
     // TODO: can do better here ?
     serverError () {
-      return (this.$store.state.application.error500.rna && this.$store.state.application.error500.sirene)
+      return this.$store.getters.allAPIError500
     }
   },
   beforeUpdate () {

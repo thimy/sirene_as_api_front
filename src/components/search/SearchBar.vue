@@ -9,7 +9,7 @@
       @keydown.down="suggestDown"
       @keydown.up.prevent="suggestUp"
       @keydown.esc="suggestReset"
-      @keydown.enter="suggestEnter"/>
+      @keydown.enter="requestSearchIfNotEmpty"/>
     <button class="overlay-button">
       <svg class="icon icon-search"><use xlink:href="#icon-search"></use></svg>
     </button>
@@ -23,8 +23,7 @@
         <span>{{ suggestion | capitalize | removeExtraChars}}</span>
       </li>
       <!-- Filling with hidden divs so search bar will always be same size -->
-      <!-- :key="index" -->
-      <li class="hidden suggestion__box" v-for="index in suggestionNumberToMax"></li>
+      <li class="hidden suggestion__box" :key="index" v-for="index in suggestionNumberToMax"></li>
     </ul>
   </div>
 </template>
@@ -61,56 +60,29 @@ export default {
   methods: {
     requestSearchIfNotEmpty: function() {
       if (this.isSearchNotEmpty) {
-        this.$store.commit('setResultsAreLoading', true)
         this.requestSearch()
       }
     },
     requestSearch: function () {
       const natureSearchId = this.analyzeSearchId(this.fullText)
 
-      switch (natureSearchId) {
-        case 'SIRET':
-          this.fullText = this.removeSeparators(this.fullText)
-          this.requestSiretSearch()
-          break
-        case 'SIREN':
-          this.fullText = this.removeSeparators(this.fullText)
-          this.requestSirenSearch()
-          break
-        case 'ID_ASSOCIATION':
-          this.requestIdAssociationSearch()
-          break
-        default:
-          this.requestFullTextSearch()
+      if (natureSearchId) {
+        this.fullText = this.removeSeparators(this.fullText)
+        this.$router.push({ path: `/entreprise/${this.fullText}` })
+      } else {
+        this.requestFullTextSearch()
       }
       this.$store.commit('clearResults')
     },
-    requestSiretSearch: function () {
-      this.$store.commit('setSiret', this.fullText)
-      this.$router.push({ path: `/entreprise/${this.fullText}` })
-    },
-    requestSirenSearch: function () {
-      this.$store.dispatch('executeSearchBySiren', this.fullText)
-        .then(response => {
-          const siegeSiret = this.$store.getters.storedSirenSiege.siret
-          this.$router.push({ path: `/entreprise/${siegeSiret}` })
-        })
-        .catch(notFound => {
-          this.$store.dispatch('setResponse', notFound)
-        })
-    },
-    requestIdAssociationSearch: function() {
-      this.$router.push({ path: `/entreprise/${this.fullText}` })
-    },
     requestFullTextSearch: function () {
       const currentSuggestion = this.currentSuggestion()
-      if (currentSuggestion) { // This search the current suggestion if selected
+      if (currentSuggestion) {
         this.$store.commit('setFullText', currentSuggestion)
       } else {
         const fullTextNoDiacritics = this.removeDiacritics(this.fullText)
         this.$store.commit('setFullText', fullTextNoDiacritics)
       }
-      this.$store.dispatch('requestSearch')
+      this.$store.dispatch('requestSearchFullText')
       this.suggestCount = -1
     }
   },
@@ -126,10 +98,6 @@ export default {
 
   .form__select {
     margin-bottom: 5px;
-  }
-
-  .overlay-button {
-    // padding-top: 27px; //TODO: Reactivate after implementing the radio buttons
   }
 
   ul {

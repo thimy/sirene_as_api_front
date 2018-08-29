@@ -17,24 +17,19 @@ const getters = {
 
 const actions = {
   // When we have an RNA ID, check if there is a Siret. If yes, look up Sirene. If no, look up the ID in Sirene.
-  fromRNARequestOtherAPIs(dispatch, id) {
+  async fromRNARequestOtherAPIs(dispatch, id) {
     if (getters.siretFromRNA()) {
-      store.dispatch('executeSearchBySiret', { siret: getters.siretFromRNA(), api: 'SIRENE' })
+      await store.dispatch('executeSearchBySiret', { siret: getters.siretFromRNA(), api: 'SIRENE' })
     } else {
-      store.dispatch('executeSearchByIdAssociation', { id: id, api: 'SIRENE' })
-      // Never searching by siret so need to make it not in loading state, TODO: find better way
-      store.commit('setSiretLoading', false)
-      store.commit('setSirenLoading', false)
+      await store.dispatch('executeSearchByIdAssociation', { id: id, api: 'SIRENE' })
     }
   },
   // When we have Siret, check if there is an RNA ID. If yes, look up RNA. If no, look up Siret in RNA.
-  fromSireneRequestOtherAPIs(dispatch, siret) {
+  async fromSireneRequestOtherAPIs(dispatch, siret) {
     if (getters.idAssociationFromSirene()) {
-      store.dispatch('executeSearchByIdAssociation', { id: getters.idAssociationFromSirene(), api: 'RNA' })
+      await store.dispatch('executeSearchByIdAssociation', { id: getters.idAssociationFromSirene(), api: 'RNA' })
     } else {
-      store.dispatch('executeSearchBySiret', { siret: siret, api: 'RNA' })
-      // Never searching by id_association so need to make it not in loading state, TODO: find better way
-      store.commit('setIdAssociationLoading', false)
+      await store.dispatch('executeSearchBySiret', { siret: siret, api: 'RNA' })
     }
   }
 }

@@ -6,9 +6,7 @@ const state = {
     rna: null,
     sirene:  null
   },
-  storedStatus: null,
-  storedStatusSiret: null,
-  storedStatusSiren: null
+  storedStatus: null
 }
 
 const getters = {
@@ -63,13 +61,6 @@ const mutations = {
   setStatus (state, value) {
     state.storedStatus = value
   },
-  setStatusSiret(state, value) {
-    state.storedStatusSiret = value
-  },
-  // TODO: move to resultsSiren
-  setStatusSiren(state, value) {
-    state.storedStatusSiren = value
-  },
   // TODO: move to resultsSiren
   setSinglePageResultsSirene (state, value) {
     state.singlePageResult.sirene = value
@@ -80,7 +71,7 @@ const mutations = {
 }
 
 const actions = {
-  setResponse(dispatch, response) {
+  setResponseFullText(dispatch, response) {
     store.commit('setResults', response.body)
     store.commit('setStatus', response.status)
   },
@@ -95,11 +86,6 @@ const actions = {
     } else if (api == 'RNA') {
       store.commit('setSinglePageResultsRNA', response.body)
     }
-  },
-  // TODO: move to resultsSiren
-  setResponseSiren(dispatch, response) {
-    store.commit('setSirenResults', response.body)
-    store.commit('setStatusSiren', response.status)
   },
   setNegativeResponse(dispatch, { response, api }) { //ex-redirectWhenNoResult
     if (response.status === 500 || response.status === 0) {

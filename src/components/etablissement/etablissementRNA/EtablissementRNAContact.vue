@@ -4,7 +4,6 @@
       <div class="company__item"><div class="company__item-key">Adresse du siège :</div><div class="company__item-value"> {{ resultRNA.adresse_siege | ifExist }}</div></div>
       <div class="company__item"><div class="company__item-key">Adresse établissement :</div><div class="company__item-value"> {{ this.l1_adress | ifExist}}</div></div>
       <div class="company__item"><div class="company__item-key">Commune établissement :</div><div class="company__item-value"> {{ this.l2_adress | ifExist}}</div></div>
-
     </ul>
   </div>
 </template>

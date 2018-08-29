@@ -1,10 +1,12 @@
 import store from '@/store/index.js'
 
 const state = {
-  resultsAreLoading: true,
-  sirenIsLoading: true,
-  siretIsLoading: true,
-  idAssociationisLoading: true,
+  isLoading: {
+    'SIREN': true,
+    'ID_ASSOCIATION': true,
+    'SIRET': true,
+    'RESULTS': true
+  },
   error500: {
     sirene: false,
     rna: false
@@ -16,17 +18,17 @@ const state = {
 }
 
 const mutations = {
-  setResultsAreLoading(state, value) {
-    state.resultsAreLoading = value
-  },
-  setSirenLoading(state, value) {
-    state.sirenIsLoading = value
-  },
-  setSiretLoading(state, value) {
-    state.siretIsLoading = value
-  },
-  setIdAssociationLoading(state, value) {
-    state.idAssociationisLoading = value
+  setLoading(state, {value, search}) {
+    if (search == 'ALL') {
+      state.isLoading = {
+        'SIREN': value,
+        'ID_ASSOCIATION': value,
+        'SIRET': value,
+        'RESULTS': value
+      }
+    } else {
+      state.isLoading[search] = value
+    }
   },
   // TODO: put this in action, and/or factorize as object
   setError500(state, { value, api }) {
@@ -66,7 +68,7 @@ const actions = {
 const getters = {
   // If any search is loading, the Etablissement page is loading :
   isEtablissementLoading: state => {
-    return (state.sirenIsLoading || state.siretIsLoading || state.idAssociationIsLoading)
+    return (state.isLoading['SIRET'] || state.isLoading['SIREN'] || state.isLoading['ID_ASSOCIATION'])
   },
   sireneAvailable: () => {
     if (store.state.results.singlePageResult) {

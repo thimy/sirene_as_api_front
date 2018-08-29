@@ -1,25 +1,25 @@
 const state = {
-  sirenResults: null
+  sirenChildren: null
 }
 
 const getters = {
   storedSirenSiege: state => {
-    if (state.sirenResults && state.sirenResults.siege_social) {
-      return state.sirenResults.siege_social
+    if (state.sirenChildren && state.sirenChildren.siege_social) {
+      return state.sirenChildren.siege_social
     }
     return null
   },
   storedSirenTotalResults: state => {
-    return state.sirenResults && state.sirenResults.total_results
+    return state.sirenChildren && state.sirenChildren.total_results
   },
   storedSirenChildren: state => {
-    return state.sirenResults && state.sirenResults.other_etablissements_sirets
+    return state.sirenChildren && state.sirenChildren.other_etablissements_sirets
   }
 }
 
 const mutations = {
   setSirenResults (state, value) {
-    state.sirenResults = value
+    state.sirenChildren = value
   }
 }
 

@@ -7,7 +7,6 @@ import regExps from '@/components/mixins/regExps.js'
 const state = {
   storedFullText: '',
   storedLastFullText: '',
-  storedSiret: '',
   pageNumber: 1,
 
   baseAdressSiret: {
@@ -26,7 +25,7 @@ const state = {
 }
 
 const getters = {
-  adressToGetFulltext: function (state, api) {
+  adressToGetFullText: function (state, api) {
     return state.baseAdressFullText[api] + store.getters.queryToGet
   },
   queryToGet: () => {
@@ -53,44 +52,41 @@ const mutations = {
   setLastFullText (state, value) {
     state.storedLastFullText = value
   },
-  setSiret (state, value) {
-    state.storedSiret = value
-  },
   setPage (state, value) {
     state.pageNumber = value
   }
 }
 
 const actions = {
-  requestSearch () {
+  requestSearchFullText () {
     router.push({ path: '/search',
       query: {
         fullText: state.storedFullText,
         page: state.pageNumber
       }
     })
-    store.dispatch('executeSearchResults')
+    store.dispatch('executeSearchFullText')
     // We save the last fulltext searched, so Results page display correctly name of last search
     store.commit('setLastFullText', state.storedFullText)
   },
   // Calling this action directly won't update the router
-  async executeSearchResults () {
+  async executeSearchFullText () {
     await store.dispatch('resetApplicationState')
-    await store.commit('setResultsAreLoading', true)
-    await store.dispatch('executeSearchResultsCallAPI', 'SIRENE') //TODO: change here later for multiple-api fulltext
-    store.commit('setResultsAreLoading', false)
+    await store.commit('setLoading', { value: true, search: 'RESULTS' })
+    await store.dispatch('searchFullTextCallAPI', 'SIRENE') //TODO: change here later for multiple-api fulltext
+    store.commit('setLoading', { value: false, search: 'RESULTS' })
   },
-  async executeSearchResultsCallAPI(dispatch, api) {
-    store.dispatch('sendAPIRequest', getters.adressToGetFulltext(state, api))
+  async searchFullTextCallAPI(dispatch, api) {
+    store.dispatch('sendAPIRequest', getters.adressToGetFullText(state, api))
       .then(response => {
-        store.dispatch('setResponse', response)
+        store.dispatch('setResponseFullText', response)
       })
       .catch(async notFound => {
         if (state.pageNumber > 1) {
           await store.commit('setPage', 1)
           store.dispatch('requestSearch')
         } else {
-          store.dispatch('setResponse', notFound)
+          store.dispatch('setResponseFullText', notFound)
         }
       })
   },
@@ -106,7 +102,7 @@ const actions = {
         break
       case 'SIREN':
         await store.dispatch('executeSearchBySiren', searchId)
-        store.dispatch('executeSearchBySiret', store.getters.storedSirenSiege.siret)
+        store.dispatch('executeSearchBySiret', { siret: store.getters.storedSirenSiege.siret, api: 'SIRENE' })
         store.dispatch('fromSireneRequestOtherAPIs', store.getters.storedSirenSiege.siret)
         break
       case 'ID_ASSOCIATION':
@@ -116,20 +112,21 @@ const actions = {
       default:
         store.commit('setNoResultFound', {value: true, api: 'ALL'})
     }
+    store.commit('setLoading', { value: false, search: 'ALL' })
   },
   async executeSearchBySiret(dispatch, { siret, api }) {
-    await store.commit('setSiretLoading', true)
+    await store.commit('setLoading', { value: true, search: 'SIRET' })
     await store.dispatch('sendAPIRequest', state.baseAdressSiret[api] + siret)
     .then(response => {
-        store.dispatch('setResponseSinglePage', {response: response, api: api})
-      })
-      .catch(notFound => {
-        store.dispatch('setResponseSinglePage', {response: notFound, api: api})
-      })
-    store.commit('setSiretLoading', false)
+      store.dispatch('setResponseSinglePage', {response: response, api: api})
+    })
+    .catch(notFound => {
+      store.dispatch('setResponseSinglePage', {response: notFound, api: api})
+    })
+    store.commit('setLoading', { value: false, search: 'SIRET' })
   },
   async executeSearchByIdAssociation(dispatch, { id, api }) {
-    await store.commit('setIdAssociationLoading', true)
+    await store.commit('setLoading', { value: true, search: 'ID_ASSOCIATION' })
     await store.dispatch('sendAPIRequest', state.baseAdressRNAId[api] + id)
       .then(response => {
         store.dispatch('setResponseSinglePage', {response: response, api: api})
@@ -137,19 +134,19 @@ const actions = {
       .catch(notFound => {
         store.dispatch('setResponseSinglePage', {response: notFound, api: api})
       })
-    store.commit('setIdAssociationLoading', false)
+    store.commit('setLoading', { value: false, search: 'ID_ASSOCIATION' })
   },
   // This function is API-Sirene only
   async executeSearchBySiren(dispatch, siren) {
-    await store.commit('setSirenLoading', true)
+    await store.commit('setLoading', { value: true, search: 'SIREN' })
     await store.dispatch('sendAPIRequest', dispatch.state.baseAdressSireneSiren + siren)
       .then(response => {
-        store.dispatch('setResponseSiren', response)
+        store.commit('setSirenResults', response.body)
       })
       .catch((notFound) => {
-        store.dispatch('setResponseSiren', notFound)
+        store.commit('setSirenResults', notFound)
       })
-    store.commit('setSirenLoading', false)
+    store.commit('setLoading', { value: false, search: 'SIREN' })
   },
   sendAPIRequest: async function (dispatch, query) {
     return await Vue.http.get(query)
