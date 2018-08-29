@@ -44,7 +44,7 @@ export default {
       return this.$store.getters.storedResultsEtablissements
     },
     numberResults () {
-      return this.$store.getters.numberResults
+      return this.$store.getters.numberResultsFullText
     },
     showNoResultMessage () {
       return this.numberResults === 0
@@ -57,11 +57,10 @@ export default {
       return `${numberResultsFormatted} résultats pour "${this.$store.state.search.storedLastFullText}"`
     },
     resultsAreLoading () {
-      return this.$store.state.application.isLoading['RESULTS']
+      return this.$store.state.application.isLoading['FULLTEXT']
     },
-    // TODO: can do better here ?
     serverError () {
-      return this.$store.getters.allAPIError500
+      return this.$store.state.application.error500['FULLTEXT']
     }
   },
   beforeUpdate () {

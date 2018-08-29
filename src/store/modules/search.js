@@ -58,24 +58,23 @@ const mutations = {
 }
 
 const actions = {
-  requestSearchFullText () {
+  async requestSearchFullText () {
     router.push({ path: '/search',
       query: {
         fullText: state.storedFullText,
         page: state.pageNumber
       }
     })
-    store.dispatch('executeSearchFullText')
+    store.dispatch('searchFullText')
     // We save the last fulltext searched, so Results page display correctly name of last search
     store.commit('setLastFullText', state.storedFullText)
   },
-  async executeSearchFullText () {
+  async searchFullText () {
     await store.dispatch('resetApplicationState')
-    await store.commit('setLoading', { value: true, search: 'RESULTS' })
-    await store.dispatch('searchFullTextCallAPI', 'SIRENE') //TODO: change here later for multiple-api fulltext
-    store.commit('setLoading', { value: false, search: 'RESULTS' })
+    await store.commit('setLoading', { value: true, search: 'FULLTEXT' })
+    store.dispatch('executeSearchFullText', 'SIRENE') //TODO: change here later for multiple-api fulltext
   },
-  async searchFullTextCallAPI(dispatch, api) {
+  async executeSearchFullText(dispatch, api) {
     store.dispatch('sendAPIRequest', getters.adressToGetFullText(state, api))
       .then(response => {
         store.dispatch('setResponseFullText', response)
@@ -95,26 +94,35 @@ const actions = {
 
     switch (natureSearchId) {
       case 'SIRET':
-        store.commit('setMainSearch', { value: true, search: 'SIRENE' })
-        await store.dispatch('executeSearchBySiret', { siret: searchId, api: 'SIRENE' })
-        store.dispatch('executeSearchBySiren', store.getters.singlePageEtablissementSirene.siren)
-        store.dispatch('fromSireneRequestOtherAPIs', searchId)
+        await store.dispatch('searchEtablissementFromSiret', searchId)
         break
       case 'SIREN':
-        store.commit('setMainSearch', { value: true, search: 'SIRENE' })
-        await store.dispatch('executeSearchBySiren', searchId)
-        store.dispatch('executeSearchBySiret', { siret: store.getters.storedSirenSiege.siret, api: 'SIRENE' })
-        store.dispatch('fromSireneRequestOtherAPIs', store.getters.storedSirenSiege.siret)
+        await store.dispatch('searchEtablissementFromSiren', searchId)
         break
       case 'ID_ASSOCIATION':
-        store.commit('setMainSearch', { value: true, search: 'RNA' })
-        await store.dispatch('executeSearchByIdAssociation', {id: searchId, api: 'RNA'})
-        store.dispatch('fromRNARequestOtherAPIs', searchId)
+        await store.dispatch('searchEtablissementFromIdAssociation', searchId)
         break
       default:
         store.commit('setNoResultFound', { value: true, api: 'ALL' })
     }
     store.commit('setLoading', { value: false, search: 'ALL' })
+  },
+  async searchEtablissementFromSiret(dispatch, searchId) {
+    await store.commit('setMainSearch', { value: true, search: 'SIRENE' })
+    await store.dispatch('executeSearchBySiret', { siret: searchId, api: 'SIRENE' })
+    store.dispatch('executeSearchBySiren', store.getters.singlePageEtablissementSirene.siren)
+    store.dispatch('fromSireneRequestOtherAPIs', searchId)
+  },
+  async searchEtablissementFromSiren(dispatch, searchId) {
+    await store.commit('setMainSearch', { value: true, search: 'SIRENE' })
+    await store.dispatch('executeSearchBySiren', searchId)
+    store.dispatch('executeSearchBySiret', { siret: store.getters.storedSirenSiege.siret, api: 'SIRENE' })
+    store.dispatch('fromSireneRequestOtherAPIs', store.getters.storedSirenSiege.siret)
+  },
+  async searchEtablissementFromIdAssociation(dispatch, searchId) {
+    store.commit('setMainSearch', { value: true, search: 'RNA' })
+    await store.dispatch('executeSearchByIdAssociation', {id: searchId, api: 'RNA'})
+    store.dispatch('fromRNARequestOtherAPIs', searchId)
   },
   async executeSearchBySiret(dispatch, { siret, api }) {
     await store.commit('setLoading', { value: true, search: 'SIRET' })

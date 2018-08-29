@@ -34,7 +34,7 @@ const getters = {
     }
     return null
   },
-  numberResults: state => {
+  numberResultsFullText: state => {
     if (state.storedResults && state.storedStatus != 404) {
       return state.storedResults.total_results
     } else {
@@ -47,7 +47,7 @@ const getters = {
     }
   },
   onlyOneResult: state => {
-    return store.getters.numberResults === 1
+    return store.getters.numberResultsFullText === 1
   }
 }
 
@@ -71,9 +71,10 @@ const mutations = {
 }
 
 const actions = {
-  setResponseFullText(dispatch, response) {
-    store.commit('setResults', response.body)
-    store.commit('setStatus', response.status)
+  async setResponseFullText(dispatch, response) {
+    await store.commit('setResults', response.body)
+    await store.commit('setStatus', response.status)
+    store.commit('setLoading', { value: false, search: 'FULLTEXT' })
   },
   setResponseSinglePage(dispatch, { response, api }) {
     if (response.status === 500 || response.status === 0 || response.status === 404) {

@@ -34,7 +34,6 @@ export default {
     if (this.$route.query.page) {
       this.$store.commit('setPage', this.$route.query.page)
     }
-    // TODO: Add filters commit here later
     if (this.$route.query.fullText) {
       this.$store.commit('setFullText', this.$route.query.fullText)
       this.$store.dispatch('requestSearchFullText')
@@ -46,7 +45,8 @@ export default {
       results: null,
       pathBack: '/search',
       queryBack: {
-        fullText: this.$store.getters.storedFullText,
+        // Have to add a string to this value for coming-back to save query (bug?)
+        fullText: 'backAction',
         page: this.$store.getters.pageNumber
       }
     }
@@ -60,11 +60,9 @@ export default {
     },
     showBackToResultsButton () {
       // show back button only on etablissement page
-      return this.$route.path.includes('/entreprise')
+      return this.$route.path.includes('/etablissement')
       // only if there is more than one result
-        && this.$store.getters.numberResults > 1
-      // only if we aren't on a 404 // 500 error situation
-        && this.$store.state.results.storedStatus === 200
+        && this.$store.getters.numberResultsFullText > 1
     }
   },
   watch: {

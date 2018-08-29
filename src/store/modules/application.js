@@ -5,7 +5,7 @@ const state = {
     'SIREN': true,
     'ID_ASSOCIATION': true,
     'SIRET': true,
-    'RESULTS': true
+    'FULLTEXT': true
   },
   error500: {
     'SIRENE': false,
@@ -28,7 +28,7 @@ const mutations = {
         'SIREN': value,
         'ID_ASSOCIATION': value,
         'SIRET': value,
-        'RESULTS': value
+        'FULLTEXT': value
       }
     } else {
       state.isLoading[search] = value

@@ -48,6 +48,7 @@ export default {
         }
         if (String(fullText).length >= 3) {
           this.resetIndexSuggestion()
+          this.$store.commit('setPage', 1)
           this.$store.commit('setQuerySuggestions', fullText)
           this.$store.dispatch('executeSearchSuggestions')
         }
