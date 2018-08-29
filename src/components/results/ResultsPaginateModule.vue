@@ -35,7 +35,7 @@ export default {
     selectPage (pageNum) {
       if (this.$store.state.route.query.fullText) {
         this.$store.commit('setPage', pageNum)
-        this.$store.dispatch('requestSearch')
+        this.$store.dispatch('requestSearchFullText')
       } else {
         this.$store.dispatch('goToClearedHomePage')
       }

@@ -8,12 +8,16 @@ const state = {
     'RESULTS': true
   },
   error500: {
-    sirene: false,
-    rna: false
+    'SIRENE': false,
+    'RNA': false
   },
   noResultFound: {
-    sirene: false,
-    rna: false
+    'SIRENE': false,
+    'RNA': false
+  },
+  mainSearch: {
+    'SIRENE': false,
+    'RNA': false
   }
 }
 
@@ -30,27 +34,32 @@ const mutations = {
       state.isLoading[search] = value
     }
   },
-  // TODO: put this in action, and/or factorize as object
   setError500(state, { value, api }) {
     if (api == 'ALL') {
-      state.error500.sirene = value
-      state.error500.rna = value
-    } else if (api == 'SIRENE') {
-      state.error500.sirene = value
-    } else if (api == 'RNA') {
-      state.error500.rna = value
+      state.error500 = {
+        'SIRENE': value,
+        'RNA': value
+      }
+    } else {
+      state.error500[api] = value
     }
   },
-  // TODO: put this in action, and/or factorize as object
   setNoResultFound(state, { value, api }) {
     if (api == 'ALL') {
-      state.noResultFound.sirene = value
-      state.noResultFound.rna = value
-    } else if (api == 'SIRENE') {
-      state.noResultFound.sirene = value
-    } else if (api == 'RNA') {
-      state.noResultFound.rna = value
+      state.noResultFound = {
+        'SIRENE': value,
+        'RNA': value
+      }
+    } else {
+      state.noResultFound[api] = value
     }
+  },
+  setMainSearch(state, { value, search }) {
+    state.mainSearch = {
+      'SIRENE': false,
+      'RNA': false
+    }
+    state.mainSearch[search] = value
   }
 }
 
@@ -83,10 +92,17 @@ const getters = {
     return null
   },
   allAPIError500: state => {
-    state.error500.rna && state.error500.sirene
+    return state.error500.rna && state.error500.sirene
   },
   allAPINotFound: state => {
-    state.noResultFound.rna && state.noResultFound.sirene
+    return state.noResultFound.rna && state.noResultFound.sirene
+  },
+  mainSearch: state => {
+    if (state.mainSearch['SIRENE']) {
+      return 'SIRENE'
+    } else if (state.mainSearch['RNA']) {
+      return 'RNA'
+    }
   }
 }
 

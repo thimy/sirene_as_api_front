@@ -69,7 +69,6 @@ const actions = {
     // We save the last fulltext searched, so Results page display correctly name of last search
     store.commit('setLastFullText', state.storedFullText)
   },
-  // Calling this action directly won't update the router
   async executeSearchFullText () {
     await store.dispatch('resetApplicationState')
     await store.commit('setLoading', { value: true, search: 'RESULTS' })
@@ -84,7 +83,7 @@ const actions = {
       .catch(async notFound => {
         if (state.pageNumber > 1) {
           await store.commit('setPage', 1)
-          store.dispatch('requestSearch')
+          store.dispatch('requestSearchFullText')
         } else {
           store.dispatch('setResponseFullText', notFound)
         }
@@ -96,21 +95,24 @@ const actions = {
 
     switch (natureSearchId) {
       case 'SIRET':
+        store.commit('setMainSearch', { value: true, search: 'SIRENE' })
         await store.dispatch('executeSearchBySiret', { siret: searchId, api: 'SIRENE' })
         store.dispatch('executeSearchBySiren', store.getters.singlePageEtablissementSirene.siren)
         store.dispatch('fromSireneRequestOtherAPIs', searchId)
         break
       case 'SIREN':
+        store.commit('setMainSearch', { value: true, search: 'SIRENE' })
         await store.dispatch('executeSearchBySiren', searchId)
         store.dispatch('executeSearchBySiret', { siret: store.getters.storedSirenSiege.siret, api: 'SIRENE' })
         store.dispatch('fromSireneRequestOtherAPIs', store.getters.storedSirenSiege.siret)
         break
       case 'ID_ASSOCIATION':
+        store.commit('setMainSearch', { value: true, search: 'RNA' })
         await store.dispatch('executeSearchByIdAssociation', {id: searchId, api: 'RNA'})
         store.dispatch('fromRNARequestOtherAPIs', searchId)
         break
       default:
-        store.commit('setNoResultFound', {value: true, api: 'ALL'})
+        store.commit('setNoResultFound', { value: true, api: 'ALL' })
     }
     store.commit('setLoading', { value: false, search: 'ALL' })
   },

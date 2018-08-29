@@ -33,16 +33,27 @@ export default {
       return this.$store.getters.isEtablissementLoading
     },
     isNotFound () {
-      return this.$store.getters.allAPINotFound
+      const mainSearch = this.$store.getters.mainSearch
+      if (this.$store.state.application.noResultFound[mainSearch] == true) {
+        return true
+      }
+      return false
     },
     isError () {
-      return this.$store.getters.allAPIError500
+      const mainSearch = this.$store.getters.mainSearch
+      if (this.$store.state.application.error500[mainSearch] == true) {
+        return true
+      }
+      return false
     },
     haveSireneInfo () {
       return this.$store.getters.sireneAvailable
     },
     haveRNAInfo () {
       return this.$store.getters.RNAAvailable
+    },
+    mainSearch () {
+      return this.$store.getters.mainSearch
     }
   },
   beforeCreate () {

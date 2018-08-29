@@ -68,7 +68,7 @@ export default {
 
       if (natureSearchId) {
         this.fullText = this.removeSeparators(this.fullText)
-        this.$router.push({ path: `/entreprise/${this.fullText}` })
+        this.$router.push({ path: `/etablissement/${this.fullText}` })
       } else {
         this.requestFullTextSearch()
       }

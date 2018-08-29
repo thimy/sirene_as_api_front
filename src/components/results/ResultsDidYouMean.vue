@@ -17,7 +17,7 @@ export default {
   methods: {
     didYouMeanSearch (didYouMean) {
       this.$store.commit('setFullText', didYouMean)
-      this.$store.dispatch('requestSearch')
+      this.$store.dispatch('requestSearchFullText')
     }
   }
 }

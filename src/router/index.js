@@ -31,7 +31,7 @@ export default new Router({
       component: Results
     },
     {
-      path: '/entreprise/:searchId',
+      path: '/etablissement/:searchId',
       name: 'Etablissement',
       component: Etablissement
     },

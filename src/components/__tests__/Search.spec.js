@@ -82,7 +82,7 @@ describe('Results.vue', () => {
     $route = {
       params: 'mock-params',
       push: jest.fn(),
-      path: '/entreprise/mock-searchId',
+      path: '/etablissement/mock-searchId',
       query: {
         page: 2,
         fullText: 'mock-fullText'
@@ -207,7 +207,7 @@ describe('Results.vue', () => {
     $route = {
       params: 'mock-params',
       push: jest.fn(),
-      path: '/entreprise/mock-searchId',
+      path: '/etablissement/mock-searchId',
       query: {
         page: 2,
         fullText: 'mock-fullText'

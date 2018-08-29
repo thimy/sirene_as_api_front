@@ -37,7 +37,7 @@ export default {
     // TODO: Add filters commit here later
     if (this.$route.query.fullText) {
       this.$store.commit('setFullText', this.$route.query.fullText)
-      this.$store.dispatch('requestSearch')
+      this.$store.dispatch('requestSearchFullText')
     }
   },
   data () {
@@ -70,7 +70,7 @@ export default {
   watch: {
     '$route' (to, from) {
       if (this.$route.query.fullText) {
-        this.$store.dispatch('requestSearch')
+        this.$store.dispatch('requestSearchFullText')
       }
     }
   }

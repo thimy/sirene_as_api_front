@@ -82,17 +82,16 @@ const actions = {
     }
     if (api == 'SIRENE') {
       store.commit('setSinglePageResultsSirene', response.body)
-      store.commit('setStatusSiret', response.status)
     } else if (api == 'RNA') {
       store.commit('setSinglePageResultsRNA', response.body)
     }
   },
   setNegativeResponse(dispatch, { response, api }) { //ex-redirectWhenNoResult
     if (response.status === 500 || response.status === 0) {
-      store.commit('setError500', { error: true, api: api })
+      store.commit('setError500', { value: true, api: api })
     }
     if (response.status === 404) {
-      store.commit('setNoResultFound', { error: true, api: api })
+      store.commit('setNoResultFound', { value: true, api: api })
     }
   }
 }

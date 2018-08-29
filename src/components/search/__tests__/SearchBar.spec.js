@@ -143,7 +143,7 @@ describe('SearchBar.vue', () => {
 
   test('Method requestSirenSearch push router to siegeSiret (if requestSirenSearch was successful)', () => {
     wrapperSearchBar.vm.requestSirenSearch()
-    expect(wrapperSearchBar.vm.$router.push).toHaveBeenCalledWith({ path: `/entreprise/mock-storedSirenSiegeSiret` })
+    expect(wrapperSearchBar.vm.$router.push).toHaveBeenCalledWith({ path: `/etablissement/mock-storedSirenSiegeSiret` })
   })
 
   // TODO
@@ -152,7 +152,7 @@ describe('SearchBar.vue', () => {
   test('Method requestSiretSearch set siret as fullText then push router to fullText', () => {
     wrapperSearchBar.vm.requestSiretSearch()
     expect(storeMocks.mutations.setSiret).toHaveBeenCalledWith(storeMocks.state, 'mock-storedFullText')
-    expect(wrapperSearchBar.vm.$router.push).toHaveBeenCalledWith({ path: `/entreprise/mock-storedFullText` })
+    expect(wrapperSearchBar.vm.$router.push).toHaveBeenCalledWith({ path: `/etablissement/mock-storedFullText` })
   })
 
   test('Method requestFullTextSearch search suggestion if it is set', () => {
