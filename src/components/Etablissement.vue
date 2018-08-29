@@ -5,7 +5,7 @@
   <div v-else class="company">
     <etablissement-header></etablissement-header>
     <etablissement-sirene v-if="haveSireneInfo"></etablissement-sirene>
-    <etablissement-rna v-if="haveRNAInfo"></etablissement-rna>
+    <etablissement-rna v-if="haveRNAInfo" :haveComponentTop=haveSireneInfo></etablissement-rna>
   </div>
 </template>
 
@@ -47,10 +47,14 @@ export default {
       return false
     },
     haveSireneInfo () {
-      return this.$store.getters.sireneAvailable
+      if (this.$store.getters.sireneAvailable) {
+        return true
+      }
     },
     haveRNAInfo () {
-      return this.$store.getters.RNAAvailable
+      if (this.$store.getters.RNAAvailable) {
+        return true
+      }
     },
     mainSearch () {
       return this.$store.getters.mainSearch

@@ -51,25 +51,25 @@
         <thead>
           <tr>
             <th>Filtrage désiré</th>
-            <th>Paramètre requête</th> 
-            <th>Valeur du paramètre</th> 
+            <th>Paramètre requête</th>
+            <th>Valeur du paramètre</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>Seulement les établissements avec la même activité principale (code NAF)</td>
             <td><code>only_same_activity</code></td>
-            <td>true / false (défaut: false)</td> 
+            <td>true / false (défaut: false)</td>
           </tr>
           <tr>
             <td>Seulement les établissements avec une activité principale proche</td>
             <td><code>approximate_activity</code></td>
-            <td>true / false (défaut: false)</td> 
+            <td>true / false (défaut: false)</td>
           </tr>
           <tr>
             <td>Radius de recherche</td>
             <td><code>radius</code></td>
-            <td>Nombre entier ou flottant, en km (défaut: 5)</td> 
+            <td>Nombre entier ou flottant, en km (défaut: 5)</td>
           </tr>
         </tbody>
       </table>
@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import ApiDocInput from '@/components/apiDoc/ApiDocInput'
+import ApiDocInput from '@/components/apiDocSirene/ApiDocInput'
 
 export default {
   name: 'ApiDocGeospace',
@@ -161,7 +161,7 @@ table {
   tr {
      &:hover {
       background: $color-lightest-grey;
-      
+
       td {
         color: $color-blue;
       }

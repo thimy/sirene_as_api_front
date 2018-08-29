@@ -12,14 +12,14 @@
 </template>
 
 <script>
-import ApiDocIntro from '@/components/apiDoc/ApiDocIntro'
-import ApiDocGeneric from '@/components/apiDoc/ApiDocGeneric'
-import ApiDocExample from '@/components/apiDoc/ApiDocExample'
-import ApiDocBetterSearches from '@/components/apiDoc/ApiDocBetterSearches'
-import ApiDocGeospace from '@/components/apiDoc/ApiDocGeospace'
-import ApiDocUseCase from '@/components/apiDoc/ApiDocUseCase'
-import ApiDocOthers from '@/components/apiDoc/ApiDocOthers'
-import ApiDocOutro from '@/components/apiDoc/ApiDocOutro'
+import ApiDocIntro from '@/components/apiDocSirene/ApiDocIntro'
+import ApiDocGeneric from '@/components/apiDocSirene/ApiDocGeneric'
+import ApiDocExample from '@/components/apiDocSirene/ApiDocExample'
+import ApiDocBetterSearches from '@/components/apiDocSirene/ApiDocBetterSearches'
+import ApiDocGeospace from '@/components/apiDocSirene/ApiDocGeospace'
+import ApiDocUseCase from '@/components/apiDocSirene/ApiDocUseCase'
+import ApiDocOthers from '@/components/apiDocSirene/ApiDocOthers'
+import ApiDocOutro from '@/components/apiDocSirene/ApiDocOutro'
 
 export default {
   name: 'ApiDoc',

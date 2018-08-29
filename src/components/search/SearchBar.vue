@@ -1,10 +1,5 @@
 <template>
   <div class="form__group">
-    <!-- <div class="form__select">
-      <span>Je recherche une :</span>
-      <input type="radio" name="search_type" value="sirene"> <span>Association</span>
-      <input type="radio" name="search_type" value="rna"> <span>Entreprise</span>
-    </div> -->
     <input type="text" name="search" placeholder="Nom, SIREN, SIRET, adresse..." v-model="fullText"
       @keydown.down="suggestDown"
       @keydown.up.prevent="suggestUp"

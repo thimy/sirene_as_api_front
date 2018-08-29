@@ -40,7 +40,7 @@
 import Filters from '@/components/mixins/filters.js'
 
 export default {
-  name: 'EtablissementSirene',
+  name: 'EtablissementHeader',
   computed: {
     resultSirene () {
       return this.$store.getters.singlePageEtablissementSirene

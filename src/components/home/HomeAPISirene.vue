@@ -4,14 +4,14 @@
       <div class="row">
         <div class="column">
           <p>Vous pouvez, si vous le souhaitez, interroger directement l'API Sirene</p>
-          <router-link class="button" :to="{ name: 'ApiDoc'}">Documentation de l'API</router-link>
+          <router-link class="button" :to="{ name: 'ApiDocSirene'}">Documentation API Sirene</router-link>
         </div>
         <div class="column api__image">
           <img src="../../assets/img/man-at-desktop.svg" alt="man-at-desktop" width="200" />
         </div>
         <div class="column">
           <p>Téléchargez les données de référence Sirene sur le site data.gouv.fr</p>
-          <a class="button" href="https://www.data.gouv.fr/reference">Données de référence</a>
+          <a class="button" href="https://www.data.gouv.fr/fr/datasets/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/">Données de référence</a>
         </div>
       </div>
     </div>
@@ -20,14 +20,19 @@
 
 <script>
 export default {
-  name: 'Api'
+  name: 'HomeAPISirene'
 }
 </script>
 
 <style lang="scss" scoped>
+a.button {
+  padding: 0.5em 0.5em;
+  min-width: 280px;
+}
+
 .api {
   background: $color-white;
-  padding: 4em 0;
+  padding: 3em 0 0 0;
 }
 
 .api .column{
