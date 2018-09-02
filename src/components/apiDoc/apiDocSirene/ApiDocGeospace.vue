@@ -20,7 +20,7 @@
           <api-doc-input :request=exempleGeoSpace1></api-doc-input>
         </div>
         <div class="column__icon">
-          <img src="@/assets/img/around_point.svg" alt="">
+          <img src="@/assets/img/icons/around_point.svg" alt="">
         </div>
       </div>
       <div class="container__columns">
@@ -40,7 +40,7 @@
           <api-doc-input :request=exempleGeoSpace3></api-doc-input>
         </div>
         <div class="column__icon">
-          <img id="reduced-img" src="@/assets/img/around_etablissement.svg" alt="">
+          <img id="reduced-img" src="@/assets/img/icons/around_etablissement.svg" alt="">
         </div>
       </div>
       <div class="column__full">
@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import ApiDocInput from '@/components/apiDocSirene/ApiDocInput'
+import ApiDocInput from '@/components/apiDoc/ApiDocInput'
 
 export default {
   name: 'ApiDocGeospace',

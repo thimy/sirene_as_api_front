@@ -1,21 +1,18 @@
 <template>
   <div>
-    <home-api-sirene />
-    <home-api-rna />
+    <home-apis />
     <home-public-administration />
   </div>
 </template>
 
 <script>
-import HomeAPISirene from '@/components/home/HomeAPISirene'
-import HomeAPIRNA from '@/components/home/HomeAPIRNA'
+import HomeAPIs from '@/components/home/HomeAPIs'
 import HomePublicAdministration from '@/components/home/HomePublicAdministration'
 
 export default {
   name: 'Home',
   components: {
-    'HomeApiSirene': HomeAPISirene,
-    'HomeApiRna': HomeAPIRNA,
+    'HomeApis': HomeAPIs,
     'HomePublicAdministration': HomePublicAdministration
   }
 }

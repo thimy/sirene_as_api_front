@@ -12,7 +12,7 @@
         <h2>Comment fonctionne Entreprise.data.gouv.fr ?</h2>
         <p>
           Ce site web interroge l'API Sirene développée par <a href="https://www.data.gouv.fr/fr/organizations/etalab/">Étalab</a>.
-          Ce site web et son API sont open-source : vous pouvez <a href="https://github.com/betagouv/sirene_as_api">télécharger le code sur GitHub</a>.
+          Ce site web et son API sont open-source : vous pouvez <a href="https://github.com/etalab/sirene_as_api">télécharger le code sur GitHub</a>.
         </p>
       </div>
       <div class="column__icon">

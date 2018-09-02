@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import ApiDocInput from '@/components/apiDocSirene/ApiDocInput'
+import ApiDocInput from '@/components/apiDoc/ApiDocInput'
 
 export default {
   name: 'ApiDocUseCase',

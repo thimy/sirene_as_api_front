@@ -4,9 +4,10 @@ import Router from 'vue-router'
 import Results from '@/components/Results'
 import Etablissement from '@/components/Etablissement'
 import LegalNotes from '@/components/LegalNotes'
-import ApiDocSirene from '@/components/ApiDocSirene'
-import CodesNAF from '@/components/apiDocSirene/CodesNAF'
-import ApiDocRNA from '@/components/ApiDocRNA'
+import ApiDoc from '@/components/ApiDoc'
+import ApiDocSirene from '@/components/apiDoc/ApiDocSirene'
+import ApiDocRNA from '@/components/apiDoc/ApiDocRNA'
+import CodesNAF from '@/components/apiDoc/apiDocSirene/CodesNAF'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/mentions_legales',
       name: 'LegalNotes',
       component: LegalNotes
+    },
+    {
+      path: '/api_doc',
+      name: 'ApiDoc',
+      component: ApiDoc
     },
     {
       path: '/api_doc_sirene',

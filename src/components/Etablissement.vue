@@ -1,11 +1,11 @@
 <template>
-  <server-error class="container" v-if="isError"></server-error>
-  <not-found class="container" v-else-if="isNotFound"></not-found>
-  <loader class="container" v-else-if="isEtablissementLoading"></loader>
+  <server-error class="container" v-if="isError" />
+  <not-found class="container" v-else-if="isNotFound" />
+  <loader class="container" v-else-if="isEtablissementLoading" />
   <div v-else class="company">
-    <etablissement-header></etablissement-header>
-    <etablissement-sirene v-if="haveSireneInfo"></etablissement-sirene>
-    <etablissement-rna v-if="haveRNAInfo" :haveComponentTop=haveSireneInfo></etablissement-rna>
+    <etablissement-header />
+    <etablissement-sirene v-if="haveSireneInfo" />
+    <etablissement-rna v-if="haveRNAInfo" :haveComponentTop=haveSireneInfo />
   </div>
 </template>
 

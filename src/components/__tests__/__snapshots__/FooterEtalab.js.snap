@@ -104,7 +104,7 @@ exports[`FooterEtalab.vue snapshot testing It match the snapshot 1`] = `
        
       <li>
         <a
-          href="https://github.com/betagouv/sirene_as_api"
+          href="https://github.com/etalab/sirene_as_api"
         >
           API
         </a>

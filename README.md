@@ -1,21 +1,20 @@
-[![Maintainability](https://api.codeclimate.com/v1/badges/155b98b38add2c148346/maintainability)](https://codeclimate.com/github/betagouv/sirene_as_api_front/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/155b98b38add2c148346/test_coverage)](https://codeclimate.com/github/betagouv/sirene_as_api_front/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/155b98b38add2c148346/maintainability)](https://codeclimate.com/github/etalab/entreprise.data.gouv.fr/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/155b98b38add2c148346/test_coverage)](https://codeclimate.com/github/etalab/entreprise.data.gouv.fr/test_coverage)
 
-# SIRENE_as_api_front
+# entreprise.data.gouv.fr
 
 Ce site est disponible en ligne : [Entreprise.data.gouv.fr](https://entreprise.data.gouv.fr)
 
 Dans le cadre du SPD, (Service Public de la Donnée), certains jeux de données
-dont le fichier SIRENE sont devenus publics.
+dont les fichiers SIRENE et RNA sont devenus publics.
 
-Le projet SIRENE_as_api a pour vocation de mettre en valeur la donnée brute en
-la servant sous forme d'API.
+Le site entreprise.data.gouv.fr a pour vocation de mettre à disposition des citoyens les données ouvertes "Open-data".
 
-Le projet se découpe en trois sous-projets :
+Les API exploitées par ce front-end sont les suivantes :
 
   - Une API Ruby on Rails qui importe les fichiers de données
-    mis à disposition par l'INSEE : [sirene_as_api](https://github.com/sgmap/sirene_as_api)
-  - Un script capable de déployer l'API automatiquement : [sirene_as_api_ansible](https://github.com/sgmap/sirene_as_api_ansible)
-  - Une interface web de recherche exploitant l'API en Vue.js : [sirene_as_api_front](https://github.com/sgmap/sirene_as_api_front)
+    mis à disposition par l'INSEE : [sirene_as_api](https://github.com/etalab/sirene_as_api)
+  - Une API Ruby on Rails qui importe les fichiers de données
+    mis à disposition par l'INSEE : [sirene_as_api](https://github.com/etalab/rna_as_api)
 
 ## Exécution en local
 
@@ -23,7 +22,7 @@ Le projet se découpe en trois sous-projets :
 # Aprés avoir lancé le front-end avec la commande
 npm run dev
 
-# Lancer le back-end : dans le dossier sirene_as_api, exécuter :
+# Lancer le back-end : dans le dossier sirene_as_api / rna_as_api, exécuter :
 rails s
 
 # Lancer le serveur SOLR :

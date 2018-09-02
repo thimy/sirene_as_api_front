@@ -48,7 +48,7 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
           .
         Ce site web et son API sont open-source : vous pouvez 
           <a
-            href="https://github.com/betagouv/sirene_as_api"
+            href="https://github.com/etalab/sirene_as_api"
           >
             télécharger le code sur GitHub
           </a>
@@ -145,7 +145,7 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
       Si vos besoins excèdent les limites de nos serveurs, par exemple pour si vous voulez effectuer davantage de requêtes, vous pouvez installer votre propre copie de l'API.
       Un 
         <a
-          href="https://github.com/betagouv/sirene_as_api_ansible"
+          href="https://github.com/etalab/sirene_as_api_ansible"
         >
           script ansible
         </a>
@@ -154,14 +154,14 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
         
       Le manuel d'installation de l'API se trouve 
         <a
-          href="https://github.com/betagouv/sirene_as_api"
+          href="https://github.com/etalab/sirene_as_api"
         >
           sur github
         </a>
         .
       Vous pouvez de même lancer 
         <a
-          href="https://github.com/betagouv/sirene_as_api_front"
+          href="https://github.com/etalab/entreprise.data.gouv.fr"
         >
           votre installation
         </a>
