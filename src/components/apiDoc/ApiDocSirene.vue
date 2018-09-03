@@ -1,37 +1,31 @@
 <template>
   <div>
-    <api-doc-intro/>
-    <api-doc-generic/>
-    <api-doc-example :baseAdress=baseAdress />
-    <api-doc-better-searches/>
-    <api-doc-geospace :baseAdress=baseAdress />
-    <api-doc-use-case :baseAdress=baseAdress />
-    <api-doc-others/>
-    <api-doc-outro/>
+    <api-doc-sirene-intro/>
+    <api-doc-sirene-generic/>
+    <api-doc-sirene-endpoints :baseAdress=baseAdress />
+    <api-doc-sirene-better-searches/>
+    <api-doc-sirene-geospace :baseAdress=baseAdress />
+    <api-doc-sirene-example :baseAdress=baseAdress />
   </div>
 </template>
 
 <script>
-import ApiDocIntro from '@/components/apiDoc/apiDocSirene/ApiDocIntro'
-import ApiDocGeneric from '@/components/apiDoc/apiDocSirene/ApiDocGeneric'
-import ApiDocExample from '@/components/apiDoc/apiDocSirene/ApiDocExample'
-import ApiDocBetterSearches from '@/components/apiDoc/apiDocSirene/ApiDocBetterSearches'
-import ApiDocGeospace from '@/components/apiDoc/apiDocSirene/ApiDocGeospace'
-import ApiDocUseCase from '@/components/apiDoc/apiDocSirene/ApiDocUseCase'
-import ApiDocOthers from '@/components/apiDoc/apiDocSirene/ApiDocOthers'
-import ApiDocOutro from '@/components/apiDoc/apiDocSirene/ApiDocOutro'
+import ApiDocSireneIntro from '@/components/apiDoc/apiDocSirene/ApiDocSireneIntro'
+import ApiDocSireneGeneric from '@/components/apiDoc/apiDocSirene/ApiDocSireneGeneric'
+import ApiDocSireneEndpoints from '@/components/apiDoc/apiDocSirene/ApiDocSireneEndpoints'
+import ApiDocSireneBetterSearches from '@/components/apiDoc/apiDocSirene/ApiDocSireneBetterSearches'
+import ApiDocSireneGeospace from '@/components/apiDoc/apiDocSirene/ApiDocSireneGeospace'
+import ApiDocSireneExample from '@/components/apiDoc/apiDocSirene/ApiDocSireneExample'
 
 export default {
   name: 'ApiDoc',
   components: {
-    'ApiDocIntro': ApiDocIntro,
-    'ApiDocGeneric': ApiDocGeneric,
-    'ApiDocExample': ApiDocExample,
-    'ApiDocBetterSearches': ApiDocBetterSearches,
-    'ApiDocGeospace': ApiDocGeospace,
-    'ApiDocUseCase': ApiDocUseCase,
-    'ApiDocOthers': ApiDocOthers,
-    'ApiDocOutro': ApiDocOutro
+    'ApiDocSireneIntro': ApiDocSireneIntro,
+    'ApiDocSireneGeneric': ApiDocSireneGeneric,
+    'ApiDocSireneEndpoints': ApiDocSireneEndpoints,
+    'ApiDocSireneBetterSearches': ApiDocSireneBetterSearches,
+    'ApiDocSireneGeospace': ApiDocSireneGeospace,
+    'ApiDocSireneExample': ApiDocSireneExample
   },
   data () {
     return {

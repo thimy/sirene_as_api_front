@@ -81,7 +81,7 @@
 import ApiDocInput from '@/components/apiDoc/ApiDocInput'
 
 export default {
-  name: 'ApiDocGeospace',
+  name: 'ApiDocSireneGeospace',
   components: {
     'ApiDocInput': ApiDocInput
   },

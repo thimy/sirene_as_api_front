@@ -10,7 +10,7 @@
         </p>
         <p>Essayez avec n'importe quel siret :</p>
         <api-doc-input :request=exempleSiret1></api-doc-input>
-        <h2>Quatre moyens d'interroger l'API.</h2>
+        <h2>Cinq moyens d'interroger l'API.</h2>
         <h3>Recherche Texte :</h3>
         <p>
           La recherche texte permet de trouver un établissement depuis son nom (raison sociale ou nom commercial), son adresse,
@@ -19,7 +19,7 @@
         </p>
         <p>
           Les résultats sont paginés : l'API renvoie par défaut les 10 premiers établissements, soit la première page avec 10 résultats par page.
-          Ces valeurs peuvent être changées en précisant dans la requête les paramètres <em>page</em> et <em>per_page</em><br>  
+          Ces valeurs peuvent être changées en précisant dans la requête les paramètres <em>page</em> et <em>per_page</em><br>
           Vous pouvez demander jusqu'à 100 résultats par page.<br>
           <strong>Exemple :</strong> je souhaite chercher les établissements de Montpellier, je tape la requête suivante :
         </p>
@@ -28,7 +28,7 @@
         <api-doc-input :request=exempleFullText2></api-doc-input>
         <h3>Recherche par Siret :</h3>
         <p>
-          La recherche par Siret permet de trouver un établissement directement depuis son numéro Siret, unique à chaque établissement.<br> 
+          La recherche par Siret permet de trouver un établissement directement depuis son numéro Siret, unique à chaque établissement.<br>
           Exemple pour l'établissement de la Mairie de Toulouse :
         </p>
         <api-doc-input :request=exempleSiret2></api-doc-input>
@@ -43,6 +43,13 @@
         <p><strong>02/06/2018 - Attention : </strong> les informations sur le siège social sont maintenant renvoyées dans un hash,
         contre un tableau de hashes précédemment.
         </p>
+        <h3>Recherche par Numero RNA :</h3>
+        <p>
+          La recherche par N° RNA permet de trouver un établissement depuis son numéro RNA (si présent). L'association ne sera trouvée
+          que si elle dispose d'un SIRET.<br>
+          Exemple pour la Croix-Rouge :
+        </p>
+        <api-doc-input :request=exempleRNA></api-doc-input>
       </div>
     </div>
   </section>
@@ -52,7 +59,7 @@
 import ApiDocInput from '@/components/apiDoc/ApiDocInput'
 
 export default {
-  name: 'ApiDocExample',
+  name: 'ApiDocSireneEndpoints',
   components: {
     'ApiDocInput': ApiDocInput
   },
@@ -63,7 +70,8 @@ export default {
       exempleFullText1: this.baseAdress + "full_text/montpellier",
       exempleFullText2: this.baseAdress + "full_text/montpellier?page=2&per_page=20",
       exempleSiret2: this.baseAdress + "siret/21310555400017",
-      exempleSiren: this.baseAdress + "siren/213105554"
+      exempleSiren: this.baseAdress + "siren/213105554",
+      exempleRNA: this.baseAdress + 'rna/W9C1000188'
     }
   }
 }

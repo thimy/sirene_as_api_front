@@ -36,7 +36,7 @@
 
 <script>
 export default {
-  name: 'ApiDocGeneric'
+  name: 'ApiDocSireneGeneric'
 }
 </script>
 

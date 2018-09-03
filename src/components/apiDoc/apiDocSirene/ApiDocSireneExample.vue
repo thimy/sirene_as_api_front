@@ -53,7 +53,7 @@
 import ApiDocInput from '@/components/apiDoc/ApiDocInput'
 
 export default {
-  name: 'ApiDocUseCase',
+  name: 'ApiDocSireneExample',
   components: {
     'ApiDocInput': ApiDocInput
   },

@@ -2,7 +2,7 @@
   <section class="section-grey">
     <div class="container">
       <div class="column__icon">
-        <img src="@/assets/img/icons/computer-user.svg" alt="">
+        <img src="@/assets/img/icons/laptop.svg" alt="">
       </div>
       <div class="column__right">
         <h2>L'API RNA</h2>

@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: 'ApiDocIntro'
+  name: 'ApiDocSireneIntro'
 }
 </script>
 

@@ -59,7 +59,7 @@
 
 <script>
 export default {
-  name: 'ApiDocBetterSearches'
+  name: 'ApiDocSireneBetterSearches'
 }
 </script>
 
