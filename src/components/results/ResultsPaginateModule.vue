@@ -21,14 +21,11 @@ Vue.component('paginate', Paginate)
 
 export default {
   name: 'Results',
+  props: ['totalPages'],
   data: function () {
     return {
-      initialPage: parseInt(this.$store.state.route.query.page, 10) - 1
-    }
-  },
-  computed: {
-    totalPageNumber: function () {
-      return parseInt(this.$store.getters.totalPageNumber, 10)
+      initialPage: parseInt(this.$store.state.route.query.page, 10) - 1,
+      totalPageNumber: this.totalPages
     }
   },
   methods: {

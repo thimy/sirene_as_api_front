@@ -67,8 +67,7 @@ const actions = {
   resetApplicationState() {
     store.dispatch('hideWelcomeText')
     store.commit('setStoredSuggestions', '')
-    store.commit('setSinglePageResultsSirene', null)
-    store.commit('setSinglePageResultsRNA', null)
+    store.commit('setSinglePageResults', { value: null, api: 'ALL' })
     store.commit('setError500', { value: false, api: 'ALL' })
     store.commit('setNoResultFound', { value: false, api: 'ALL' })
   }
@@ -81,21 +80,21 @@ const getters = {
   },
   sireneAvailable: () => {
     if (store.state.results.singlePageResult) {
-      return store.state.results.singlePageResult.sirene
+      return store.state.results.singlePageResult['SIRENE']
     }
     return null
   },
   RNAAvailable: () => {
     if (store.state.results.singlePageResult) {
-      return store.state.results.singlePageResult.rna
+      return store.state.results.singlePageResult['RNA']
     }
     return null
   },
   allAPIError500: state => {
-    return state.error500.rna && state.error500.sirene
+    return state.error500['RNA'] && state.error500['SIRENE']
   },
   allAPINotFound: state => {
-    return state.noResultFound.rna && state.noResultFound.sirene
+    return state.noResultFound['RNA'] && state.noResultFound['SIRENE']
   },
   mainSearch: state => {
     if (state.mainSearch['SIRENE']) {

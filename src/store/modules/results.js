@@ -1,79 +1,126 @@
 import store from '@/store/index.js'
 
 const state = {
-  storedResults: null,
-  singlePageResult: {
-    rna: null,
-    sirene:  null
+  storedResults: {
+    'RNA': null,
+    'SIRENE': null
   },
-  storedStatus: null
+  singlePageResult: {
+    'RNA': null,
+    'SIRENE':  null
+  },
+  storedStatus: {
+    'RNA': null,
+    'SIRENE': null
+  }
 }
 
 const getters = {
-  storedSpellcheck: state => {
-    if (state.storedStatus && state.storedResults) {
-      return state.storedResults.spellcheck
+  storedSpellcheckSirene: state => {
+    if (state.storedStatus['SIRENE'] && state.storedResults['SIRENE']) {
+      return state.storedResults['SIRENE'].spellcheck
     }
     return null
   },
-  storedResultsEtablissements: state => {
-    if (state.storedResults) {
-      return state.storedResults.etablissement
+  storedSpellcheckRNA: state => {
+    if (state.storedStatus['RNA'] && state.storedResults['RNA']) {
+      return state.storedResults['RNA'].spellcheck
+    }
+    return null
+  },
+  storedResultsEntreprises: state => {
+    if (state.storedResults['SIRENE']) {
+      return state.storedResults['SIRENE'].etablissement
+    }
+    return null
+  },
+  storedResultsAssociations: state => {
+    if (state.storedResults['RNA']) {
+      return state.storedResults['RNA'].association
     }
     return null
   },
   singlePageEtablissementSirene: () => { // ex-singlePageResultEtablissement
-    if (store.state.results.singlePageResult.sirene) {
-      return store.state.results.singlePageResult.sirene.etablissement
+    if (store.state.results.singlePageResult['SIRENE']) {
+      return store.state.results.singlePageResult['SIRENE'].etablissement
     }
     return null
   },
   singlePageEtablissementRNA: () => {
-    if (store.state.results.singlePageResult.rna) {
-      return store.state.results.singlePageResult.rna.association
+    if (store.state.results.singlePageResult['RNA']) {
+      return store.state.results.singlePageResult['RNA'].association
     }
     return null
   },
-  numberResultsFullText: state => {
-    if (state.storedResults && state.storedStatus != 404) {
-      return state.storedResults.total_results
+  numberResultsFullTextSirene: state => {
+    if (state.storedResults['SIRENE'] && state.storedStatus['SIRENE'] != 404) {
+      return state.storedResults['SIRENE'].total_results
     } else {
       return 0
     }
   },
-  totalPageNumber: state => {
-    if (state.storedResults) {
-      return state.storedResults.total_pages
+  numberResultsFullTextRNA: state => {
+    if (state.storedResults['RNA'] && state.storedStatus['RNA'] != 404) {
+      return state.storedResults['RNA'].total_results
+    } else {
+      return 0
     }
   },
-  onlyOneResult: state => {
-    return store.getters.numberResultsFullText === 1
+  totalPageNumberSirene: state => {
+    if (state.storedResults['SIRENE']) {
+      return state.storedResults['SIRENE'].total_pages
+    } else {
+      return 0
+    }
+  },
+  totalPageNumberRNA: state => {
+    if (state.storedResults['RNA']) {
+      return state.storedResults['RNA'].total_pages
+    } else {
+      return 0
+    }
+  },
+  // If only one result in fulltext search, send the searchId of result
+  singleResult: () => {
+    const oneResultSirene = store.getters.numberResultsFullTextSirene === 1
+    const oneResultRNA = store.getters.numberResultsFullTextRNA === 1
+    const onlyOneResultSirene = (oneResultSirene && !oneResultRNA)
+    const onlyOneResultRNA = (!oneResultSirene && oneResultRNA)
+    if (onlyOneResultSirene) {
+      return state.storedResults['SIRENE'].etablissement[0]['siret']
+    }
+    if (onlyOneResultRNA) {
+      return state.storedResults['RNA'].association[0]['id']
+    }
+    return null
   }
 }
 
 const mutations = {
-  setResults (state, value) {
-    state.storedResults = value
+  setResults (state, { value, api }) {
+    state.storedResults[api] = value
   },
-  clearResults (state) {
-    state.storedResults = null
+  clearResults (state, api) {
+    state.storedResults[api] = null
   },
-  setStatus (state, value) {
-    state.storedStatus = value
+  setStatus (state, { value, api }) {
+    state.storedStatus[api] = value
   },
-  // TODO: move to resultsSiren
-  setSinglePageResultsSirene (state, value) {
-    state.singlePageResult.sirene = value
-  },
-  setSinglePageResultsRNA (state, value) {
-    state.singlePageResult.rna = value
+  setSinglePageResults (state, { value, api }) {
+    if (api == 'ALL') {
+      state.singlePageResult = {
+        'RNA': value,
+        'SIRENE':  value
+      }
+    }
+    state.singlePageResult[api] = value
   }
 }
 
 const actions = {
-  async setResponseFullText(dispatch, response) {
-    await store.commit('setResults', response.body)
-    await store.commit('setStatus', response.status)
+  async setResponseFullText(dispatch, { response, api }) {
+    await store.commit('setResults', { value: response.body, api: api })
+    await store.commit('setStatus', { value: response.status, api: api })
     store.commit('setLoading', { value: false, search: 'FULLTEXT' })
   },
   setResponseSinglePage(dispatch, { response, api }) {
@@ -81,11 +128,7 @@ const actions = {
       store.dispatch('setNegativeResponse', { response: response, api: api })
       return
     }
-    if (api == 'SIRENE') {
-      store.commit('setSinglePageResultsSirene', response.body)
-    } else if (api == 'RNA') {
-      store.commit('setSinglePageResultsRNA', response.body)
-    }
+    store.commit('setSinglePageResults', { value: response.body, api: api })
   },
   setNegativeResponse(dispatch, { response, api }) { //ex-redirectWhenNoResult
     if (response.status === 500 || response.status === 0) {

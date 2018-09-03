@@ -2,14 +2,14 @@ import store from '@/store/index.js'
 
 const getters = {
   idAssociationFromSirene: () => {
-    if (store.state.results.singlePageResult.sirene) {
-      return store.state.results.singlePageResult.sirene.etablissement.numero_rna
+    if (store.state.results.singlePageResult['SIRENE']) {
+      return store.state.results.singlePageResult['SIRENE'].etablissement.numero_rna
     }
     return null
   },
   siretFromRNA: () => {
-    if (store.state.results.singlePageResult.rna) {
-      return store.state.results.singlePageResult.rna.association.siret
+    if (store.state.results.singlePageResult['RNA']) {
+      return store.state.results.singlePageResult['RNA'].association.siret
     }
     return null
   }

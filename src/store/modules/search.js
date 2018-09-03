@@ -9,13 +9,13 @@ const state = {
   storedLastFullText: '',
   pageNumber: 1,
 
-  baseAdressSiret: {
-    'SIRENE': process.env.BASE_ADRESS_SIRENE_SIRET,
-    'RNA': process.env.BASE_ADRESS_RNA_SIRET
-  },
   baseAdressFullText: {
     'SIRENE': process.env.BASE_ADRESS_SIRENE_FULLTEXT,
     'RNA': process.env.BASE_ADRESS_RNA_FULLTEXT
+  },
+  baseAdressSiret: {
+    'SIRENE': process.env.BASE_ADRESS_SIRENE_SIRET,
+    'RNA': process.env.BASE_ADRESS_RNA_SIRET
   },
   baseAdressRNAId: {
     'SIRENE': process.env.BASE_ADRESS_SIRENE_ID_ASSOCIATION,
@@ -25,14 +25,14 @@ const state = {
 }
 
 const getters = {
-  adressToGetFullText: function (state, api) {
+  adressToGetFullText: (state, api) => {
     return state.baseAdressFullText[api] + store.getters.queryToGet
   },
   queryToGet: () => {
     return store.state.route.query.fullText + store.getters.optionsToGet
   },
   pageNumberToGet: state => {
-    return '?page=' + state.pageNumber
+    return '?per_page=5&page=' + state.pageNumber
   },
   optionsToGet: () => {
     return store.getters.pageNumberToGet
@@ -72,20 +72,21 @@ const actions = {
   async searchFullText () {
     await store.dispatch('resetApplicationState')
     await store.commit('setLoading', { value: true, search: 'FULLTEXT' })
-    store.dispatch('executeSearchFullText', 'SIRENE') //TODO: change here later for multiple-api fulltext
+    store.dispatch('executeSearchFullText', 'SIRENE')
+    store.dispatch('executeSearchFullText', 'RNA')
   },
   async executeSearchFullText(dispatch, api) {
     store.dispatch('sendAPIRequest', getters.adressToGetFullText(state, api))
       .then(response => {
-        store.dispatch('setResponseFullText', response)
+        store.dispatch('setResponseFullText', { response: response, api: api })
       })
       .catch(async notFound => {
-        if (state.pageNumber > 1) {
-          await store.commit('setPage', 1)
-          store.dispatch('requestSearchFullText')
-        } else {
-          store.dispatch('setResponseFullText', notFound)
-        }
+        // if (state.pageNumber > 1) {
+        //   await store.commit('setPage', 1)
+        //   store.dispatch('requestSearchFullText')
+        // } else {
+        store.dispatch('setResponseFullText', { response: notFound, api: api })
+        // }
       })
   },
   async executeSearchEtablissement(dispatch, searchId) {

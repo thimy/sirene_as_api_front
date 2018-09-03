@@ -26,6 +26,12 @@ export default {
       const withoutAsteriskOrSlash = withoutAsterisk.replace(/\//g, ' ')
       // Remove potential double spaces and potential space at end of string
       return withoutAsteriskOrSlash.replace(/ {2}/g, ' ').replace(/ $/, '')
+    },
+    truncate: function (string) {
+      if (string && string.length > 80) {
+        return `${string.substring(0, 75)}...`
+      }
+      return string
     }
   },
   methods: {
