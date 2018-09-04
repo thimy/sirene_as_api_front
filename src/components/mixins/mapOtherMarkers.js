@@ -96,7 +96,7 @@ export default {
         })
         if (!renderedFeatures.length) {
           return
-        }      
+        }
         const etablissementsPoints = renderedFeatures[0];
         const etablissementPopup = new mapboxgl.Popup()
           .setLngLat(etablissementsPoints.geometry.coordinates)

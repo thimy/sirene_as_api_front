@@ -1,3 +1,4 @@
+// TODO Factorize pagination stuff
 import store from '@/store/index.js'
 
 const state = {
@@ -67,14 +68,14 @@ const getters = {
     }
   },
   totalPageNumberSirene: state => {
-    if (state.storedResults['SIRENE']) {
+    if (state.storedResults['SIRENE'] && state.storedResults['SIRENE'].total_pages) {
       return state.storedResults['SIRENE'].total_pages
     } else {
       return 0
     }
   },
   totalPageNumberRNA: state => {
-    if (state.storedResults['RNA']) {
+    if (state.storedResults['RNA'] && state.storedResults['RNA'].total_pages) {
       return state.storedResults['RNA'].total_pages
     } else {
       return 0
@@ -123,14 +124,14 @@ const actions = {
     await store.commit('setStatus', { value: response.status, api: api })
     store.commit('setLoading', { value: false, search: 'FULLTEXT' })
   },
-  setResponseSinglePage(dispatch, { response, api }) {
+  setResponseEtablissement(dispatch, { response, api }) {
     if (response.status === 500 || response.status === 0 || response.status === 404) {
       store.dispatch('setNegativeResponse', { response: response, api: api })
       return
     }
     store.commit('setSinglePageResults', { value: response.body, api: api })
   },
-  setNegativeResponse(dispatch, { response, api }) { //ex-redirectWhenNoResult
+  setNegativeResponse(dispatch, { response, api }) {
     if (response.status === 500 || response.status === 0) {
       store.commit('setError500', { value: true, api: api })
     }

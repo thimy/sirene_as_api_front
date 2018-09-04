@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     isSearchNotEmpty () {
-      return this.$store.state.search.storedFullText !== ''
+      return this.$store.state.searchFullText.storedFullText !== ''
     },
     storedResultsEntreprises () {
       return this.$store.getters.storedResultsEntreprises
@@ -48,7 +48,7 @@ export default {
         return ''
       }
       const numberResultsFormatted = Filters.methods.frenchNumberFormat(this.numberResults)
-      return `${numberResultsFormatted} résultats pour "${this.$store.state.search.storedLastFullText}" dans la base SIRENE des entreprises`
+      return `${numberResultsFormatted} résultats pour "${this.$store.state.searchFullText.storedLastFullText}" dans la base SIRENE des entreprises`
     }
   },
   mixins: [Filters]

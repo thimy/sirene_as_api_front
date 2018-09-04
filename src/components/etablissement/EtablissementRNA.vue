@@ -1,7 +1,7 @@
 <template>
   <div class="company">
     <section class="section-grey">
-      <div class="container company-container" v-bind:class="{ no_top_padding: noTopPadding }">
+      <div v-bind:class="{ no_top_padding: this.haveComponentTop }" class="container company-container">
         <etablissement-rna-info></etablissement-rna-info>
         <etablissement-rna-contact></etablissement-rna-contact>
       </div>
@@ -20,12 +20,7 @@ export default {
   components: {
     'EtablissementRnaInfo': EtablissementRNAInfo,
     'EtablissementRnaContact': EtablissementRNAContact
-  },
-  data () {
-    return {
-      noTopPadding: this.haveComponentTop
-    }
-  },
+  }
 }
 </script>
 

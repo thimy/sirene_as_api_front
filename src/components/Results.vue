@@ -7,7 +7,7 @@
       <hr />
       <results-rna />
       <!-- paginate module on RNA and Sirene, so we use the bigger values -->
-      <results-paginate-module v-if=biggerNumberResults :totalPages=biggerNumberPages></results-paginate-module>
+      <results-paginate-module :totalPages=biggerNumberPages></results-paginate-module>
     </template>
   </div>
 </template>
@@ -34,9 +34,6 @@ export default {
     },
     serverError () {
       return this.$store.state.application.error500['FULLTEXT']
-    },
-    biggerNumberResults () {
-      return Math.max(this.$store.getters.numberResultsFullTextSirene, this.$store.getters.numberResultsFullTextRNA)
     },
     biggerNumberPages () {
       return Math.max(this.$store.getters.totalPageNumberSirene, this.$store.getters.totalPageNumberRNA)

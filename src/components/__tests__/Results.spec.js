@@ -31,9 +31,9 @@ describe('Results.vue', () => {
   })
 
   test('Computed value isSearchNotEmpty check if search is not empty', () =>{
-    storeMocks.store.state.search.storedFullText = ''
+    storeMocks.store.state.searchFullText.storedFullText = ''
     expect(results.isSearchNotEmpty).toBeFalsy()
-    storeMocks.store.state.search.storedFullText = 'placeholder'
+    storeMocks.store.state.searchFullText.storedFullText = 'placeholder'
     expect(results.isSearchNotEmpty).toBeTruthy()
   })
 

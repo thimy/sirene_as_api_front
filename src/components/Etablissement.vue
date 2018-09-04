@@ -4,8 +4,8 @@
   <loader class="container" v-else-if="isEtablissementLoading" />
   <div v-else class="company">
     <etablissement-header />
-    <etablissement-sirene v-if="haveSireneInfo" />
-    <etablissement-rna v-if="haveRNAInfo" :haveComponentTop=haveSireneInfo />
+    <etablissement-sirene v-if=haveSireneInfo />
+    <etablissement-rna v-if=haveRNAInfo :haveComponentTop=haveSireneInfo />
   </div>
 </template>
 

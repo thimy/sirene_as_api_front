@@ -5,7 +5,7 @@
     :page-class = "'pagesButtons'"
     :prev-class="'pagesButtons'"
     :next-class="'pagesButtons'"
-    :page-count="totalPageNumber"
+    :page-count="totalPageNumber()"
     :initial-page="initialPage"
     :prev-text="'Precédent'"
     :next-text="'Suivant'"
@@ -25,7 +25,6 @@ export default {
   data: function () {
     return {
       initialPage: parseInt(this.$store.state.route.query.page, 10) - 1,
-      totalPageNumber: this.totalPages
     }
   },
   methods: {
@@ -36,6 +35,10 @@ export default {
       } else {
         this.$store.dispatch('goToClearedHomePage')
       }
+    },
+    // totalPageNumber needs to be a method cause based on non-reactive dependencies
+    totalPageNumber () {
+      return this.totalPages
     }
   }
 }

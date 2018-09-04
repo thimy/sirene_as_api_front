@@ -31,7 +31,7 @@ export default {
   },
   computed: {
     isSearchNotEmpty () {
-      return this.$store.state.search.storedFullText !== ''
+      return this.$store.state.searchFullText.storedFullText !== ''
     },
     storedResultsAssociations () {
       return this.$store.getters.storedResultsAssociations
@@ -47,7 +47,7 @@ export default {
         return ''
       }
       const numberResultsFormatted = Filters.methods.frenchNumberFormat(this.numberResults)
-      return `${numberResultsFormatted} résultats pour "${this.$store.state.search.storedLastFullText}" dans la base RNA des associations`
+      return `${numberResultsFormatted} résultats pour "${this.$store.state.searchFullText.storedLastFullText}" dans la base RNA des associations`
     }
   },
   mixins: [Filters]

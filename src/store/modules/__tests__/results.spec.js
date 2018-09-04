@@ -161,13 +161,13 @@ describe('results.js actions', () => {
 
   // TODO update for new API
 
-  // test('Action setResponseSinglePage commit setSinglePageStatus, setStatusSiret and launch redirectWhenNoResults', () => {
+  // test('Action setResponseEtablissement commit setSinglePageStatus, setStatusSiret and launch redirectWhenNoResults', () => {
   //   const dispatch = 'mock-dispatch'
   //   const response = {
   //     body: 'mock-body',
   //     status: 'mock-status'
   //   }
-  //   Results.actions.setResponseSinglePage(dispatch, response)
+  //   Results.actions.setResponseEtablissement(dispatch, response)
   //   expect(store.commit).toHaveBeenCalledWith('setSinglePageResults', 'mock-body')
   //   expect(store.commit).toHaveBeenCalledWith('setStatusSiret', 'mock-status')
   //   expect(store.dispatch).toHaveBeenCalledWith('redirectWhenNoResult', response)

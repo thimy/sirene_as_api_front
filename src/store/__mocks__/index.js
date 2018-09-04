@@ -55,7 +55,7 @@ export const actions = {
   requestSearch: jest.fn(),
   resetApplicationState: jest.fn(),
   setResponse: jest.fn(),
-  setResponseSinglePage: jest.fn(),
+  setResponseEtablissement: jest.fn(),
   setResponseSiren: jest.fn(),
   showSearchCategories: jest.fn()
 }

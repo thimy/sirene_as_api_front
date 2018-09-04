@@ -213,7 +213,7 @@ describe('SearchBar.vue', () => {
   })
 
   test('Method requestSearchIfNotEmpty doesnt search if search is empty', () => {
-    storeMocks.store.state.search.storedFullText = ''
+    storeMocks.store.state.searchFullText.storedFullText = ''
     wrapperSearchBar.vm.requestSearch = jest.fn()
     wrapperSearchBar.vm.requestSearchIfNotEmpty()
     expect(wrapperSearchBar.vm.requestSearch).toHaveBeenCalledTimes(0)
@@ -222,9 +222,9 @@ describe('SearchBar.vue', () => {
   // Computed values
 
   test('Computed value isSearchNotEmpty check if search is empty', () =>{
-    storeMocks.store.state.search.storedFullText = ''
+    storeMocks.store.state.searchFullText.storedFullText = ''
     expect(wrapperSearchBar.vm.isSearchNotEmpty).toBeFalsy()
-    storeMocks.store.state.search.storedFullText = 'placeholder'
+    storeMocks.store.state.searchFullText.storedFullText = 'placeholder'
     expect(wrapperSearchBar.vm.isSearchNotEmpty).toBeTruthy()
   })
 

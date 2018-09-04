@@ -34,7 +34,7 @@ export default {
   computed: {
     fullText: {
       get: function () {
-        return this.$store.state.search.storedFullText
+        return this.$store.state.searchFullText.storedFullText
       },
       set: function (fullText) {
         this.$store.commit('setFullText', fullText)
@@ -50,7 +50,7 @@ export default {
       }
     },
     isSearchNotEmpty () {
-      return this.$store.state.search.storedFullText !== ''
+      return this.$store.state.searchFullText.storedFullText !== ''
     },
   },
   methods: {
@@ -118,7 +118,6 @@ export default {
       position: relative;
   }
 
-  // TODO: is this called ?
   .hidden {
     visibility: hidden;
   }

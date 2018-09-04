@@ -2,6 +2,7 @@
   <div>
     <navbar></navbar>
     <search></search>
+    <!-- TODO: put home in router-view (maybe?) -->
     <home v-if="showWelcomeText"></home>
     <router-view></router-view>
     <footer-etalab></footer-etalab>

@@ -257,7 +257,7 @@ describe('search.js action  executeSearchBySiret', () => {
 
   test('It sets the correct response if successful', done => {
     Search.actions.executeSearchBySiret(dispatch, siret).then(() => {
-      expect(store.dispatch).toHaveBeenCalledWith('setResponseSinglePage', {"api": "SIRENE", "response": "good-dispatch"})
+      expect(store.dispatch).toHaveBeenCalledWith('setResponseEtablissement', {"api": "SIRENE", "response": "good-dispatch"})
       done()
     })
   })
@@ -267,7 +267,7 @@ describe('search.js action  executeSearchBySiret', () => {
       .mockImplementation(function () { return Promise.resolve('good-dispatch') })
       .mockImplementationOnce(function () { return Promise.reject('bad-dispatch') })
     Search.actions.executeSearchBySiret(dispatch, siret).catch(() => {
-      expect(store.dispatch).toHaveBeenCalledWith('setResponseSinglePage', 'bad-dispatch')
+      expect(store.dispatch).toHaveBeenCalledWith('setResponseEtablissement', 'bad-dispatch')
     })
   })
 })
