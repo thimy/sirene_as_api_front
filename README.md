@@ -19,6 +19,9 @@ Les API exploitées par ce front-end sont les suivantes :
 ## Exécution en local
 
 ``` bash
+# Installation
+npm install
+
 # Aprés avoir lancé le front-end avec la commande
 npm run dev
 
@@ -37,9 +40,22 @@ rake sunspot:solr:start
 npm run test
 
 # Construire pour la production
-npm run build
+npm run build:production
 
 ```
+
+## Déploiement
+
+Un script Mina (et un Rakefile) est disponible pour déployer automatiquement sur l'infra entreprise.data.gouv.fr :
+``` bash
+# sur un seul serveur
+bundle exec mina deploy domain=url.du.serveur to=sandbox
+
+# sur les deux serveurs
+bundle exec rake deploy to=production
+```
+
+Par défaut `to` est à _sandbox_.
 
 ## Licence
 
