@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EtablissementPanelInfo.vue snapshot It match the snapshot 1`] = `
+exports[`EtablissementSireneInfo.vue snapshot It match the snapshot 1`] = `
 <div
   class="company__panel panel"
 >
@@ -18,7 +18,7 @@ exports[`EtablissementPanelInfo.vue snapshot It match the snapshot 1`] = `
       <div
         class="company__item-value"
       >
-         mock-siret
+         
       </div>
     </div>
      
@@ -33,7 +33,7 @@ exports[`EtablissementPanelInfo.vue snapshot It match the snapshot 1`] = `
       <div
         class="company__item-value"
       >
-         833057201
+         
       </div>
     </div>
      
@@ -103,12 +103,27 @@ exports[`EtablissementPanelInfo.vue snapshot It match the snapshot 1`] = `
       <div
         class="company__item-key"
       >
+        Numéro RNA
+      </div>
+      <div
+        class="company__item-value"
+      >
+         Non renseigné
+      </div>
+    </div>
+     
+    <div
+      class="company__item"
+    >
+      <div
+        class="company__item-key"
+      >
         N° TVA Intracommunautaire
       </div>
       <div
         class="company__item-value"
       >
-         FR80833057201
+         FRNaNundefined
       </div>
     </div>
   </ul>

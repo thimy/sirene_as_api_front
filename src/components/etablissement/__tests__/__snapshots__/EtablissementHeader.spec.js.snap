@@ -18,7 +18,7 @@ exports[`EtablissementHeader.vue Snapshot testing It match the snapshot 1`] = `
           <span
             class="company__siren"
           >
-            (833057201)
+            ()
           </span>
         </h2>
          
@@ -35,6 +35,8 @@ exports[`EtablissementHeader.vue Snapshot testing It match the snapshot 1`] = `
         </h4>
       </div>
        
+      <!---->
+       
       <div
         class="tabs"
       >
@@ -50,7 +52,7 @@ exports[`EtablissementHeader.vue Snapshot testing It match the snapshot 1`] = `
           </h5>
            
           <h5>
-            Dernière mise à jour : 01/08/2018
+            Dernière mise à jour : 
           </h5>
         </div>
          
@@ -66,7 +68,7 @@ exports[`EtablissementHeader.vue Snapshot testing It match the snapshot 1`] = `
           </h5>
            
           <h5>
-            Dernière mise à jour : 05/08/2018
+            Dernière mise à jour : 
           </h5>
         </div>
       </div>

@@ -1,7 +1,7 @@
-import { createLocalVue, shallow, mount, RouterLinkStub } from '@vue/test-utils'
+import { createLocalVue, shallowMount, mount, RouterLinkStub } from '@vue/test-utils'
 import { __createMocks as createStoreMocks } from '@/store/index.js'
 import Vuex from 'vuex'
-import CodesNAF from '@/components/CodesNAF'
+import CodesNAF from '@/components/apiDoc/apiDocSirene/CodesNAF'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)
@@ -14,12 +14,11 @@ describe('CodesNAF.vue', () => {
 
   test('It dispatches hideWelcomeText when created', () => {
     storeMocks = createStoreMocks()
-    wrapperCodesNAF = shallow(CodesNAF, {
+    wrapperCodesNAF = shallowMount(CodesNAF, {
       localVue,
       store: storeMocks.store
     })
-
-    wrapperCodesNAF.update()
+    wrapperCodesNAF
     expect(storeMocks.actions.hideWelcomeText).toHaveBeenCalled()
   })
 })

@@ -14,18 +14,6 @@ const state = {
   baseAdressSireneSiren: process.env.BASE_ADRESS_SIRENE_SIREN,
 }
 
-const mutations = {
-  setFullText (state, value) {
-    state.storedFullText = value
-  },
-  setLastFullText (state, value) {
-    state.storedLastFullText = value
-  },
-  setPage (state, value) {
-    state.pageNumber = value
-  }
-}
-
 const actions = {
   async executeSearchEtablissement(dispatch, searchId) {
     await store.dispatch('resetApplicationState')
@@ -111,6 +99,5 @@ const actions = {
 
 export default {
   state,
-  mutations,
   actions
 }

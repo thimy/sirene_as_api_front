@@ -1,4 +1,4 @@
-import { createLocalVue, shallow, mount } from '@vue/test-utils'
+import { createLocalVue, shallowMount, mount } from '@vue/test-utils'
 import { __createMocks as createStoreMocks } from '@/store/index.js'
 import Vuex from 'vuex'
 import LegalNotes from '@/components/LegalNotes'
@@ -13,12 +13,11 @@ describe('LegalNotes.vue', () => {
 
   test('It dispatches hideWelcomeText when created', () => {
     storeMocks = createStoreMocks()
-    wrapperLegalNotes = shallow(LegalNotes, {
+    wrapperLegalNotes = shallowMount(LegalNotes, {
       localVue,
       store: storeMocks.store
     })
-
-    wrapperLegalNotes.update()
+    wrapperLegalNotes
     expect(storeMocks.actions.hideWelcomeText).toHaveBeenCalled()
   })
 })
