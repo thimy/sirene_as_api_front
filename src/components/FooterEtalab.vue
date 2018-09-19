@@ -14,7 +14,7 @@
         <li><h2><a href="https://entreprise.api.gouv.fr/">entreprise.data.gouv.fr</a></h2></li>
         <li><a href="https://www.data.gouv.fr/fr/datasets/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/">Données de référence</a></li>
         <li><router-link :to="{ name: 'LegalNotes'}">Mentions légales</router-link></li>
-        <li><a href="https://github.com/betagouv/sirene_as_api">API</a></li>
+        <li><a href="https://github.com/etalab/sirene_as_api">API</a></li>
       </ul>
     </div>
   </footer>

@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EtablissementSireneInfo.vue snapshot It match the snapshot 1`] = `
+<div
+  class="company__panel panel"
+>
+  <ul
+    class="company__info-list"
+  >
+    <div
+      class="company__item"
+    >
+      <div
+        class="company__item-key"
+      >
+        SIRET
+      </div>
+      <div
+        class="company__item-value"
+      >
+         
+      </div>
+    </div>
+     
+    <div
+      class="company__item"
+    >
+      <div
+        class="company__item-key"
+      >
+        SIREN
+      </div>
+      <div
+        class="company__item-value"
+      >
+         
+      </div>
+    </div>
+     
+    <div
+      class="company__item"
+    >
+      <div
+        class="company__item-key"
+      >
+        Clef NIC
+      </div>
+      <div
+        class="company__item-value"
+      >
+         
+      </div>
+    </div>
+     
+    <div
+      class="company__item"
+    >
+      <div
+        class="company__item-key"
+      >
+        Activité principale Etablissement
+      </div>
+      <div
+        class="company__item-value"
+      >
+          - 
+      </div>
+    </div>
+     
+    <div
+      class="company__item"
+    >
+      <div
+        class="company__item-key"
+      >
+        Activité principale Entreprise
+      </div>
+      <div
+        class="company__item-value"
+      >
+          - 
+      </div>
+    </div>
+     
+    <div
+      class="company__item"
+    >
+      <div
+        class="company__item-key"
+      >
+        Nature juridique
+      </div>
+      <div
+        class="company__item-value"
+      >
+         Non renseigné
+      </div>
+    </div>
+     
+    <div
+      class="company__item"
+    >
+      <div
+        class="company__item-key"
+      >
+        Numéro RNA
+      </div>
+      <div
+        class="company__item-value"
+      >
+         Non renseigné
+      </div>
+    </div>
+     
+    <div
+      class="company__item"
+    >
+      <div
+        class="company__item-key"
+      >
+        N° TVA Intracommunautaire
+      </div>
+      <div
+        class="company__item-value"
+      >
+         FRNaNundefined
+      </div>
+    </div>
+  </ul>
+</div>
+`;

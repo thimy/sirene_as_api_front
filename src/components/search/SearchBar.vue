@@ -4,7 +4,7 @@
       @keydown.down="suggestDown"
       @keydown.up.prevent="suggestUp"
       @keydown.esc="suggestReset"
-      @keydown.enter="suggestEnter"/>
+      @keydown.enter="requestSearchIfNotEmpty"/>
     <button class="overlay-button">
       <svg class="icon icon-search"><use xlink:href="#icon-search"></use></svg>
     </button>
@@ -18,7 +18,7 @@
         <span>{{ suggestion | capitalize | removeExtraChars}}</span>
       </li>
       <!-- Filling with hidden divs so search bar will always be same size -->
-      <li class="hidden suggestion__box" v-for="index in suggestionNumberToMax"></li>
+      <li class="hidden suggestion__box" :key="index" v-for="index in suggestionNumberToMax"></li>
     </ul>
   </div>
 </template>
@@ -34,7 +34,7 @@ export default {
   computed: {
     fullText: {
       get: function () {
-        return this.$store.state.search.storedFullText
+        return this.$store.state.searchFullText.storedFullText
       },
       set: function (fullText) {
         this.$store.commit('setFullText', fullText)
@@ -43,29 +43,28 @@ export default {
         }
         if (String(fullText).length >= 3) {
           this.resetIndexSuggestion()
+          this.$store.commit('setPage', 1)
           this.$store.commit('setQuerySuggestions', fullText)
           this.$store.dispatch('executeSearchSuggestions')
         }
       }
     },
     isSearchNotEmpty () {
-      return this.$store.state.search.storedFullText !== ''
+      return this.$store.state.searchFullText.storedFullText !== ''
     },
   },
   methods: {
     requestSearchIfNotEmpty: function() {
       if (this.isSearchNotEmpty) {
-        this.$store.commit('setResultsAreLoading', true)
         this.requestSearch()
       }
     },
     requestSearch: function () {
-      const isSiret = this.isSiret(this.fullText)
-      const isSiren = this.isSiren(this.fullText)
+      const natureSearchId = this.analyzeSearchId(this.fullText)
 
-      if (isSiret || isSiren) {
+      if (natureSearchId) {
         this.fullText = this.removeSeparators(this.fullText)
-        isSiret ? this.requestSiretSearch() : this.requestSirenSearch()
+        this.$router.push({ path: `/etablissement/${this.fullText}` })
       } else {
         this.requestFullTextSearch()
       }
@@ -73,28 +72,14 @@ export default {
     },
     requestFullTextSearch: function () {
       const currentSuggestion = this.currentSuggestion()
-      if (currentSuggestion) { // This search the current suggestion if selected
+      if (currentSuggestion) {
         this.$store.commit('setFullText', currentSuggestion)
       } else {
         const fullTextNoDiacritics = this.removeDiacritics(this.fullText)
         this.$store.commit('setFullText', fullTextNoDiacritics)
       }
-      this.$store.dispatch('requestSearch')
+      this.$store.dispatch('requestSearchFullText')
       this.suggestCount = -1
-    },
-    requestSiretSearch: function () {
-      this.$store.commit('setSiret', this.fullText)
-      this.$router.push({ path: `/entreprise/${this.fullText}` })
-    },
-    requestSirenSearch: function () {
-      this.$store.dispatch('executeSearchBySiren', this.fullText)
-        .then(response => {
-          const siegeSiret = this.$store.getters.storedSirenSiege.siret
-          this.$router.push({ path: `/entreprise/${siegeSiret}` })
-        })
-        .catch(notFound => {
-          this.$store.dispatch('setResponse', notFound)
-        })
     }
   },
   mixins: [Filters, SuggestionsHelpers, RegExps]
@@ -105,6 +90,10 @@ export default {
   .form__group {
     width: 35em;
     max-width: 100%;
+  }
+
+  .form__select {
+    margin-bottom: 5px;
   }
 
   ul {

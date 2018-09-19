@@ -6,7 +6,7 @@ import Filters from '@/components/mixins/filters'
 export default {
   data () {
     return {
-      baseAdressNearEtablissement: process.env.BASE_ADRESS_NEAR_ETABLISSEMENT
+      baseAdressNearEtablissement: process.env.BASE_ADRESS_SIRENE_NEAR_ETABLISSEMENT
     }
   },
   methods: {
@@ -96,7 +96,7 @@ export default {
         })
         if (!renderedFeatures.length) {
           return
-        }      
+        }
         const etablissementsPoints = renderedFeatures[0];
         const etablissementPopup = new mapboxgl.Popup()
           .setLngLat(etablissementsPoints.geometry.coordinates)

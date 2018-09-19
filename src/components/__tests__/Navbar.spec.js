@@ -1,4 +1,4 @@
-import { createLocalVue, shallow, mount } from '@vue/test-utils'
+import { createLocalVue, shallowMount, mount } from '@vue/test-utils'
 import Vuex from 'vuex'
 import  NavBar from '@/components/Navbar.vue'
 import { __createMocks as createStoreMocks } from '@/store/index.js';
@@ -15,7 +15,7 @@ describe('Navbar.vue', () => {
   beforeEach(() => {
     storeMocks = createStoreMocks()
 
-    wrapperNavBar = shallow(NavBar, {
+    wrapperNavBar = shallowMount(NavBar, {
       localVue,
       store: storeMocks.store
     })

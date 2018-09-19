@@ -5,7 +5,7 @@
     :page-class = "'pagesButtons'"
     :prev-class="'pagesButtons'"
     :next-class="'pagesButtons'"
-    :page-count="totalPageNumber"
+    :page-count="totalPageNumber()"
     :initial-page="initialPage"
     :prev-text="'Precédent'"
     :next-text="'Suivant'"
@@ -21,24 +21,24 @@ Vue.component('paginate', Paginate)
 
 export default {
   name: 'Results',
+  props: ['totalPages'],
   data: function () {
     return {
-      initialPage: parseInt(this.$store.state.route.query.page, 10) - 1
-    }
-  },
-  computed: {
-    totalPageNumber: function () {
-      return parseInt(this.$store.getters.totalPageNumber, 10)
+      initialPage: parseInt(this.$store.state.route.query.page, 10) - 1,
     }
   },
   methods: {
     selectPage (pageNum) {
       if (this.$store.state.route.query.fullText) {
         this.$store.commit('setPage', pageNum)
-        this.$store.dispatch('requestSearch')
+        this.$store.dispatch('requestSearchFullText')
       } else {
         this.$store.dispatch('goToClearedHomePage')
       }
+    },
+    // totalPageNumber needs to be a method cause based on non-reactive dependencies
+    totalPageNumber () {
+      return this.totalPages
     }
   }
 }

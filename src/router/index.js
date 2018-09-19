@@ -5,7 +5,9 @@ import Results from '@/components/Results'
 import Etablissement from '@/components/Etablissement'
 import LegalNotes from '@/components/LegalNotes'
 import ApiDoc from '@/components/ApiDoc'
-import CodesNAF from '@/components/CodesNAF'
+import ApiDocSirene from '@/components/apiDoc/ApiDocSirene'
+import ApiDocRNA from '@/components/apiDoc/ApiDocRNA'
+import CodesNAF from '@/components/apiDoc/apiDocSirene/CodesNAF'
 
 Vue.use(Router)
 
@@ -31,7 +33,7 @@ export default new Router({
       component: Results
     },
     {
-      path: '/entreprise/:searchId',
+      path: '/etablissement/:searchId',
       name: 'Etablissement',
       component: Etablissement
     },
@@ -44,6 +46,16 @@ export default new Router({
       path: '/api_doc',
       name: 'ApiDoc',
       component: ApiDoc
+    },
+    {
+      path: '/api_doc_sirene',
+      name: 'ApiDocSirene',
+      component: ApiDocSirene
+    },
+    {
+      path: '/api_doc_rna',
+      name: 'ApiDocRNA',
+      component: ApiDocRNA
     },
     {
       path: '/codes_naf',

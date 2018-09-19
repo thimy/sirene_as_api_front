@@ -1,93 +1,142 @@
+// TODO Factorize pagination stuff
 import store from '@/store/index.js'
 
 const state = {
-  storedResults: null,
-  singlePageResult: null,
-  storedStatus: null,
-  storedStatusSiret: null,
-  storedStatusSiren: null
+  storedResults: {
+    'RNA': null,
+    'SIRENE': null
+  },
+  singlePageResult: {
+    'RNA': null,
+    'SIRENE':  null
+  },
+  storedStatus: {
+    'RNA': null,
+    'SIRENE': null
+  }
 }
 
 const getters = {
-  storedSpellcheck: state => {
-    if (state.storedStatus && state.storedResults) {
-      return state.storedResults.spellcheck
+  storedSpellcheckSirene: state => {
+    if (state.storedStatus['SIRENE'] && state.storedResults['SIRENE']) {
+      return state.storedResults['SIRENE'].spellcheck
     }
     return null
   },
-  storedResultsEtablissements: state => {
-    if (state.storedResults) {
-      return state.storedResults.etablissement
+  storedSpellcheckRNA: state => {
+    if (state.storedStatus['RNA'] && state.storedResults['RNA']) {
+      return state.storedResults['RNA'].spellcheck
     }
     return null
   },
-  singlePageResultEtablissement: state => {
-    if (state.singlePageResult) {
-      return state.singlePageResult.etablissement
+  storedResultsEntreprises: state => {
+    if (state.storedResults['SIRENE']) {
+      return state.storedResults['SIRENE'].etablissement
     }
     return null
   },
-  numberResults: state => {
-    if (state.storedResults && state.storedStatus != 404) {
-      return state.storedResults.total_results
+  storedResultsAssociations: state => {
+    if (state.storedResults['RNA']) {
+      return state.storedResults['RNA'].association
+    }
+    return null
+  },
+  singlePageEtablissementSirene: () => { // ex-singlePageResultEtablissement
+    if (store.state.results.singlePageResult['SIRENE']) {
+      return store.state.results.singlePageResult['SIRENE'].etablissement
+    }
+    return null
+  },
+  singlePageEtablissementRNA: () => {
+    if (store.state.results.singlePageResult['RNA']) {
+      return store.state.results.singlePageResult['RNA'].association
+    }
+    return null
+  },
+  numberResultsFullTextSirene: state => {
+    if (state.storedResults['SIRENE'] && state.storedStatus['SIRENE'] != 404) {
+      return state.storedResults['SIRENE'].total_results
     } else {
       return 0
     }
   },
-  totalPageNumber: state => {
-    if (state.storedResults) {
-      return state.storedResults.total_pages
+  numberResultsFullTextRNA: state => {
+    if (state.storedResults['RNA'] && state.storedStatus['RNA'] != 404) {
+      return state.storedResults['RNA'].total_results
+    } else {
+      return 0
     }
   },
-  onlyOneResult: state => {
-    return store.getters.numberResults === 1
+  totalPageNumberSirene: state => {
+    if (state.storedResults['SIRENE'] && state.storedResults['SIRENE'].total_pages) {
+      return state.storedResults['SIRENE'].total_pages
+    } else {
+      return 0
+    }
+  },
+  totalPageNumberRNA: state => {
+    if (state.storedResults['RNA'] && state.storedResults['RNA'].total_pages) {
+      return state.storedResults['RNA'].total_pages
+    } else {
+      return 0
+    }
+  },
+  // If only one result in fulltext search, send the searchId of result
+  singleResult: () => {
+    const oneResultSirene = store.getters.numberResultsFullTextSirene === 1
+    const oneResultRNA = store.getters.numberResultsFullTextRNA === 1
+    const onlyOneResultSirene = (oneResultSirene && !oneResultRNA)
+    const onlyOneResultRNA = (!oneResultSirene && oneResultRNA)
+    if (onlyOneResultSirene) {
+      return state.storedResults['SIRENE'].etablissement[0]['siret']
+    }
+    if (onlyOneResultRNA) {
+      return state.storedResults['RNA'].association[0]['id']
+    }
+    return null
   }
 }
 
 const mutations = {
-  setResults (state, value) {
-    state.storedResults = value
+  setResults (state, { value, api }) {
+    state.storedResults[api] = value
   },
-  clearResults (state) {
-    state.storedResults = null
+  clearResults (state, api) {
+    state.storedResults[api] = null
   },
-  setStatus (state, value) {
-    state.storedStatus = value
+  setStatus (state, { value, api }) {
+    state.storedStatus[api] = value
   },
-  setStatusSiret(state, value) {
-    state.storedStatusSiret = value
-  },
-  setStatusSiren(state, value) {
-    state.storedStatusSiren = value
-  },
-  setSinglePageResults (state, value) {
-    state.singlePageResult = value
+  setSinglePageResults (state, { value, api }) {
+    if (api == 'ALL') {
+      state.singlePageResult = {
+        'RNA': value,
+        'SIRENE':  value
+      }
+    }
+    state.singlePageResult[api] = value
   }
 }
 
 const actions = {
-  setResponse(dispatch, response) {
-    store.commit('setResults', response.body)
-    store.commit('setStatus', response.status)
-    store.dispatch('redirectWhenNoResult', response)
-    store.commit('setResultsAreLoading', false)
+  async setResponseFullText(dispatch, { response, api }) {
+    await store.commit('setResults', { value: response.body, api: api })
+    await store.commit('setStatus', { value: response.status, api: api })
+    store.commit('setLoading', { value: false, search: 'FULLTEXT' })
   },
-  setResponseSinglePage(dispatch, response) {
-    store.commit('setSinglePageResults', response.body)
-    store.commit('setStatusSiret', response.status)
-    store.dispatch('redirectWhenNoResult', response)
+  setResponseEtablissement(dispatch, { response, api }) {
+    if (response.status === 500 || response.status === 0 || response.status === 404) {
+      store.dispatch('setNegativeResponse', { response: response, api: api })
+      return
+    }
+    store.commit('setSinglePageResults', { value: response.body, api: api })
   },
-  setResponseSiren(dispatch, response) {
-    store.commit('setSirenResults', response.body)
-    store.commit('setStatusSiren', response.status)
-    store.dispatch('redirectWhenNoResult', response)
-  },
-  redirectWhenNoResult(dispatch, response) {
+  setNegativeResponse(dispatch, { response, api }) {
     if (response.status === 500 || response.status === 0) {
-      store.commit('setError500', true)
+      store.commit('setError500', { value: true, api: api })
     }
     if (response.status === 404) {
-      store.commit('setNoResultFound', true)
+      store.commit('setNoResultFound', { value: true, api: api })
     }
   }
 }

@@ -1,28 +1,11 @@
 <template>
-  <server-error class="container" v-if="isError"></server-error>
-  <not-found class="container" v-else-if="isNotFound"></not-found>
-  <loader class="container" v-else-if="isEtablissementLoading"></loader>
+  <server-error class="container" v-if="isError" />
+  <not-found class="container" v-else-if="isNotFound" />
+  <loader class="container" v-else-if="isEtablissementLoading" />
   <div v-else class="company">
-    <section class="section-white">
-      <div class="container">
-        <h2>{{result.nom_raison_sociale | removeExtraChars}} <span class="company__siren">({{ result.siren }})</span></h2>
-        <div class="subtitle"> {{ result.l2_normalisee }}</div>
-        <h4 class="company__industry"> {{ result.libelle_activite_principale_entreprise }}</h4>
-      </div>
-    </section>
-
-    <section class="section-grey">
-      <div class="container company-container">
-        <etablissement-panel-contact></etablissement-panel-contact>
-        <etablissement-panel-info></etablissement-panel-info>
-      </div>
-      <div class="container company-container company-container__extra">
-        <etablissement-panel-children></etablissement-panel-children>
-      </div>
-      <div class="container company-container company-container__map">
-        <etablissement-map :positionEtablissement='coordinates' :etablissement='this.result'></etablissement-map>
-      </div>
-    </section>
+    <etablissement-header />
+    <etablissement-sirene v-if=haveSireneInfo />
+    <etablissement-rna v-if=haveRNAInfo :haveComponentTop=haveSireneInfo />
   </div>
 </template>
 
@@ -31,10 +14,9 @@ import Filters from '@/components/mixins/filters'
 import Loader from '@/components/modules/Loader'
 import ServerError from '@/components/modules/ServerError'
 import NotFound from '@/components/etablissement/EtablissementNotFound'
-import EtablissementPanelContact from '@/components/etablissement/EtablissementPanelContact'
-import EtablissementPanelInfo from '@/components/etablissement/EtablissementPanelInfo'
-import EtablissementPanelChildren from '@/components/etablissement/EtablissementPanelChildren'
-import EtablissementMap from '@/components/etablissement/EtablissementMap'
+import EtablissementHeader from '@/components/etablissement/EtablissementHeader'
+import EtablissementSirene from '@/components/etablissement/EtablissementSirene'
+import EtablissementRNA from '@/components/etablissement/EtablissementRNA'
 
 export default {
   name: 'Etablissement',
@@ -42,29 +24,40 @@ export default {
     'Loader': Loader,
     'ServerError': ServerError,
     'NotFound': NotFound,
-    'EtablissementPanelContact': EtablissementPanelContact,
-    'EtablissementPanelInfo': EtablissementPanelInfo,
-    'EtablissementPanelChildren': EtablissementPanelChildren,
-    'EtablissementMap': EtablissementMap
+    'EtablissementHeader': EtablissementHeader,
+    'EtablissementSirene': EtablissementSirene,
+    'EtablissementRna': EtablissementRNA
   },
   computed: {
-    result () {
-      return this.$store.getters.singlePageResultEtablissement
-    },
     isEtablissementLoading () {
       return this.$store.getters.isEtablissementLoading
     },
     isNotFound () {
-      return this.$store.state.application.noResultFound
+      const mainSearch = this.$store.getters.mainSearch
+      if (mainSearch && this.$store.state.application.noResultFound[mainSearch] == true) {
+        return true
+      }
+      return false
     },
     isError () {
-      return this.$store.state.application.error500
-    },
-    coordinates () {
-      if (this.result && this.result.longitude && this.result.latitude) {
-        return [this.result.longitude, this.result.latitude]
+      const mainSearch = this.$store.getters.mainSearch
+      if (mainSearch && this.$store.state.application.error500[mainSearch] == true) {
+        return true
       }
-      return null
+      return false
+    },
+    haveSireneInfo () {
+      if (this.$store.getters.sireneAvailable) {
+        return true
+      }
+    },
+    haveRNAInfo () {
+      if (this.$store.getters.RNAAvailable) {
+        return true
+      }
+    },
+    mainSearch () {
+      return this.$store.getters.mainSearch
     }
   },
   beforeCreate () {
@@ -81,49 +74,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .section-white {
-    padding: 0;
-  }
-
-  .subtitle {
-    font-size: 1.4em;
-    font-family: "Evolventa", "Trebuchet MS", sans-serif;
-  }
-
-  .company__industry,
-  .company__siren {
-    color: $color-dark-grey;
-  }
-
-  .section-grey {
-    padding: 0;
-  }
-
   .container {
     padding-top: 2em;
     padding-bottom: 2em;
-  }
-
-  .company-container {
-    flex-direction: row;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .company-container__extra {
-    padding-top: 0;
-    margin-top: 0;
-  }
-
-  .company-container__map {
-    padding-top: 0;
-    margin-top: 0;
-  }
-
-
-  @media (max-width: $tablet) {
-    .company-container {
-      flex-direction: column;
-    }
   }
 </style>

@@ -9,15 +9,25 @@
 <script>
 export default {
   name: 'ResultsDidYoumean',
+  props: ['api'],
+  data () {
+    return {
+      apiToCall: this.api
+    }
+  },
   computed: {
     didYouMean () {
-      return this.$store.getters.storedSpellcheck
+      if (this.apiToCall == 'SIRENE') {
+        return this.$store.getters.storedSpellcheckSirene
+      } else if (this.apiToCall == 'RNA') {
+        return this.$store.getters.storedSpellcheckRNA
+      }
     }
   },
   methods: {
     didYouMeanSearch (didYouMean) {
       this.$store.commit('setFullText', didYouMean)
-      this.$store.dispatch('requestSearch')
+      this.$store.dispatch('requestSearchFullText')
     }
   }
 }

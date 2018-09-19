@@ -1,19 +1,19 @@
 <template>
   <div>
-    <Api />
-    <PublicAdministration />
+    <home-apis />
+    <home-public-administration />
   </div>
 </template>
 
 <script>
-import Api from '@/components/home/Api.vue'
-import PublicAdministration from '@/components/home/PublicAdministration.vue'
+import HomeAPIs from '@/components/home/HomeAPIs'
+import HomePublicAdministration from '@/components/home/HomePublicAdministration'
 
 export default {
   name: 'Home',
   components: {
-    'Api': Api,
-    'PublicAdministration': PublicAdministration
+    'HomeApis': HomeAPIs,
+    'HomePublicAdministration': HomePublicAdministration
   }
 }
 </script>
