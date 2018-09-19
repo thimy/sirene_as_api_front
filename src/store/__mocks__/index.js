@@ -82,16 +82,16 @@ export const getters = {
   mainSearch: jest.fn().mockReturnValue([{}]),
   numberResultsFullTextRNA: jest.fn().mockReturnValue([{}]),
   numberResultsFullTextSirene: jest.fn().mockReturnValue([{}]),
-  optionsToGet:"?per_page=5&page=1",
+  optionsToGet: jest.fn().mockReturnValue(["?per_page=5&page=1"]),
   pageNumber: jest.fn().mockReturnValue([{}]),
-  pageNumberToGet: "?per_page=5&page=1",
+  pageNumberToGet: jest.fn().mockReturnValue(["?per_page=5&page=1"]),
   queryToGet: jest.fn().mockReturnValue([{}]),
   singlePageEtablissementRNA: jest.fn().mockReturnValue([{}]),
   singlePageEtablissementSirene: jest.fn().mockReturnValue([{}]),
   singleResult: jest.fn().mockReturnValue([{}]),
   sireneAvailable: jest.fn().mockReturnValue([{}]),
   siretFromRNA: jest.fn().mockReturnValue([{}]),
-  storedFullText:"",
+  storedFullText: jest.fn().mockReturnValue([""]),
   storedResultsAssociations: jest.fn().mockReturnValue([{}]),
   storedResultsEntreprises: jest.fn().mockReturnValue([{}]),
   storedSirenChildren: jest.fn().mockReturnValue([{}]),
@@ -99,48 +99,64 @@ export const getters = {
   storedSirenTotalResults: jest.fn().mockReturnValue([{}]),
   storedSpellcheckRNA: jest.fn().mockReturnValue([{}]),
   storedSpellcheckSirene: jest.fn().mockReturnValue([{}]),
-  suggestionAdressToGet:"http://localhost:3000/v1/suggest/",
-  totalPageNumberRNA:0,
-  totalPageNumberSirene:0
+  suggestionAdressToGet: jest.fn().mockReturnValue(["http://localhost:3000/v1/suggest/"]),
+  totalPageNumberRNA: jest.fn().mockReturnValue([0]),
+  totalPageNumberSirene: jest.fn().mockReturnValue([0])
 }
 
 export const mutations = {
-  changeWelcomeTextVisibility: jest.fn(),
+  // application.js
+  setLoading: jest.fn(),
+  setError500: jest.fn(),
+  setNoResultFound: jest.fn(),
+  setMainSearch: jest.fn(),
+  // results.js
+  setResults: jest.fn(),
   clearResults: jest.fn(),
+  setStatus: jest.fn(),
+  setSinglePageResults: jest.fn(),
+  // resultsSirenChildren.js
+  setSirenResults: jest.fn(),
+  // searchFullText.js
   setFullText: jest.fn(),
   setLastFullText: jest.fn(),
-  setNoResultFound: jest.fn(),
   setPage: jest.fn(),
+  // suggestions.js
   setQuerySuggestions: jest.fn(),
-  setResults: jest.fn(),
-  setResultsAreLoading: jest.fn(),
-  setSinglePageResults: jest.fn(),
-  setSirenResults: jest.fn(),
-  setSiret: jest.fn(),
-  setSiretLoading: jest.fn(),
-  setStatus: jest.fn(),
-  setStatusSiren: jest.fn(),
-  setStatusSiret: jest.fn(),
-  setStoredSuggestions: jest.fn()
+  setStoredSuggestions: jest.fn(),
+  // welcomeText.js
+  changeWelcomeTextVisibility: jest.fn()
 }
 
 export const actions = {
-  executeSearchBySiren: jest.fn(),
-  executeSearchBySiret: jest.fn(),
+  // application.js
+  resetApplicationState: jest.fn(),
+  // results.js
+  setResponseFullText: jest.fn(),
+  setResponseEtablissement: jest.fn(),
+  setNegativeResponse: jest.fn(),
+  // searchAdditionalInfo.js
+  fromRNARequestOtherAPIs: jest.fn(),
+  fromSireneRequestOtherAPIs: jest.fn(),
+  // searchEtablissement.js
   executeSearchEtablissement: jest.fn(),
-  executeSearchResults: jest.fn(),
-  executeSearchResultscallAPI: jest.fn(),
+  searchEtablissementFromSiret: jest.fn(),
+  searchEtablissementFromSiren: jest.fn(),
+  searchEtablissementFromIdAssociation: jest.fn(),
+  executeSearchBySiret: jest.fn(),
+  executeSearchByIdAssociation: jest.fn(),
+  executeSearchBySiren: jest.fn(),
+  sendAPIRequest: jest.fn(),
+  // searchFullText.js
+  requestSearchFullText: jest.fn(),
+  searchFullText: jest.fn(),
+  executeSearchFullText: jest.fn(),
+  // suggestions.js
   executeSearchSuggestions: jest.fn(),
   filterAndStoreSuggestions: jest.fn(),
-  goToClearedHomePage: jest.fn(),
+  // welcomeText.js
   hideWelcomeText: jest.fn(),
-  redirectWhenNoResult: jest.fn(),
-  requestSearch: jest.fn(),
-  resetApplicationState: jest.fn(),
-  setResponse: jest.fn(),
-  setResponseEtablissement: jest.fn(),
-  setResponseSiren: jest.fn(),
-  showSearchCategories: jest.fn()
+  goToClearedHomePage: jest.fn()
 }
 
 // eslint-disable-next-line no-underscore-dangle

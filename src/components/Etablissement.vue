@@ -34,14 +34,14 @@ export default {
     },
     isNotFound () {
       const mainSearch = this.$store.getters.mainSearch
-      if (this.$store.state.application.noResultFound[mainSearch] == true) {
+      if (mainSearch && this.$store.state.application.noResultFound[mainSearch] == true) {
         return true
       }
       return false
     },
     isError () {
       const mainSearch = this.$store.getters.mainSearch
-      if (this.$store.state.application.error500[mainSearch] == true) {
+      if (mainSearch && this.$store.state.application.error500[mainSearch] == true) {
         return true
       }
       return false

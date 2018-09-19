@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search.vue snapshot It match the snapshot when there arent results 1`] = `
+<div
+  class="hero"
+>
+  <div
+    class="notification full-width"
+  >
+    
+    Ce site est un travail en cours, actuellement en beta. Vous pouvez le consulter librement.
+  
+  </div>
+   
+  <div
+    class="hero__container container"
+  >
+    <div
+      class="text-center"
+      name="fade"
+    >
+      <h1
+        class="search__title"
+      >
+        
+          Retrouvez toutes les informations concernant les entreprises et associations de France
+        
+      </h1>
+       
+      <p
+        class="search__subtitle"
+      >
+        Les bases de données sur l'état civil des entreprises et associations françaises sont maintenant accessibles à tous, sans frais.
+      </p>
+    </div>
+     
+    <div
+      class="form__group"
+    >
+      <input
+        name="search"
+        placeholder="Nom, SIREN, SIRET, adresse..."
+        type="text"
+      />
+       
+      <button
+        class="overlay-button"
+      >
+        <svg
+          class="icon icon-search"
+        >
+          <use
+            xlink:href="#icon-search"
+          />
+        </svg>
+      </button>
+       
+      <ul>
+         
+        <li
+          class="hidden suggestion__box"
+        />
+        <li
+          class="hidden suggestion__box"
+        />
+        <li
+          class="hidden suggestion__box"
+        />
+        <li
+          class="hidden suggestion__box"
+        />
+        <li
+          class="hidden suggestion__box"
+        />
+      </ul>
+    </div>
+     
+    <!---->
+  </div>
+</div>
+`;

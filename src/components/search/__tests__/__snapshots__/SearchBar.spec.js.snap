@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBar.vue snapshot Snapshot test 1`] = `
+<div
+  class="form__group"
+>
+  <input
+    name="search"
+    placeholder="Nom, SIREN, SIRET, adresse..."
+    type="text"
+  />
+   
+  <button
+    class="overlay-button"
+  >
+    <svg
+      class="icon icon-search"
+    >
+      <use
+        xlink:href="#icon-search"
+      />
+    </svg>
+  </button>
+   
+  <ul>
+     
+    <li
+      class="hidden suggestion__box"
+    />
+    <li
+      class="hidden suggestion__box"
+    />
+    <li
+      class="hidden suggestion__box"
+    />
+    <li
+      class="hidden suggestion__box"
+    />
+    <li
+      class="hidden suggestion__box"
+    />
+  </ul>
+</div>
+`;

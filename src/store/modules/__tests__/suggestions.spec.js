@@ -1,8 +1,5 @@
 import Suggestions from '@/store/modules/suggestions'
-import Vue from 'vue'
 import store from '@/store/index.js'
-import debounce from 'lodash/debounce'
-import filterMixin from '@/components/mixins/filters'
 
 
 jest.mock('@/store/modules/suggestions.js')
@@ -48,8 +45,6 @@ describe('suggestions.js mutations', () => {
 })
 
 describe('suggestions.js actions', () => {
-  // TODO
-  test('Action executeSearchSuggestions debounce then request suggestionAdressToGet then dispatch filterAndStoreSuggestions')
   test('Action filterAndStoreSuggestions filters sugestions and commit them', () => {
     const state = {}
     const suggestionsObjects = { suggestions: ['suggest*1', 'suggest*/2', 'suggest 3']}

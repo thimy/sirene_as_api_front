@@ -10,7 +10,30 @@ exports[`EtablissementHeader.vue Snapshot testing It match the snapshot 1`] = `
     <div
       class="container"
     >
-      <!---->
+      <div
+        class="title"
+      >
+        <h2>
+           
+          <span
+            class="company__siren"
+          >
+            ()
+          </span>
+        </h2>
+         
+        <div
+          class="subtitle"
+        >
+           
+        </div>
+         
+        <h4
+          class="company__industry"
+        >
+           
+        </h4>
+      </div>
        
       <!---->
        
@@ -18,26 +41,34 @@ exports[`EtablissementHeader.vue Snapshot testing It match the snapshot 1`] = `
         class="tabs"
       >
         <div
-          class="api api__unavailable"
+          class="api api__sirene"
         >
           <h4>
             Base SIRENE
           </h4>
            
           <h5>
-            Non disponible
+            Information disponible
+          </h5>
+           
+          <h5>
+            Dernière mise à jour : 
           </h5>
         </div>
          
         <div
-          class="api api__unavailable"
+          class="api api__rna"
         >
           <h4>
             Base RNA
           </h4>
            
           <h5>
-            Non disponible
+            Information disponible
+          </h5>
+           
+          <h5>
+            Dernière mise à jour : 
           </h5>
         </div>
       </div>

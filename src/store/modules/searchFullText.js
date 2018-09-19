@@ -12,18 +12,6 @@ const state = {
   }
 }
 
-const mutations = {
-  setFullText (state, value) {
-    state.storedFullText = value
-  },
-  setLastFullText (state, value) {
-    state.storedLastFullText = value
-  },
-  setPage (state, value) {
-    state.pageNumber = value
-  }
-}
-
 const getters = {
   adressToGetFullText: (state, api) => {
     return state.baseAdressFullText[api] + store.getters.queryToGet
@@ -42,6 +30,18 @@ const getters = {
   },
   pageNumber: state => {
     return state.pageNumber
+  }
+}
+
+const mutations = {
+  setFullText (state, value) {
+    state.storedFullText = value
+  },
+  setLastFullText (state, value) {
+    state.storedLastFullText = value
+  },
+  setPage (state, value) {
+    state.pageNumber = value
   }
 }
 

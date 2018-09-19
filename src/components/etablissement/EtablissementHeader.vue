@@ -58,10 +58,14 @@ export default {
       return this.$store.getters.RNAAvailable
     },
     lastUpdateSirene () {
-      return this.resultSirene.updated_at.substring(0, 10)
+      if (this.resultSirene.updated_at) {
+        return this.resultSirene.updated_at.substring(0, 10)
+      }
     },
     lastUpdateRNA () {
-      return this.resultRNA.updated_at.substring(0, 10)
+      if (this.resultRNA.updated_at) {
+        return this.resultRNA.updated_at.substring(0, 10)
+      }
     }
   },
   mixins: [Filters]
