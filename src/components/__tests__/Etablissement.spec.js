@@ -30,14 +30,6 @@ describe('Etablissement.vue', () => {
     etablissement = wrapperEtablissement.vm
   })
 
-  test('Computed value isNotFound returns the right getter', () => {
-    expect(etablissement.isNotFound).toBe(storeMocks.store.state.application.noResultFound)
-  })
-
-  test('Computed value isError returns the right getter', () => {
-    expect(etablissement.isError).toBe(storeMocks.store.state.application.isError)
-  })
-
   test('Before creation, methods, suggestions are reset and executeSearchEtablissement were called', () => {
     expect(storeMocks.mutations.setStoredSuggestions)
       .toHaveBeenCalledWith(etablissement.$store.state, '')

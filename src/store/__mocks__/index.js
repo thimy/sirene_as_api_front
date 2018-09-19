@@ -4,21 +4,104 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+export const state = {
+  application: jest.fn().mockReturnValue([{
+    isLoading: {
+      'SIREN': jest.fn().mockReturnValue([{}]),
+      'ID_ASSOCIATION': jest.fn().mockReturnValue([{}]),
+      'SIRET': jest.fn().mockReturnValue([{}]),
+      'FULLTEXT': jest.fn().mockReturnValue([{}])
+    },
+    error500: {
+      'SIRENE': jest.fn().mockReturnValue([{}]),
+      'RNA': jest.fn().mockReturnValue([{}])
+    },
+    noResultFound: {
+      'SIRENE': jest.fn().mockReturnValue([{}]),
+      'RNA': jest.fn().mockReturnValue([{}])
+    },
+    mainSearch: {
+      'SIRENE': jest.fn().mockReturnValue([{}]),
+      'RNA': jest.fn().mockReturnValue([{}])
+    }
+  }]),
+  baseAdressSuggestions: jest.fn().mockReturnValue([{
+    storedResults: {
+      'RNA': jest.fn().mockReturnValue([{}]),
+      'SIRENE': jest.fn().mockReturnValue([{}])
+    },
+    singlePageResult: {
+      'RNA': jest.fn().mockReturnValue([{}]),
+      'SIRENE':  jest.fn().mockReturnValue([{}])
+    },
+    storedStatus: {
+      'RNA': jest.fn().mockReturnValue([{}]),
+      'SIRENE': jest.fn().mockReturnValue([{}])
+    }
+  }]),
+  sirenChildren: jest.fn().mockReturnValue([{}]),
+  searchEtablissement: jest.fn().mockReturnValue([{
+    baseAdressSiret: {
+      'SIRENE': jest.fn().mockReturnValue([{}]),
+      'RNA': jest.fn().mockReturnValue([{}])
+    },
+    baseAdressRNAId: {
+      'SIRENE': jest.fn().mockReturnValue([{}]),
+      'RNA': jest.fn().mockReturnValue([{}])
+    },
+    baseAdressSireneSiren: jest.fn().mockReturnValue([{}])
+  }]),
+  searchFullText: {
+    storedFullText: jest.fn().mockReturnValue([{}]),
+    storedLastFullText: jest.fn().mockReturnValue([{}]),
+    pageNumber: jest.fn().mockReturnValue([{}]),
+    baseAdressFullText: {
+      'SIRENE': jest.fn().mockReturnValue([{}]),
+      'RNA': jest.fn().mockReturnValue([{}])
+    }
+  },
+  suggestions: {
+    storedSuggestions: jest.fn().mockReturnValue([{}]),
+    baseAdressSuggestions: jest.fn().mockReturnValue([{}]),
+    querySuggestions: jest.fn().mockReturnValue([{}]),
+    suggestActive: jest.fn().mockReturnValue([{}])
+  },
+  welcomeText: {
+    isWelcomeTextVisible: jest.fn().mockReturnValue([{}])
+  }
+}
+
 export const getters = {
-  adressToGet: jest.fn().mockReturnValue([{}]),
-  isEtablissementLoading: jest.fn().mockReturnValue(['mock-etablissement-loading']),
-  numberResults: jest.fn().mockReturnValue('6123456'),
-  onlyOneResult: jest.fn().mockReturnValue([{}]),
-  optionsToGet: jest.fn().mockReturnValue([{}]),
-  pageNumberToGet: jest.fn().mockReturnValue([{}]),
+  RNAAvailable: jest.fn().mockReturnValue([{}]),
+  adressToGetFullText: jest.fn().mockReturnValue([{}]),
+  allAPIError500: jest.fn().mockReturnValue([{}]),
+  allAPINotFound: jest.fn().mockReturnValue([{}]),
+  idAssociationFromSirene: jest.fn().mockReturnValue([{}]),
+  isEtablissementLoading: jest.fn().mockReturnValue([{}]),
+  isWelcomeTextVisible: jest.fn().mockReturnValue([{}]),
+  mainSearch: jest.fn().mockReturnValue([{}]),
+  numberResultsFullTextRNA: jest.fn().mockReturnValue([{}]),
+  numberResultsFullTextSirene: jest.fn().mockReturnValue([{}]),
+  optionsToGet:"?per_page=5&page=1",
+  pageNumber: jest.fn().mockReturnValue([{}]),
+  pageNumberToGet: "?per_page=5&page=1",
   queryToGet: jest.fn().mockReturnValue([{}]),
-  singlePageEtablissementSirene: jest.fn().mockReturnValue({ siret: 'mock-siret', siren: '833057201' }),
-  storedResultsEtablissements: jest.fn().mockReturnValue([{ name: 'mock-etablissement', siret: 'mock-siret1' }]),
+  singlePageEtablissementRNA: jest.fn().mockReturnValue([{}]),
+  singlePageEtablissementSirene: jest.fn().mockReturnValue([{}]),
+  singleResult: jest.fn().mockReturnValue([{}]),
+  sireneAvailable: jest.fn().mockReturnValue([{}]),
+  siretFromRNA: jest.fn().mockReturnValue([{}]),
+  storedFullText:"",
+  storedResultsAssociations: jest.fn().mockReturnValue([{}]),
+  storedResultsEntreprises: jest.fn().mockReturnValue([{}]),
   storedSirenChildren: jest.fn().mockReturnValue([{}]),
-  storedSirenSiege: jest.fn().mockReturnValue({ siret: 'mock-storedSirenSiegeSiret' }),
-  storedSpellcheck: jest.fn().mockReturnValue('mock-spellcheck'),
-  suggestionAdressToGet: jest.fn().mockReturnValue([{}]),
-  totalPageNumber: jest.fn().mockReturnValue('10goToClearedHomePage')
+  storedSirenSiege: jest.fn().mockReturnValue([{}]),
+  storedSirenTotalResults: jest.fn().mockReturnValue([{}]),
+  storedSpellcheckRNA: jest.fn().mockReturnValue([{}]),
+  storedSpellcheckSirene: jest.fn().mockReturnValue([{}]),
+  suggestionAdressToGet:"http://localhost:3000/v1/suggest/",
+  totalPageNumberRNA:0,
+  totalPageNumberSirene:0
 }
 
 export const mutations = {
@@ -58,31 +141,6 @@ export const actions = {
   setResponseEtablissement: jest.fn(),
   setResponseSiren: jest.fn(),
   showSearchCategories: jest.fn()
-}
-
-export const state = {
-  application: jest.fn().mockReturnValue([{ noResultFound: 'mock-noResult', resultsAreLoading: 'mock-resultsAreLoading', error500: 'mock-error500'}]),
-  baseAdressSuggestions: jest.fn().mockReturnValue([{}]),
-  welcomeText: jest.fn().mockReturnValue([{ isWelcomeTextVisible: jest.fn().mockReturnValue([{}]) }]),
-  querySuggestions: jest.fn().mockReturnValue([{}]),
-  results: jest.fn().mockReturnValue({ siren: '833057201'}),
-  resultsAreLoading: jest.fn().mockReturnValue('mock-resultsAreLoading'),
-  route: { query: { fullText: 'mock-fullText', page: '5' }},
-  search: { storedFullText: 'mock-storedFullText', storedLastFullText: 'mock-storedLastFullText'},
-  singlePageResult: {
-    sirene: jest.fn().mockReturnValue([{}]),
-    rna: jest.fn().mockReturnValue([{}]),
-  },
-  sirenIsLoading: jest.fn().mockReturnValue([{}]),
-  sirenResults: jest.fn().mockReturnValue([{}]),
-  siretIsLoading: jest.fn().mockReturnValue([{}]),
-  storedResults: jest.fn().mockReturnValue([{}]),
-  storedStatus: jest.fn().mockReturnValue([{}]),
-  storedStatusSiren: jest.fn().mockReturnValue([{}]),
-  storedStatusSiret: jest.fn().mockReturnValue([{}]),
-  storedSuggestions: jest.fn().mockReturnValue([{}]),
-  suggestActive: jest.fn().mockReturnValue([{}]),
-  suggestions: jest.fn().mockReturnValue([{}])
 }
 
 // eslint-disable-next-line no-underscore-dangle
