@@ -10,10 +10,10 @@
         <ul class="spaced-list">
           <li>
             L'adresse de base pour la recherche Texte :<br>
-            <a href="https://sirene.entreprise.api.gouv.fr/v1/full_text">https://sirene.entreprise.api.gouv.fr/v1/full_text</a>
+            <a href="https://entreprise.data.gouv.fr/api/sirene/v1/full_text">https://entreprise.data.gouv.fr/api/sirene/v1/full_text</a>
           </li>
           <li>Je ne me soucie pas du nom, donc je met un astérisque :<br>
-          <a href="https://sirene.entreprise.api.gouv.fr/v1/full_text/*">https://sirene.entreprise.api.gouv.fr/v1/full_text/*</a><br>
+          <a href="https://entreprise.data.gouv.fr/api/sirene/v1/full_text/*">https://entreprise.data.gouv.fr/api/sirene/v1/full_text/*</a><br>
             Ma requête me renvoie pour le moment tous les établissements.
           </li>
           <li>

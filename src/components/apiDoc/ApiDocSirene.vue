@@ -29,7 +29,7 @@ export default {
   },
   data () {
     return {
-      baseAdress: "https://sirene.entreprise.api.gouv.fr/v1/"
+      baseAdress: "https://entreprise.data.gouv.fr/api/sirene/v1/"
     }
   },
   created() {
