@@ -8,7 +8,7 @@
         <h2>Maitrisez l'API Sirene.</h2>
         <h3>Comment interroger l'API ?</h3>
         <p>
-          Vous devez faire pour cela une requête GET. L'adresse de notre API est : <a href="https://sirene.entreprise.api.gouv.fr/">https://sirene.entreprise.api.gouv.fr/</a><br>
+          Vous devez faire pour cela une requête GET. L'adresse de notre API est : <a href="https://entreprise.data.gouv.fr/api/sirene/v1/">https://entreprise.data.gouv.fr/api/sirene/v1/</a><br>
           Attention, vous devez rajouter votre requête sur l'adresse.
         </p>
         <h3>Format de réponse</h3>
