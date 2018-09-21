@@ -1,7 +1,7 @@
 <template>
   <div class="company">
     <section class="section-grey">
-      <div class="container company-container" v-bind:class="{ no_top_padding: this.haveComponentTop }">
+      <div class="container company-container padding_top" v-bind:class="{ no_top_padding: this.haveComponentTop }">
         <etablissement-rna-info></etablissement-rna-info>
         <etablissement-rna-contact></etablissement-rna-contact>
       </div>
@@ -47,6 +47,10 @@ export default {
     padding-bottom: 2em;
   }
 
+  .padding_top {
+    padding-top: 2em;
+  }
+
   .no_top_padding {
     padding-top: 0;
   }
@@ -56,17 +60,6 @@ export default {
     display: flex;
     justify-content: space-between;
   }
-
-  .company-container__extra {
-    padding-top: 0;
-    margin-top: 0;
-  }
-
-  .company-container__map {
-    padding-top: 0;
-    margin-top: 0;
-  }
-
 
   @media (max-width: $tablet) {
     .company-container {
