@@ -5,7 +5,7 @@
       @keydown.up.prevent="suggestUp"
       @keydown.esc="suggestReset"
       @keydown.enter="requestSearchIfNotEmpty"/>
-    <button class="overlay-button">
+    <button class="overlay-button" @click="suggestSelectAndEnter(index)">
       <svg class="icon icon-search"><use xlink:href="#icon-search"></use></svg>
     </button>
 

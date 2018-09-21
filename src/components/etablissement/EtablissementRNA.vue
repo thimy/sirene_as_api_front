@@ -1,7 +1,7 @@
 <template>
   <div class="company">
     <section class="section-grey">
-      <div v-bind:class="{ no_top_padding: this.haveComponentTop }" class="container company-container">
+      <div class="container company-container" v-bind:class="{ no_top_padding: this.haveComponentTop }">
         <etablissement-rna-info></etablissement-rna-info>
         <etablissement-rna-contact></etablissement-rna-contact>
       </div>
@@ -44,11 +44,11 @@ export default {
   }
 
   .container {
-    padding: 2em 0 2em 0;
+    padding-bottom: 2em;
   }
 
   .no_top_padding {
-    padding: 0 0 2em 0;
+    padding-top: 0;
   }
 
   .company-container {

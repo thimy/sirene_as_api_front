@@ -83,14 +83,10 @@ const getters = {
   },
   // If only one result in fulltext search, send the searchId of result
   singleResult: () => {
-    const oneResultSirene = store.getters.numberResultsFullTextSirene === 1
-    const oneResultRNA = store.getters.numberResultsFullTextRNA === 1
-    const onlyOneResultSirene = (oneResultSirene && !oneResultRNA)
-    const onlyOneResultRNA = (!oneResultSirene && oneResultRNA)
-    if (onlyOneResultSirene) {
+    if (store.getters.numberResultsFullTextSirene === 1 && store.getters.numberResultsFullTextRNA === 0) {
       return state.storedResults['SIRENE'].etablissement[0]['siret']
     }
-    if (onlyOneResultRNA) {
+    if (store.getters.numberResultsFullTextSirene === 0 && store.getters.numberResultsFullTextRNA === 1) {
       return state.storedResults['RNA'].association[0]['id']
     }
     return null
@@ -102,6 +98,12 @@ const mutations = {
     state.storedResults[api] = value
   },
   clearResults (state, api) {
+    if (api == 'ALL') {
+      state.singlePageResult = {
+        'RNA': null,
+        'SIRENE':  null
+      }
+    }
     state.storedResults[api] = null
   },
   setStatus (state, { value, api }) {
