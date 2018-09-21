@@ -39,13 +39,14 @@ export default {
       return Math.max(this.$store.getters.totalPageNumberSirene, this.$store.getters.totalPageNumberRNA)
     }
   },
-  beforeUpdate () {
-    // If only one result, go to page Etablissement
-    if (this.$store.getters.singleResult) {
-      this.$router.push({ name: 'Etablissement', params: {searchId: this.$store.getters.singleResult} })
-    }
-    return
-  }
+  // Deactivated for now
+  // beforeUpdate () {
+  //   // If only one result, go to page Etablissement
+  //   if (this.$store.getters.singleResult) {
+  //     this.$router.push({ name: 'Etablissement', params: {searchId: this.$store.getters.singleResult} })
+  //   }
+  //   return
+  // }
 }
 
 </script>

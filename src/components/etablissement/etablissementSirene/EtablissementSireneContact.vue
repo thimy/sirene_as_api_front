@@ -1,13 +1,13 @@
 <template>
   <div class="company__panel panel">
-      <div class="company__item"><div class="company__item-key">Gérant</div><div class="company__item-value"> {{ fullOwnerName | ifExist }}</div></div>
-      <div class="company__item"><div class="company__item-key">Adresse</div><div class="company__item-value"> {{ resultSirene.l4_normalisee }} </div></div>
-      <div class="company__item"><div class="company__item-key">Ville</div><div class="company__item-value"> {{ resultSirene.code_postal }} {{resultSirene.libelle_commune}}</div></div>
-      <div class="company__item"><div class="company__item-key">Cedex</div><div class="company__item-value"> {{ resultSirene.cedex | ifExist}}</div></div>
-      <div class="company__item"><div class="company__item-key">Date de création</div><div class="company__item-value"> {{ formattedDate }}</div></div>
-      <div class="company__item"><div class="company__item-key">Téléphone</div><div class="company__item-value"> {{ resultSirene.telephone | ifExist}}</div></div>
-      <div class="company__item"><div class="company__item-key">Email</div><div class="company__item-value"> {{ resultSirene.email | ifExist}}</div></div>
-      <div class="company__item"><div class="company__item-key">Tranche d'effectif salariés</div><div class="company__item-value"> {{ resultSirene.libelle_tranche_effectif_salarie }}</div></div>
+    <div class="company__item"><div class="company__item-key">Gérant</div><div class="company__item-value"> {{ fullOwnerName | ifExist }}</div></div>
+    <div class="company__item"><div class="company__item-key">Adresse</div><div class="company__item-value"> {{ resultSirene.l4_normalisee }} </div></div>
+    <div class="company__item"><div class="company__item-key">Ville</div><div class="company__item-value"> {{ resultSirene.code_postal }} {{resultSirene.libelle_commune}}</div></div>
+    <div class="company__item"><div class="company__item-key">Cedex</div><div class="company__item-value"> {{ resultSirene.cedex | ifExist}}</div></div>
+    <div class="company__item"><div class="company__item-key">Date de création</div><div class="company__item-value"> {{ formattedDate }}</div></div>
+    <div class="company__item"><div class="company__item-key">Téléphone</div><div class="company__item-value"> {{ resultSirene.telephone | ifExist}}</div></div>
+    <div class="company__item"><div class="company__item-key">Email</div><div class="company__item-value"> {{ resultSirene.email | ifExist}}</div></div>
+    <div class="company__item"><div class="company__item-key">Tranche d'effectif salariés</div><div class="company__item-value"> {{ resultSirene.libelle_tranche_effectif_salarie }}</div></div>
   </div>
 </template>
 
