@@ -61,7 +61,7 @@ export default {
     justify-content: space-between;
   }
 
-  @media (max-width: $tablet) {
+  @media screen and (max-width: $tablet) {
     .company-container {
       flex-direction: column;
     }
