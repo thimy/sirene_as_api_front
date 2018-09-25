@@ -53,6 +53,11 @@ exports[`EtablissementHeader.vue Snapshot testing It match the snapshot 1`] = `
            
           <h5>
             Dernière mise à jour : 
+            <span
+              class="no_wrap"
+            >
+              
+            </span>
           </h5>
         </div>
          
@@ -69,6 +74,11 @@ exports[`EtablissementHeader.vue Snapshot testing It match the snapshot 1`] = `
            
           <h5>
             Dernière mise à jour : 
+            <span
+              class="no_wrap"
+            >
+              
+            </span>
           </h5>
         </div>
       </div>

@@ -15,7 +15,7 @@
           <div v-if="haveSireneInfo" class="api api__sirene">
             <h4>Base SIRENE</h4>
             <h5>Information disponible</h5>
-            <h5>Dernière mise à jour : {{ this.lastUpdateSirene }}</h5>
+            <h5>Dernière mise à jour : <span class="no_wrap">{{ this.lastUpdateSirene }}</span></h5>
           </div>
           <div v-else class="api api__unavailable">
             <h4>Base SIRENE</h4>
@@ -24,7 +24,7 @@
           <div v-if="haveRNAInfo" class="api api__rna">
             <h4>Base RNA</h4>
             <h5>Information disponible</h5>
-            <h5>Dernière mise à jour : {{ this.lastUpdateRNA }}</h5>
+            <h5>Dernière mise à jour : <span class="no_wrap">{{ this.lastUpdateRNA }}</span></h5>
           </div>
           <div v-else class="api api__unavailable">
             <h4>Base RNA</h4>
@@ -73,6 +73,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .container {
+    @media screen and (max-width: $tablet) {
+      display: inline-flex;
+      flex-direction: column;
+    }
+  }
+
   .tabs {
     display: flex;
     flex-direction: column;
@@ -82,8 +89,6 @@ export default {
   .api {
     margin: 5px 0 5px 0;
     padding: 10px;
-    // width: 200px;
-    height: 50px;
     h4, h5 {
       margin: 0;
     }
@@ -107,9 +112,12 @@ export default {
     }
   }
 
+  .no_wrap {
+    white-space: nowrap;
+  }
+
   .section-white {
     padding: 0;
-    // display: flex;
   }
 
   .subtitle {
