@@ -88,8 +88,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .company__panel {
+    margin-bottom: 0;
+  }
+
   .panel {
-    // width: 100%;
     border: 2px solid $color-lighter-blue;
   }
 </style>
