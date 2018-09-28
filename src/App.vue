@@ -19,6 +19,10 @@ import FooterEtalab from '@/components/FooterEtalab'
 
 export default {
   name: 'app',
+  metaInfo: {
+    title: null,
+    titleTemplate: '%s | Entreprise.data.gouv.fr'
+  },
   components: {
     'Navbar': Navbar,
     'Search': Search,

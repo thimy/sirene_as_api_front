@@ -21,6 +21,11 @@ import ResultsPaginateModule from '@/components/results/ResultsPaginateModule'
 
 export default {
   name: 'Results',
+  metaInfo () {
+    return {
+      title: `Recherche : ${this.storedLastFullText()}`
+    }
+  },
   components: {
     'Loader': Loader,
     'ServerError': ServerError,
@@ -37,6 +42,11 @@ export default {
     },
     biggerNumberPages () {
       return Math.max(this.$store.getters.totalPageNumberSirene, this.$store.getters.totalPageNumberRNA)
+    }
+  },
+  methods: {
+    storedLastFullText () {
+      return this.$store.state.searchFullText.storedLastFullText
     }
   },
   // Deactivated for now

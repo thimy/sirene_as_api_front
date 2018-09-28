@@ -19,6 +19,9 @@ import ApiDocSireneExample from '@/components/apiDoc/apiDocSirene/ApiDocSireneEx
 
 export default {
   name: 'ApiDoc',
+  metaInfo: {
+    title: 'Doc API Sirene'
+  },
   components: {
     'ApiDocSireneIntro': ApiDocSireneIntro,
     'ApiDocSireneGeneric': ApiDocSireneGeneric,

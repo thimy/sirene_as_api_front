@@ -18,7 +18,7 @@
         <span>{{ suggestion | capitalize | removeExtraChars}}</span>
       </li>
       <!-- Filling with hidden divs so search bar will always be same size -->
-      <li class="hidden suggestion__box" :key="index" v-for="index in suggestionNumberToMax"></li>
+      <li class="hidden suggestion__box" v-for="index in suggestionNumberToMax"></li>
     </ul>
   </div>
 </template>
