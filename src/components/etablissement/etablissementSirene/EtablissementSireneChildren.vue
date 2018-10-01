@@ -9,7 +9,9 @@
       </router-link>
     </div>
     <div v-if="haveChildrenEtablissements" class="company__item lineup">
-      <div class="company__item-key">Etablissements enfants : {{ totalResultsOtherSirens }} résultats ({{ maxChildrenEtablissements }} affichés)</div>
+      <div class="company__item-key">
+        Etablissements enfants : {{ totalResultsOtherSirens }} {{ `résultat` | pluralizeDependingOn(this.totalResultsOtherSirens) }}
+        ({{ maxChildrenEtablissements }} {{ `affiché` | pluralizeDependingOn(this.maxChildrenEtablissements) }} )</div>
       <template v-if="thereAreMoreThanMaxChildren">
         <div class="company__item-link" v-show="!visibleChildren" @click="showAllChildren">Afficher la totalité</div>
         <div class="company__item-link" v-show="visibleChildren" @click="hideAllChildren">Réduire</div>
@@ -88,8 +90,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .company__panel {
+    margin-bottom: 0;
+  }
+
   .panel {
-    // width: 100%;
     border: 2px solid $color-lighter-blue;
   }
 </style>

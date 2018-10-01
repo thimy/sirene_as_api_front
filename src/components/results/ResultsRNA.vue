@@ -4,7 +4,7 @@
     <did-you-mean :api=api></did-you-mean>
     <ul>
       <li v-for="result in storedResultsAssociations" :key="result.id" class="panel">
-        <router-link tag="div" :to="{ name: 'Etablissement', params: {searchId: result['id_association']}}">
+        <router-link tag="a" class="no_base_style" :to="{ name: 'Etablissement', params: {searchId: result['id_association']}}">
           <h4 class="title">{{result['titre'] | capitalize }}</h4>
           <p>{{ result['objet'] | truncate }}</p>
           <p>{{result['adresse_code_postal']}} {{result['adresse_libelle_commune'] | capitalize}}</p>
@@ -71,6 +71,11 @@ export default {
     cursor: pointer;
     padding: 1em;
     border: 1px solid $color-light-pink;
+  }
+
+  .no_base_style {
+    text-decoration: none;
+    color: $color-black;
   }
 
   p {

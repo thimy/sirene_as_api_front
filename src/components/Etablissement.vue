@@ -20,6 +20,11 @@ import EtablissementRNA from '@/components/etablissement/EtablissementRNA'
 
 export default {
   name: 'Etablissement',
+  metaInfo () {
+    return {
+      title: this.titleEtablissement()
+    }
+  },
   components: {
     'Loader': Loader,
     'ServerError': ServerError,
@@ -58,6 +63,19 @@ export default {
     },
     mainSearch () {
       return this.$store.getters.mainSearch
+    }
+  },
+  methods: {
+    titleEtablissement () {
+      if (this.haveSireneInfo) {
+        return `Etablissement ${
+          Filters.filters.removeExtraChars(this.$store.getters.singlePageEtablissementSirene.nom_raison_sociale
+        )}`
+      } else if (this.haveRNAInfo) {
+        return `Association ${this.$store.getters.singlePageEtablissementRNA.titre}`
+      } else {
+        return 'Etablissement'
+      }
     }
   },
   beforeCreate () {
