@@ -11,6 +11,9 @@ import HomePublicAdministration from '@/components/home/HomePublicAdministration
 
 export default {
   name: 'Home',
+  metaInfo: {
+    title: 'Accueil'
+  },
   components: {
     'HomeApis': HomeAPIs,
     'HomePublicAdministration': HomePublicAdministration

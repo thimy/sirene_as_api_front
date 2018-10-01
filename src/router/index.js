@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import store from '@/store/index.js'
 import Router from 'vue-router'
+import Meta from 'vue-meta'
 import Results from '@/components/Results'
 import Etablissement from '@/components/Etablissement'
 import LegalNotes from '@/components/LegalNotes'
@@ -10,6 +11,7 @@ import ApiDocRNA from '@/components/apiDoc/ApiDocRNA'
 import CodesNAF from '@/components/apiDoc/apiDocSirene/CodesNAF'
 
 Vue.use(Router)
+Vue.use(Meta)
 
 export default new Router({
   mode: 'history',

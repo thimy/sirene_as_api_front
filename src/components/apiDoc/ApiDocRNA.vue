@@ -15,6 +15,9 @@ import ApiDocRNAComingSoon from '@/components/apiDoc/apiDocRNA/ApiDocRNAComingSo
 
 export default {
   name: 'ApiDocRNA',
+  metaInfo: {
+    title: 'Doc API RNA'
+  },
   components: {
     'ApiDocRnaIntro': ApiDocRNAIntro,
     'ApiDocRnaGeneric': ApiDocRNAGeneric,

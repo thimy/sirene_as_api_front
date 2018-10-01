@@ -32,6 +32,13 @@ export default {
         return `${string.substring(0, 75)}...`
       }
       return string
+    },
+    pluralizeDependingOn: function (string, int) {
+      if (int > 1) {
+        return `${string}s`
+      } else {
+        return string
+      }
     }
   },
   methods: {

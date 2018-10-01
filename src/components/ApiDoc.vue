@@ -15,6 +15,9 @@ import ApiDocOutro from '@/components/apiDoc/ApiDocOutro'
 
 export default {
   name: 'ApiDoc',
+  metaInfo: {
+    title: 'Documentation'
+  },
   components: {
     'ApiDocIntro': ApiDocIntro,
     'ApiDocList': ApiDocList,

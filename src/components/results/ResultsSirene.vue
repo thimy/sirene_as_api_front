@@ -4,7 +4,7 @@
     <did-you-mean :api=api></did-you-mean>
     <ul>
       <li v-for="result in storedResultsEntreprises" :key="result.siret" class="panel">
-        <router-link tag="div" :to="{ name: 'Etablissement', params: {searchId: result['siret']}}">
+        <router-link tag="a" class="no_base_style" :to="{ name: 'Etablissement', params: {searchId: result['siret']}}">
           <h4 class="title">{{result['nom_raison_sociale'] | capitalize | removeExtraChars}}</h4>
           <span class="subtitle" v-if="result['l2_normalisee']">{{result['l2_normalisee'] | capitalize | removeExtraChars }}</span>
           <p>{{result['libelle_activite_principale_entreprise']}}</p>
@@ -72,6 +72,11 @@ export default {
     cursor: pointer;
     padding: 1em;
     border: 1px solid $color-lighter-blue;
+  }
+
+  .no_base_style {
+    text-decoration: none;
+    color: $color-black;
   }
 
   p {
