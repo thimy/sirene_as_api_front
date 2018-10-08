@@ -9,7 +9,7 @@
         <h3>Comment interroger l'API ?</h3>
         <p>
           L'API RNA fonctionne de manière similaire à l'API Sirene.
-          Vous devez faire pour cela une requête GET. L'adresse de notre API est : <a href="https://rna.entreprise.api.gouv.fr/">https://rna.entreprise.api.gouv.fr/</a><br>
+          Vous devez faire pour cela une requête GET. L'adresse de notre API est : <a href="https://entreprise.data.gouv.fr/api/rna/">https://entreprise.data.gouv.fr/api/rna/</a><br>
           Attention, vous devez rajouter votre requête sur l'adresse.
         </p>
         <h3>Format de réponse</h3>
