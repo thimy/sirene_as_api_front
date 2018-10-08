@@ -26,7 +26,7 @@ export default {
   },
   data () {
     return {
-      baseAdress: "https://rna.entreprise.api.gouv.fr/v1/"
+      baseAdress: "https://entreprise.data.gouv.fr/api/rna/v1/"
     }
   },
   created() {
