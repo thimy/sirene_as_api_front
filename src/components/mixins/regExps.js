@@ -12,7 +12,7 @@ export default {
       return (siren.test(input) || sirenWithSeparators.test(input))
     },
     isIdAssociation: function (input) {
-      const idAssociationImport = RegExp(/^(\d(\d|[A-Z])\d[SP](\d{2}|AR|P)((-?(\d|[A-Z])\d{1,7})|\d)?|\d{3}S.[A-Z]{0,3})$/) //TODO cut in half (or 3)
+      const idAssociationImport = RegExp(/^(\d{3}[SP]\d{4,10}(.\w{1,3}\d{0,5})?|\d[A-Z0-9]\d[SP]\w(\w-?\w{0,2}\d{0,6})?)$/)
       const idAssociationWaldec = RegExp(/^W\d[\dA-Z]\d{7}$/)
       return (idAssociationImport.test(input) || idAssociationWaldec.test(input))
     },
