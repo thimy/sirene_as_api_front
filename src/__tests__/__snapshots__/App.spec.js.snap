@@ -141,7 +141,7 @@ exports[`App.vue It match the snapshot 1`] = `
              
             <a
               class="button"
-              href="https://www.data.gouv.fr/fr/datasets/"
+              href="https://www.data.gouv.fr/fr/reference"
             >
               Données de référence
             </a>

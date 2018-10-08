@@ -11,7 +11,7 @@
         </div>
         <div class="column">
           <p>Téléchargez les données de référence sur le site data.gouv.fr</p>
-          <a class="button" href="https://www.data.gouv.fr/fr/datasets/">Données de référence</a>
+          <a class="button" href="https://www.data.gouv.fr/fr/reference">Données de référence</a>
         </div>
       </div>
     </div>
