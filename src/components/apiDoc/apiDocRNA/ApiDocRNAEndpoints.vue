@@ -26,7 +26,6 @@
         <h3>Recherche par Siret :</h3>
         <p>
           La recherche par Siret permet de trouver une association par son numéro de Siret unique, si elle en possède un.<br>
-          Exemple pour "Medecins sans frontieres" :
         </p>
         <api-doc-input :request=exempleSiret></api-doc-input>
       </div>
@@ -47,7 +46,7 @@ export default {
     return {
       exempleFullText: this.baseAdress + 'full_text/<TITRE>',
       exempleRNA: this.baseAdress + "id/W9C1000188",
-      exempleSiret: this.baseAdress + "siret/30500910200065"
+      exempleSiret: this.baseAdress + "siret/48077929700013"
     }
   }
 }

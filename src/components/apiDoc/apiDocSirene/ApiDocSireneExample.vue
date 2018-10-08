@@ -22,7 +22,7 @@
             </p>
             <p>
               Je renseigne le code activité (code NAF) pour les boulangeries.<br>
-              Je peux trouver cette information <router-link :to="{ name: 'CodesNAF'}">sur cette page</router-link>.<br>  
+              Je peux trouver cette information <router-link :to="{ name: 'CodesNAF'}">sur cette page</router-link>.<br>
               L'INSEE propose également un <a href="https://www.insee.fr/fr/information/2406147">moteur de recherche</a> avec des informations supplémentaires.<br><br>
             </p>
             <p>
@@ -68,6 +68,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+a {
+  overflow-wrap: break-word;
+}
 
 .container {
   display: flex;

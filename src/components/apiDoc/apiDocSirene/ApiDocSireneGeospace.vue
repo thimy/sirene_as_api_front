@@ -23,6 +23,36 @@
           <img src="@/assets/img/icons/around_point.svg" alt="">
         </div>
       </div>
+      <!-- <div class="column__full">
+        <h3>Options de filtrage</h3>
+        <p>Les paramètres de filtrage suivant sont disponibles sur les endpoint near_point :</p>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Filtrage désiré</th>
+            <th>Paramètre requête</th>
+            <th>Valeur du paramètre</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Filtrage par code d'activité principale (code NAF)</td>
+            <td><code>activite_principale</code></td>
+            <td>le code NAF désiré</td>
+          </tr>
+          <tr>
+            <td>Filtrage par activité principale proche</td>
+            <td><code>approximate_activity</code></td>
+            <td>Au moins 2 caractères (62 pour 620Z)</td>
+          </tr>
+          <tr>
+            <td>Radius de recherche</td>
+            <td><code>radius</code></td>
+            <td>Nombre entier ou flottant, en km (défaut: 5)</td>
+          </tr>
+        </tbody>
+      </table> -->
       <div class="container__columns">
         <div class="column">
           <h3>Recherche autour d'un établissement :</h3>
@@ -97,6 +127,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+h3 {
+  padding-top: 2em;
+  margin-bottom: 0;
+}
 
 .container {
   display: flex;
@@ -150,7 +184,7 @@ export default {
 // Table style
 table {
   background-color: $color-white;
-  margin: 25px 0px auto;
+  margin: 10px 0px auto;
   border-collapse: collapse;
   border: 1px solid $color-white;
   border-bottom: 2px solid $color-light-blue;
