@@ -23,7 +23,7 @@
           <img src="@/assets/img/icons/around_point.svg" alt="">
         </div>
       </div>
-      <!-- <div class="column__full">
+      <div class="column__full">
         <h3>Options de filtrage</h3>
         <p>Les paramètres de filtrage suivant sont disponibles sur les endpoint near_point :</p>
       </div>
@@ -52,7 +52,7 @@
             <td>Nombre entier ou flottant, en km (défaut: 5)</td>
           </tr>
         </tbody>
-      </table> -->
+      </table>
       <div class="container__columns">
         <div class="column">
           <h3>Recherche autour d'un établissement :</h3>

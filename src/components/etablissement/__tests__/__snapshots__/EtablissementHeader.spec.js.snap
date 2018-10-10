@@ -11,7 +11,7 @@ exports[`EtablissementHeader.vue Snapshot testing It match the snapshot 1`] = `
       class="container"
     >
       <div
-        class="title"
+        class="title__block"
       >
         <h2>
            
@@ -22,6 +22,8 @@ exports[`EtablissementHeader.vue Snapshot testing It match the snapshot 1`] = `
           </span>
         </h2>
          
+        <!---->
+         
         <div
           class="subtitle"
         >
@@ -29,57 +31,87 @@ exports[`EtablissementHeader.vue Snapshot testing It match the snapshot 1`] = `
         </div>
          
         <h4
-          class="company__industry"
+          class="second__subtitle"
         >
            
         </h4>
+         
+        <!---->
       </div>
-       
-      <!---->
        
       <div
         class="tabs"
       >
         <div
-          class="api api__sirene"
+          class="tabs__pair"
         >
-          <h4>
-            Base SIRENE
-          </h4>
+          <div
+            class="api api__sirene"
+          >
+            <h4>
+              Base SIRENE
+            </h4>
+             
+            <h5>
+              Information disponible
+            </h5>
+             
+            <h5>
+              Dernière mise à jour : 
+            </h5>
+          </div>
            
-          <h5>
-            Information disponible
-          </h5>
-           
-          <h5>
-            Dernière mise à jour : 
-            <span
-              class="no_wrap"
-            >
-              
-            </span>
-          </h5>
+          <div
+            class="api api__rna"
+          >
+            <h4>
+              Base RNA
+            </h4>
+             
+            <h5>
+              Information disponible
+            </h5>
+             
+            <h5>
+              Dernière mise à jour : 
+            </h5>
+          </div>
         </div>
          
         <div
-          class="api api__rna"
+          class="tabs__pair"
         >
-          <h4>
-            Base RNA
-          </h4>
+          <div
+            class="api api__rnm"
+          >
+            <h4>
+              Base RNM
+            </h4>
+             
+            <h5>
+              Information disponible
+            </h5>
+             
+            <h5>
+              Dernière mise à jour : aujourd'hui
+            </h5>
+          </div>
            
-          <h5>
-            Information disponible
-          </h5>
-           
-          <h5>
-            Dernière mise à jour : 
-            <span
-              class="no_wrap"
-            >
-              
-            </span>
-          </h5>
+          <div
+            class="api api__rncs"
+          >
+            <h4>
+              Base RNCS (KBIS)
+            </h4>
+             
+            <h5>
+              Information disponible
+            </h5>
+             
+            <h5>
+              Dernière mise à jour : aujourd'hui
+            </h5>
+          </div>
         </div>
       </div>
     </div>

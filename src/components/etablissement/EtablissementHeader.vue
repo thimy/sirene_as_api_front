@@ -2,33 +2,47 @@
   <div class="company">
     <section class="section-white">
       <div class="container">
-        <div v-if="haveSireneInfo" class="title">
-          <h2>{{resultSirene.nom_raison_sociale | removeExtraChars}} <span class="company__siren">({{ resultSirene.siren }})</span></h2>
-          <div class="subtitle"> {{ resultSirene.l2_normalisee }}</div>
-          <h4 class="company__industry"> {{ resultSirene.libelle_activite_principale_entreprise }}</h4>
-        </div>
-        <div v-if="haveOnlyRNAInfo" class="title">
-          <h2>{{resultRNA.titre}} <span class="association__id">({{ resultRNA.id_association }})</span></h2>
-          <h4 class="company__industry"> {{ resultRNA.titre_court}}</h4>
+        <div class="title__block">
+          <h2 v-if="haveSireneInfo" >{{resultSirene.nom_raison_sociale | removeExtraChars}} <span class="company__siren">({{ resultSirene.siren }})</span></h2>
+          <h2 v-if="haveOnlyRNAInfo">{{resultRNA.titre}} <span class="association__id">({{ resultRNA.id_association }})</span></h2>
+          <div v-if="haveSireneInfo" class="subtitle"> {{ resultSirene.l2_normalisee }}</div>
+          <h4 v-if="haveSireneInfo" class="second__subtitle"> {{ resultSirene.libelle_activite_principale_entreprise }}</h4>
+          <h4 v-if="haveOnlyRNAInfo" class="second__subtitle"> {{ resultRNA.titre_court}}</h4>
         </div>
         <div class="tabs">
-          <div v-if="haveSireneInfo" class="api api__sirene">
-            <h4>Base SIRENE</h4>
-            <h5>Information disponible</h5>
-            <h5>Dernière mise à jour : <span class="no_wrap">{{ this.lastUpdateSirene }}</span></h5>
+          <div class="tabs__pair">
+            <div v-if="haveSireneInfo" class="api api__sirene">
+              <h4>Base SIRENE</h4>
+              <h5>Information disponible</h5>
+              <h5>Dernière mise à jour : {{ this.lastUpdateSirene }}</h5>
+            </div>
+            <div v-else class="api api__unavailable">
+              <h4>Base SIRENE</h4>
+              <h5>empty</h5>
+              <h5>Non disponible</h5>
+            </div>
+            <div v-if="haveRNAInfo" class="api api__rna">
+              <h4>Base RNA</h4>
+              <h5>Information disponible</h5>
+              <h5>Dernière mise à jour : {{ this.lastUpdateRNA }}</h5>
+            </div>
+            <div v-else class="api api__unavailable">
+              <h4>Base RNA</h4>
+              <h5>empty</h5>
+              <h5>Non disponible</h5>
+            </div>
           </div>
-          <div v-else class="api api__unavailable">
-            <h4>Base SIRENE</h4>
-            <h5>Non disponible</h5>
-          </div>
-          <div v-if="haveRNAInfo" class="api api__rna">
-            <h4>Base RNA</h4>
-            <h5>Information disponible</h5>
-            <h5>Dernière mise à jour : <span class="no_wrap">{{ this.lastUpdateRNA }}</span></h5>
-          </div>
-          <div v-else class="api api__unavailable">
-            <h4>Base RNA</h4>
-            <h5>Non disponible</h5>
+          <div class="tabs__pair">
+            <div class="api api__rnm">
+              <h4>Base RNM</h4>
+              <h5>Information disponible</h5>
+              <h5>Dernière mise à jour : aujourd'hui</h5>
+            </div>
+            <div class="api api__rncs">
+              <h4>Base RNCS (KBIS)</h4>
+              <h5>Information disponible</h5>
+              <h5>Dernière mise à jour : aujourd'hui</h5>
+            </div>
           </div>
         </div>
       </div>
@@ -74,42 +88,72 @@ export default {
 
 <style lang="scss" scoped>
   .container {
-    @media screen and (max-width: $tablet) {
-      display: inline-flex;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    @media screen and (max-width: $desktop) {
       flex-direction: column;
     }
   }
 
   .tabs {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    @media screen and (max-width: $tablet) {
+      flex-direction: column;
+    }
+  }
+
+  .title__block {
+    display: inline-flex;
     flex-direction: column;
     justify-content: space-between;
+    max-width: 50%;
+    @media screen and (max-width: $desktop) {
+      max-width: 100%;
+    }
+  }
+
+  .tabs__pair {
+    display: flex;
+    flex-direction: column;
   }
 
   .api {
-    margin: 5px 0 5px 0;
+    margin: 5px;
     padding: 10px;
+    color: $color-white;
     h4, h5 {
       margin: 0;
     }
   }
 
+  .api:last-child {
+    white-space: nowrap;
+  }
+
   .api__sirene {
     background-color: $color-light-blue;
-    color: $color-white;
   }
 
   .api__rna {
     background-color: $color-light-pink;
-    color: $color-white;
+  }
+
+  .api__rnm {
+    background-color: $color-green;
+  }
+
+  .api__rncs {
+    background-color: #cccc00;
   }
 
   .api__unavailable {
     background-color: $color-light-grey;
     color: $color-darker-grey;
-    h5 {
-      padding-top: 5px;
-    }
   }
 
   .no_wrap {
@@ -125,17 +169,12 @@ export default {
     font-family: "Evolventa", "Trebuchet MS", sans-serif;
   }
 
-  .company__industry,
+  .second__subtitle {
+    font-size: 1em;
+  }
+
   .company__siren,
-  .association__id {
+  .second__subtitle {
     color: $color-dark-grey;
   }
-
-  .container {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 2em;
-    padding-bottom: 2em;
-  }
-
 </style>

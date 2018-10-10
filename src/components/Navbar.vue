@@ -17,3 +17,12 @@ export default {
   }}
 }
 </script>
+
+<style lang="scss" scoped>
+@media (max-width: 359px) {
+  .nav__link {
+    padding: 2px;
+  }
+}
+
+</style>
