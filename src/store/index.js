@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 import VueResource from 'vue-resource'
 import application from './modules/application'
 import results from './modules/results'
-import resultsSirenChildren from './modules/resultsSirenChildren'
+import resultsSiren from './modules/resultsSiren'
 import searchFullText from './modules/searchFullText'
 import searchEtablissement from './modules/searchEtablissement'
 import searchAdditionalInfo from './modules/searchAdditionalInfo'
@@ -18,7 +18,7 @@ export default new Vuex.Store({
   modules: {
     application,
     results,
-    resultsSirenChildren,
+    resultsSiren,
     searchFullText,
     searchEtablissement,
     searchAdditionalInfo,

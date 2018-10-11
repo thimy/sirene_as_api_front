@@ -71,12 +71,7 @@ const actions = {
         store.dispatch('setResponseFullText', { response: response, api: api })
       })
       .catch(async notFound => {
-        // if (state.pageNumber > 1) {
-        //   await store.commit('setPage', 1)
-        //   store.dispatch('requestSearchFullText')
-        // } else {
         store.dispatch('setResponseFullText', { response: notFound, api: api })
-        // }
       })
   }
 }

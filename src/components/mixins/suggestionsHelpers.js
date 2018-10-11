@@ -9,7 +9,7 @@ export default {
     suggestions: {
       get: function () {
         const storedSuggestions = this.$store.state.suggestions.storedSuggestions
-        if (storedSuggestions) {
+        if (storedSuggestions && storedSuggestions.length != 0) {
           if (storedSuggestions.length > this.suggestionNumber) {
             return storedSuggestions.slice(0, this.suggestionNumber)
           }
@@ -30,9 +30,6 @@ export default {
           return this.maxSuggestions
         }
       }
-    },
-    suggestionNumberToMax () {
-      return this.maxSuggestions - this.suggestionNumber
     }
   },
   methods: {
@@ -67,6 +64,9 @@ export default {
     },
     resetIndexSuggestion: function () {
       this.suggestCount = -1
+    },
+    suggestionNumberToMax () {
+      return this.maxSuggestions - this.suggestionNumber
     }
   }
 }

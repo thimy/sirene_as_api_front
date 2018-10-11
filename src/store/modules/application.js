@@ -1,20 +1,24 @@
 import store from '@/store/index.js'
 
 const state = {
+  // One entry here for each endpoint
   isLoading: {
     'SIREN': true,
     'ID_ASSOCIATION': true,
     'SIRET': true,
     'FULLTEXT': true
   },
-  error500: {
-    'SIRENE': false,
-    'RNA': false
-  },
+  // APIs returning a 404
   noResultFound: {
     'SIRENE': false,
     'RNA': false
   },
+  // APIs returning a 500
+  error500: {
+    'SIRENE': false,
+    'RNA': false
+  },
+  // APIs used for base for further search
   mainSearch: {
     'SIRENE': false,
     'RNA': false
@@ -66,16 +70,6 @@ const mutations = {
       state.isLoading[search] = value
     }
   },
-  setError500(state, { value, api }) {
-    if (api == 'ALL') {
-      state.error500 = {
-        'SIRENE': value,
-        'RNA': value
-      }
-    } else {
-      state.error500[api] = value
-    }
-  },
   setNoResultFound(state, { value, api }) {
     if (api == 'ALL') {
       state.noResultFound = {
@@ -84,6 +78,17 @@ const mutations = {
       }
     } else {
       state.noResultFound[api] = value
+    }
+  },
+  setError500(state, { value, api }) {
+    if (api == 'ALL') {
+      state.error500 = {
+        'SIRENE': value,
+        'RNA': value,
+        'RNCS': value
+      }
+    } else {
+      state.error500[api] = value
     }
   },
   setMainSearch(state, { value, search }) {

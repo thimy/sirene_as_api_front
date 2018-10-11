@@ -39,6 +39,7 @@ export const state = {
       'SIRENE': jest.fn().mockReturnValue([{}])
     }
   }]),
+  sirenResults: jest.fn().mockReturnValue([{}]),
   sirenChildren: jest.fn().mockReturnValue([{}]),
   searchEtablissement: jest.fn().mockReturnValue([{
     baseAdressSiret: {
@@ -49,7 +50,7 @@ export const state = {
       'SIRENE': jest.fn().mockReturnValue([{}]),
       'RNA': jest.fn().mockReturnValue([{}])
     },
-    baseAdressSireneSiren: jest.fn().mockReturnValue([{}])
+    baseAdressSiren: jest.fn().mockReturnValue([{}])
   }]),
   searchFullText: {
     storedFullText: jest.fn().mockReturnValue([{}]),
@@ -115,7 +116,7 @@ export const mutations = {
   clearResults: jest.fn(),
   setStatus: jest.fn(),
   setSinglePageResults: jest.fn(),
-  // resultsSirenChildren.js
+  // resultsSiren.js
   setSirenResults: jest.fn(),
   // searchFullText.js
   setFullText: jest.fn(),

@@ -11,7 +11,7 @@ const state = {
     'SIRENE': process.env.BASE_ADRESS_SIRENE_ID_ASSOCIATION,
     'RNA': process.env.BASE_ADRESS_RNA_ID_ASSOCIATION
   },
-  baseAdressSireneSiren: process.env.BASE_ADRESS_SIRENE_SIREN,
+  baseAdressSiren: process.env.BASE_ADRESS_SIRENE_SIREN,
 }
 
 const actions = {
@@ -82,12 +82,12 @@ const actions = {
   // This function is API-Sirene only
   async executeSearchBySiren(dispatch, siren) {
     await store.commit('setLoading', { value: true, search: 'SIREN' })
-    await store.dispatch('sendAPIRequest', dispatch.state.baseAdressSireneSiren + siren)
+    await store.dispatch('sendAPIRequest', dispatch.state.baseAdressSiren + siren)
       .then(response => {
-        store.commit('setSirenResults', response.body)
+        store.dispatch('setResponseSiren', response)
       })
       .catch((notFound) => {
-        store.commit('setSirenResults', notFound)
+        store.dispatch('setResponseSiren', notFound)
       })
     store.commit('setLoading', { value: false, search: 'SIREN' })
   },

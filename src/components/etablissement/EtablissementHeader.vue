@@ -148,7 +148,7 @@ export default {
   }
 
   .api__rncs {
-    background-color: #cccc00;
+    background-color: $color-orange;
   }
 
   .api__unavailable {
