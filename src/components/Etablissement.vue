@@ -6,6 +6,10 @@
     <etablissement-header />
     <etablissement-sirene v-if=haveSireneInfo />
     <etablissement-rna v-if=haveRNAInfo :haveComponentTop=haveSireneInfo />
+    <etablissement-rnm v-if=haveSireneInfo />
+    <div v-if=haveSireneInfo class="container company-container company-container__map">
+      <etablissement-map :positionEtablissement='coordinates' :etablissement='this.resultSirene'/>
+    </div>
   </div>
 </template>
 
@@ -17,6 +21,8 @@ import NotFound from '@/components/etablissement/EtablissementNotFound'
 import EtablissementHeader from '@/components/etablissement/EtablissementHeader'
 import EtablissementSirene from '@/components/etablissement/EtablissementSirene'
 import EtablissementRNA from '@/components/etablissement/EtablissementRNA'
+import EtablissementRNM from '@/components/etablissement/EtablissementRNM'
+import EtablissementMap from '@/components/etablissement/EtablissementMap'
 
 export default {
   name: 'Etablissement',
@@ -31,7 +37,9 @@ export default {
     'NotFound': NotFound,
     'EtablissementHeader': EtablissementHeader,
     'EtablissementSirene': EtablissementSirene,
-    'EtablissementRna': EtablissementRNA
+    'EtablissementRna': EtablissementRNA,
+    'EtablissementRnm': EtablissementRNM,
+    'EtablissementMap': EtablissementMap
   },
   computed: {
     isEtablissementLoading () {
@@ -63,6 +71,18 @@ export default {
     },
     mainSearch () {
       return this.$store.getters.mainSearch
+    },
+    resultSirene () {
+      if (this.haveSireneInfo) {
+        return this.$store.getters.singlePageEtablissementSirene
+      }
+      return null
+    },
+    coordinates () {
+      if (this.resultSirene && this.resultSirene.longitude && this.resultSirene.latitude) {
+        return [this.resultSirene.longitude, this.resultSirene.latitude]
+      }
+      return null
     }
   },
   methods: {
@@ -95,5 +115,10 @@ export default {
   .container {
     padding-top: 2em;
     padding-bottom: 2em;
+  }
+
+  .company-container__map {
+    padding-top: 0;
+    margin-top: 0;
   }
 </style>

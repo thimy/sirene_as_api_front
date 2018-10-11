@@ -5,7 +5,6 @@
       <div class="company__item"><div class="company__item-key">Ancien Numéro RNA :</div><div class="company__item-value"> {{ resultRNA.id_ex_association | ifExist }}</div></div>
       <div class="company__item"><div class="company__item-key">Objet :</div><div class="company__item-value"> {{ resultRNA.objet | ifExist }}</div></div>
       <div class="company__item"><div class="company__item-key">Siret :</div><div class="company__item-value"> {{ resultRNA.siret | ifExist }}</div></div>
-
     </ul>
   </div>
 </template>

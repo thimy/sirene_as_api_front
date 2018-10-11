@@ -21,6 +21,13 @@
               <h5>empty</h5>
               <h5>Non disponible</h5>
             </div>
+            <div class="api api__rnm">
+              <h4>Base RNM</h4>
+              <h5>Information disponible</h5>
+              <h5>Dernière mise à jour : aujourd'hui</h5>
+            </div>
+          </div>
+          <div class="tabs__pair">
             <div v-if="haveRNAInfo" class="api api__rna">
               <h4>Base RNA</h4>
               <h5>Information disponible</h5>
@@ -30,13 +37,6 @@
               <h4>Base RNA</h4>
               <h5>empty</h5>
               <h5>Non disponible</h5>
-            </div>
-          </div>
-          <div class="tabs__pair">
-            <div class="api api__rnm">
-              <h4>Base RNM</h4>
-              <h5>Information disponible</h5>
-              <h5>Dernière mise à jour : aujourd'hui</h5>
             </div>
             <div class="api api__rncs">
               <h4>Base RNCS (KBIS)</h4>

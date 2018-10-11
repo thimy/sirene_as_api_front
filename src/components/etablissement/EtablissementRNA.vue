@@ -2,15 +2,14 @@
   <div class="company">
     <section class="section-grey">
       <div class="container company-container padding_top" v-bind:class="{ no_top_padding: this.haveComponentTop }">
-        <etablissement-rna-info></etablissement-rna-info>
-        <etablissement-rna-contact></etablissement-rna-contact>
+        <etablissement-rna-contact/>
+        <etablissement-rna-info/>
       </div>
     </section>
   </div>
 </template>
 
 <script>
-import Filters from '@/components/mixins/filters.js'
 import EtablissementRNAInfo from '@/components/etablissement/etablissementRNA/EtablissementRNAInfo'
 import EtablissementRNAContact from '@/components/etablissement/etablissementRNA/EtablissementRNAContact'
 
