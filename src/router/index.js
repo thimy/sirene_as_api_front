@@ -8,6 +8,7 @@ import LegalNotes from '@/components/LegalNotes'
 import ApiDoc from '@/components/ApiDoc'
 import ApiDocSirene from '@/components/apiDoc/ApiDocSirene'
 import ApiDocRNA from '@/components/apiDoc/ApiDocRNA'
+import ApiDocRNCS from '@/components/apiDoc/ApiDocRNCS'
 import CodesNAF from '@/components/apiDoc/apiDocSirene/CodesNAF'
 
 Vue.use(Router)
@@ -58,6 +59,11 @@ export default new Router({
       path: '/api_doc_rna',
       name: 'ApiDocRNA',
       component: ApiDocRNA
+    },
+    {
+      path: '/api_doc_rncs',
+      name: 'ApiDocRNCS',
+      component: ApiDocRNCS
     },
     {
       path: '/codes_naf',

@@ -30,20 +30,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .section-white {
-    padding: 0;
-  }
-
-  .subtitle {
-    font-size: 1.4em;
-    font-family: "Evolventa", "Trebuchet MS", sans-serif;
-  }
-
-  .company__industry,
-  .company__siren {
-    color: $color-dark-grey;
-  }
-
   .section-grey {
     padding: 0;
   }

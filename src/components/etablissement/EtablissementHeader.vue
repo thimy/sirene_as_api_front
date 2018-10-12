@@ -137,6 +137,7 @@ export default {
     margin: 5px;
     padding: 10px;
     white-space: nowrap;
+    min-width: 221px;
     p, h4 {
       margin: 0;
     }

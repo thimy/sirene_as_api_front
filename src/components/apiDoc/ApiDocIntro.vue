@@ -4,7 +4,7 @@
       <h1>Nos APIs Open Data</h1>
       <p class="centered">
         Entreprise.data.gouv.fr est en phase intensive de développement. De nombreuses
-        APIs, telles que les données IMR ou RNCS, seront bientôt ajoutées !
+        APIs sont en cours d'ajout !
       </p>
     </div>
   </section>
