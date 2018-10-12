@@ -71,8 +71,8 @@ const actions = {
       .then(response => {
         store.dispatch('setResponseFullText', { response: response, api: api })
       })
-      .catch(async notFound => {
-        store.dispatch('setResponseFullText', { response: notFound, api: api })
+      .catch(async error => {
+        store.dispatch('setResponseFullText', { response: error, api: api })
       })
   }
 }

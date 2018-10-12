@@ -9,16 +9,6 @@ const state = {
     'SIRENE_FULLTEXT': true,
     'RNA_FULLTEXT': true
   },
-  // APIs returning a 404
-  noResultFound: {
-    'SIRENE': false,
-    'RNA': false
-  },
-  // APIs returning a 500
-  error500: {
-    'SIRENE': false,
-    'RNA': false
-  },
   // APIs used for base for further search
   mainSearch: {
     'SIRENE': false,
@@ -46,11 +36,12 @@ const getters = {
     }
     return null
   },
-  allAPIError500: state => {
-    return state.error500['RNA'] && state.error500['SIRENE']
+  allAPIError500: () => {
+    return (store.state.results.storedStatus['RNA'] == 0 || store.state.results.storedStatus['RNA'] == 500)
+      && (store.state.results.storedStatus['SIRENE'] == 0 || store.state.results.storedStatus['SIRENE'] == 500)
   },
   allAPINotFound: state => {
-    return state.noResultFound['RNA'] && state.noResultFound['SIRENE']
+    return (store.state.results.storedStatus['RNA'] == 404 && store.state.results.storedStatus['SIRENE'] == 404)
   },
   mainSearch: state => {
     if (state.mainSearch['SIRENE']) {
@@ -68,7 +59,8 @@ const mutations = {
         'SIREN': value,
         'ID_ASSOCIATION': value,
         'SIRET': value,
-        'FULLTEXT': value
+        'SIRENE_FULLTEXT': value,
+        'RNA_FULLTEXT': value
       }
     } else {
       state.isLoading[search] = value

@@ -63,7 +63,7 @@ const actions = {
     if (response.status == 200) {
       store.commit('setSirenResults', response.body)
     } else {
-      store.commit('clearSirenResponse')
+      store.commit('clearSirenResults')
     }
   }
 }

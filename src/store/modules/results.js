@@ -2,17 +2,14 @@
 import store from '@/store/index.js'
 
 const state = {
-  // Fulltext Results, only for SIRENE and RNA
   storedResults: {
     'RNA': null,
     'SIRENE': null
   },
-  // singlePageResult is based on either SIRENE or RNA
   singlePageResult: {
     'RNA': null,
     'SIRENE':  null
   },
-  // Every API have a status
   storedStatus: {
     'RNA': null,
     'SIRENE': null
