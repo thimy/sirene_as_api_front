@@ -1,4 +1,4 @@
-import EtablissementSireneMap from '@/components/etablissement/etablissementSirene/EtablissementSireneMap.vue'
+import EtablissementMap from '@/components/etablissement/EtablissementMap.vue'
 import { createLocalVue, mount } from '@vue/test-utils'
 import Vue from 'vue';
 import VueResource from 'vue-resource';
@@ -12,11 +12,11 @@ jest.mock('mapbox-gl', () => ({
   Popup: jest.fn()
 }))
 
-describe('EtablissementSireneMap.vue snapshot when no webgl', () => {
+describe('EtablissementMap.vue snapshot when no webgl', () => {
 
   const localVue = createLocalVue()
 
-  const wrapperEtablissementMap = mount(EtablissementSireneMap, {
+  const wrapperEtablissementMap = mount(EtablissementMap, {
     localVue
   })
 
@@ -25,11 +25,11 @@ describe('EtablissementSireneMap.vue snapshot when no webgl', () => {
   })
 })
 
-describe('EtablissementSireneMap.vue snapshot when webgl', () => {
+describe('EtablissementMap.vue snapshot when webgl', () => {
 
   const localVue = createLocalVue()
 
-  const wrapperEtablissementMap = mount(EtablissementSireneMap, {
+  const wrapperEtablissementMap = mount(EtablissementMap, {
     localVue
   })
 

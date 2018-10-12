@@ -20,14 +20,6 @@ exports[`EtablissementSirene.vue Snapshot testing It match the snapshot 1`] = `
     >
       <etablissementsirenechildren-stub />
     </div>
-     
-    <div
-      class="container company-container company-container__map"
-    >
-      <etablissementsirenemap-stub
-        etablissement="[object Object]"
-      />
-    </div>
   </section>
 </div>
 `;

@@ -55,7 +55,9 @@ exports[`Search.vue snapshot It match the snapshot when there arent results 1`] 
         </svg>
       </button>
        
-      <ul>
+      <ul
+        style="display: none;"
+      >
          
         <li
           class="hidden suggestion__box"

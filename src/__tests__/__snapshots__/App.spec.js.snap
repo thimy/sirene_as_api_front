@@ -74,7 +74,9 @@ exports[`App.vue It match the snapshot 1`] = `
           </svg>
         </button>
          
-        <ul>
+        <ul
+          style="display: none;"
+        >
            
           <li
             class="hidden suggestion__box"

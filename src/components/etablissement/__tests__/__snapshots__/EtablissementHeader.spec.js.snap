@@ -52,29 +52,25 @@ exports[`EtablissementHeader.vue Snapshot testing It match the snapshot 1`] = `
               Base SIRENE
             </h4>
              
-            <h5>
+            <p>
               Information disponible
-            </h5>
+            </p>
              
-            <h5>
+            <p>
               Dernière mise à jour : 
-            </h5>
+            </p>
           </div>
            
           <div
-            class="api api__rna"
+            class="api api__unavailable"
           >
             <h4>
-              Base RNA
+              Base RNM
             </h4>
              
-            <h5>
-              Information disponible
-            </h5>
-             
-            <h5>
-              Dernière mise à jour : 
-            </h5>
+            <p>
+              Information non trouvée
+            </p>
           </div>
         </div>
          
@@ -82,35 +78,35 @@ exports[`EtablissementHeader.vue Snapshot testing It match the snapshot 1`] = `
           class="tabs__pair"
         >
           <div
-            class="api api__rnm"
+            class="api api__rna"
           >
             <h4>
-              Base RNM
+              Base RNA
             </h4>
              
-            <h5>
+            <p>
               Information disponible
-            </h5>
+            </p>
              
-            <h5>
-              Dernière mise à jour : aujourd'hui
-            </h5>
+            <p>
+              Dernière mise à jour : 
+            </p>
           </div>
            
           <div
             class="api api__rncs"
           >
             <h4>
-              Base RNCS (KBIS)
+              Base RNCS
             </h4>
              
-            <h5>
+            <p>
               Information disponible
-            </h5>
+            </p>
              
-            <h5>
+            <p>
               Dernière mise à jour : aujourd'hui
-            </h5>
+            </p>
           </div>
         </div>
       </div>
