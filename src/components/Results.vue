@@ -48,15 +48,7 @@ export default {
     storedLastFullText () {
       return this.$store.state.searchFullText.storedLastFullText
     }
-  },
-  // Deactivated for now
-  // beforeUpdate () {
-  //   // If only one result, go to page Etablissement
-  //   if (this.$store.getters.singleResult) {
-  //     this.$router.push({ name: 'Etablissement', params: {searchId: this.$store.getters.singleResult} })
-  //   }
-  //   return
-  // }
+  }
 }
 
 </script>

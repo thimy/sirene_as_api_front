@@ -56,7 +56,7 @@ export default {
       return this.$store.state.storedFullText !== ''
     },
     showWelcomeText () {
-      return this.$store.state.welcomeText.isWelcomeTextVisible
+      return this.$store.getters.isWelcomeTextVisible
     },
     showBackToResultsButton () {
       // show back button only on etablissement page

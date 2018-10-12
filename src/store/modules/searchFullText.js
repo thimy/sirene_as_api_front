@@ -17,13 +17,10 @@ const getters = {
     return state.baseAdressFullText[api] + store.getters.queryToGet
   },
   queryToGet: () => {
-    return store.state.route.query.fullText + store.getters.optionsToGet
+    return store.state.route.query.fullText + store.getters.pageNumberToGet
   },
   pageNumberToGet: state => {
     return '?per_page=5&page=' + state.pageNumber
-  },
-  optionsToGet: () => {
-    return store.getters.pageNumberToGet
   },
   storedFullText: state => {
     return state.storedFullText

@@ -21,9 +21,6 @@ export default {
   name: 'LegalNotes',
   metaInfo: {
     title: 'Mentions Légales'
-  },
-  created() {
-    this.$store.dispatch('hideWelcomeText')
   }
 }
 

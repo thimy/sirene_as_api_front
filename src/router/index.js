@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import store from '@/store/index.js'
 import Router from 'vue-router'
 import Meta from 'vue-meta'
 import Results from '@/components/Results'
@@ -19,11 +18,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      beforeEnter: (to, from, next) => {
-        store.commit('changeWelcomeTextVisibility', true)
-        next()
-      }
+      name: 'Home'
     },
     {
       path: '/search?*',

@@ -36,10 +36,6 @@ describe('Results.vue', () => {
     search = wrapperSearch.vm
   })
 
-  test('Computed value showWelcomeText works', () => {
-    expect(search.showWelcomeText).toBe(search.$store.state.welcomeText.isWelcomeTextVisible)
-  })
-
   test('Computed value showBackToResultsButton is falsy if not on etablissement page, \
       if numberResults > 1, and storedStatus === 200', () => {
     $route = {

@@ -1,4 +1,3 @@
-// TODO Factorize pagination stuff
 import store from '@/store/index.js'
 
 const state = {
@@ -80,16 +79,6 @@ const getters = {
     } else {
       return 0
     }
-  },
-  // If only one result in fulltext search, send the searchId of result
-  singleResult: () => {
-    if (store.getters.numberResultsFullTextSirene === 1 && store.getters.numberResultsFullTextRNA === 0) {
-      return state.storedResults['SIRENE'].etablissement[0]['siret']
-    }
-    if (store.getters.numberResultsFullTextSirene === 0 && store.getters.numberResultsFullTextRNA === 1) {
-      return state.storedResults['RNA'].association[0]['id']
-    }
-    return null
   }
 }
 

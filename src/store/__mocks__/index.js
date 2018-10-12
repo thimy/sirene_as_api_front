@@ -66,9 +66,6 @@ export const state = {
     baseAdressSuggestions: jest.fn().mockReturnValue([{}]),
     querySuggestions: jest.fn().mockReturnValue([{}]),
     suggestActive: jest.fn().mockReturnValue([{}])
-  },
-  welcomeText: {
-    isWelcomeTextVisible: jest.fn().mockReturnValue([{}])
   }
 }
 
@@ -125,13 +122,12 @@ export const mutations = {
   // suggestions.js
   setQuerySuggestions: jest.fn(),
   setStoredSuggestions: jest.fn(),
-  // welcomeText.js
-  changeWelcomeTextVisibility: jest.fn()
 }
 
 export const actions = {
   // application.js
   resetApplicationState: jest.fn(),
+  goToClearedHomePage: jest.fn(),
   // results.js
   setResponseFullText: jest.fn(),
   setResponseEtablissement: jest.fn(),
@@ -154,10 +150,7 @@ export const actions = {
   executeSearchFullText: jest.fn(),
   // suggestions.js
   executeSearchSuggestions: jest.fn(),
-  filterAndStoreSuggestions: jest.fn(),
-  // welcomeText.js
-  hideWelcomeText: jest.fn(),
-  goToClearedHomePage: jest.fn()
+  filterAndStoreSuggestions: jest.fn()
 }
 
 // eslint-disable-next-line no-underscore-dangle

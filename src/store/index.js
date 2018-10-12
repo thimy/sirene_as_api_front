@@ -9,7 +9,6 @@ import searchFullText from './modules/searchFullText'
 import searchEtablissement from './modules/searchEtablissement'
 import searchAdditionalInfo from './modules/searchAdditionalInfo'
 import suggestions from './modules/suggestions'
-import welcomeText from './modules/welcomeText'
 
 Vue.use(Vuex)
 Vue.use(VueResource)
@@ -22,7 +21,6 @@ export default new Vuex.Store({
     searchFullText,
     searchEtablissement,
     searchAdditionalInfo,
-    suggestions,
-    welcomeText
+    suggestions
   }
 })

@@ -19,9 +19,6 @@ export default {
     return {
       baseAdress: ""
     }
-  },
-  created() {
-    this.$store.dispatch('hideWelcomeText')
   }
 }
 

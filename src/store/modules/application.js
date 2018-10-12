@@ -1,4 +1,5 @@
 import store from '@/store/index.js'
+import router from '@/router/index.js'
 
 const state = {
   // One entry here for each endpoint
@@ -40,7 +41,7 @@ const getters = {
     return (store.state.results.storedStatus['RNA'] == 0 || store.state.results.storedStatus['RNA'] == 500)
       && (store.state.results.storedStatus['SIRENE'] == 0 || store.state.results.storedStatus['SIRENE'] == 500)
   },
-  allAPINotFound: state => {
+  allAPINotFound: () => {
     return (store.state.results.storedStatus['RNA'] == 404 && store.state.results.storedStatus['SIRENE'] == 404)
   },
   mainSearch: state => {
@@ -49,6 +50,12 @@ const getters = {
     } else if (state.mainSearch['RNA']) {
       return 'RNA'
     }
+  },
+  isWelcomeTextVisible: state => {
+    if (store.state.route.name != 'Home') {
+      return false
+    }
+    return true
   }
 }
 
@@ -98,11 +105,15 @@ const mutations = {
 
 const actions = {
   resetApplicationState() {
-    store.dispatch('hideWelcomeText')
     store.commit('setStoredSuggestions', '')
     store.commit('setSinglePageResults', { value: null, api: 'ALL' })
     store.commit('setError500', { value: false, api: 'ALL' })
     store.commit('setNoResultFound', { value: false, api: 'ALL' })
+  },
+  goToClearedHomePage () {
+    router.push({ path: `/` })
+    store.commit('setStoredSuggestions', '')
+    store.commit('setFullText', '')
   }
 }
 

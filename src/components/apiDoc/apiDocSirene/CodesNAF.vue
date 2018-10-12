@@ -743,11 +743,7 @@
 
 <script>
 export default {
-  name: 'CodesNAF',
-  created() {
-    /* istanbul ignore next */
-    this.$store.dispatch('hideWelcomeText')
-  }
+  name: 'CodesNAF'
 }
 
 </script>
