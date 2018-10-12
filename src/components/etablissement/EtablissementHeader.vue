@@ -13,35 +13,37 @@
           <div class="tabs__pair">
             <div v-if="haveSireneInfo" class="api api__sirene">
               <h4>Base SIRENE</h4>
-              <h5>Information disponible</h5>
-              <h5>Dernière mise à jour : {{ this.lastUpdateSirene }}</h5>
+              <p>Information disponible</p>
+              <p>Dernière mise à jour : {{ this.lastUpdateSirene }}</p>
             </div>
             <div v-else class="api api__unavailable">
               <h4>Base SIRENE</h4>
-              <h5>empty</h5>
-              <h5>Non disponible</h5>
+              <p>Information non trouvée</p>
             </div>
-            <div class="api api__rnm">
+            <div v-if="haveRNMInfo" class="api api__rnm">
               <h4>Base RNM</h4>
-              <h5>Information disponible</h5>
-              <h5>Dernière mise à jour : aujourd'hui</h5>
+              <p>Information disponible</p>
+              <p>Dernière mise à jour : aujourd'hui</p>
+            </div>
+            <div v-else class="api api__unavailable">
+              <h4>Base RNM</h4>
+              <p>Information non trouvée</p>
             </div>
           </div>
           <div class="tabs__pair">
             <div v-if="haveRNAInfo" class="api api__rna">
               <h4>Base RNA</h4>
-              <h5>Information disponible</h5>
-              <h5>Dernière mise à jour : {{ this.lastUpdateRNA }}</h5>
+              <p>Information disponible</p>
+              <p>Dernière mise à jour : {{ this.lastUpdateRNA }}</p>
             </div>
             <div v-else class="api api__unavailable">
               <h4>Base RNA</h4>
-              <h5>empty</h5>
-              <h5>Non disponible</h5>
+              <p>Information non trouvée</p>
             </div>
             <div class="api api__rncs">
-              <h4>Base RNCS (KBIS)</h4>
-              <h5>Information disponible</h5>
-              <h5>Dernière mise à jour : aujourd'hui</h5>
+              <h4>Base RNCS</h4>
+              <p>Information disponible</p>
+              <p>Dernière mise à jour : aujourd'hui</p>
             </div>
           </div>
         </div>
@@ -66,10 +68,19 @@ export default {
       return (!this.haveSireneInfo && this.haveRNAInfo)
     },
     haveSireneInfo () {
-      return this.$store.getters.sireneAvailable
+      if (this.$store.getters.sireneAvailable) {
+        return true
+      }
     },
     haveRNAInfo () {
-      return this.$store.getters.RNAAvailable
+      if (this.$store.getters.RNAAvailable) {
+        return true
+      }
+    },
+    haveRNMInfo () {
+      if (this.$store.getters.RNMAvailable) {
+        return true
+      }
     },
     lastUpdateSirene () {
       if (this.resultSirene.updated_at) {
@@ -125,35 +136,38 @@ export default {
   .api {
     margin: 5px;
     padding: 10px;
-    color: $color-white;
-    h4, h5 {
+    white-space: nowrap;
+    p, h4 {
       margin: 0;
     }
   }
 
-  .api:last-child {
-    white-space: nowrap;
-  }
-
   .api__sirene {
-    background-color: $color-light-blue;
+    color: $color-blue;
+    border: 1px solid $color-blue;
   }
 
   .api__rna {
-    background-color: $color-light-pink;
+    color: $color-pink;
+    border: 1px solid $color-pink;
   }
 
   .api__rnm {
-    background-color: $color-green;
+    color: $color-green;
+    border: 1px solid $color-green;
   }
 
   .api__rncs {
-    background-color: $color-orange;
+    color: $color-orange;
+    border: 1px solid $color-orange;
   }
 
   .api__unavailable {
-    background-color: $color-light-grey;
     color: $color-darker-grey;
+    border: 1px solid $color-darker-grey;
+    p {
+      padding:12px 0 12px 0;
+    }
   }
 
   .no_wrap {

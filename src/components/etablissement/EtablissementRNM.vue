@@ -2,8 +2,8 @@
   <div class="company">
     <section class="section-grey">
       <div class="container company-container">
-        <etablissement-rnm-info/>
         <etablissement-rnm-contact/>
+        <etablissement-rnm-info/>
       </div>
    </section>
   </div>

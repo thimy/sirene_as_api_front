@@ -1,14 +1,11 @@
 <template>
   <div class="company__panel panel">
-    <ul class="company__info-list">
-      <div class="company__item"><div class="company__item-key">Nom :</div></div>
-      <div class="company__item"><div class="company__item-key">Adresse :</div></div>
-      <div class="company__item"><div class="company__item-key">Complément d'adresse :</div></div>
-      <div class="company__item"><div class="company__item-key">Code postal : :</div></div>
-      <div class="company__item"><div class="company__item-key">Commune :</div></div>
-      <div class="company__item"><div class="company__item-key">Departement :</div></div>
-      <div class="company__item"><div class="company__item-key">Nom :</div></div>
-    </ul>
+    <div class="company__item"><div class="company__item-key">Nom</div><div class="company__item-value">{{ this.resultRNM.NOM | ifExist }}</div></div>
+    <div class="company__item"><div class="company__item-key">Adresse</div><div class="company__item-value">{{ this.resultRNM.ADRESSE | ifExist }}</div></div>
+    <div class="company__item"><div class="company__item-key">Complément d'adresse</div><div class="company__item-value">{{ this.resultRNM.COMPLEMENT | ifExist }}</div></div>
+    <div class="company__item"><div class="company__item-key">Code postal</div><div class="company__item-value">{{ this.resultRNM.CP | ifExist }}</div></div>
+    <div class="company__item"><div class="company__item-key">Commune</div><div class="company__item-value">{{ this.resultRNM.COMMUNE | ifExist }}</div></div>
+    <div class="company__item"><div class="company__item-key">Departement</div><div class="company__item-value">{{ this.resultRNM.DEPT | ifExist }}</div></div>
   </div>
 </template>
 
@@ -16,7 +13,13 @@
 import Filters from '@/components/mixins/filters'
 
 export default {
-  name: 'EtablissementRNMContact'
+  name: 'EtablissementRNMContact',
+  computed: {
+    resultRNM () {
+      return this.$store.getters.storedRNM
+    }
+  },
+  mixins: [Filters]
 }
 </script>
 

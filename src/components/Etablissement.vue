@@ -6,7 +6,7 @@
     <etablissement-header />
     <etablissement-sirene v-if=haveSireneInfo />
     <etablissement-rna v-if=haveRNAInfo :haveComponentTop=haveSireneInfo />
-    <etablissement-rnm v-if=haveSireneInfo />
+    <etablissement-rnm v-if=haveRNMInfo />
     <div v-if=haveSireneInfo class="container company-container company-container__map">
       <etablissement-map :positionEtablissement='coordinates' :etablissement='this.resultSirene'/>
     </div>
@@ -66,6 +66,11 @@ export default {
     },
     haveRNAInfo () {
       if (this.$store.getters.RNAAvailable) {
+        return true
+      }
+    },
+    haveRNMInfo () {
+      if (this.$store.getters.RNMAvailable) {
         return true
       }
     },

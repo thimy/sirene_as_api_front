@@ -24,13 +24,13 @@ const getters = {
     }
     return null
   },
-  statusRnm: state => {
+  statusRNM: state => {
     if (state.sirenResults) {
       return state.sirenResults.repertoire_national_metiers.status
     }
     return null
   },
-  storedRnm: state => {
+  storedRNM: state => {
     if (state.sirenResults) {
       return state.sirenResults.repertoire_national_metiers.data
     }
@@ -40,7 +40,13 @@ const getters = {
     if (state.sirenResults) {
       return state.sirenResults.sirene.data.other_etablissements_sirets
     }
-  }
+  },
+  RNMAvailable: state => {
+    if (state.sirenResults &&  state.sirenResults.repertoire_national_metiers.status == 200) {
+      return true
+    }
+    return false
+  },
 }
 
 const mutations = {
