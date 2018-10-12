@@ -60,12 +60,13 @@ const actions = {
 
   async searchFullText () {
     await store.dispatch('resetApplicationState')
-    await store.commit('setLoading', { value: true, search: 'FULLTEXT' })
+    await store.commit('setLoading', { value: true, search: 'SIRENE_FULLTEXT' })
+    await store.commit('setLoading', { value: true, search: 'RNA_FULLTEXT' })
     store.dispatch('executeSearchFullText', 'SIRENE')
     store.dispatch('executeSearchFullText', 'RNA')
   },
 
-  async executeSearchFullText(dispatch, api) { // TODO: Find alternatives to commented code (doesnt work with double fulltext)
+  async executeSearchFullText(dispatch, api) {
     store.dispatch('sendAPIRequest', getters.adressToGetFullText(state, api))
       .then(response => {
         store.dispatch('setResponseFullText', { response: response, api: api })

@@ -129,7 +129,7 @@ const actions = {
   async setResponseFullText(dispatch, { response, api }) {
     await store.commit('setResults', { value: response.body, api: api })
     await store.commit('setStatus', { value: response.status, api: api })
-    store.commit('setLoading', { value: false, search: 'FULLTEXT' })
+    store.commit('setLoading', { value: false, search: `${api}_FULLTEXT` })
   },
   setResponseEtablissement(dispatch, { response, api }) {
     if (response.status === 500 || response.status === 0 || response.status === 404) {

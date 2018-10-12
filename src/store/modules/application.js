@@ -6,7 +6,8 @@ const state = {
     'SIREN': true,
     'ID_ASSOCIATION': true,
     'SIRET': true,
-    'FULLTEXT': true
+    'SIRENE_FULLTEXT': true,
+    'RNA_FULLTEXT': true
   },
   // APIs returning a 404
   noResultFound: {
@@ -29,6 +30,9 @@ const getters = {
   // If any search is loading, the Etablissement page is loading :
   isEtablissementLoading: state => {
     return (state.isLoading['SIRET'] || state.isLoading['SIREN'] || state.isLoading['ID_ASSOCIATION'])
+  },
+  isFullTextLoading: state => {
+    return (state.isLoading['SIRENE_FULLTEXT'] || state.isLoading['RNA_FULLTEXT'])
   },
   sireneAvailable: () => {
     if (store.state.results.singlePageResult) {

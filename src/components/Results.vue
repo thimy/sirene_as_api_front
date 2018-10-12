@@ -35,10 +35,10 @@ export default {
   },
   computed: {
     resultsAreLoading () {
-      return this.$store.state.application.isLoading['FULLTEXT']
+      return this.$store.getters.isFullTextLoading
     },
     serverError () {
-      return this.$store.state.application.error500['FULLTEXT']
+      return this.$store.getters.allAPIError500
     },
     biggerNumberPages () {
       return Math.max(this.$store.getters.totalPageNumberSirene, this.$store.getters.totalPageNumberRNA)

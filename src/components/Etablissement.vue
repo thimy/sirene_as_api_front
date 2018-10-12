@@ -105,6 +105,7 @@ export default {
   },
   beforeCreate () {
     this.$store.commit('setStoredSuggestions', '')
+    this.$store.commit('clearSirenResults')
     this.$store.dispatch('executeSearchEtablissement', this.$route.params.searchId)
   },
   mixins: [Filters],
