@@ -1,10 +1,10 @@
 <template>
   <div class="company__panel panel">
-    <ul class="company__info-list">
-      <div class="company__item"><div class="company__item-key">Adresse du siège :</div><div class="company__item-value"> {{ resultRNA.adresse_siege | ifExist }}</div></div>
-      <div class="company__item"><div class="company__item-key">Adresse établissement :</div><div class="company__item-value"> {{ this.l1_adress | ifExist}}</div></div>
-      <div class="company__item"><div class="company__item-key">Commune établissement :</div><div class="company__item-value"> {{ this.l2_adress | ifExist}}</div></div>
-    </ul>
+    <h4>RNA - Contact</h4>
+    <hr>
+    <div class="company__item"><div class="company__item-key">Adresse du siège :</div><div class="company__item-value"> {{ resultRNA.adresse_siege | ifExist }}</div></div>
+    <div class="company__item"><div class="company__item-key">Adresse établissement :</div><div class="company__item-value"> {{ this.l1_adress | ifExist}}</div></div>
+    <div class="company__item"><div class="company__item-key">Commune établissement :</div><div class="company__item-value"> {{ this.l2_adress | ifExist}}</div></div>
   </div>
 </template>
 

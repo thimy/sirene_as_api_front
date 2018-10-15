@@ -1,5 +1,9 @@
 <template>
   <div class="company__panel panel">
+    <div class="name__category">
+      <h4>SIRENE - Informations générales</h4>
+      <hr>
+    </div>
     <ul class="company__info-list">
       <div class="company__item"><div class="company__item-key">SIRET</div><div class="company__item-value"> {{ resultSirene.siret }}</div></div>
       <div class="company__item"><div class="company__item-key">SIREN</div><div class="company__item-value"> {{ resultSirene.siren }}</div></div>
@@ -35,6 +39,5 @@ export default {
 <style lang="scss" scoped>
   .panel {
     border: 2px solid $color-lighter-blue;
-    // border: 2px $color-light-pink solid;
   }
 </style>

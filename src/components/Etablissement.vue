@@ -7,6 +7,7 @@
     <etablissement-sirene v-if=haveSireneInfo />
     <etablissement-rna v-if=haveRNAInfo :haveComponentTop=haveSireneInfo />
     <etablissement-rnm v-if=haveRNMInfo />
+    <etablissement-rncs/>
     <div v-if=haveSireneInfo class="container company-container company-container__map">
       <etablissement-map :positionEtablissement='coordinates' :etablissement='this.resultSirene'/>
     </div>
@@ -22,6 +23,7 @@ import EtablissementHeader from '@/components/etablissement/EtablissementHeader'
 import EtablissementSirene from '@/components/etablissement/EtablissementSirene'
 import EtablissementRNA from '@/components/etablissement/EtablissementRNA'
 import EtablissementRNM from '@/components/etablissement/EtablissementRNM'
+import EtablissementRNCS from '@/components/etablissement/EtablissementRNCS'
 import EtablissementMap from '@/components/etablissement/EtablissementMap'
 
 export default {
@@ -39,6 +41,7 @@ export default {
     'EtablissementSirene': EtablissementSirene,
     'EtablissementRna': EtablissementRNA,
     'EtablissementRnm': EtablissementRNM,
+    'EtablissementRncs': EtablissementRNCS,
     'EtablissementMap': EtablissementMap
   },
   computed: {

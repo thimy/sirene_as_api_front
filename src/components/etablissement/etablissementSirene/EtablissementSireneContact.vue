@@ -1,5 +1,7 @@
 <template>
   <div class="company__panel panel">
+    <h4>SIRENE - Contact</h4>
+    <hr>
     <div class="company__item"><div class="company__item-key">Gérant</div><div class="company__item-value"> {{ fullOwnerName | ifExist }}</div></div>
     <div class="company__item"><div class="company__item-key">Adresse</div><div class="company__item-value"> {{ resultSirene.l4_normalisee }} </div></div>
     <div class="company__item"><div class="company__item-key">Ville</div><div class="company__item-value"> {{ resultSirene.code_postal }} {{resultSirene.libelle_commune}}</div></div>

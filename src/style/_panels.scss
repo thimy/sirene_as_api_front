@@ -32,12 +32,32 @@
     content: '\00a0\2022\00a0\00a0';
   }
 
+  .panel {
+    h4 {
+      margin-bottom: 0;
+    }
+    .name__category {
+      padding-left: 40px;
+    }
+  }
+
   .company__panel:first-child {
     margin-left: 0;
   }
 
   .company__panel:last-child {
     margin-right: 0;
+  }
+
+  @media (max-width: 749px) {
+    .panel {
+      .name__category {
+        padding-left: 0;
+      }
+      ul {
+        padding-left: 0;
+      }
+    }
   }
 
   @media (max-width: $tablet) {

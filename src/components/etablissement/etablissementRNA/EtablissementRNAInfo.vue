@@ -1,5 +1,9 @@
 <template>
   <div class="company__panel panel">
+    <div class="name__category">
+      <h4>RNA - Informations générales</h4>
+      <hr>
+    </div>
     <ul class="company__info-list">
       <div class="company__item"><div class="company__item-key">Numéro RNA :</div><div class="company__item-value"> {{ resultRNA.id_association }}</div></div>
       <div class="company__item"><div class="company__item-key">Ancien Numéro RNA :</div><div class="company__item-value"> {{ resultRNA.id_ex_association | ifExist }}</div></div>
