@@ -13,5 +13,7 @@ module.exports = merge(prodEnv, {
 
   BASE_ADRESS_RNA_FULLTEXT: '"http://localhost:3001/v1/full_text/"',
   BASE_ADRESS_RNA_SIRET: '"http://localhost:3001/v1/siret/"',
-  BASE_ADRESS_RNA_ID_ASSOCIATION: '"http://localhost:3001/v1/id/"'
+  BASE_ADRESS_RNA_ID_ASSOCIATION: '"http://localhost:3001/v1/id/"',
+
+  BASE_ADRESS_RNCS: '"http://d66777aa.ngrok.io/api/infos_identite_entreprise_rncs/"'
 })

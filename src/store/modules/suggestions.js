@@ -1,3 +1,4 @@
+// This module contains code relative to suggestions
 import Vue from 'vue'
 import store from '@/store/index.js'
 import debounce from 'lodash/debounce'

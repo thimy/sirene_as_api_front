@@ -1,3 +1,4 @@
+// This module contains code relative to base search on Etablissement page
 import Vue from 'vue'
 import store from '@/store/index.js'
 import regExps from '@/components/mixins/regExps.js'

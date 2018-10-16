@@ -40,10 +40,14 @@
               <h4>Base RNA</h4>
               <p>Information non trouvée</p>
             </div>
-            <div class="api api__rncs">
+            <div v-if="haveRNCSInfo" class="api api__rncs">
               <h4>Base RNCS</h4>
               <p>Information disponible</p>
-              <p>Dernière mise à jour : aujourd'hui</p>
+              <p>Dernière mise à jour : 2017-05-17</p>
+            </div>
+            <div v-else class="api api__unavailable">
+              <h4>Base RNCS</h4>
+              <p>Information non trouvée</p>
             </div>
           </div>
         </div>
@@ -79,6 +83,11 @@ export default {
     },
     haveRNMInfo () {
       if (this.$store.getters.RNMAvailable) {
+        return true
+      }
+    },
+    haveRNCSInfo () {
+      if (this.$store.getters.RNCSAvailable) {
         return true
       }
     },

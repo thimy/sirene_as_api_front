@@ -44,6 +44,12 @@ export default {
   methods: {
     frenchNumberFormat: function(input) {
       return new Intl.NumberFormat('fr-FR').format(input)
+    },
+    concatIfExist(base, addition) {
+      if (addition) {
+        return base.concat(' ', addition)
+      }
+      return base
     }
   }
 }

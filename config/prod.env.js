@@ -10,5 +10,7 @@ module.exports = {
   BASE_ADRESS_SIRENE_ID_ASSOCIATION: '"https://entreprise.data.gouv.fr/api/sirene/v1/rna/"',
 
   BASE_ADRESS_RNA_FULLTEXT: '"https://entreprise.data.gouv.fr/api/rna/v1/full_text/"',
-  BASE_ADRESS_RNA_ID_ASSOCIATION: '"https://entreprise.data.gouv.fr/api/rna/v1/id/"'
+  BASE_ADRESS_RNA_ID_ASSOCIATION: '"https://entreprise.data.gouv.fr/api/rna/v1/id/"',
+
+  BASE_ADRESS_RNCS: '""'
 }

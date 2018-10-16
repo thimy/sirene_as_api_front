@@ -7,7 +7,7 @@
     <etablissement-sirene v-if=haveSireneInfo />
     <etablissement-rna v-if=haveRNAInfo :haveComponentTop=haveSireneInfo />
     <etablissement-rnm v-if=haveRNMInfo />
-    <etablissement-rncs/>
+    <etablissement-rncs v-if=haveRNCSInfo />
     <div v-if=haveSireneInfo class="container company-container company-container__map">
       <etablissement-map :positionEtablissement='coordinates' :etablissement='this.resultSirene'/>
     </div>
@@ -74,6 +74,11 @@ export default {
     },
     haveRNMInfo () {
       if (this.$store.getters.RNMAvailable) {
+        return true
+      }
+    },
+    haveRNCSInfo () {
+      if (this.$store.getters.RNCSAvailable) {
         return true
       }
     },

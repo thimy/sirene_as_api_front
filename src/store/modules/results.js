@@ -1,3 +1,5 @@
+// This module contains code relative to Results registration
+// All SIRENE and RNA Endpoints except SIREN
 import store from '@/store/index.js'
 
 const state = {

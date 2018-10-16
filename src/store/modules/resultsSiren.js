@@ -1,3 +1,5 @@
+// This module contains code relative to Results registration
+// only the ones from SIREN endpoint
 import store from '@/store/index.js'
 
 const state = {

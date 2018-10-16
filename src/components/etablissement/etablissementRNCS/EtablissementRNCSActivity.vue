@@ -1,6 +1,6 @@
 <template>
   <div class="company__panel panel">
-    <h4>RNCS - Informations d'activité et d´établissement principal</h4>
+    <h4>Informations d'activité et d´établissement principal</h4>
     <hr>
     <div class="company__item"><div class="company__item-key">Adresse établissement</div><div class="company__item-value">{{ this.resultRNCS | ifExist }}</div></div>
     <div class="company__item"><div class="company__item-key">Activité(s) exercée(s)</div><div class="company__item-value">{{ this.resultRNCS | ifExist }}</div></div>

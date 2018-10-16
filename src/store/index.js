@@ -5,6 +5,7 @@ import VueResource from 'vue-resource'
 import application from './modules/application'
 import results from './modules/results'
 import resultsSiren from './modules/resultsSiren'
+import resultsAdditionalInfos from './modules/resultsAdditionalInfos.js'
 import searchFullText from './modules/searchFullText'
 import searchEtablissement from './modules/searchEtablissement'
 import searchAdditionalInfo from './modules/searchAdditionalInfo'
@@ -18,6 +19,7 @@ export default new Vuex.Store({
     application,
     results,
     resultsSiren,
+    resultsAdditionalInfos,
     searchFullText,
     searchEtablissement,
     searchAdditionalInfo,
