@@ -7,7 +7,7 @@
         <h5>{{ manager.qualite }}</h5>
         <div class="company__item">
           <div class="company__item-key">Nom et prénom(s)</div>
-          <div class="company__item-value">{{ concatNom(manager) | ifExist }}</div>
+          <div class="company__item-value">{{ RNCSConcatName(manager) | ifExist }}</div>
         </div>
         <div class="company__item">
           <div class="company__item-key">Date et lieu de naissance</div>
@@ -19,7 +19,7 @@
         </div>
         <div class="company__item">
           <div class="company__item-key">Domicile Personnel</div>
-          <div class="company__item-value">{{ concatAddress1(manager) }}<br/>{{ concatAddress2(manager) }}</div>
+          <div class="company__item-value">{{ RNCSConcatAddressLine1(manager) }}<br/>{{ RNCSConcatAddressLine2(manager) }}</div>
         </div>
       </div>
     </div>
@@ -38,7 +38,7 @@
         </div>
         <div class="company__item">
           <div class="company__item-key">Adresse</div>
-          <div class="company__item-value">{{ concatAddress1(manager) }}<br/>{{ concatAddress2(manager) }}</div>
+          <div class="company__item-value">{{ RNCSConcatAddressLine1(manager) }}<br/>{{ RNCSConcatAddressLine2(manager) }}</div>
         </div>
       </div>
     </div>
@@ -47,6 +47,7 @@
 
 <script>
 import Filters from '@/components/mixins/filters'
+import Format from '@/components/mixins/formating'
 
 export default {
   name: 'EtablissementRNCSManagement',
@@ -61,25 +62,7 @@ export default {
       return this.managers.filter(manager => (manager.type_representant == 'P. Morale'))
     }
   },
-  methods: {
-    concatNom: (manager) => {
-      return Filters.methods.concatIfExist(manager.nom_patronyme, manager.prenoms, ' ')
-    },
-    concatAddress1: (manager) => {
-      let address = manager.adresse_ligne_1
-      address = Filters.methods.concatIfExist(address, manager.adresse_ligne_2)
-      address = Filters.methods.concatIfExist(address, manager.adresse_ligne_3)
-      return address
-    },
-    concatAddress2: (manager) => {
-      let address = ''
-      address = Filters.methods.concatIfExist(address, manager.adresse_code_postal)
-      address = Filters.methods.concatIfExist(address, manager.adresse_ville)
-      address = Filters.methods.concatIfExist(address, manager.adresse_pays)
-      return address
-    }
-  },
-  mixins: [Filters]
+  mixins: [Filters, Format]
 }
 </script>
 

@@ -3,11 +3,11 @@
     <section class="section-grey">
       <div class="container company-container">
         <etablissement-rncs-identification/>
-        <etablissement-rncs-management/>
+        <etablissement-rncs-activity/>
       </div>
       <div class="container company-container">
-        <etablissement-rncs-activity/>
-        <etablissement-rncs-others/>
+        <etablissement-rncs-management/>
+        <etablissement-rncs-observations/>
       </div>
    </section>
   </div>
@@ -17,7 +17,7 @@
 import EtablissementRNCSIdentification from '@/components/etablissement/etablissementRNCS/EtablissementRNCSIdentification'
 import EtablissementRNCSManagement from '@/components/etablissement/etablissementRNCS/EtablissementRNCSManagement'
 import EtablissementRNCSActivity from '@/components/etablissement/etablissementRNCS/EtablissementRNCSActivity'
-import EtablissementRNCSOthers from '@/components/etablissement/etablissementRNCS/EtablissementRNCSOthers'
+import EtablissementRNCSObservations from '@/components/etablissement/etablissementRNCS/EtablissementRNCSObservations'
 
 export default {
   name: 'EtablissementRNCS',
@@ -25,7 +25,7 @@ export default {
     'EtablissementRncsIdentification': EtablissementRNCSIdentification,
     'EtablissementRncsManagement': EtablissementRNCSManagement,
     'EtablissementRncsActivity': EtablissementRNCSActivity,
-    'EtablissementRncsOthers': EtablissementRNCSOthers,
+    'EtablissementRncsObservations': EtablissementRNCSObservations,
   }
 }
 </script>

@@ -19,6 +19,7 @@
 <script>
 import DidYouMean from '@/components/results/ResultsDidYouMean'
 import Filters from '@/components/mixins/filters.js'
+import Formating from '@/components/mixins/formating.js'
 
 export default {
   name: 'ResultsSirene',
@@ -47,7 +48,7 @@ export default {
       if (this.numberResults === undefined) {
         return ''
       }
-      const numberResultsFormatted = Filters.methods.frenchNumberFormat(this.numberResults)
+      const numberResultsFormatted = Formating.methods.frenchNumberFormat(this.numberResults)
       return `${numberResultsFormatted} résultats pour "${this.$store.state.searchFullText.storedLastFullText}" dans la base SIRENE des entreprises`
     }
   },
