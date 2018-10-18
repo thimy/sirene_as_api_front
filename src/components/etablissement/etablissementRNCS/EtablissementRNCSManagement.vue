@@ -5,9 +5,9 @@
       <hr>
       <div v-for="manager in managersPhysical" :key=manager.id>
         <h5>{{ manager.qualite }}</h5>
-        <div class="company__item">
-          <div class="company__item-key">Nom et prénom(s)</div>
-          <div class="company__item-value">{{ RNCSConcatName(manager) | ifExist }}</div>
+        <div v-if="manager.nom" class="company__item">
+          <div class="company__item-key">Nom</div>
+          <div class="company__item-value">{{ manager.nom }}</div>
         </div>
         <div class="company__item">
           <div class="company__item-key">Date et lieu de naissance</div>
@@ -24,7 +24,7 @@
       </div>
     </div>
     <div>
-      <h4>RNCS - Gestionnaires (Personnes morales)</h4>
+      <h4>Gestionnaires (Personnes morales)</h4>
       <hr>
       <div v-for="manager in managersLegal" :key=manager.id>
         <h5>{{ manager.qualite }}</h5>
