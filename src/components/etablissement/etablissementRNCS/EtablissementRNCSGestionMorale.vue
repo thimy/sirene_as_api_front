@@ -1,5 +1,5 @@
 <template>
-  <div class="company__panel panel">
+  <div v-if=thereAreManagersLegal class="company__panel panel">
     <h4>Gestionnaires (Personnes morales)</h4>
     <hr>
     <div v-for="manager in managersLegal" :key=manager.id>
@@ -32,6 +32,11 @@ export default {
     },
     managersLegal () {
       return this.managers.filter(manager => (manager.type_representant == 'P. Morale'))
+    },
+    thereAreManagersLegal () {
+      if (this.managersLegal) {
+        return this.managersLegal.length > 0
+      }
     }
   },
   mixins: [Filters, Format]

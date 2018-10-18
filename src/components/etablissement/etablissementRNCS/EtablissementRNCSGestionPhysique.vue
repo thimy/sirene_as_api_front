@@ -1,5 +1,5 @@
 <template>
-  <div class="company__panel panel">
+  <div v-if="thereAreManagersPhysical" class="company__panel panel">
     <h4>Gestionnaires (Personnes physiques)</h4>
     <hr>
     <div v-for="manager in managersPhysical" :key=manager.id>
@@ -32,6 +32,11 @@ export default {
     },
     managersPhysical () {
       return this.managers.filter(manager => (manager.type_representant == 'P.Physique'))
+    },
+    thereAreManagersPhysical () {
+      if (this.managersPhysical) {
+        return this.managersPhysical.length > 0
+      }
     }
   },
   mixins: [Filters, Format]

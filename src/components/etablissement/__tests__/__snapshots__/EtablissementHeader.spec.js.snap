@@ -94,18 +94,14 @@ exports[`EtablissementHeader.vue Snapshot testing It match the snapshot 1`] = `
           </div>
            
           <div
-            class="api api__rncs"
+            class="api api__unavailable"
           >
             <h4>
               Base RNCS
             </h4>
              
             <p>
-              Information disponible
-            </p>
-             
-            <p>
-              Dernière mise à jour : aujourd'hui
+              Information non trouvée
             </p>
           </div>
         </div>

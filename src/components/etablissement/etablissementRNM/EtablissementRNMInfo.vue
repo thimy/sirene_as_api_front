@@ -1,6 +1,6 @@
 <template>
   <div class="company__panel panel">
-    <h4>RNM - Infos</h4>
+    <h4>Informations Générales</h4>
     <hr>
     <div class="company__item"><div class="company__item-key">Domaine d'activité (NAR20)</div><div class="company__item-value">{{ this.resultRNM.NAR20 | ifExist }}</div></div>
     <div class="company__item"><div class="company__item-key">Activité d'Artisanat (NAFA)</div><div class="company__item-value">{{ this.resultRNM.GEST_LIBELLE_CODE_NAFA | ifExist }}</div></div>

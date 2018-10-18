@@ -1,6 +1,6 @@
 <template>
   <div class="company__panel panel">
-    <h4>SIRENE - Siège et établissements enfants</h4>
+    <h4>Siège et établissements enfants</h4>
     <hr>
     <div v-if="isSiegeSocial" class="company__item">
       <div class="company__item-key">Cet établissement est le siège social</div>

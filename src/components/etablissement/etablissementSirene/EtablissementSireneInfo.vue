@@ -1,7 +1,7 @@
 <template>
   <div class="company__panel panel">
     <div class="name__category">
-      <h4>SIRENE - Informations générales</h4>
+      <h4>Informations générales</h4>
       <hr>
     </div>
     <ul class="company__info-list">

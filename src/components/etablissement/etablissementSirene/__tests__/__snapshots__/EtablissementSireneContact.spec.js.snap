@@ -4,6 +4,12 @@ exports[`EtablissementSireneContact.vue snapshot It match the snapshot 1`] = `
 <div
   class="company__panel panel"
 >
+  <h4>
+    Contact
+  </h4>
+   
+  <hr />
+   
   <div
     class="company__item"
   >
