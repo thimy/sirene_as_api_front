@@ -6,7 +6,8 @@
         <etablissement-rncs-activity/>
       </div>
       <div class="container company-container">
-        <etablissement-rncs-management/>
+        <etablissement-rncs-gestion-physique/>
+        <etablissement-rncs-gestion-morale/>
       </div>
       <div class="container company-container">
         <etablissement-rncs-observations/>
@@ -17,7 +18,8 @@
 
 <script>
 import EtablissementRNCSIdentification from '@/components/etablissement/etablissementRNCS/EtablissementRNCSIdentification'
-import EtablissementRNCSManagement from '@/components/etablissement/etablissementRNCS/EtablissementRNCSManagement'
+import EtablissementRNCSGestionPhysique from '@/components/etablissement/etablissementRNCS/EtablissementRNCSGestionPhysique'
+import EtablissementRNCSGestionMorale from '@/components/etablissement/etablissementRNCS/EtablissementRNCSGestionMorale'
 import EtablissementRNCSActivity from '@/components/etablissement/etablissementRNCS/EtablissementRNCSActivity'
 import EtablissementRNCSObservations from '@/components/etablissement/etablissementRNCS/EtablissementRNCSObservations'
 
@@ -25,7 +27,8 @@ export default {
   name: 'EtablissementRNCS',
   components: {
     'EtablissementRncsIdentification': EtablissementRNCSIdentification,
-    'EtablissementRncsManagement': EtablissementRNCSManagement,
+    'EtablissementRncsGestionPhysique': EtablissementRNCSGestionPhysique,
+    'EtablissementRncsGestionMorale': EtablissementRNCSGestionMorale,
     'EtablissementRncsActivity': EtablissementRNCSActivity,
     'EtablissementRncsObservations': EtablissementRNCSObservations,
   }
