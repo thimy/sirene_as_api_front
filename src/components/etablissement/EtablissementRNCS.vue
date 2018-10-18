@@ -7,6 +7,8 @@
       </div>
       <div class="container company-container">
         <etablissement-rncs-management/>
+      </div>
+      <div class="container company-container">
         <etablissement-rncs-observations/>
       </div>
    </section>

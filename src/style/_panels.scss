@@ -73,3 +73,9 @@
       margin-bottom: 2em;
     }
   }
+
+  @media (max-width: $mobile) {
+    .company__panel.panel {
+      padding: 8px
+    }
+  }
