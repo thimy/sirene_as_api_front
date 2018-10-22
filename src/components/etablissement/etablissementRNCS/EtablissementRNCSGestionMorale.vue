@@ -1,45 +1,63 @@
 <template>
-  <div v-if=thereAreManagersLegal class="company__panel panel">
+  <div class="company__panel panel">
     <h4>Gestionnaires (Personnes morales)</h4>
     <hr>
     <div v-for="manager in managersLegal" :key=manager.id>
       <h5>{{ manager.qualite }}</h5>
-      <div class="company__item">
-        <div class="company__item-key">Dénomination</div>
-        <div class="company__item-value">{{ manager.denomination | ifExist }}</div>
-      </div>
-      <div class="company__item">
-        <div class="company__item-key">Siren</div>
-        <div class="company__item-value">{{ manager.siren | ifExist }}<br/>{{ manager.ville_naissance | ifExist }}</div>
-      </div>
-      <div class="company__item">
-        <div class="company__item-key">Adresse</div>
-        <div class="company__item-value">{{ RNCSConcatAddressLine1(manager) }}<br/>{{ RNCSConcatAddressLine2(manager) }}</div>
-      </div>
+      <panel-info-rncs :parent="manager" :elements=elementsToDisplay />
     </div>
   </div>
 </template>
 
 <script>
-import Filters from '@/components/mixins/filters'
-import Format from '@/components/mixins/formating'
+import PanelInfoRNCS from '@/components/templates/PanelInfoRNCS'
 
 export default {
   name: 'EtablissementRNCSGestionMorale',
+  components: { 'PanelInfoRncs': PanelInfoRNCS },
+  data () {
+    return {
+      elementsToDisplay:
+        {
+          "Denomination": "denomination",
+          "Forme Juridique": "forme_juridique",
+          "SIREN": "siren_pm",
+          "ID Représentant": "id_representant",
+          "Date de dernière modification": "date_derniere_modification",
+          "Libellé de dernière modification": "libelle_derniere_modification",
+          "Adresse Ligne 1": "adresse_ligne_1",
+          "Adresse Ligne 2": "adresse_ligne_2",
+          "Adresse Ligne 3": "adresse_ligne_3",
+          "Code postal": "adresse_code_postal",
+          "Ville": "adresse_ville",
+          "Code Commune": "adresse_code_commune",
+          "Pays": "adresse_pays",
+          "Représentant Permanent, Adresse Ligne 1": "representant_permanent_adresse_ligne_1",
+          "Représentant Permanent, Adresse Ligne 2": "representant_permanent_adresse_ligne_2",
+          "Représentant Permanent, Adresse Ligne 3": "representant_permanent_adresse_ligne_3",
+          "Représentant Permanent, Code Postal": "representant_permanent_adresse_code_postal",
+          "Représentant Permanent, Ville": "representant_permanent_adresse_ville",
+          "Représentant Permanent, Code Commune": "representant_permanent_adresse_code_commune",
+          "Représentant Permanent, Pays": "representant_permanent_adresse_pays",
+          "Représentant Permanent, Adresse Ligne 3": "representant_permanent_adresse_ligne_3",
+          "Représentant Permanent, Nom Patronyme": "representant_permanent_nom_patronyme",
+          "Représentant Permanent, Nom d'Usage": "representant_permanent_nom_usage",
+          "Représentant Permanent, Prénoms": "representant_permanent_prenoms",
+          "Représentant Permanent, Date Naissance": "representant_permanent_date_naissance",
+          "Représentant Permanent, Ville Naissance": "representant_permanent_ville_naissance",
+          "Représentant Permanent, Pays Naissance": "representant_permanent_pays_naissance",
+          "Représentant Permanent, Nationalité": "representant_permanent_nationalite"
+        }
+    }
+  },
   computed: {
     managers () {
       return this.$store.getters.RNCSData.representants
     },
     managersLegal () {
       return this.managers.filter(manager => (manager.type_representant == 'P. Morale'))
-    },
-    thereAreManagersLegal () {
-      if (this.managersLegal) {
-        return this.managersLegal.length > 0
-      }
     }
-  },
-  mixins: [Filters, Format]
+  }
 }
 </script>
 

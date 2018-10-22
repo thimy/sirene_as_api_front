@@ -25,9 +25,6 @@ export default {
     RNCSPhysical () {
       return this.$store.getters.RNCSData.personne_physique
     }
-    // RNCSRegistrationNumber () {
-    //   return `${this.RNCSData.siren} R.C.S ${this.RNCSData.nom_greffe}`
-    // }
   }
 }
 </script>

@@ -1,45 +1,58 @@
 <template>
-  <div v-if="thereAreManagersPhysical" class="company__panel panel">
+  <div class="company__panel panel">
     <h4>Gestionnaires (Personnes physiques)</h4>
     <hr>
     <div v-for="manager in managersPhysical" :key=manager.id>
       <h5>{{ manager.qualite }}</h5>
-      <div class="company__item">
-        <div class="company__item-key">Date et lieu de naissance</div>
-        <div class="company__item-value">{{ manager.date_naissance | ifExist }}<br/>{{ manager.ville_naissance | ifExist }}</div>
-      </div>
-      <div class="company__item">
-        <div class="company__item-key">Nationalité</div>
-        <div class="company__item-value">{{ manager.nationalite | ifExist }}</div>
-      </div>
-      <div class="company__item">
-        <div class="company__item-key">Domicile Personnel</div>
-        <div class="company__item-value">{{ RNCSConcatAddressLine1(manager) }}<br/>{{ RNCSConcatAddressLine2(manager) }}</div>
-      </div>
+      <panel-info-rncs :parent="manager" :elements=elementsToDisplay />
     </div>
   </div>
 </template>
 
 <script>
-import Filters from '@/components/mixins/filters'
-import Format from '@/components/mixins/formating'
+import PanelInfoRNCS from '@/components/templates/PanelInfoRNCS'
 
 export default {
   name: 'EtablissementRNCSGestionPhysique',
+  components: { 'PanelInfoRncs': PanelInfoRNCS },
+  data () {
+    return {
+      elementsToDisplay:
+        {
+          "Date de dernière modification": "date_derniere_modification",
+          "Libellé de dernière modification": "libelle_derniere_modification",
+          "ID Représentant": "id_representant",
+          "Adresse Ligne 1": "adresse_ligne_1",
+          "Adresse Ligne 2": "adresse_ligne_2",
+          "Adresse Ligne 3": "adresse_ligne_3",
+          "Code postal": "adresse_code_postal",
+          "Ville": "adresse_ville",
+          "Code Commune": "adresse_code_commune",
+          "Pays": "adresse_pays",
+          "Nom Patronyme": "nom_patronyme",
+          "Nom d'Usage": "nom_usage",
+          "Pseudonyme": "pseudonyme",
+          "Prenoms": "prenoms",
+          "Date Naissance": "date_naissance",
+          "Ville Naissance": "ville_naissance",
+          "Pays Naissance": "pays_naissance",
+          "Nationalité": "nationalite",
+          "Conjoint collaborateur, Date de Fin":"conjoint_collab_date_fin",
+          "Conjoint collaborateur, Nom Patronyme":"conjoint_collab_nom_patronyme",
+          "Conjoint collaborateur, Nom d'Usage":"conjoint_collab_nom_usage",
+          "Conjoint collaborateur, Pseudonyme":"conjoint_collab_pseudonyme",
+          "Conjoint collaborateur, Prénoms":"conjoint_collab_prénoms"
+        }
+    }
+  },
   computed: {
     managers () {
       return this.$store.getters.RNCSData.representants
     },
     managersPhysical () {
       return this.managers.filter(manager => (manager.type_representant == 'P.Physique'))
-    },
-    thereAreManagersPhysical () {
-      if (this.managersPhysical) {
-        return this.managersPhysical.length > 0
-      }
     }
-  },
-  mixins: [Filters, Format]
+  }
 }
 </script>
 

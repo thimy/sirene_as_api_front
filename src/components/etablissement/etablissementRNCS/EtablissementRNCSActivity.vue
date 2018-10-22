@@ -2,104 +2,39 @@
   <div class="company__panel panel">
     <h4>Informations d'activité et d´établissement principal</h4>
     <hr>
-    <div v-if="RNCSData.code_greffe">
-      <div class="company__item">
-        <div class="company__item-key">Code Greffe</div>
-        <div class="company__item-value">{{ RNCSData.code_greffe }}</div>
-      </div>
-    </div>
-    <div v-if="RNCSData.nom_greffe">
-      <div class="company__item">
-        <div class="company__item-key">Nom Greffe</div>
-        <div class="company__item-value">{{ RNCSData.nom_greffe }}</div>
-      </div>
-    </div>
-    <div v-if="RNCSData.numero_gestion">
-      <div class="company__item">
-        <div class="company__item-key">Numéro Gestion</div>
-        <div class="company__item-value">{{ RNCSData.numero_gestion }}</div>
-      </div>
-    </div>
-    <div v-if="RNCSData.siren">
-      <div class="company__item">
-        <div class="company__item-key">Siren</div>
-        <div class="company__item-value">{{ RNCSData.siren }}</div>
-      </div>
-    </div>
-    <div v-if="RNCSData.type_inscription">
-      <div class="company__item">
-        <div class="company__item-key">Type Inscription</div>
-        <div class="company__item-value">{{ RNCSData.type_inscription }}</div>
-      </div>
-    </div>
-    <div v-if="RNCSData.date_immatriculation">
-      <div class="company__item">
-        <div class="company__item-key">Date Immatriculation</div>
-        <div class="company__item-value">{{ RNCSData.date_immatriculation }}</div>
-      </div>
-    </div>
-    <div v-if="RNCSData.date_premiere_immatriculation">
-      <div class="company__item">
-        <div class="company__item-key">Date Première Immatriculation</div>
-        <div class="company__item-value">{{ RNCSData.date_premiere_immatriculation }}</div>
-      </div>
-    </div>
-    <div v-if="RNCSData.date_radiation">
-      <div class="company__item">
-        <div class="company__item-key">Date Radiation</div>
-        <div class="company__item-value">{{ RNCSData.date_radiation }}</div>
-      </div>
-    </div>
-    <div v-if="RNCSData.transfert">
-      <div class="company__item">
-        <div class="company__item-key">Date Transfert</div>
-        <div class="company__item-value">{{ RNCSData.date_transfert }}</div>
-      </div>
-    </div>
-    <div v-if="RNCSData.sans_activite">
-      <div class="company__item">
-        <div class="company__item-key">Sans activité</div>
-        <div class="company__item-value">{{ RNCSData.sans_activite }}</div>
-      </div>
-    </div>
-    <div v-if="RNCSData.date_debut_activite">
-      <div class="company__item">
-        <div class="company__item-key">Date début d'activité</div>
-        <div class="company__item-value">{{ RNCSData.date_debut_activite }}</div>
-      </div>
-    </div>
-    <div v-if="RNCSData.date_debut_premiere_activite">
-      <div class="company__item">
-        <div class="company__item-key">Date début de première activité</div>
-        <div class="company__item-value">{{ RNCSData.date_debut_premiere_activite }}</div>
-      </div>
-    </div>
-    <div v-if="RNCSData.date_cessation_activite">
-      <div class="company__item">
-        <div class="company__item-key">Date de cessation d'activité</div>
-        <div class="company__item-value">{{ RNCSData.date_cessation_activite }}</div>
-      </div>
-    </div>
-    <div v-if="RNCSData.date_derniere_modification">
-      <div class="company__item">
-        <div class="company__item-key">Date de dernière modification</div>
-        <div class="company__item-value">{{ RNCSData.date_derniere_modification }}</div>
-      </div>
-    </div>
-    <div v-if="RNCSData.libelle_derniere_modification">
-      <div class="company__item">
-        <div class="company__item-key">Libéllé de dernière modification</div>
-        <div class="company__item-value">{{ RNCSData.libelle_derniere_modification }}</div>
-      </div>
-    </div>
+    <panel-info-rncs :parent=RNCSData :elements=this.elementsToDisplay />
   </div>
 </template>
 
 <script>
 import Filters from '@/components/mixins/filters'
+import PanelInfoRNCS from '@/components/templates/PanelInfoRNCS'
 
 export default {
   name: 'EtablissementRNCSInfos',
+  components: { 'PanelInfoRncs': PanelInfoRNCS },
+  data () {
+    return {
+      elementsToDisplay:
+        {
+          "Code Greffe": "code_greffe",
+          "Nom Greffe": "nom_greffe",
+          "Numero Gestion": "numero_gestion",
+          "SIREN": "siren",
+          "Type Inscription": "type_inscription",
+          "Date Immatriculation": "date_immatriculation",
+          "Date Première Immatriculation": "date_premiere_immatriculation",
+          "Date de Radiation": "date_radiation",
+          "Date de Transfert": "date_transfert",
+          "Sans Activité": "sans_activite",
+          "Date de début d'activité": "date_debut_activite",
+          "Date de Début de Première Activité": "date_debut_premiere_activite",
+          "Date de Cessation d'Activité": "date_cessation_activite",
+          "Date de dernière modification":"date_derniere_modification",
+          "Libéllé de dernière modification":"libelle_derniere_modification"
+        }
+    }
+  },
   computed: {
     RNCSData () {
       return this.$store.getters.RNCSData
