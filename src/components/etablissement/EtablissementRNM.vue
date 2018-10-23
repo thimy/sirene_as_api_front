@@ -1,6 +1,9 @@
 <template>
   <div class="company">
-    <section class="section-grey">
+    <section class="etablissement__section-grey">
+      <div class="container company-container company-container__header">
+        <etablissement-rnm-header />
+      </div>
       <div class="container company-container">
         <etablissement-rnm-contact/>
         <etablissement-rnm-info/>
@@ -10,36 +13,16 @@
 </template>
 
 <script>
+import EtablissementRNMHeader from '@/components/etablissement/etablissementRNM/EtablissementRNMHeader'
 import EtablissementRNMInfo from '@/components/etablissement/etablissementRNM/EtablissementRNMInfo'
 import EtablissementRNMContact from '@/components/etablissement/etablissementRNM/EtablissementRNMContact'
 
 export default {
   name: 'EtablissementRNM',
   components: {
+    'EtablissementRnmHeader': EtablissementRNMHeader,
     'EtablissementRnmInfo': EtablissementRNMInfo,
     'EtablissementRnmContact': EtablissementRNMContact
   }
 }
 </script>
-
-<style lang="scss" scoped>
-  .section-grey {
-    padding: 0;
-  }
-
-  .container {
-    padding-bottom: 2em;
-  }
-
-  .company-container {
-    flex-direction: row;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  @media screen and (max-width: $tablet) {
-    .company-container {
-      flex-direction: column;
-    }
-  }
-</style>

@@ -1,7 +1,9 @@
 <template>
-  <div v-if="mapboxglSupported" class="panel" id="map" ref="map"></div>
-  <div v-else class="panel">
-    <p class="panel__message">Votre navigateur ne supporte pas WebGL et ne peut pas afficher la carte de l'établissement.</p>
+  <div class="container">
+    <div v-if="mapboxglSupported" class="panel" id="map" ref="map"></div>
+    <div v-else class="panel">
+      <p class="panel__message">Votre navigateur ne supporte pas WebGL et ne peut pas afficher la carte de l'établissement.</p>
+    </div>
   </div>
 </template>
 

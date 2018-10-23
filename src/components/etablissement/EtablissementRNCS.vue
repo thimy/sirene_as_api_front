@@ -1,6 +1,9 @@
 <template>
   <div class="company">
-    <section class="section-grey">
+    <section class="etablissement__section-grey">
+      <div class="container company-container company-container__header">
+        <etablissement-rncs-header />
+      </div>
       <div class="container company-container">
         <etablissement-rncs-identification/>
         <etablissement-rncs-activity/>
@@ -17,6 +20,7 @@
 </template>
 
 <script>
+import EtablissementRNCSHeader from '@/components/etablissement/etablissementRNCS/EtablissementRNCSHeader'
 import EtablissementRNCSIdentification from '@/components/etablissement/etablissementRNCS/EtablissementRNCSIdentification'
 import EtablissementRNCSGestionPhysique from '@/components/etablissement/etablissementRNCS/EtablissementRNCSGestionPhysique'
 import EtablissementRNCSGestionMorale from '@/components/etablissement/etablissementRNCS/EtablissementRNCSGestionMorale'
@@ -26,6 +30,7 @@ import EtablissementRNCSObservations from '@/components/etablissement/etablissem
 export default {
   name: 'EtablissementRNCS',
   components: {
+    'EtablissementRncsHeader': EtablissementRNCSHeader,
     'EtablissementRncsIdentification': EtablissementRNCSIdentification,
     'EtablissementRncsGestionPhysique': EtablissementRNCSGestionPhysique,
     'EtablissementRncsGestionMorale': EtablissementRNCSGestionMorale,
@@ -34,25 +39,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-  .section-grey {
-    padding: 0;
-  }
-
-  .container {
-    padding-bottom: 2em;
-  }
-
-  .company-container {
-    flex-direction: row;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  @media screen and (max-width: $tablet) {
-    .company-container {
-      flex-direction: column;
-    }
-  }
-</style>

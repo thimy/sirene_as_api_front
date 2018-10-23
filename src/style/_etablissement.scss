@@ -48,6 +48,33 @@
   .company__panel:last-child {
     margin-right: 0;
   }
+  .etablissement__section-grey {
+    @extend .section-grey;
+
+    padding: 0;
+  }
+
+  .container {
+    padding-top: 2em;
+    // padding-bottom: 2em;
+  }
+
+  .company-container {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .company-container__header {
+    margin-top: 20px;
+    padding-bottom: 0;
+  }
+
+  @media (max-width: $tablet) {
+    .company-container {
+      flex-direction: column;
+    }
+  }
 
   @media (max-width: 749px) {
     .panel {

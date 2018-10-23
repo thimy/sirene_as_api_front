@@ -2,15 +2,13 @@
   <server-error class="container" v-if="isError" />
   <not-found class="container" v-else-if="isNotFound" />
   <loader class="container" v-else-if="isEtablissementLoading" />
-  <div v-else class="company">
+  <div v-else class="container-general">
     <etablissement-header />
     <etablissement-sirene v-if=haveSireneInfo />
     <etablissement-rna v-if=haveRNAInfo :haveComponentTop=haveSireneInfo />
     <etablissement-rnm v-if=haveRNMInfo />
     <etablissement-rncs v-if=haveRNCSInfo />
-    <div v-if=haveSireneInfo class="container company-container company-container__map">
-      <etablissement-map :positionEtablissement='coordinates' :etablissement='this.resultSirene'/>
-    </div>
+    <etablissement-map v-if=haveSireneInfo :positionEtablissement='coordinates' :etablissement='this.resultSirene'/>
   </div>
 </template>
 
@@ -126,13 +124,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .container {
-    padding-top: 2em;
-    padding-bottom: 2em;
-  }
-
-  .company-container__map {
-    padding-top: 0;
-    margin-top: 0;
+  .container-general {
+    padding-bottom: 36px;
   }
 </style>

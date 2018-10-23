@@ -52,6 +52,5 @@ export default {
 <style lang="scss" scoped>
   .panel {
     border: 2px solid $color-lighter-blue;
-    // border: 2px $color-light-pink solid;
   }
 </style>
