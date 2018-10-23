@@ -20,7 +20,7 @@ jest.mock('vue', () => ({
 }))
 
 describe('suggestions.js getters', () => {
-  test('Getter suggestionAdressToGet concatenate the right adress', () => {
+  test('Getter suggestionAdressToGet concatenate the right address', () => {
     const state = {
       baseAdressSuggestions: 'mock-base-',
       querySuggestions: 'mock-query'

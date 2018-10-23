@@ -5,14 +5,14 @@ import regExps from '@/components/mixins/regExps.js'
 
 const state = {
   baseAdressSiret: {
-    'SIRENE': process.env.BASE_ADRESS_SIRENE_SIRET,
-    'RNA': process.env.BASE_ADRESS_RNA_SIRET
+    'SIRENE': process.env.BASE_ADDRESS_SIRENE_SIRET,
+    'RNA': process.env.BASE_ADDRESS_RNA_SIRET
   },
   baseAdressRNAId: {
-    'SIRENE': process.env.BASE_ADRESS_SIRENE_ID_ASSOCIATION,
-    'RNA': process.env.BASE_ADRESS_RNA_ID_ASSOCIATION
+    'SIRENE': process.env.BASE_ADDRESS_SIRENE_ID_ASSOCIATION,
+    'RNA': process.env.BASE_ADDRESS_RNA_ID_ASSOCIATION
   },
-  baseAdressSiren: process.env.BASE_ADRESS_SIRENE_SIREN,
+  baseAdressSiren: process.env.BASE_ADDRESS_SIRENE_SIREN,
 }
 
 const actions = {

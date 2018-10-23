@@ -38,7 +38,7 @@ export default {
       return this.$store.getters.isFullTextLoading
     },
     serverError () {
-      return this.$store.getters.allAPIError500
+      return this.$store.getters.mainAPIError
     },
     biggerNumberPages () {
       return Math.max(this.$store.getters.totalPageNumberSirene, this.$store.getters.totalPageNumberRNA)

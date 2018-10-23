@@ -8,13 +8,13 @@ const state = {
   pageNumber: 1,
 
   baseAdressFullText: {
-    'SIRENE': process.env.BASE_ADRESS_SIRENE_FULLTEXT,
-    'RNA': process.env.BASE_ADRESS_RNA_FULLTEXT
+    'SIRENE': process.env.BASE_ADDRESS_SIRENE_FULLTEXT,
+    'RNA': process.env.BASE_ADDRESS_RNA_FULLTEXT
   }
 }
 
 const getters = {
-  adressToGetFullText: (state, api) => {
+  addressToGetFullText: (state, api) => {
     return state.baseAdressFullText[api] + store.getters.queryToGet
   },
   queryToGet: () => {
@@ -65,7 +65,7 @@ const actions = {
   },
 
   async executeSearchFullText(dispatch, api) {
-    store.dispatch('sendAPIRequest', getters.adressToGetFullText(state, api))
+    store.dispatch('sendAPIRequest', getters.addressToGetFullText(state, api))
       .then(response => {
         store.dispatch('setResponseFullText', { response: response, api: api })
       })

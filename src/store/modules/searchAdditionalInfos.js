@@ -4,7 +4,10 @@
 import store from '@/store/index.js'
 
 const state = {
-  baseAdressRNCS: process.env.BASE_ADRESS_RNCS
+  baseAdressAdditionalInfo: {
+    'RNCS': process.env.BASE_ADDRESS_RNCS,
+    'RNM': process.env.BASE_ADDRESS_RNM
+  }
 }
 
 const getters = {
@@ -40,24 +43,25 @@ const actions = {
     }
   },
   // When we have Siret, check if there is an RNA ID. If yes, look up RNA. If no, look up Siret in RNA.
-  // Also get additional RNCS Info if from SIRENE
+  // Also get additional RNCS and RNM Info if from SIRENE
   async fromSireneRequestOtherAPIs(dispatch, siret) {
     if (getters.idAssociationFromSirene()) {
       await store.dispatch('executeSearchByIdAssociation', { id: getters.idAssociationFromSirene(), api: 'RNA' })
     } else {
       await store.dispatch('executeSearchBySiret', { siret: siret, api: 'RNA' })
     }
+    store.dispatch('searchAdditionalInfo', 'RNM')
     // TODO: Reactivate after we stop mocking data
-    // store.dispatch('searchAdditionalInfoRNCS')
+    // store.dispatch('searchAdditionalInfo', 'RNCS')
   },
-  async searchAdditionalInfoRNCS() {
+  async searchAdditionalInfo(dispatch, api) {
     const siren = getters.sirenFromAvailableData()
-    await store.dispatch('sendAPIRequest', state.baseAdressRNCS + siren)
+    await store.dispatch('sendAPIRequest', state.baseAdressAdditionalInfo[api] + siren)
     .then(response => {
-      store.dispatch('setResponseRNCS', response)
+      store.dispatch('setResponseAdditionalInfo', {response: response, api: api})
     })
     .catch(notFound => {
-      store.dispatch('setResponseRNCS', notFound)
+      store.dispatch('setResponseAdditionalInfo', {response: notFound, api: api})
     })
   }
 }

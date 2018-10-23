@@ -71,9 +71,9 @@ export const state = {
 
 export const getters = {
   RNAAvailable: jest.fn().mockReturnValue([{}]),
-  adressToGetFullText: jest.fn().mockReturnValue([{}]),
-  allAPIError500: jest.fn().mockReturnValue([{}]),
-  allAPINotFound: jest.fn().mockReturnValue([{}]),
+  addressToGetFullText: jest.fn().mockReturnValue([{}]),
+  mainAPIError: jest.fn().mockReturnValue([{}]),
+  mainAPINotFound: jest.fn().mockReturnValue([{}]),
   idAssociationFromSirene: jest.fn().mockReturnValue([{}]),
   isEtablissementLoading: jest.fn().mockReturnValue([{}]),
   isWelcomeTextVisible: jest.fn().mockReturnValue([{}]),
