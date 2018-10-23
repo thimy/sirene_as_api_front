@@ -5,8 +5,14 @@ exports[`EtablissementSirene.vue Snapshot testing It match the snapshot 1`] = `
   class="company"
 >
   <section
-    class="section-grey"
+    class="etablissement__section-grey"
   >
+    <div
+      class="container company-container company-container__header"
+    >
+      <etablissementsireneheader-stub />
+    </div>
+     
     <div
       class="container company-container"
     >
@@ -16,7 +22,7 @@ exports[`EtablissementSirene.vue Snapshot testing It match the snapshot 1`] = `
     </div>
      
     <div
-      class="container company-container company-container__extra"
+      class="container company-container"
     >
       <etablissementsirenechildren-stub />
     </div>

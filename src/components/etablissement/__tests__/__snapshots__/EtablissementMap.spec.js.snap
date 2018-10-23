@@ -2,19 +2,27 @@
 
 exports[`EtablissementMap.vue snapshot when no webgl It match the snapshot 1`] = `
 <div
-  class="panel"
+  class="container"
 >
-  <p
-    class="panel__message"
+  <div
+    class="panel"
   >
-    Votre navigateur ne supporte pas WebGL et ne peut pas afficher la carte de l'établissement.
-  </p>
+    <p
+      class="panel__message"
+    >
+      Votre navigateur ne supporte pas WebGL et ne peut pas afficher la carte de l'établissement.
+    </p>
+  </div>
 </div>
 `;
 
 exports[`EtablissementMap.vue snapshot when webgl It match the snapshot 1`] = `
 <div
-  class="panel"
-  id="map"
-/>
+  class="container"
+>
+  <div
+    class="panel"
+    id="map"
+  />
+</div>
 `;

@@ -94,9 +94,9 @@ const mutations = {
         'RNA': null,
         'SIRENE':  null
       }
-      return
-    }
+    } else {
     state.storedResults[api] = null
+    }
   },
   setStatus (state, { value, api }) {
     state.storedStatus[api] = value

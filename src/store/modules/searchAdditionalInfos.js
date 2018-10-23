@@ -1,6 +1,6 @@
 // This module is for code relative to searching additional information
 // after we have a base of information already
-// For now: RNA from SIRENE, SIRENE from RNA, and RNCS
+// For now: RNA / RNCS / RNM from SIRENE, SIRENE from RNA
 import store from '@/store/index.js'
 
 const state = {
@@ -20,14 +20,6 @@ const getters = {
   siretFromRNA: () => {
     if (store.state.results.singlePageResult['RNA']) {
       return store.state.results.singlePageResult['RNA'].association.siret
-    }
-    return null
-  },
-  sirenFromAvailableData() {
-    if (store.getters.storedSirenSiege) {
-      return store.getters.storedSirenSiege.siret
-    } else if (store.getters.singlePageEtablissementSirene) {
-      return store.getters.singlePageEtablissementSirene.siren
     }
     return null
   }
@@ -50,12 +42,11 @@ const actions = {
     } else {
       await store.dispatch('executeSearchBySiret', { siret: siret, api: 'RNA' })
     }
-    store.dispatch('searchAdditionalInfo', 'RNM')
-    // TODO: Reactivate after we stop mocking data
-    // store.dispatch('searchAdditionalInfo', 'RNCS')
+    store.dispatch('searchAdditionalInfoSirene', 'RNM')
+    store.dispatch('searchAdditionalInfoSirene', 'RNCS')
   },
-  async searchAdditionalInfo(dispatch, api) {
-    const siren = getters.sirenFromAvailableData()
+  async searchAdditionalInfoSirene(dispatch, api) {
+    const siren = store.getters.singlePageEtablissementSirene.siren
     await store.dispatch('sendAPIRequest', state.baseAdressAdditionalInfo[api] + siren)
     .then(response => {
       store.dispatch('setResponseAdditionalInfo', {response: response, api: api})

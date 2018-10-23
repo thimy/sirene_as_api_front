@@ -1,12 +1,11 @@
 // This module contains code relative to Results registration
 // that are not from SIRENE, SIREN/RNM or RNA
 import store from '@/store/index.js'
-import mockData from '@/store/__mocks__/mock791070907.json'
 
 const state = {
   additionalResults: {
     'RNM': null,
-    'RNCS': mockData
+    'RNCS': null
   }
 }
 
@@ -38,16 +37,15 @@ const getters = {
 }
 
 const mutations = {
-  setAdditionalInfos: (state, {result, api}) => {
-    state.additionalResults[api] = result
+  setAdditionalInfos: (state, {results, api}) => {
+    state.additionalResults[api] = results
   },
   clearAdditionalInfos: (state, api) => {
     if (api == 'ALL') {
       state.additionalResults =
         {
           'RNM': null,
-          // TODO change here to null after mock done
-          'RNCS': mockData
+          'RNCS': null
         }
     } else {
       state.additionalResults[api] = null
@@ -59,6 +57,12 @@ const actions = {
   setResponseAdditionalInfo(dispatch, { response, api }) {
     if (response.status == 200) {
       store.commit('setAdditionalInfos', { results: response.body, api: api })
+      // TEMPORARY HACK : RNM is returning 200 even in case of empty JSON.
+      // This will change soon but in the meantime we have manage this.
+      if (api == 'RNM' && response.body.ID == null) {
+        store.commit('clearAdditionalInfos', 'RNM')
+      }
+      // End of temporary hack
     } else {
       store.commit('clearAdditionalInfos', api)
     }
