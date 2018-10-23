@@ -8,7 +8,7 @@ import resultsSiren from './modules/resultsSiren'
 import resultsAdditionalInfos from './modules/resultsAdditionalInfos.js'
 import searchFullText from './modules/searchFullText'
 import searchEtablissement from './modules/searchEtablissement'
-import searchAdditionalInfo from './modules/searchAdditionalInfo'
+import searchAdditionalInfos from './modules/searchAdditionalInfos'
 import suggestions from './modules/suggestions'
 
 Vue.use(Vuex)
@@ -22,7 +22,7 @@ export default new Vuex.Store({
     resultsAdditionalInfos,
     searchFullText,
     searchEtablissement,
-    searchAdditionalInfo,
+    searchAdditionalInfos,
     suggestions
   }
 })

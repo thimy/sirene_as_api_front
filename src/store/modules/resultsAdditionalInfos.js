@@ -4,37 +4,63 @@ import store from '@/store/index.js'
 import mockData from '@/store/__mocks__/mock791070907.json'
 
 const state = {
-  resultsRNCS: mockData
+  additionalResults: {
+    'RNM': null,
+    'RNCS': mockData
+  }
 }
 
 const getters = {
   RNCSAvailable: state => {
-    if (state.resultsRNCS) {
+    if (state.additionalResults['RNCS']) {
       return true
     }
+    return false
+  },
+  RNMAvailable: state => {
+    if (state.additionalResults['RNM']) {
+      return true
+    }
+    return false
   },
   RNCSData: state => {
-    if (state.resultsRNCS) {
-      return state.resultsRNCS.dossier_entreprise_greffe_principal
+    if (state.additionalResults['RNCS']) {
+      return state.additionalResults['RNCS'].dossier_entreprise_greffe_principal
     }
+    return false
+  },
+  RNMData: state => {
+    if (state.additionalResults['RNM']) {
+      return state.additionalResults['RNM']
+    }
+    return false
   }
 }
 
 const mutations = {
-  setRNCSResults: (state, result) => {
-    state.resultsRNCS = result
+  setAdditionalInfos: (state, {result, api}) => {
+    state.additionalResults[api] = result
   },
-  clearRNCSResults: state => {
-    state.resultsRNCS = null
+  clearAdditionalInfos: (state, api) => {
+    if (api == 'ALL') {
+      state.additionalResults =
+        {
+          'RNM': null,
+          // TODO change here to null after mock done
+          'RNCS': mockData
+        }
+    } else {
+      state.additionalResults[api] = null
+    }
   }
 }
 
 const actions = {
-  setResponseRNCS(dispatch, response) {
+  setResponseAdditionalInfo(dispatch, { response, api }) {
     if (response.status == 200) {
-      store.commit('setRNCSResults', response.body)
+      store.commit('setAdditionalInfos', { results: response.body, api: api })
     } else {
-      store.commit('clearRNCSResults')
+      store.commit('clearAdditionalInfos', api)
     }
   }
 }

@@ -49,18 +49,10 @@ export default {
       return this.$store.getters.isEtablissementLoading
     },
     isNotFound () {
-      const mainSearch = this.$store.getters.mainSearch
-      if (mainSearch && this.$store.state.application.noResultFound[mainSearch] == true) {
-        return true
-      }
-      return false
+      return this.$store.getters.mainAPINotFound
     },
     isError () {
-      const mainSearch = this.$store.getters.mainSearch
-      if (mainSearch && this.$store.state.application.error500[mainSearch] == true) {
-        return true
-      }
-      return false
+      return this.$store.getters.mainAPIError
     },
     haveSireneInfo () {
       if (this.$store.getters.sireneAvailable) {

@@ -18,7 +18,7 @@ export default {
   name: 'EtablissementRNMInfo',
   computed: {
     resultRNM () {
-      return this.$store.getters.storedRNM
+      return this.$store.getters.RNMData
     }
   },
   mixins: [Filters]

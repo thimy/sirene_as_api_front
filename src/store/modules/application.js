@@ -38,11 +38,11 @@ const getters = {
     }
     return null
   },
-  allAPIError500: () => {
+  mainAPIError: () => {
     return (store.state.results.storedStatus['RNA'] == 0 || store.state.results.storedStatus['RNA'] == 500)
       && (store.state.results.storedStatus['SIRENE'] == 0 || store.state.results.storedStatus['SIRENE'] == 500)
   },
-  allAPINotFound: () => {
+  mainAPINotFound: () => {
     return (store.state.results.storedStatus['RNA'] == 404 && store.state.results.storedStatus['SIRENE'] == 404)
   },
   mainSearch: state => {
