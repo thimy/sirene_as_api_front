@@ -37,21 +37,18 @@ const actions = {
   },
 
   async searchEtablissementFromSiret(dispatch, searchId) {
-    await store.commit('setMainSearch', { value: true, search: 'SIRENE' })
     await store.dispatch('executeSearchBySiret', { siret: searchId, api: 'SIRENE' })
-    store.dispatch('executeSearchBySiren', store.getters.singlePageEtablissementSirene.siren)
+    await store.dispatch('executeSearchBySiren', store.getters.singlePageEtablissementSirene.siren)
     store.dispatch('fromSireneRequestOtherAPIs', searchId)
   },
 
   async searchEtablissementFromSiren(dispatch, searchId) {
-    await store.commit('setMainSearch', { value: true, search: 'SIRENE' })
     await store.dispatch('executeSearchBySiren', searchId)
-    store.dispatch('executeSearchBySiret', { siret: store.getters.storedSirenSiege.siret, api: 'SIRENE' })
+    await store.dispatch('executeSearchBySiret', { siret: store.getters.storedSirenSiege.siret, api: 'SIRENE' })
     store.dispatch('fromSireneRequestOtherAPIs', store.getters.storedSirenSiege.siret)
   },
 
   async searchEtablissementFromIdAssociation(dispatch, searchId) {
-    store.commit('setMainSearch', { value: true, search: 'RNA' })
     await store.dispatch('executeSearchByIdAssociation', {id: searchId, api: 'RNA'})
     store.dispatch('fromRNARequestOtherAPIs', searchId)
   },

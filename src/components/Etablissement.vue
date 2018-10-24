@@ -60,6 +60,8 @@ export default {
     haveRNAInfo () {
       if (this.$store.getters.RNAAvailable) {
         return true
+      } else {
+        return false
       }
     },
     haveRNMInfo () {
@@ -71,9 +73,6 @@ export default {
       if (this.$store.getters.RNCSAvailable) {
         return true
       }
-    },
-    mainSearch () {
-      return this.$store.getters.mainSearch
     },
     resultSirene () {
       if (this.haveSireneInfo) {
