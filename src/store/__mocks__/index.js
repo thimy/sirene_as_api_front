@@ -19,14 +19,10 @@ export const state = {
     noResultFound: {
       'SIRENE': jest.fn().mockReturnValue([{}]),
       'RNA': jest.fn().mockReturnValue([{}])
-    },
-    mainSearch: {
-      'SIRENE': jest.fn().mockReturnValue([{}]),
-      'RNA': jest.fn().mockReturnValue([{}])
     }
   }]),
   baseAdressSuggestions: jest.fn().mockReturnValue([{
-    storedResults: {
+    fullTextResults: {
       'RNA': jest.fn().mockReturnValue([{}]),
       'SIRENE': jest.fn().mockReturnValue([{}])
     },
@@ -34,7 +30,7 @@ export const state = {
       'RNA': jest.fn().mockReturnValue([{}]),
       'SIRENE':  jest.fn().mockReturnValue([{}])
     },
-    storedStatus: {
+    status: {
       'RNA': jest.fn().mockReturnValue([{}]),
       'SIRENE': jest.fn().mockReturnValue([{}])
     }
@@ -77,7 +73,6 @@ export const getters = {
   idAssociationFromSirene: jest.fn().mockReturnValue([{}]),
   isEtablissementLoading: jest.fn().mockReturnValue([{}]),
   isWelcomeTextVisible: jest.fn().mockReturnValue([{}]),
-  mainSearch: jest.fn().mockReturnValue([{}]),
   numberResultsFullTextRNA: jest.fn().mockReturnValue([{}]),
   numberResultsFullTextSirene: jest.fn().mockReturnValue([{}]),
   optionsToGet: jest.fn().mockReturnValue(["?per_page=5&page=1"]),
@@ -90,8 +85,8 @@ export const getters = {
   sireneAvailable: jest.fn().mockReturnValue([{}]),
   siretFromRNA: jest.fn().mockReturnValue([{}]),
   storedFullText: jest.fn().mockReturnValue([""]),
-  storedResultsAssociations: jest.fn().mockReturnValue([{}]),
-  storedResultsEntreprises: jest.fn().mockReturnValue([{}]),
+  fullTextResultsAssociations: jest.fn().mockReturnValue([{}]),
+  fullTextResultsEntreprises: jest.fn().mockReturnValue([{}]),
   storedSirenChildren: jest.fn().mockReturnValue([{}]),
   storedSirenSiege: jest.fn().mockReturnValue([{}]),
   storedSirenTotalResults: jest.fn().mockReturnValue([{}]),
@@ -107,9 +102,8 @@ export const mutations = {
   setLoading: jest.fn(),
   setError500: jest.fn(),
   setNoResultFound: jest.fn(),
-  setMainSearch: jest.fn(),
   // results.js
-  setResults: jest.fn(),
+  setFullTextResults: jest.fn(),
   clearResults: jest.fn(),
   setStatus: jest.fn(),
   setSinglePageResults: jest.fn(),

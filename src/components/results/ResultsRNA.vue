@@ -35,7 +35,7 @@ export default {
       return this.$store.state.searchFullText.storedFullText !== ''
     },
     storedResultsAssociations () {
-      return this.$store.getters.storedResultsAssociations
+      return this.$store.getters.fullTextResultsRNA
     },
     numberResults () {
       return this.$store.getters.numberResultsFullTextRNA

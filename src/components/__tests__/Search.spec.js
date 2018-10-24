@@ -11,7 +11,6 @@ jest.mock('@/router/index.js')
 describe('Results.vue', () => {
   let storeMocks
   let wrapperSearch
-  let search
   let $route
 
   beforeEach(() => {
@@ -33,11 +32,10 @@ describe('Results.vue', () => {
       mocks: { $route },
       stubs: ['router-link', 'router-view']
     })
-    search = wrapperSearch.vm
   })
 
   test('Computed value showBackToResultsButton is falsy if not on etablissement page, \
-      if numberResults > 1, and storedStatus === 200', () => {
+      if numberResults > 1, and status === 200', () => {
     $route = {
       params: 'mock-params',
       push: jest.fn(),
@@ -55,7 +53,7 @@ describe('Results.vue', () => {
             isWelcomeTextVisible: true
           },
           results: {
-            storedStatus: 200
+            status: 200
           },
           search: {
             storedFullText: 'mock-storedFullText'
@@ -79,7 +77,7 @@ describe('Results.vue', () => {
   })
 
   test('Computed value showBackToResultsButton is falsy if on etablissement page, \
-    if numberResults === 1, and storedStatus === 200', () => {
+    if numberResults === 1, and status === 200', () => {
     $route = {
       params: 'mock-params',
       push: jest.fn(),
@@ -97,7 +95,7 @@ describe('Results.vue', () => {
             isWelcomeTextVisible: true
           },
           results: {
-            storedStatus: 200
+            status: 200
           },
           search: {
             storedFullText: 'mock-storedFullText'
@@ -120,7 +118,7 @@ describe('Results.vue', () => {
     expect(wrapperSearch.vm.showBackToResultsButton).toBeFalsy()
   })
   test('Computed value showBackToResultsButton is falsy only on etablissement page, \
-    if numberResults > 1, and storedStatus !== 200', () => {
+    if numberResults > 1, and status !== 200', () => {
     $route = {
       params: 'mock-params',
       push: jest.fn(),
@@ -138,7 +136,7 @@ describe('Results.vue', () => {
             isWelcomeTextVisible: true
           },
           results: {
-            storedStatus: 404
+            status: 404
           },
           search: {
             storedFullText: 'mock-storedFullText'
