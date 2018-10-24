@@ -36,7 +36,7 @@ export default {
       return this.$store.state.searchFullText.storedFullText !== ''
     },
     storedResultsEntreprises () {
-      return this.$store.getters.storedResultsEntreprises
+      return this.$store.getters.fullTextResultsSirene
     },
     numberResults () {
       return this.$store.getters.numberResultsFullTextSirene
