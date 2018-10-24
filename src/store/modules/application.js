@@ -84,7 +84,6 @@ const mutations = {
 const actions = {
   resetApplicationState() {
     store.commit('clearStatus', 'ALL')
-    store.commit('clearFullTextResults', 'ALL')
     store.commit('setStoredSuggestions', '')
     store.commit('clearAdditionalInfos', 'ALL')
     store.commit('setSinglePageResults', { value: null, api: 'ALL' })
