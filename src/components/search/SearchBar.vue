@@ -68,7 +68,7 @@ export default {
       } else {
         this.requestFullTextSearch()
       }
-      this.$store.commit('clearResults')
+      this.$store.commit('clearFullTextResults')
     },
     requestFullTextSearch: function () {
       const currentSuggestion = this.currentSuggestion()
