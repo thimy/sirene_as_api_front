@@ -108,8 +108,12 @@ const mutations = {
 
 const actions = {
   async setResponseFullText(dispatch, { response, api }) {
-    await store.commit('setFullTextResults', { value: response.body, api: api })
     await store.commit('setStatus', { value: response.status, api: `${api}_FULLTEXT` })
+    if (response.status == 200) {
+      await store.commit('setFullTextResults', { value: response.body, api: api })
+    } else {
+      await store.commit('clearFullTextResults', api)
+    }
     store.commit('setLoading', { value: false, search: `${api}_FULLTEXT` })
   },
   setResponseEtablissement(dispatch, { response, api }) {
