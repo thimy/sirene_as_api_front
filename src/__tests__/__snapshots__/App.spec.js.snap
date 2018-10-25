@@ -114,7 +114,7 @@ exports[`App.vue It match the snapshot 1`] = `
             class="column"
           >
             <p>
-              Vous pouvez, si vous le souhaitez, interroger directement nos APIs
+              Vous pouvez, si vous le souhaitez, interroger directement les APIs
             </p>
              
             <a

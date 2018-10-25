@@ -1,6 +1,6 @@
 <template>
   <div class="errorPage">
-    <h2>Erreur sur notre serveur</h2>
+    <h2>Erreur sur le serveur</h2>
   </div>
 </template>
 

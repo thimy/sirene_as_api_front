@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="column">
-          <p>Vous pouvez, si vous le souhaitez, interroger directement nos APIs</p>
+          <p>Vous pouvez, si vous le souhaitez, interroger directement les APIs</p>
           <router-link class="button" :to="{ name: 'ApiDoc'}">Documentation des APIs</router-link>
         </div>
         <div class="column api__image">

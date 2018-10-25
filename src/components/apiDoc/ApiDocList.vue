@@ -30,7 +30,7 @@
         <div class="description">
           <h2>L'API Répertoire National des Métiers (RNM)</h2>
           <p>
-            L'API RNM nous est gracieusement ouverte par les Chambres et Métiers de l'Artisanat.<br>
+            L'API RNM vous est gracieusement ouverte par les Chambres et Métiers de l'Artisanat.<br>
             Les données sont mises à jour toutes les nuits.
           </p>
         </div>

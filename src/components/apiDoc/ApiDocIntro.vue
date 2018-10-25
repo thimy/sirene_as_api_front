@@ -1,7 +1,7 @@
 <template>
   <section class="section-white">
     <div class="container centered">
-      <h1>Nos APIs Open Data</h1>
+      <h1>Les APIs Open Data</h1>
       <p class="centered">
         Entreprise.data.gouv.fr est en phase intensive de développement. De nombreuses
         APIs sont en cours d'ajout !

@@ -3,7 +3,7 @@
     <div class="container column__full">
       <h2>Restez connectés !</h2>
       <p>
-        Notre API RNCS est en phase de développement intensif.<br>
+        L'API RNCS est en phase de développement intensif.<br>
         La documentation est encore en phase d'écriture !<br>
         Revenez vite pour voir les avancées.
       </p>
