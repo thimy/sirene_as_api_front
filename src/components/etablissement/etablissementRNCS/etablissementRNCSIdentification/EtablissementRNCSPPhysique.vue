@@ -1,5 +1,5 @@
 <template>
-  <div class="company__panel panel">
+  <div>
     <h4>Personne Physique</h4>
     <hr>
     <panel-info-rncs :parent="RNCSPhysical" :elements="elementsToDisplay" />
