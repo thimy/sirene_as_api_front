@@ -1,58 +1,54 @@
 <template>
   <div class="company">
-    <section class="section-white">
-      <div class="container">
-        <div class="title__block">
-          <h2 v-if="haveSireneInfo" >{{resultSirene.nom_raison_sociale | removeExtraChars}} <span class="company__siren">({{ resultSirene.siren }})</span></h2>
-          <h2 v-if="haveOnlyRNAInfo">{{resultRNA.titre}} <span class="association__id">({{ resultRNA.id_association }})</span></h2>
-          <div v-if="haveSireneInfo" class="subtitle"> {{ resultSirene.l2_normalisee }}</div>
-          <h4 v-if="haveSireneInfo" class="second__subtitle"> {{ resultSirene.libelle_activite_principale_entreprise }}</h4>
-          <h4 v-if="haveOnlyRNAInfo" class="second__subtitle"> {{ resultRNA.titre_court}}</h4>
+    <div class="title__block">
+      <h2 v-if="haveSireneInfo">{{resultSirene.nom_raison_sociale | removeExtraChars}} <span class="company__siren">({{ resultSirene.siren }})</span></h2>
+      <h2 v-if="haveOnlyRNAInfo">{{resultRNA.titre}} <span class="association__id">({{ resultRNA.id_association }})</span></h2>
+
+      <template v-if="haveSireneInfo">
+        <div class="subtitle"> {{ resultSirene.l6_normalisee }}</div>
+        <div class="second__subtitle"> {{ resultSirene.libelle_activite_principale_entreprise }}</div>
+      </template>
+      <div v-if="haveOnlyRNAInfo" class="second__subtitle"> {{ resultRNA.titre_court}}</div>
+    </div>
+    <div class="tabs">
+        <div v-if="haveSireneInfo" class="api api__sirene">
+          <h4>Base SIRENE</h4>
+          <p>Information disponible</p>
+          <p>Dernière mise à jour : {{ this.lastUpdateSirene }}</p>
         </div>
-        <div class="tabs">
-          <div class="tabs__pair">
-            <div v-if="haveSireneInfo" class="api api__sirene">
-              <h4>Base SIRENE</h4>
-              <p>Information disponible</p>
-              <p>Dernière mise à jour : {{ this.lastUpdateSirene }}</p>
-            </div>
-            <div v-else class="api api__unavailable">
-              <h4>Base SIRENE</h4>
-              <p>Information non trouvée</p>
-            </div>
-            <div v-if="haveRNMInfo" class="api api__rnm">
-              <h4>Base RNM</h4>
-              <p>Information disponible</p>
-              <p>Dernière mise à jour : aujourd'hui</p>
-            </div>
-            <div v-else class="api api__unavailable">
-              <h4>Base RNM</h4>
-              <p>Information non trouvée</p>
-            </div>
-          </div>
-          <div class="tabs__pair">
-            <div v-if="haveRNAInfo" class="api api__rna">
-              <h4>Base RNA</h4>
-              <p>Information disponible</p>
-              <p>Dernière mise à jour : {{ this.lastUpdateRNA }}</p>
-            </div>
-            <div v-else class="api api__unavailable">
-              <h4>Base RNA</h4>
-              <p>Information non trouvée</p>
-            </div>
-            <div v-if="haveRNCSInfo" class="api api__rncs">
-              <h4>Base RNCS</h4>
-              <p>Information disponible</p>
-              <p>Dernière mise à jour : 2017-05-17</p>
-            </div>
-            <div v-else class="api api__unavailable">
-              <h4>Base RNCS</h4>
-              <p>Information non trouvée</p>
-            </div>
-          </div>
+        <div v-else class="api api__unavailable">
+          <h4>Base SIRENE</h4>
+          <p>Information non trouvée</p>
+        </div>
+        <div v-if="haveRNMInfo" class="api api__rnm">
+          <h4>Base RNM</h4>
+          <p>Information disponible</p>
+          <p>Dernière mise à jour : aujourd'hui</p>
+        </div>
+        <div v-else class="api api__unavailable">
+          <h4>Base RNM</h4>
+          <p>Information non trouvée</p>
+        </div>
+        <div v-if="haveRNAInfo" class="api api__rna">
+          <h4>Base RNA</h4>
+          <p>Information disponible</p>
+          <p>Dernière mise à jour : {{ this.lastUpdateRNA }}</p>
+        </div>
+        <div v-else class="api api__unavailable">
+          <h4>Base RNA</h4>
+          <p>Information non trouvée</p>
+        </div>
+        <div v-if="haveRNCSInfo" class="api api__rncs">
+          <h4>Base RNCS</h4>
+          <p>Information disponible</p>
+          <p>Dernière mise à jour : 2017-05-17</p>
+        </div>
+        <div v-else class="api api__unavailable">
+          <h4>Base RNCS</h4>
+          <p>Information non trouvée</p>
         </div>
       </div>
-    </section>
+    </div>
   </div>
 </template>
 
@@ -118,87 +114,67 @@ export default {
     }
   }
 
+  h2 {
+    margin-bottom: 0;
+  }
+
   .tabs {
     display: flex;
     flex-direction: row;
     justify-content: center;
+
     @media screen and (max-width: $tablet) {
       flex-direction: column;
     }
-  }
 
-  .title__block {
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: space-between;
-    max-width: 50%;
-    @media screen and (max-width: $desktop) {
-      max-width: 100%;
-    }
-  }
-
-  .tabs__pair {
-    display: flex;
-    flex-direction: column;
+    margin: 2em 0;
   }
 
   .api {
-    margin: 5px;
-    padding: 10px;
-    white-space: nowrap;
-    min-width: 221px;
-    p, h4 {
+    padding: 1em;
+    border: 1px solid $color-light-grey;
+    border-radius: 3px;
+    flex-grow: 1;
+
+    p {
       margin: 0;
+    }
+
+    h4 {
+      margin-top: 0;
+      margin-bottom: 0.5em;
     }
   }
 
-  .api__sirene {
-    color: $color-blue;
-    border: 1px solid $color-blue;
-  }
+  .api + .api {
+    margin-left: 1em;
 
-  .api__rna {
-    color: $color-pink;
-    border: 1px solid $color-pink;
-  }
-
-  .api__rnm {
-    color: $color-green;
-    border: 1px solid $color-green;
-  }
-
-  .api__rncs {
-    color: $color-orange;
-    border: 1px solid $color-orange;
+    @media screen and (max-width: $tablet) {
+      margin-left: 0;
+      margin-top: 1em;
+    }
   }
 
   .api__unavailable {
     color: $color-darker-grey;
-    border: 1px solid $color-darker-grey;
-    p {
-      padding:12px 0 12px 0;
-    }
+    border: 1px solid $color-dark-grey;
   }
 
   .no_wrap {
     white-space: nowrap;
   }
 
-  .section-white {
-    padding: 0;
-  }
-
   .subtitle {
-    font-size: 1.4em;
-    font-family: "Evolventa", "Trebuchet MS", sans-serif;
+    font-size: 1.25em;
   }
 
   .second__subtitle {
-    font-size: 1em;
+    margin-top: 1em;
   }
 
   .company__siren,
   .second__subtitle {
-    color: $color-dark-grey;
+    color: $color-darker-grey;
+
   }
 </style>

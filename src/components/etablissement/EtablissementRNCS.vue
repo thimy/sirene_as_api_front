@@ -1,26 +1,20 @@
 <template>
   <div class="company">
-    <section class="etablissement__section-grey">
-      <div class="container company-container company-container__header">
-        <etablissement-rncs-header />
-      </div>
-      <div class="container company-container">
-        <etablissement-rncs-identification/>
-        <etablissement-rncs-activity/>
-      </div>
-      <div class="container company-container">
-        <etablissement-rncs-gestion-physique/>
-        <etablissement-rncs-gestion-morale/>
-      </div>
-      <div class="container company-container">
-        <etablissement-rncs-observations/>
-      </div>
-   </section>
+    <div class="company-container">
+      <etablissement-rncs-identification/>
+      <etablissement-rncs-activity/>
+    </div>
+    <div class="company-container">
+      <etablissement-rncs-gestion-physique/>
+      <etablissement-rncs-gestion-morale/>
+    </div>
+    <div class="company-container">
+      <etablissement-rncs-observations/>
+    </div>
   </div>
 </template>
 
 <script>
-import EtablissementRNCSHeader from '@/components/etablissement/etablissementRNCS/EtablissementRNCSHeader'
 import EtablissementRNCSIdentification from '@/components/etablissement/etablissementRNCS/EtablissementRNCSIdentification'
 import EtablissementRNCSGestionPhysique from '@/components/etablissement/etablissementRNCS/EtablissementRNCSGestionPhysique'
 import EtablissementRNCSGestionMorale from '@/components/etablissement/etablissementRNCS/EtablissementRNCSGestionMorale'
@@ -30,7 +24,6 @@ import EtablissementRNCSObservations from '@/components/etablissement/etablissem
 export default {
   name: 'EtablissementRNCS',
   components: {
-    'EtablissementRncsHeader': EtablissementRNCSHeader,
     'EtablissementRncsIdentification': EtablissementRNCSIdentification,
     'EtablissementRncsGestionPhysique': EtablissementRNCSGestionPhysique,
     'EtablissementRncsGestionMorale': EtablissementRNCSGestionMorale,

@@ -1,7 +1,6 @@
 <template>
-  <div class="company__panel panel">
-    <h4>Personne Physique</h4>
-    <hr>
+  <div v-if="RNCSPhysical" class="company__panel panel">
+    <h4>Personne physique</h4>
     <panel-info-rncs :parent="RNCSPhysical" :elements="elementsToDisplay" />
   </div>
 </template>

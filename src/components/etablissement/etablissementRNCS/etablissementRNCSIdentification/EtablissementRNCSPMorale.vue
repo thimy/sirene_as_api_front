@@ -1,7 +1,6 @@
 <template>
-  <div>
+  <div v-if="RNCSLegal">
     <h4>Personne morale</h4>
-    <hr>
     <panel-info-rncs :parent=RNCSLegal :elements=this.elementsToDisplay />
   </div>
 </template>

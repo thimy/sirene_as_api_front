@@ -1,15 +1,16 @@
 <template>
-  <div class="container">
-    <loader v-if="resultsAreLoading"></loader>
-    <server-error v-else-if="serverError"></server-error>
-    <template v-else>
-      <results-sirene />
-      <hr />
-      <results-rna />
-      <!-- paginate module on RNA and Sirene, so we use the bigger values -->
-      <results-paginate-module :totalPages=biggerNumberPages></results-paginate-module>
-    </template>
-  </div>
+  <section class="section">
+    <div class="container">
+      <loader v-if="resultsAreLoading"></loader>
+      <server-error v-else-if="serverError"></server-error>
+      <template v-else>
+        <results-sirene />
+        <results-rna />
+        <!-- paginate module on RNA and Sirene, so we use the bigger values -->
+        <results-paginate-module v-if="biggerNumberPages" :totalPages=biggerNumberPages></results-paginate-module>
+      </template>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -54,10 +55,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-  .container {
-    padding-top: 2em;
-    padding-bottom: 2em;
+  .panel {
+    margin-top: 2em;
   }
-
 </style>

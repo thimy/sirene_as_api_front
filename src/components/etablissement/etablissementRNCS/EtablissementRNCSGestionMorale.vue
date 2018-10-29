@@ -1,7 +1,6 @@
 <template>
-  <div class="company__panel panel">
+  <div v-if="managersLegal.length" class="company__panel panel">
     <h4>Gestionnaires (Personnes morales)</h4>
-    <hr>
     <div v-for="manager in managersLegal" :key=manager.id>
       <h5>{{ manager.qualite }}</h5>
       <panel-info-rncs :parent="manager" :elements=elementsToDisplay />
@@ -60,9 +59,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-  .panel {
-    border: 2px $color-light-orange solid;
-  }
-</style>

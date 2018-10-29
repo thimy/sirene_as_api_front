@@ -1,11 +1,11 @@
 <template>
-  <nav class="nav">
-    <div class="nav__container">
-      <a v-on:click="clearHomepage" class="nav__link">
-        <img class="nav__logo" src="../assets/img/entreprise.svg" alt="entreprise.data.gouv.fr" />
+  <header class="navbar" role="navigation">
+    <div class="navbar__container">
+      <a v-on:click="clearHomepage" class="navbar__home">
+        <img class="navbar__logo" src="../assets/img/entreprise.svg" alt="entreprise.data.gouv.fr" />
       </a>
     </div>
-  </nav>
+  </header>
 </template>
 
 <script>
@@ -17,12 +17,3 @@ export default {
   }}
 }
 </script>
-
-<style lang="scss" scoped>
-@media (max-width: 359px) {
-  .nav__link {
-    padding: 2px;
-  }
-}
-
-</style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <div v-if="mapboxglSupported" class="panel" id="map" ref="map"></div>
     <div v-else class="panel">
       <p class="panel__message">Votre navigateur ne supporte pas WebGL et ne peut pas afficher la carte de l'établissement.</p>
@@ -61,20 +61,12 @@ export default {
     height: 400px;
   }
 
-  .panel {
-    width: 100%
-  }
-
   .panel__message {
     color: $color-dark-grey
   }
 
   .mapboxgl-popup {
     max-width: 200px;
-}
-
-  .panel {
-    border: 2px solid $color-lighter-blue;
   }
 
 </style>

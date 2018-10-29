@@ -1,5 +1,5 @@
 <template>
-  <section class="section-white">
+  <section class="section section-white">
     <div class="container centered">
       <h1>Nos APIs Open Data</h1>
       <p class="centered">

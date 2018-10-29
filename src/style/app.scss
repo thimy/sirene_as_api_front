@@ -1,3 +1,5 @@
-@import 'template.scss';
+@import '~template.data.gouv.fr/dist/style/main.min.css'; 
+
 @import '_variables.scss';
 @import '_etablissement.scss';
+@import 'main.scss';
