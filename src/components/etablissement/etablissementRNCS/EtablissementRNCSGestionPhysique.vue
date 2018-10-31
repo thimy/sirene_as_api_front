@@ -2,18 +2,24 @@
   <div v-if="managersPhysical.length" class="company__panel panel">
     <h4>Gestionnaires (Personnes physiques)</h4>
     <div v-for="manager in managersPhysical" :key=manager.id>
-      <h5>{{ manager.qualite }}</h5>
+      <h5>{{ manager.qualite | capitalize }}</h5>
       <panel-info-rncs :parent="manager" :elements=elementsToDisplay />
     </div>
+    <panel-no-results-rncs :ifNotPresent="managersPhysical" />
   </div>
 </template>
 
 <script>
 import PanelInfoRNCS from '@/components/templates/PanelInfoRNCS'
+import PanelNoResultsRNCS from '@/components/templates/PanelNoResultsRNCS'
+import Filters from '@/components/mixins/filters'
 
 export default {
   name: 'EtablissementRNCSGestionPhysique',
-  components: { 'PanelInfoRncs': PanelInfoRNCS },
+  components: {
+    'PanelInfoRncs': PanelInfoRNCS,
+    'PanelNoResultsRncs': PanelNoResultsRNCS
+  },
   data () {
     return {
       elementsToDisplay:
@@ -50,7 +56,14 @@ export default {
     },
     managersPhysical () {
       return this.managers.filter(manager => (manager.type_representant == 'P.Physique'))
+    },
+    noManagersPhysical () {
+      if (this.managersPhysical && this.managersPhysical.length != 0) {
+        return false
+      }
+      return true
     }
-  }
+  },
+  mixins: [Filters]
 }
 </script>
