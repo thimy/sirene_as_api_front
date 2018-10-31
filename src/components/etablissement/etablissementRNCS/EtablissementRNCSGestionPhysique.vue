@@ -1,15 +1,21 @@
 <template>
   <div v-if="managersPhysical.length" class="company__panel panel">
     <h4>Gestionnaires (Personnes physiques)</h4>
-    <div v-for="manager in managersPhysical" :key=manager.id>
-      <h5>{{ manager.qualite | capitalize }}</h5>
-      <panel-info-rncs :parent="manager" :elements=elementsToDisplay />
-      <div class="company__item-key">Adresse :</div>
-      <div class="company__item-value" v-if="manager.adresse_ligne_1">{{ manager.adresse_ligne_1 | ifExist }}</div>
-      <div class="company__item-value" v-if="manager.adresse_ligne_2">{{ manager.adresse_ligne_2 }}</div>
-      <div class="company__item-value" v-if="manager.adresse_ligne_3">{{ manager.adresse_ligne_3 }}</div>
-      <div class="company__item-value"> {{ RNCSConcatAddress(manager) }}</div>
-      <div class="company__item-value" v-if="manager.adresse_code_commune">Code Commune {{ manager.adresse_code_commune }}</div>
+    <div class="company__managers">
+      <div v-for="manager in managersPhysical" :key=manager.id>
+        <h5>{{ manager.qualite | capitalize }}</h5>
+        <panel-info-rncs :parent="manager" :elements=elementsToDisplay :inlineLabels="true" />
+        <div class="company__item-inline">
+          <div class="company__item-key">Adresse :</div>
+          <div class="company__item-value">
+            <div v-if="manager.adresse_ligne_1">{{ manager.adresse_ligne_1 | ifExist }}</div>
+            <div v-if="manager.adresse_ligne_2">{{ manager.adresse_ligne_2 }}</div>
+            <div v-if="manager.adresse_ligne_3">{{ manager.adresse_ligne_3 }}</div>
+            <div> {{ RNCSConcatAddress(manager) }}</div>
+            <div v-if="manager.adresse_code_commune">Code Commune {{ manager.adresse_code_commune }}</div>
+          </div>
+        </div>
+      </div>
     </div>
     <panel-no-results-rncs :ifNotPresent="managersPhysical" />
   </div>
@@ -31,21 +37,19 @@ export default {
     return {
       elementsToDisplay:
         {
-          "Nom Patronyme": "nom_patronyme",
-          "Nom d'Usage": "nom_usage",
+          "Nom": "nom_patronyme",
+          "Nom d'usage": "nom_usage",
           "Pseudonyme": "pseudonyme",
-          "Prenoms": "prenoms",
-          "Date Naissance": "date_naissance",
-          "Ville Naissance": "ville_naissance",
-          "Pays Naissance": "pays_naissance",
+          "Prénoms": "prenoms",
+          "Date de naissance": "date_naissance",
+          "Ville de naissance": "ville_naissance",
+          "Pays de naissance": "pays_naissance",
           "Nationalité": "nationalite",
           "Conjoint collaborateur, Date de Fin":"conjoint_collab_date_fin",
-          "Conjoint collaborateur, Nom Patronyme":"conjoint_collab_nom_patronyme",
-          "Conjoint collaborateur, Nom d'Usage":"conjoint_collab_nom_usage",
+          "Conjoint collaborateur, Nom":"conjoint_collab_nom_patronyme",
+          "Conjoint collaborateur, Nom d‘usage":"conjoint_collab_nom_usage",
           "Conjoint collaborateur, Pseudonyme":"conjoint_collab_pseudonyme",
-          "Conjoint collaborateur, Prénoms":"conjoint_collab_prénoms",
-          "Date de dernière modification": "date_derniere_modification",
-          "Libellé de dernière modification": "libelle_derniere_modification"
+          "Conjoint collaborateur, Prénoms":"conjoint_collab_prénoms"
         }
     }
   },

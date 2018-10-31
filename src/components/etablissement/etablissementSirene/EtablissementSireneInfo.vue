@@ -1,5 +1,5 @@
 <template>
-  <div class="company__panel panel">
+  <div class="company__panel">
     <div class="name__category">
       <h4>Informations générales</h4>
     </div>

@@ -1,6 +1,6 @@
 <template>
   <div class="company">
-    <div class="company-container">
+    <div class="company-container panel">
       <etablissement-sirene-contact />
       <etablissement-sirene-info />
     </div>

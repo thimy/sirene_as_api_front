@@ -1,7 +1,6 @@
 <template>
   <div class="company__panel panel">
     <h4>Informations d'activité et d´établissement principal</h4>
-    <hr>
     <div class="company__item">
       <div class="company__item-key">Greffe :</div>
       <div class="company__item-value"> {{ RNCSConcatGreffe(this.RNCSData) }}</div>
@@ -36,14 +35,14 @@ export default {
       },
       elementsToDisplay2:
       {
-        "Date Immatriculation": "date_immatriculation",
-        "Date Première Immatriculation": "date_premiere_immatriculation",
-        "Date de Radiation": "date_radiation",
-        "Date de Transfert": "date_transfert",
-        "Sans Activité": "sans_activite",
-        "Date de début d'activité": "date_debut_activite",
-        "Date de Début de Première Activité": "date_debut_premiere_activite",
-        "Date de Cessation d'Activité": "date_cessation_activite",
+        "Date d‘immatriculation": "date_immatriculation",
+        "Date de première immatriculation": "date_premiere_immatriculation",
+        "Date de radiation": "date_radiation",
+        "Date de transfert": "date_transfert",
+        "Sans activité": "sans_activite",
+        "Date de début d‘activité": "date_debut_activite",
+        "Date de début de première activité": "date_debut_premiere_activite",
+        "Date de cessation d‘activité": "date_cessation_activite",
       }
     }
   },

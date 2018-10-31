@@ -1,7 +1,6 @@
 <template>
   <div v-if="RNCSLegal">
     <h4>Personne morale</h4>
-    <hr>
     <panel-info-rncs class="company__item" :parent=RNCSLegal :elements=this.elementsToDisplay1 />
      <div class="company__item">
       <div class="company__item-key">Informations Capital :</div>
@@ -29,15 +28,15 @@ export default {
       {
         "Dénomination": "denomination",
         "Sigle": "sigle",
-        "Forme Juridique": "forme_juridique",
-        "Associé Unique":"associe_unique",
-        "Activité Principale": "activite_principale"
+        "Forme juridique": "forme_juridique",
+        "Associé unique":"associe_unique",
+        "Activité principale": "activite_principale"
       },
       elementsToDisplay2 :
       {
-        "Date Clotûre": "date_cloture",
-        "Date Clotûre Exceptionnelle": "date_cloture_exeptionnelle",
-        "Durée Personne Morale": "duree_pm", // TODO: display in activity ?
+        "Date de clotûre": "date_cloture",
+        "Date de clotûre exceptionnelle": "date_cloture_exeptionnelle",
+        "Durée personne morale": "duree_pm", // TODO: display in activity ?
         // "Economie Sociale Solidaire": "economie_sociale_solidaire" // TODO: Display as flag
       }
     }
