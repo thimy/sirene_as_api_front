@@ -18,8 +18,6 @@
           @click="suggestSelectAndEnter(index)">
         <span>{{ suggestion | capitalize | removeExtraChars}}</span>
       </li>
-      <!-- Filling with hidden divs so search bar will always be same size -->
-      <li class="hidden suggestion__box" :key="index2 + '-empty'" v-for="index2 in suggestionNumberToMax()"></li>
     </ul>
   </div>
 </template>

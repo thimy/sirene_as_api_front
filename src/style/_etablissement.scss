@@ -88,17 +88,6 @@
   }
 }
 
-@media (max-width: 749px) {
-  .panel {
-    .name__category {
-      padding-left: 0;
-    }
-    ul {
-      padding-left: 0;
-    }
-  }
-}
-
 @media (max-width: $tablet) {
   .company-container {
     flex-direction: column;
