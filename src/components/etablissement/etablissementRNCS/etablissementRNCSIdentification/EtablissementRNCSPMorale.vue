@@ -3,7 +3,7 @@
     <h4>Personne morale</h4>
     <panel-info-rncs class="company__item" :parent=RNCSLegal :elements=this.elementsToDisplay1 />
      <div class="company__item">
-      <div class="company__item-key">Informations Capital :</div>
+      <div class="company__item-key">Informations capital</div>
       <div class="company__item-value"> {{ RNCSDeviseSentence(this.RNCSLegal) }}</div>
     </div>
     <panel-info-inline-rncs class="company__item" :parent=RNCSLegal :elements=this.elementsToDisplay2 />
@@ -28,6 +28,7 @@ export default {
       {
         "Dénomination": "denomination",
         "Sigle": "sigle",
+        "SIREN": "siren",
         "Forme juridique": "forme_juridique",
         "Associé unique":"associe_unique",
         "Activité principale": "activite_principale"

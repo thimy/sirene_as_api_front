@@ -57,7 +57,14 @@ export default {
   #map {
     padding: 0;
     height: 350px;
-    width: 50%;
+    width: 48%;
+    flex-shrink: 0;
+  }
+
+  @media screen and (max-width: $desktop) {
+    #map {
+      width: 100%;
+    }
   }
 
   .panel__message {

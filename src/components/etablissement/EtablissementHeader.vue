@@ -6,7 +6,10 @@
         <h2 v-if="haveOnlyRNAInfo">{{resultRNA.titre}} <span class="association__id">({{ resultRNA.id_association }})</span></h2>
 
         <template v-if="haveSireneInfo">
-          <div class="subtitle"> {{ resultSirene.l6_normalisee }}</div>
+          <div class="subtitle">
+            <div>{{ resultSirene.l4_normalisee }}</div>
+            <div>{{ resultSirene.l6_normalisee }}</div>
+          </div>
           <div class="second__subtitle"> {{ resultSirene.libelle_activite_principale_entreprise }}</div>
         </template>
         <div v-if="haveOnlyRNAInfo" class="second__subtitle"> {{ resultRNA.titre_court}}</div>
