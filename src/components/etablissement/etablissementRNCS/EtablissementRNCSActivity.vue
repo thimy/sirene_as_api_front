@@ -1,7 +1,6 @@
 <template>
   <div class="company__panel panel">
     <h4>Informations d'activité et d´établissement principal</h4>
-    <hr>
     <panel-info-rncs :parent=RNCSData :elements=this.elementsToDisplay />
   </div>
 </template>
@@ -43,9 +42,3 @@ export default {
   mixins: [Filters]
 }
 </script>
-
-<style lang="scss" scoped>
-  .panel {
-    border: 2px $color-light-orange solid;
-  }
-</style>

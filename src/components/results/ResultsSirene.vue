@@ -6,7 +6,6 @@
       <li v-for="result in storedResultsEntreprises" :key="result.siret" class="panel">
         <router-link tag="a" class="no_base_style" :to="{ name: 'Etablissement', params: {searchId: result['siret']}}">
           <h4 class="title">{{result['nom_raison_sociale'] | capitalize | removeExtraChars}}</h4>
-          <span class="subtitle" v-if="result['l2_normalisee']">{{result['l2_normalisee'] | capitalize | removeExtraChars }}</span>
           <p>{{result['libelle_activite_principale_entreprise']}}</p>
           <p>{{result['code_postal']}} {{result['libelle_commune'] | capitalize}}</p>
         </router-link>
@@ -49,7 +48,8 @@ export default {
         return ''
       }
       const numberResultsFormatted = Formating.methods.frenchNumberFormat(this.numberResults)
-      return `${numberResultsFormatted} résultats pour "${this.$store.state.searchFullText.storedLastFullText}" dans la base SIRENE des entreprises`
+      const resultText = numberResultsFormatted > 1 ? 'résultats' : 'résultat'
+      return `${numberResultsFormatted} ${resultText} pour "${this.$store.state.searchFullText.storedLastFullText}" dans la base SIRENE des entreprises`
     }
   },
   mixins: [Filters]
@@ -66,13 +66,6 @@ export default {
     display: inline;
     margin-left: 5px;
     font-family: "Evolventa", "Trebuchet MS", sans-serif;
-  }
-
-  .panel {
-    margin-bottom: 2em;
-    cursor: pointer;
-    padding: 1em;
-    border: 1px solid $color-lighter-blue;
   }
 
   .no_base_style {

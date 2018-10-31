@@ -28,9 +28,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-  .panel {
-    border: 2px $color-light-orange solid;
-  }
-</style>

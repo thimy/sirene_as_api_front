@@ -1,7 +1,6 @@
 <template>
   <div class="company__panel panel">
     <h4>Informations Générales</h4>
-    <hr>
     <div class="company__item"><div class="company__item-key">Domaine d'activité (NAR20)</div><div class="company__item-value">{{ this.resultRNM.NAR20 | ifExist }}</div></div>
     <div class="company__item"><div class="company__item-key">Activité d'Artisanat (NAFA)</div><div class="company__item-value">{{ this.resultRNM.GEST_LIBELLE_CODE_NAFA | ifExist }}</div></div>
     <div class="company__item"><div class="company__item-key">Qualification</div><div class="company__item-value">{{ this.resultRNM.DIR_QA_QUALIFICATION | ifExist }}</div></div>
@@ -24,9 +23,3 @@ export default {
   mixins: [Filters]
 }
 </script>
-
-<style lang="scss" scoped>
-  .panel {
-    border: 2px $color-light-green solid;
-  }
-</style>

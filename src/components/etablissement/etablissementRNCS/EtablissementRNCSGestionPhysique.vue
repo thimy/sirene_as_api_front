@@ -1,7 +1,6 @@
 <template>
-  <div class="company__panel panel">
+  <div v-if="managersPhysical.length" class="company__panel panel">
     <h4>Gestionnaires (Personnes physiques)</h4>
-    <hr>
     <div v-for="manager in managersPhysical" :key=manager.id>
       <h5>{{ manager.qualite }}</h5>
       <panel-info-rncs :parent="manager" :elements=elementsToDisplay />
@@ -19,8 +18,10 @@ export default {
     return {
       elementsToDisplay:
         {
-          "Date de dernière modification": "date_derniere_modification",
-          "Libellé de dernière modification": "libelle_derniere_modification",
+          "Nom Patronyme": "nom_patronyme",
+          "Nom d'Usage": "nom_usage",
+          "Pseudonyme": "pseudonyme",
+          "Prenoms": "prenoms",
           "ID Représentant": "id_representant",
           "Adresse Ligne 1": "adresse_ligne_1",
           "Adresse Ligne 2": "adresse_ligne_2",
@@ -29,10 +30,6 @@ export default {
           "Ville": "adresse_ville",
           "Code Commune": "adresse_code_commune",
           "Pays": "adresse_pays",
-          "Nom Patronyme": "nom_patronyme",
-          "Nom d'Usage": "nom_usage",
-          "Pseudonyme": "pseudonyme",
-          "Prenoms": "prenoms",
           "Date Naissance": "date_naissance",
           "Ville Naissance": "ville_naissance",
           "Pays Naissance": "pays_naissance",
@@ -41,7 +38,9 @@ export default {
           "Conjoint collaborateur, Nom Patronyme":"conjoint_collab_nom_patronyme",
           "Conjoint collaborateur, Nom d'Usage":"conjoint_collab_nom_usage",
           "Conjoint collaborateur, Pseudonyme":"conjoint_collab_pseudonyme",
-          "Conjoint collaborateur, Prénoms":"conjoint_collab_prénoms"
+          "Conjoint collaborateur, Prénoms":"conjoint_collab_prénoms",
+          "Date de dernière modification": "date_derniere_modification",
+          "Libellé de dernière modification": "libelle_derniere_modification"
         }
     }
   },
@@ -55,9 +54,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-  .panel {
-    border: 2px $color-light-orange solid;
-  }
-</style>

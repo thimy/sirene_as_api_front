@@ -56,24 +56,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .title {
-    display: inline;
-    margin: 0.15em;
-  }
-
-  .subtitle {
-    display: inline;
-    margin-left: 5px;
-    font-family: "Evolventa", "Trebuchet MS", sans-serif;
-  }
-
-  .panel {
-    margin-bottom: 2em;
-    cursor: pointer;
-    padding: 1em;
-    border: 1px solid $color-light-pink;
-  }
-
   .no_base_style {
     text-decoration: none;
     color: $color-black;

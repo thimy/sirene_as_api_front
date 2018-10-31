@@ -1,5 +1,5 @@
 <template>
-  <section class="api text-center">
+  <section class="api text-center section">
     <div class="container">
       <div class="row">
         <div class="column">
@@ -28,11 +28,6 @@ export default {
 a.button {
   padding: 0.5em 0.5em;
   min-width: 280px;
-}
-
-.api {
-  background: $color-white;
-  padding: 3em 0 3em 0;
 }
 
 .api .column{

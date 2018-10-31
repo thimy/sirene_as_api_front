@@ -1,7 +1,7 @@
 <template>
-  <section class="section-white">
+  <section class="section section-white">
     <div class="container">
-      <div class="column__full center">
+      <div class="center">
         <h2>Découvrez l'API Entreprise, toutes les informations sur les sociétés.</h2>
         <div class="column__img">
           <img src="@/assets/img/city.svg" alt="">

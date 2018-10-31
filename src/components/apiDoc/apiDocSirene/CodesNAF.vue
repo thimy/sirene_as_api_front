@@ -1,5 +1,5 @@
 <template>
-  <section class="section-white center">
+  <section class="section section-white center">
     <div class="container">
       <h2>Liste des Codes Nomenclature D'Activité Française (NAF)</h2>
       <h3>En vigueur depuis la révision de Janvier 2008</h3>

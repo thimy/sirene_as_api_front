@@ -1,15 +1,19 @@
 <template>
-  <server-error class="container" v-if="isError" />
-  <not-found class="container" v-else-if="isNotFound" />
-  <loader class="container" v-else-if="isEtablissementLoading" />
-  <div v-else class="container-general">
-    <etablissement-header />
-    <etablissement-sirene v-if=haveSireneInfo />
-    <etablissement-rna v-if=haveRNAInfo :haveComponentTop=haveSireneInfo />
-    <etablissement-rnm v-if=haveRNMInfo />
-    <etablissement-rncs v-if=haveRNCSInfo />
-    <etablissement-map v-if=haveSireneInfo :positionEtablissement='coordinates' :etablissement='this.resultSirene'/>
-  </div>
+  <section class="section">
+    <div class="container">
+      <server-error v-if="isError" />
+      <not-found v-else-if="isNotFound" />
+      <loader v-else-if="isEtablissementLoading" />
+      <template v-else>
+        <etablissement-header />
+        <etablissement-sirene v-if=haveSireneInfo />
+        <etablissement-rna v-if=haveRNAInfo :haveComponentTop=haveSireneInfo />
+        <etablissement-rnm v-if=haveRNMInfo />
+        <etablissement-rncs v-if=haveRNCSInfo />
+        <etablissement-map v-if=haveSireneInfo :positionEtablissement='coordinates' :etablissement='this.resultSirene'/>
+      </template>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -114,8 +118,14 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-  .container-general {
-    padding-bottom: 36px;
+<style lang="scss">
+  .panel + .panel {
+    margin-left: 2em;
+  }
+
+  @media (max-width: $tablet) {
+    .panel + .panel {
+      margin-left: 0;
+    }
   }
 </style>

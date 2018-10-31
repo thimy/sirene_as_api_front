@@ -27,9 +27,4 @@ export default {
   h2, p {
     margin: auto;
   }
-  .panel {
-    border: 2px solid $color-light-pink;
-    padding: 16px;
-    text-align: center;
-  }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <section class="section-white">
+  <section class="section section-white">
     <div class="container">
       <div class="column__full">
         <h2>Recherches géographiques</h2>
@@ -54,26 +54,28 @@
         </tbody>
       </table>
       <div class="container__columns">
-        <div class="column">
-          <h3>Recherche autour d'un établissement :</h3>
-          <p>
-            L'endpoint <code>/v1/near_etablissement/:SIRET</code> prend en paramètre un siret et renvoie les établissements
-            autour de l'établissement correspondant à ce siret.
-          </p>
-          <api-doc-input :request=exempleGeoSpace2></api-doc-input>
-          <h3>Recherche autour d'un établissement, format GeoJSON :</h3>
-          <p>
-            L'endpoint <code>/v1/near_etablissement_geoJSON/:SIRET</code> fonctionne exactement comme le précédent
-            mais retourne les 500 établissements les plus proches au format GeoJSON.
-            Les résultats ne sont pas paginés.
-          </p>
-          <api-doc-input :request=exempleGeoSpace3></api-doc-input>
-        </div>
-        <div class="column__icon">
-          <img id="reduced-img" src="@/assets/img/icons/around_etablissement.svg" alt="">
+        <div class="row">
+          <div class="column">
+            <h3>Recherche autour d'un établissement :</h3>
+            <p>
+              L'endpoint <code>/v1/near_etablissement/:SIRET</code> prend en paramètre un siret et renvoie les établissements
+              autour de l'établissement correspondant à ce siret.
+            </p>
+            <api-doc-input :request=exempleGeoSpace2></api-doc-input>
+            <h3>Recherche autour d'un établissement, format GeoJSON :</h3>
+            <p>
+              L'endpoint <code>/v1/near_etablissement_geoJSON/:SIRET</code> fonctionne exactement comme le précédent
+              mais retourne les 500 établissements les plus proches au format GeoJSON.
+              Les résultats ne sont pas paginés.
+            </p>
+            <api-doc-input :request=exempleGeoSpace3></api-doc-input>
+          </div>
+          <div class="column__icon">
+            <img id="reduced-img" src="@/assets/img/icons/around_etablissement.svg" alt="">
+          </div>
         </div>
       </div>
-      <div class="column__full">
+      <div class="container">
         <h3>Options de filtrage</h3>
         <p>Les paramètres de filtrage suivant sont disponibles sur les endpoint near_etablissement et near_etablissement_geojson :</p>
       </div>
@@ -202,7 +204,7 @@ table {
     }
   }
   th, td {
-    color: $color-dark-grey;
+    color: $color-darker-grey;
     border: 1px solid $color-light-grey;
     border-collapse: collapse;
     padding: none;

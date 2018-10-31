@@ -1,5 +1,5 @@
 <template>
-  <section class="section-grey text-center public-administration">
+  <section class="section section-grey text-center public-administration">
     <div class="container">
         <p>
           Vous êtes une administration publique ?<br />
@@ -18,7 +18,6 @@ export default {
 
 <style lang="scss" scoped>
 .public-administration {
-  padding: 4em;
   text-align: center;
 }
 

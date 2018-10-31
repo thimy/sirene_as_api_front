@@ -1,5 +1,5 @@
 <template>
-  <section class="section-white center">
+  <section class="section section-white center">
     <div class="container">
       <h2>Mentions légales</h2>
       <h3>Editeur</h3>
