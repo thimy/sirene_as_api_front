@@ -15,7 +15,3 @@ export default {
   props: ['parent', 'elements']
 }
 </script>
-
-<style lang="scss" scoped>
-</style>
-
