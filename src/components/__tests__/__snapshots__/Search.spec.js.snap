@@ -3,15 +3,8 @@
 exports[`Search.vue snapshot It match the snapshot when there arent results 1`] = `
 <div
   class="hero"
+  role="banner"
 >
-  <div
-    class="notification full-width"
-  >
-    
-    Ce site est un travail en cours, actuellement en beta. Vous pouvez le consulter librement.
-  
-  </div>
-   
   <div
     class="hero__container container"
   >
@@ -56,6 +49,7 @@ exports[`Search.vue snapshot It match the snapshot when there arent results 1`] 
       </button>
        
       <ul
+        class="suggestions"
         style="display: none;"
       >
          

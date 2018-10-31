@@ -4,28 +4,12 @@ exports[`EtablissementSirene.vue Snapshot testing It match the snapshot 1`] = `
 <div
   class="company"
 >
-  <section
-    class="etablissement__section-grey"
+  <div
+    class="company-container panel"
   >
-    <div
-      class="container company-container company-container__header"
-    >
-      <etablissementsireneheader-stub />
-    </div>
+    <etablissementsirenecontact-stub />
      
-    <div
-      class="container company-container"
-    >
-      <etablissementsirenecontact-stub />
-       
-      <etablissementsireneinfo-stub />
-    </div>
-     
-    <div
-      class="container company-container"
-    >
-      <etablissementsirenechildren-stub />
-    </div>
-  </section>
+    <etablissementsireneinfo-stub />
+  </div>
 </div>
 `;

@@ -22,7 +22,7 @@ describe('Navbar.vue', () => {
   })
 
   test('It calls goToClearedHomePage when clicking on the logo', () => {
-    wrapperNavBar.find('.nav__link').trigger('click')
+    wrapperNavBar.find('.navbar__logo').trigger('click')
     expect(storeMocks.actions.goToClearedHomePage.mock.calls).toHaveLength(1)
   })
 })

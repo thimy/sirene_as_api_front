@@ -31,13 +31,6 @@ export default {
         "Forme juridique": "forme_juridique",
         "Associé unique":"associe_unique",
         "Activité principale": "activite_principale"
-      },
-      elementsToDisplay2 :
-      {
-        "Date de clotûre": "date_cloture",
-        "Date de clotûre exceptionnelle": "date_cloture_exeptionnelle",
-        "Durée personne morale": "duree_pm", // TODO: display in activity ?
-        // "Economie Sociale Solidaire": "economie_sociale_solidaire" // TODO: Display as flag
       }
     }
   },

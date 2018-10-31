@@ -1,59 +1,53 @@
 <template>
   <div v-if="RNCSPhysical">
     <h4>Personne physique</h4>
-    <panel-info-rncs :parent="RNCSPhysical" :elements="elementsToDisplay" />
+    <panel-info-rncs :parent="RNCSPhysical" :elements="elementsToDisplay1" />
+    <div class="company__item">
+      <div class="company__item-key">Adresse :</div>
+      <div class="company__item-value">
+        <div v-if="RNCSPhysical.adresse_ligne_1">{{ RNCSPhysical.adresse_ligne_1 | ifExist }}</div>
+        <div v-if="RNCSPhysical.adresse_ligne_2">{{ RNCSPhysical.adresse_ligne_2 }}</div>
+        <div v-if="RNCSPhysical.adresse_ligne_3">{{ RNCSPhysical.adresse_ligne_3 }}</div>
+        <div> {{ RNCSConcatAddress(RNCSPhysical) }}</div>
+        <div v-if="RNCSPhysical.adresse_code_commune">Code Commune {{ RNCSPhysical.adresse_code_commune }}</div>
+      </div>
+    </div>
+    <panel-info-inline-rncs :parent="RNCSPhysical" :elements="elementsToDisplay2" />
   </div>
 </template>
 
 <script>
 import PanelInfoRNCS from '@/components/templates/PanelInfoRNCS'
+import Formating from '@/components/mixins/formating'
+import Filters from '@/components/mixins/filters'
+import PanelInfoInlineRNCS from '@/components/templates/PanelInfoInlineRNCS';
 
 export default {
   name: 'EtablissementRNCSPPhysique',
-  components: { 'PanelInfoRncs': PanelInfoRNCS },
+  components: {
+    'PanelInfoRncs': PanelInfoRNCS,
+    'PanelInfoInlineRncs': PanelInfoInlineRNCS
+  },
   data () {
     return {
-      elementsToDisplay:
+      elementsToDisplay1:
       {
-        // TODO
-        // "activite_forain":"Non",
-        // "dap":"Non",
-        // "dap_denomination":null,
-        // "dap_objet":null,
-        // "dap_date_cloture":null,
-        // "eirl":"Non",
-        // "conjoint_collab_date_fin":null,
-        // "date_derniere_modification":"2011-02-18",
-        // "libelle_derniere_modification":"Création",
-        // "nom_patronyme":"LEPETIT",
-        // "nom_usage":"BREANT",
-        // "pseudonyme":null,
-        // "prenoms":"Corinne Raymonde Bernadette",
-        // "date_naissance":"1968-03-28",
-        // "ville_naissance":"14514 Pont l'évêque ",
-        // "pays_naissance":"FRANCE",
-        // "nationalite":"Française",
-        // "conjoint_collab_nom_patronyme":"BREANT",
-        // "conjoint_collab_nom_usage":null,
-        // "conjoint_collab_pseudonyme":null,
-        // "conjoint_collab_prenoms":"Gérald Michel Franck",
-        // "adresse_ligne_1":null,
-        // "adresse_ligne_2":"chemin d'Enfer",
-        // "adresse_ligne_3":null,
-        // "adresse_code_postal":"14130",
-        // "adresse_ville":"Surville",
-        // "adresse_code_commune":"14682",
-        // "adresse_pays":"FRANCE",
-        // "dap_adresse_ligne_1":null,
-        // "dap_adresse_ligne_2":null,
-        // "dap_adresse_ligne_3":null,
-        // "dap_adresse_code_postal":null,
-        // "dap_adresse_ville":null,
-        // "dap_adresse_code_commune":null,
-        // "dap_adresse_pays":null,
-        // "code_greffe":"1407",
-        // "numero_gestion":"2011A00030",
-        // "siren":"440858470"
+        "Nom": "nom_patronyme",
+        "Nom d'usage": "nom_usage",
+        "Pseudonyme": "pseudonyme",
+        "Prénoms": "prenoms",
+        "Date de naissance": "date_naissance",
+        "Ville de naissance": "ville_naissance",
+        "Pays de naissance": "pays_naissance",
+        "Nationalité": "nationalite"
+      },
+      elementsToDisplay2:
+      {
+        "Conjoint collaborateur, date de fin": "conjoint_collab_date_fin",
+        "Conjoint collaborateur, Nom": "conjoint_collab_nom_patronyme",
+        "Conjoint collaborateur, Nom d'usage": "conjoint_collab_nom_usage",
+        "Conjoint collaborateur, Pseudonyme": "conjoint_collab_pseudonyme",
+        "Conjoint collaborateur, Prénoms": "conjoint_collab_prenoms"
       }
     }
   },
@@ -61,6 +55,7 @@ export default {
     RNCSPhysical () {
       return this.$store.getters.RNCSData.personne_physique
     }
-  }
+  },
+  mixins: [Filters, Formating]
 }
 </script>

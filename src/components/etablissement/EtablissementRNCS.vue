@@ -2,7 +2,7 @@
   <div class="company">
     <div class="company-container">
       <etablissement-rncs-identification/>
-      <etablissement-rncs-activity/>
+      <etablissement-rncs-registration/>
     </div>
     <etablissement-rncs-gestion-physique/>
     <etablissement-rncs-gestion-morale/>
@@ -16,7 +16,7 @@
 import EtablissementRNCSIdentification from '@/components/etablissement/etablissementRNCS/EtablissementRNCSIdentification'
 import EtablissementRNCSGestionPhysique from '@/components/etablissement/etablissementRNCS/EtablissementRNCSGestionPhysique'
 import EtablissementRNCSGestionMorale from '@/components/etablissement/etablissementRNCS/EtablissementRNCSGestionMorale'
-import EtablissementRNCSActivity from '@/components/etablissement/etablissementRNCS/EtablissementRNCSActivity'
+import EtablissementRNCSRegistration from '@/components/etablissement/etablissementRNCS/EtablissementRNCSRegistration'
 import EtablissementRNCSObservations from '@/components/etablissement/etablissementRNCS/EtablissementRNCSObservations'
 
 export default {
@@ -25,7 +25,7 @@ export default {
     'EtablissementRncsIdentification': EtablissementRNCSIdentification,
     'EtablissementRncsGestionPhysique': EtablissementRNCSGestionPhysique,
     'EtablissementRncsGestionMorale': EtablissementRNCSGestionMorale,
-    'EtablissementRncsActivity': EtablissementRNCSActivity,
+    'EtablissementRncsRegistration': EtablissementRNCSRegistration,
     'EtablissementRncsObservations': EtablissementRNCSObservations,
   }
 }

@@ -23,6 +23,7 @@ exports[`SearchBar.vue snapshot Snapshot test 1`] = `
   </button>
    
   <ul
+    class="suggestions"
     style="display: none;"
   >
      
