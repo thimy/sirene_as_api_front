@@ -2,22 +2,20 @@
 
 exports[`EtablissementSireneContact.vue snapshot It match the snapshot 1`] = `
 <div
-  class="company__panel panel"
+  class="company__panel"
 >
   <h4>
     Contact
   </h4>
    
-  <hr />
-   
   <div
     class="company__item"
   >
-    <div
+    <label
       class="company__item-key"
     >
       Gérant
-    </div>
+    </label>
     <div
       class="company__item-value"
     >
@@ -28,11 +26,11 @@ exports[`EtablissementSireneContact.vue snapshot It match the snapshot 1`] = `
   <div
     class="company__item"
   >
-    <div
+    <label
       class="company__item-key"
     >
       Adresse
-    </div>
+    </label>
     <div
       class="company__item-value"
     >
@@ -43,11 +41,11 @@ exports[`EtablissementSireneContact.vue snapshot It match the snapshot 1`] = `
   <div
     class="company__item"
   >
-    <div
+    <label
       class="company__item-key"
     >
       Ville
-    </div>
+    </label>
     <div
       class="company__item-value"
     >
@@ -58,11 +56,11 @@ exports[`EtablissementSireneContact.vue snapshot It match the snapshot 1`] = `
   <div
     class="company__item"
   >
-    <div
+    <label
       class="company__item-key"
     >
       Cedex
-    </div>
+    </label>
     <div
       class="company__item-value"
     >
@@ -73,11 +71,11 @@ exports[`EtablissementSireneContact.vue snapshot It match the snapshot 1`] = `
   <div
     class="company__item"
   >
-    <div
+    <label
       class="company__item-key"
     >
       Date de création
-    </div>
+    </label>
     <div
       class="company__item-value"
     >
@@ -88,11 +86,11 @@ exports[`EtablissementSireneContact.vue snapshot It match the snapshot 1`] = `
   <div
     class="company__item"
   >
-    <div
+    <label
       class="company__item-key"
     >
       Téléphone
-    </div>
+    </label>
     <div
       class="company__item-value"
     >
@@ -103,11 +101,11 @@ exports[`EtablissementSireneContact.vue snapshot It match the snapshot 1`] = `
   <div
     class="company__item"
   >
-    <div
+    <label
       class="company__item-key"
     >
       Email
-    </div>
+    </label>
     <div
       class="company__item-value"
     >
@@ -118,11 +116,11 @@ exports[`EtablissementSireneContact.vue snapshot It match the snapshot 1`] = `
   <div
     class="company__item"
   >
-    <div
+    <label
       class="company__item-key"
     >
       Tranche d'effectif salariés
-    </div>
+    </label>
     <div
       class="company__item-value"
     >

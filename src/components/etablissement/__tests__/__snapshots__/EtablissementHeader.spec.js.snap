@@ -4,109 +4,75 @@ exports[`EtablissementHeader.vue Snapshot testing It match the snapshot 1`] = `
 <div
   class="company"
 >
-  <section
-    class="section-white"
+  <div
+    class="company__main"
   >
     <div
-      class="container"
+      class="title__block"
     >
+      <h2>
+         
+        <span
+          class="company__siren"
+        >
+          ()
+        </span>
+      </h2>
+       
+      <!---->
+       
       <div
-        class="title__block"
+        class="subtitle"
       >
-        <h2>
-           
-          <span
-            class="company__siren"
-          >
-            ()
-          </span>
-        </h2>
          
-        <!---->
-         
-        <div
-          class="subtitle"
-        >
-           
-        </div>
-         
-        <h4
-          class="second__subtitle"
-        >
-           
-        </h4>
-         
-        <!---->
       </div>
        
       <div
-        class="tabs"
+        class="second__subtitle"
       >
-        <div
-          class="tabs__pair"
-        >
-          <div
-            class="api api__sirene"
-          >
-            <h4>
-              Base SIRENE
-            </h4>
-             
-            <p>
-              Information disponible
-            </p>
-             
-            <p>
-              Dernière mise à jour : 
-            </p>
-          </div>
-           
-          <div
-            class="api api__unavailable"
-          >
-            <h4>
-              Base RNM
-            </h4>
-             
-            <p>
-              Information non trouvée
-            </p>
-          </div>
-        </div>
          
-        <div
-          class="tabs__pair"
-        >
-          <div
-            class="api api__rna"
-          >
-            <h4>
-              Base RNA
-            </h4>
-             
-            <p>
-              Information disponible
-            </p>
-             
-            <p>
-              Dernière mise à jour : 
-            </p>
-          </div>
-           
-          <div
-            class="api api__unavailable"
-          >
-            <h4>
-              Base RNCS
-            </h4>
-             
-            <p>
-              Information non trouvée
-            </p>
-          </div>
-        </div>
       </div>
+       
+      <!---->
+       
+      <etablissementsirenechildren-stub />
     </div>
-  </section>
+     
+    <etablissementmap-stub
+      etablissement="[object Object]"
+    />
+  </div>
+   
+  <div
+    class="tabs"
+  >
+    <div
+      class="api api__sirene"
+    >
+      <h4>
+        Base SIRENE
+      </h4>
+       
+      <p>
+        Information disponible
+      </p>
+       
+      <p>
+        Dernière mise à jour : 
+      </p>
+    </div>
+     
+    <div
+      class="api api__unavailable"
+    >
+      <h4>
+        Base RNCS
+      </h4>
+       
+      <p>
+        Information non trouvée
+      </p>
+    </div>
+  </div>
 </div>
 `;

@@ -2,7 +2,7 @@
 
 exports[`CodesNAF.vue snapshot testing It match the snapshot 1`] = `
 <section
-  class="section-white center"
+  class="section section-white center"
 >
   <div
     class="container"

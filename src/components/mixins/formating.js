@@ -76,6 +76,15 @@ function RNCSConcatAddress(infos) {
   return address
 }
 
+function RNCSConcatAddressDAP(infos) {
+  let address = concatIfExist('', infos.dap_adresse_code_postal, infos.dap_adresse_code_postal, '')
+  address = concatIfExist(address, (infos.dap_adresse_code_postal && infos.dap_adresse_ville), ', ', '')
+  address = concatIfExist(address, infos.dap_adresse_ville, `${Filters.filters.capitalize(infos.dap_adresse_ville)} `, ' ')
+  address = concatIfExist(address, infos.dap_adresse_pays, Filters.filters.upperCase(infos.dap_adresse_pays), '')
+
+  return address
+}
+
 export default {
   methods: {
     frenchNumberFormat,
@@ -86,6 +95,7 @@ export default {
     RNCSLastModification,
     RNCSConcatGreffe,
     RNCSConcatName,
-    RNCSConcatAddress
+    RNCSConcatAddress,
+    RNCSConcatAddressDAP
   }
 }
