@@ -135,6 +135,7 @@ export default {
   .company__main {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
   }
 
   #map {
@@ -196,7 +197,7 @@ export default {
   }
 
   .api + .api {
-    margin-left: 1em;
+    margin-left: 2em;
 
     @media screen and (max-width: $tablet) {
       margin-left: 0;

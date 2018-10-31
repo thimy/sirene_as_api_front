@@ -57,7 +57,7 @@ export default {
   #map {
     padding: 0;
     height: 350px;
-    min-width: 50%;
+    width: 50%;
   }
 
   .panel__message {
