@@ -81,24 +81,7 @@ exports[`App.vue It match the snapshot 1`] = `
         <ul
           class="suggestions"
           style="display: none;"
-        >
-           
-          <li
-            class="hidden suggestion__box"
-          />
-          <li
-            class="hidden suggestion__box"
-          />
-          <li
-            class="hidden suggestion__box"
-          />
-          <li
-            class="hidden suggestion__box"
-          />
-          <li
-            class="hidden suggestion__box"
-          />
-        </ul>
+        />
       </div>
        
       <!---->
