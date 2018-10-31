@@ -6,9 +6,9 @@
       <loader v-else-if="isEtablissementLoading" />
       <template v-else>
         <etablissement-header />
-        <etablissement-sirene v-if=haveSireneInfo />
+        <!-- <etablissement-sirene v-if=haveSireneInfo />
         <etablissement-rna v-if=haveRNAInfo :haveComponentTop=haveSireneInfo />
-        <etablissement-rnm v-if=haveRNMInfo />
+        <etablissement-rnm v-if=haveRNMInfo /> -->
         <etablissement-rncs v-if=haveRNCSInfo />
       </template>
     </div>
