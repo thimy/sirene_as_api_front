@@ -1,8 +1,8 @@
 <template>
-  <div v-if="RNCSObservations.length" class="company__panel panel" >
+  <div v-if="RNCSObservations.length" class="company__panel" >
     <h4>Observations</h4>
     <div class="comment" v-for="observation in RNCSObservations" :key="observation.id">
-      <div class="company__item"><div class="company__item-key">Date d'ajout</div><div class="company__item-value">{{ observation.date_ajout | ifExist }}</div></div>
+      <div class="company__item company__comment-date"><div class="company__item-key">Date d'ajout</div><div class="company__item-value">{{ observation.date_ajout | ifExist }}</div></div>
       <div class="company__item"><div class="company__item-key">Texte</div><div class="company__item-value">{{ observation.texte | ifExist }}</div></div>
     </div>
     <panel-no-results-rncs :ifNotPresent="RNCSObservations" />
@@ -32,7 +32,8 @@ export default {
   .comment {
     background-color: $color-lightest-grey;
     padding: 1em;
-    display: block;
+    display: flex;
+    flex-direction: row;
     width: 100%;
   }
 
@@ -40,4 +41,14 @@ export default {
     margin-top: 2em;
   } 
 
+  .company__comment-date {
+    margin-right: 1em;
+    flex: 0 0 content;
+  }
+
+  @media screen and (max-width: $tablet) {
+    .comment {
+      flex-direction: column;
+    }
+  }
 </style>
