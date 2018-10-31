@@ -4,10 +4,8 @@
       <etablissement-rncs-identification/>
       <etablissement-rncs-activity/>
     </div>
-    <div class="company-container">
-      <etablissement-rncs-gestion-physique/>
-      <etablissement-rncs-gestion-morale/>
-    </div>
+    <etablissement-rncs-gestion-physique/>
+    <etablissement-rncs-gestion-morale/>
     <div class="company-container">
       <etablissement-rncs-observations/>
     </div>
@@ -34,12 +32,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .panel + .panel {
+  .company-container .panel + .panel {
     margin-left: 2em;
   }
 
   @media (max-width: $tablet) {
-    .panel + .panel {
+    .company-container .panel + .panel {
       margin-left: 0;
     }
   }

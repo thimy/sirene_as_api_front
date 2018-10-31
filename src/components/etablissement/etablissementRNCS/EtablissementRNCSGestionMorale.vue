@@ -1,15 +1,19 @@
 <template>
   <div v-if="managersLegal.length" class="company__panel panel">
     <h4>Gestionnaires (Personnes morales)</h4>
-    <div v-for="manager in managersLegal" :key=manager.id>
-      <h5>{{ manager.qualite | capitalize }}</h5>
-      <panel-info-rncs :parent="manager" :elements=elementsToDisplay />
-      <div class="company__item-key">Adresse :</div>
-      <div class="company__item-value" v-if="manager.adresse_ligne_1">{{ manager.adresse_ligne_1 | ifExist }}</div>
-      <div class="company__item-value" v-if="manager.adresse_ligne_2">{{ manager.adresse_ligne_2 }}</div>
-      <div class="company__item-value" v-if="manager.adresse_ligne_3">{{ manager.adresse_ligne_3 }}</div>
-      <div class="company__item-value" v-if="manager.adresse_code_commune">Code Commune : {{ manager.adresse_code_commune }}</div>
-      <div class="company__item-value"> {{ RNCSConcatAddress(manager) }}</div>
+    <div class="company__managers">
+      <div v-for="manager in managersLegal" :key=manager.id>
+        <h5>{{ manager.qualite | capitalize }}</h5>
+        <panel-info-rncs :parent="manager" :elements=elementsToDisplay :inlineLabels="true" />
+        <div class="company__item-key">Adresse :</div>
+        <div class="company__item-value">
+          <div v-if="manager.adresse_ligne_1">{{ manager.adresse_ligne_1 | ifExist }}</div>
+          <div v-if="manager.adresse_ligne_2">{{ manager.adresse_ligne_2 }}</div>
+          <div v-if="manager.adresse_ligne_3">{{ manager.adresse_ligne_3 }}</div>
+          <div v-if="manager.adresse_code_commune">Code Commune : {{ manager.adresse_code_commune }}</div>
+          <div> {{ RNCSConcatAddress(manager) }}</div>
+        </div>
+      </div>
     </div>
     <panel-no-results-rncs :ifNotPresent="managersLegal" />
   </div>
@@ -39,21 +43,21 @@ export default {
       },
       elementsToDisplayRepresentant :
       {
-        "Représentant Permanent, Adresse Ligne 1": "representant_permanent_adresse_ligne_1",
-        "Représentant Permanent, Adresse Ligne 2": "representant_permanent_adresse_ligne_2",
-        "Représentant Permanent, Adresse Ligne 3": "representant_permanent_adresse_ligne_3",
-        "Représentant Permanent, Code Postal": "representant_permanent_adresse_code_postal",
-        "Représentant Permanent, Ville": "representant_permanent_adresse_ville",
-        "Représentant Permanent, Code Commune": "representant_permanent_adresse_code_commune",
-        "Représentant Permanent, Pays": "representant_permanent_adresse_pays",
-        "Représentant Permanent, Adresse Ligne 3": "representant_permanent_adresse_ligne_3",
-        "Représentant Permanent, Nom Patronyme": "representant_permanent_nom_patronyme",
-        "Représentant Permanent, Nom d'Usage": "representant_permanent_nom_usage",
-        "Représentant Permanent, Prénoms": "representant_permanent_prenoms",
-        "Représentant Permanent, Date Naissance": "representant_permanent_date_naissance",
-        "Représentant Permanent, Ville Naissance": "representant_permanent_ville_naissance",
-        "Représentant Permanent, Pays Naissance": "representant_permanent_pays_naissance",
-        "Représentant Permanent, Nationalité": "representant_permanent_nationalite"
+        "Représentant permanent, Adresse ligne 1": "representant_permanent_adresse_ligne_1",
+        "Représentant permanent, Adresse ligne 2": "representant_permanent_adresse_ligne_2",
+        "Représentant permanent, Adresse ligne 3": "representant_permanent_adresse_ligne_3",
+        "Représentant permanent, Code postal": "representant_permanent_adresse_code_postal",
+        "Représentant permanent, Ville": "representant_permanent_adresse_ville",
+        "Représentant permanent, Code commune": "representant_permanent_adresse_code_commune",
+        "Représentant permanent, Pays": "representant_permanent_adresse_pays",
+        "Représentant permanent, Adresse ligne 3": "representant_permanent_adresse_ligne_3",
+        "Représentant permanent, Nom": "representant_permanent_nom_patronyme",
+        "Représentant permanent, Nom d'usage": "representant_permanent_nom_usage",
+        "Représentant permanent, Prénoms": "representant_permanent_prenoms",
+        "Représentant permanent, Date de naissance": "representant_permanent_date_naissance",
+        "Représentant permanent, Ville de naissance": "representant_permanent_ville_naissance",
+        "Représentant permanent, Pays de naissance": "representant_permanent_pays_naissance",
+        "Représentant permanent, Nationalité": "representant_permanent_nationalite"
       }
     }
   },
