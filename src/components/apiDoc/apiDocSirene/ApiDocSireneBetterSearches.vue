@@ -51,7 +51,7 @@
           </table>
           <p>
             Ces options sont disponibles pour le moment uniquement sur la recherche Texte.<br>
-            Notre API est en constante évolution, n'hésitez pas à nous écrire pour demander davantage d'options correspondant à vos besoins !
+            L'API est en constante évolution, n'hésitez pas à nous écrire pour demander davantage d'options correspondant à vos besoins !
           </p>
         </div>
       </div>
