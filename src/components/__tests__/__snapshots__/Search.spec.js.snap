@@ -51,24 +51,7 @@ exports[`Search.vue snapshot It match the snapshot when there arent results 1`] 
       <ul
         class="suggestions"
         style="display: none;"
-      >
-         
-        <li
-          class="hidden suggestion__box"
-        />
-        <li
-          class="hidden suggestion__box"
-        />
-        <li
-          class="hidden suggestion__box"
-        />
-        <li
-          class="hidden suggestion__box"
-        />
-        <li
-          class="hidden suggestion__box"
-        />
-      </ul>
+      />
     </div>
      
     <!---->

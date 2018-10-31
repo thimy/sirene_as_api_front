@@ -10,6 +10,16 @@
           <div class="second__subtitle"> {{ resultSirene.libelle_activite_principale_entreprise }}</div>
         </template>
         <div v-if="haveOnlyRNAInfo" class="second__subtitle"> {{ resultRNA.titre_court}}</div>
+        <div class="company__buttons">
+          <button class="button" title="Télécharger les données de cette entreprise au format PDF">
+            <img class="icon" src="@/assets/img/download.svg" alt="" />
+            Version imprimable
+          </button>
+          <a class="button" target="_blank" :href=dataRequestURL title="Accéder aux données brutes de cette entreprise">
+            <img class="icon" src="@/assets/img/json.svg" alt="" />
+            Accéder aux données JSON
+          </a>
+        </div>
         <etablissement-sirene-children />
       </div>
       <etablissement-map v-if=haveSireneInfo :positionEtablissement='coordinates' :etablissement='this.resultSirene'/>
@@ -62,6 +72,7 @@ import EtablissementMap from '@/components/etablissement/EtablissementMap'
 
 export default {
   name: 'EtablissementHeader',
+  props: ['searchId'],
   components: {
     'EtablissementSireneChildren': EtablissementSireneChildren,
     'EtablissementMap': EtablissementMap
@@ -111,6 +122,9 @@ export default {
         return [this.resultSirene.longitude, this.resultSirene.latitude]
       }
       return null
+    },
+    dataRequestURL () {
+      return `${process.env.BASE_ADDRESS_RNCS}${this.resultSirene.siren}`
     }
   },
   mixins: [Filters]
@@ -134,6 +148,18 @@ export default {
 
     #map {
       margin-left: 0;
+    }
+  }
+
+  .company__buttons {
+    margin-top: 1.5em;
+
+    .button {
+      padding: 0.5em 1em 0.6em;
+      vertical-align: middle;
+      margin-left: 0;
+      margin-right: 1em;
+      margin-top: 0.5em;
     }
   }
 

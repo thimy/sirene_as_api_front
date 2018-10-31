@@ -5,7 +5,7 @@
       <not-found v-else-if="isNotFound" />
       <loader v-else-if="isEtablissementLoading" />
       <template v-else>
-        <etablissement-header />
+        <etablissement-header :searchId=searchId />
         <!-- <etablissement-sirene v-if=haveSireneInfo />
         <etablissement-rna v-if=haveRNAInfo :haveComponentTop=haveSireneInfo />
         <etablissement-rnm v-if=haveRNMInfo /> -->
@@ -44,6 +44,9 @@ export default {
     'EtablissementRncs': EtablissementRNCS
   },
   computed: {
+    searchId () {
+      return this.$route.params.searchId
+    },
     isEtablissementLoading () {
       return this.$store.getters.isEtablissementLoading
     },
