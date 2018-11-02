@@ -51,22 +51,6 @@ exports[`EtablissementHeader.vue Snapshot testing It match the snapshot 1`] = `
           Version imprimable
         
         </button>
-         
-        <a
-          class="button"
-          href="undefinedundefined"
-          target="_blank"
-          title="Accéder aux données brutes de cette entreprise"
-        >
-          <img
-            alt=""
-            class="icon"
-            src="@/assets/img/json.svg"
-          />
-          
-          Accéder aux données JSON
-        
-        </a>
       </div>
        
       <etablissementsirenechildren-stub />
@@ -75,38 +59,6 @@ exports[`EtablissementHeader.vue Snapshot testing It match the snapshot 1`] = `
     <etablissementmap-stub
       etablissement="[object Object]"
     />
-  </div>
-   
-  <div
-    class="tabs"
-  >
-    <div
-      class="api api__sirene"
-    >
-      <h4>
-        Base SIRENE
-      </h4>
-       
-      <p>
-        Information disponible
-      </p>
-       
-      <p>
-        Dernière mise à jour : 
-      </p>
-    </div>
-     
-    <div
-      class="api api__unavailable"
-    >
-      <h4>
-        Base RNCS
-      </h4>
-       
-      <p>
-        Information non trouvée
-      </p>
-    </div>
   </div>
 </div>
 `;
