@@ -10,6 +10,15 @@
         <etablissement-rna v-if=haveRNAInfo :haveComponentTop=haveSireneInfo />
         <etablissement-rnm v-if=haveRNMInfo /> -->
         <etablissement-rncs v-if=haveRNCSInfo />
+        <div class="company__extra">
+          <div class="notification">
+            <div>Ces informations sont issues du RNCS mis à jour le 2017-05-17.</div>
+            <a class="button-outline secondary" target="_blank" :href=dataRequestURL title="Accéder aux données brutes de cette entreprise">
+              <img class="icon" src="@/assets/img/json.svg" alt="" />
+              Accéder aux données JSON
+            </a>
+          </div>
+        </div>
       </template>
     </div>
   </section>
@@ -111,3 +120,30 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.notification {
+  border-color: $color-grey;
+  background-color: $color-lightest-grey;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  .button-outline {
+    flex-shrink: 0;
+    margin-left: 1em;
+  }
+}
+
+@media (max-width: $tablet) {
+  .notification {
+    flex-direction: column;
+
+    .button-outline {
+      margin-left: 0;
+      margin-top: 1em;
+    }
+  }
+}
+</style>

@@ -15,52 +15,10 @@
             <img class="icon" src="@/assets/img/download.svg" alt="" />
             Version imprimable
           </button>
-          <a class="button" target="_blank" :href=dataRequestURL title="Accéder aux données brutes de cette entreprise">
-            <img class="icon" src="@/assets/img/json.svg" alt="" />
-            Accéder aux données JSON
-          </a>
         </div>
         <etablissement-sirene-children />
       </div>
       <etablissement-map v-if=haveSireneInfo :positionEtablissement='coordinates' :etablissement='this.resultSirene'/>
-    </div>
-    <div class="tabs">
-      <div v-if="haveSireneInfo" class="api api__sirene">
-        <h4>Base SIRENE</h4>
-        <p>Information disponible</p>
-        <p>Dernière mise à jour : {{ this.lastUpdateSirene }}</p>
-      </div>
-      <div v-else class="api api__unavailable">
-        <h4>Base SIRENE</h4>
-        <p>Information non trouvée</p>
-      </div>
-      <!-- <div v-if="haveRNMInfo" class="api api__rnm">
-        <h4>Base RNM</h4>
-        <p>Information disponible</p>
-        <p>Dernière mise à jour : aujourd'hui</p>
-      </div>
-      <div v-else class="api api__unavailable">
-        <h4>Base RNM</h4>
-        <p>Information non trouvée</p>
-      </div>
-      <div v-if="haveRNAInfo" class="api api__rna">
-        <h4>Base RNA</h4>
-        <p>Information disponible</p>
-        <p>Dernière mise à jour : {{ this.lastUpdateRNA }}</p>
-      </div>
-      <div v-else class="api api__unavailable">
-        <h4>Base RNA</h4>
-        <p>Information non trouvée</p>
-      </div> -->
-      <div v-if="haveRNCSInfo" class="api api__rncs">
-        <h4>Base RNCS</h4>
-        <p>Information disponible</p>
-        <p>Dernière mise à jour : 2017-05-17</p>
-      </div>
-      <div v-else class="api api__unavailable">
-        <h4>Base RNCS</h4>
-        <p>Information non trouvée</p>
-      </div>
     </div>
   </div>
 </template>
@@ -95,26 +53,6 @@ export default {
     haveRNAInfo () {
       if (this.$store.getters.RNAAvailable) {
         return true
-      }
-    },
-    haveRNMInfo () {
-      if (this.$store.getters.RNMAvailable) {
-        return true
-      }
-    },
-    haveRNCSInfo () {
-      if (this.$store.getters.RNCSAvailable) {
-        return true
-      }
-    },
-    lastUpdateSirene () {
-      if (this.resultSirene.updated_at) {
-        return this.resultSirene.updated_at.substring(0, 10)
-      }
-    },
-    lastUpdateRNA () {
-      if (this.resultRNA.updated_at) {
-        return this.resultRNA.updated_at.substring(0, 10)
       }
     },
     coordinates () {
@@ -178,40 +116,6 @@ export default {
     }
 
     margin: 2em 0;
-  }
-
-  .api {
-    padding: 1em;
-    border: 1px solid $color-light-grey;
-    border-radius: 3px;
-    flex-grow: 1;
-
-    p {
-      margin: 0;
-    }
-
-    h4 {
-      margin-top: 0;
-      margin-bottom: 0.5em;
-    }
-  }
-
-  .api + .api {
-    margin-left: 2em;
-
-    @media screen and (max-width: $tablet) {
-      margin-left: 0;
-      margin-top: 1em;
-    }
-  }
-
-  .api__unavailable {
-    color: $color-darker-grey;
-    border: 1px solid $color-dark-grey;
-  }
-
-  .no_wrap {
-    white-space: nowrap;
   }
 
   .subtitle {
