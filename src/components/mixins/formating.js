@@ -19,9 +19,9 @@ function concatIfExist(base, thisExist, additionIfYes, additionIfNo) {
 
 function FixeOrVariable(letter) {
   if (letter == 'F') {
-    return 'capital fixe'
+    return 'Capital fixe'
   } else if (letter == 'V') {
-    return 'capital variable'
+    return 'Capital variable'
   }
   return letter
 }
@@ -36,10 +36,10 @@ function PrincipaleOrSecondaire(letter) {
 }
 
 function RNCSDeviseSentence (infos) {
-  let sentence = `Valeur : ${Filters.filters.ifExist(frenchNumberFormat(infos.capital))}`
+  let sentence = `${Filters.filters.ifExist(frenchNumberFormat(infos.capital))}`
 
+  sentence = concatIfExist(`${FixeOrVariable(infos.type_capital)} : `, infos.type_capital, sentence,'')
   sentence = concatIfExist(sentence, infos.devise, ` ${infos.devise}`,', de devise non précisée')
-  sentence = concatIfExist(sentence, infos.type_capital, ` (type: ${FixeOrVariable(infos.type_capital)})`,'')
   sentence = concatIfExist(sentence, infos.capital_actuel, `. Le capital actuel est de ${infos.capital_actuel}`,'')
 
   return sentence
@@ -69,8 +69,9 @@ function RNCSConcatName (person) {
 
 function RNCSConcatAddress(infos) {
   let address = concatIfExist('', infos.adresse_code_postal, infos.adresse_code_postal, '')
-  address = concatIfExist(address, (infos.adresse_code_postal && infos.adresse_ville), ', ', '')
+  address = concatIfExist(address, (infos.adresse_code_postal && infos.adresse_ville), ' ')
   address = concatIfExist(address, infos.adresse_ville, `${Filters.filters.capitalize(infos.adresse_ville)} `, ' ')
+  if (infos.adresse_pays && infos.adresse_pays.toLowerCase() !== 'france')
   address = concatIfExist(address, infos.adresse_pays, Filters.filters.upperCase(infos.adresse_pays), '')
 
   return address

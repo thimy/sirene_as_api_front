@@ -1,9 +1,13 @@
 <template>
   <div v-if="RNCSObservations.length" class="company__panel" >
     <h4>Observations</h4>
-    <div class="comment" v-for="observation in RNCSObservations" :key="observation.id">
-      <div class="company__item company__comment-date"><div class="company__item-key">Date d'ajout</div><div class="company__item-value">{{ observation.date_ajout | ifExist }}</div></div>
-      <div class="company__item"><div class="company__item-key">Texte</div><div class="company__item-value">{{ observation.texte | ifExist }}</div></div>
+    <div class="comment-header">
+      <div class="company__item company__comment-date"><div class="company__item-key">Date</div></div>
+      <div class="company__item"><div class="company__item-key">Observation</div></div>
+    </div>
+    <div class="comment" v-for="observation in RNCSObservations" :key="observation.id" v-if="observation.texte">
+      <div class="company__item company__comment-date"><div class="company__item-value">{{ observation.date_ajout }}</div></div>
+      <div class="company__item"><div class="company__item-value">{{ observation.texte }}</div></div>
     </div>
     <panel-no-results-rncs :ifNotPresent="RNCSObservations" />
   </div>
@@ -41,9 +45,15 @@ export default {
     margin-top: 2em;
   } 
 
+  .comment-header {
+    padding: 0 1em 0.5em;
+    display: flex;
+    flex-direction: row;
+  }
+
   .company__comment-date {
-    margin-right: 1em;
-    flex: 0 0 content;
+    margin-right: 2em;
+    flex: 0 0 100px;
   }
 
   @media screen and (max-width: $tablet) {

@@ -6,13 +6,12 @@
         <h5>{{ manager.qualite | capitalize }}</h5>
         <panel-info-rncs :parent="manager" :elements=elementsToDisplay :inlineLabels="true" />
         <div class="company__item-inline">
-          <div class="company__item-key">Adresse :</div>
+          <div class="company__item-key">Adresse</div>
           <div class="company__item-value">
             <div v-if="manager.adresse_ligne_1">{{ manager.adresse_ligne_1 | ifExist }}</div>
             <div v-if="manager.adresse_ligne_2">{{ manager.adresse_ligne_2 }}</div>
             <div v-if="manager.adresse_ligne_3">{{ manager.adresse_ligne_3 }}</div>
             <div> {{ RNCSConcatAddress(manager) }}</div>
-            <div v-if="manager.adresse_code_commune">Code Commune {{ manager.adresse_code_commune }}</div>
           </div>
         </div>
       </div>

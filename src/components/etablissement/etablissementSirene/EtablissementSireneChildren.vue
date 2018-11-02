@@ -8,7 +8,7 @@
     </div>
     <div v-if="haveChildrenEtablissements" class="company__item">
       <div class="company__children-summary">
-        Il existe {{ totalResultsOtherSirens }} {{ `établissement` | pluralizeDependingOn(this.totalResultsOtherSirens) }} {{ `enfant` | pluralizeDependingOn(this.totalResultsOtherSirens) }}<template v-if="thereAreMoreThanMaxChildren">
+        Cette entreprise possède {{ totalResultsOtherSirens }} {{ `établissement` | pluralizeDependingOn(this.totalResultsOtherSirens) }}<template v-if="thereAreMoreThanMaxChildren">
         ({{ maxChildrenEtablissements }} {{ `affiché` | pluralizeDependingOn(this.maxChildrenEtablissements) }})</template> :
         <template v-if="thereAreMoreThanMaxChildren">
           <div class="company__item-link" v-show="!visibleChildren" @click="showAllChildren">Afficher la totalité</div>

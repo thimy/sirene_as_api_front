@@ -2,15 +2,14 @@
   <div class="company__panel panel">
     <h4>Informations d'immatriculation et d'activité</h4>
     <div class="company__item">
-      <div class="company__item-key">Greffe :</div>
+    <div class="company__item">
+      <div class="company__item-key">Type d'inscription</div>
+      <div class="company__item-value"> {{ PrincipaleOrSecondaire(this.RNCSData.type_inscription) }}</div>
+    </div>
+      <div class="company__item-key">Greffe</div>
       <div class="company__item-value"> {{ RNCSConcatGreffe(this.RNCSData) }}</div>
     </div>
     <panel-info-rncs :parent=RNCSData :elements=this.elementsToDisplay1 />
-    <div class="company__item">
-      <div class="company__item-key">Type D'inscription :</div>
-      <div class="company__item-value"> {{ PrincipaleOrSecondaire(this.RNCSData.type_inscription) }}</div>
-    </div>
-    <panel-info-inline-rncs class="company__item" :parent=RNCSData :elements=this.elementsToDisplay2 />
     <div class="company__item" v-if="haveRNCSPhysicalDAP">
       <div class="company__item-key">Déclaration d'attribution de Patrimoine :</div>
       <div class="company__item-value">{{ RNCSPhysical.dap }}</div>
@@ -45,10 +44,7 @@ export default {
     return {
       elementsToDisplay1:
       {
-        "SIREN": "siren",
-        "Numero Gestion Greffe": "numero_gestion"
-      },
-      elementsToDisplay2: {
+        "Numero Gestion Greffe": "numero_gestion",
         "Date de clotûre": "date_cloture",
         "Date de clotûre exceptionnelle": "date_cloture_exeptionnelle",
         "Durée personne morale": "duree_pm",
