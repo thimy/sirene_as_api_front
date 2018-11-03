@@ -15,7 +15,7 @@
           v-for="(suggestion, index) in suggestions"
           :key="index"
           v-bind:class="{'active': suggestActive(index)}"
-          @click="suggestSelectAndEnter(index)">
+          @mousedown="suggestSelectAndEnter(index)">
         <span>{{ suggestion | capitalize | removeExtraChars}}</span>
       </li>
     </ul>

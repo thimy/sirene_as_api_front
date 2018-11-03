@@ -1,8 +1,8 @@
 <template>
   <section class="section">
     <div class="container">
-      <server-error v-if="isError" />
-      <not-found v-else-if="isNotFound" />
+      <not-found v-if="isNotFound" />
+      <server-error v-else-if="isError" />
       <loader v-else-if="isEtablissementLoading" />
       <template v-else>
         <etablissement-header :searchId=searchId />

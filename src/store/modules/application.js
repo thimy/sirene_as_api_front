@@ -39,8 +39,8 @@ const getters = {
     return false
   },
   mainAPIError: () => {
-    return (state.status['RNA'] == 0 || state.status['RNA'] == 500)
-      && (state.status['SIRENE'] == 0 || state.status['SIRENE'] == 500)
+    return (state.status['RNA'] == 0 || state.status['RNA'] == 500 || state.status['RNA'] == 404)
+      && (state.status['SIRENE'] == 0 || state.status['SIRENE'] == 500 || state.status['SIRENE'] == 404)
   },
   mainAPINotFound: () => {
     return (state.status['RNA'] == 404 && state.status['SIRENE'] == 404)
