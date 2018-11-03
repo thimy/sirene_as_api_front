@@ -94,7 +94,10 @@ export default {
       return null
     },
     dataRequestURL () {
-      return `${process.env.BASE_ADDRESS_RNCS}${this.resultSirene.siren}`
+      if (this.resultSirene) {
+        return `${process.env.BASE_ADDRESS_RNCS}${this.resultSirene.siren}`
+      }
+      return null
     }
   },
   methods: {

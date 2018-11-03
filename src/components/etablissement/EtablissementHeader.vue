@@ -65,7 +65,10 @@ export default {
       return null
     },
     dataRequestPDF () {
-      return `${process.env.BASE_ADDRESS_RNCS}${this.resultSirene.siren}/pdf`
+      if (this.resultSirene) {
+        return `${process.env.BASE_ADDRESS_RNCS}${this.resultSirene.siren}/pdf`
+      }
+      return null
     }
   },
   mixins: [Filters]
