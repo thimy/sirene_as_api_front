@@ -6,7 +6,6 @@ module.exports = {
   BASE_ADDRESS_SIRENE_SIRET: '"https://entreprise.data.gouv.fr/api/sirene/v1/siret/"',
   BASE_ADDRESS_SIRENE_SIREN: '"https://entreprise.data.gouv.fr/api/sirene/v2/siren/"',
   BASE_ADDRESS_SIRENE_SUGGESTIONS: '"https://entreprise.data.gouv.fr/api/sirene/v1/suggest/"',
-  BASE_ADDRESS_SIRENE_NEAR_ETABLISSEMENT: '"https://entreprise.data.gouv.fr/api/sirene/v1/near_etablissement_geojson/"',
   BASE_ADDRESS_SIRENE_ID_ASSOCIATION: '"https://entreprise.data.gouv.fr/api/sirene/v1/rna/"',
 
   BASE_ADDRESS_RNA_FULLTEXT: '"https://entreprise.data.gouv.fr/api/rna/v1/full_text/"',
