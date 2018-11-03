@@ -63,9 +63,6 @@ export default {
         return [this.resultSirene.longitude, this.resultSirene.latitude]
       }
       return null
-    },
-    dataRequestURL () {
-      return `${process.env.BASE_ADDRESS_RNCS}${this.resultSirene.siren}`
     }
   },
   mixins: [Filters]

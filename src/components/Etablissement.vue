@@ -13,7 +13,7 @@
         <div class="company__extra">
           <div class="notification">
             <div>Ces informations sont issues du RNCS mis à jour le 2017-05-17.</div>
-            <a class="button-outline secondary" target="_blank" :href=dataRequestURL title="Accéder aux données brutes de cette entreprise">
+            <a class="button-outline secondary" target="_blank" v-bind:href="dataRequestURL" title="Accéder aux données brutes de cette entreprise">
               <img class="icon" src="@/assets/img/json.svg" alt="" />
               Accéder aux données JSON
             </a>
@@ -92,6 +92,9 @@ export default {
         return this.$store.getters.singlePageEtablissementSirene
       }
       return null
+    },
+    dataRequestURL () {
+      return `${process.env.BASE_ADDRESS_RNCS}${this.resultSirene.siren}`
     }
   },
   methods: {
