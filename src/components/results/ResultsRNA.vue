@@ -47,7 +47,7 @@ export default {
       if (this.numberResults === undefined) {
         return ''
       }
-      const numberResultsFormatted = Formating.methods.frenchNumberFormat(this.numberResults)
+      const numberResultsFormatted = Filters.filters.frenchNumberFormat(this.numberResults)
       return `${numberResultsFormatted} résultats pour "${this.$store.state.searchFullText.storedLastFullText}" dans la base RNA des associations`
     }
   },

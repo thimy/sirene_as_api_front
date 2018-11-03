@@ -1,10 +1,6 @@
 import Greffes from '@/assets/fixtures/codesGreffes.json'
 import Filters from '@/components/mixins/filters.js'
 
-function frenchNumberFormat(input) {
-  return new Intl.NumberFormat('fr-FR').format(input)
-}
-
 function nameFromCodeGreffe(code) {
   return Greffes.listeGreffes[code]
 }
@@ -36,7 +32,7 @@ function PrincipaleOrSecondaire(letter) {
 }
 
 function RNCSDeviseSentence (infos) {
-  let sentence = `${Filters.filters.ifExist(frenchNumberFormat(infos.capital))}`
+  let sentence = `${Filters.filters.ifExist(Filters.filters.frenchNumberFormat(infos.capital))}`
 
   sentence = concatIfExist(`${FixeOrVariable(infos.type_capital)} : `, infos.type_capital, sentence,'')
   sentence = concatIfExist(sentence, infos.devise, ` ${infos.devise}`,', de devise non précisée')
@@ -89,7 +85,6 @@ function RNCSConcatAddressDAP(infos) {
 
 export default {
   methods: {
-    frenchNumberFormat,
     nameFromCodeGreffe,
     concatIfExist,
     PrincipaleOrSecondaire,

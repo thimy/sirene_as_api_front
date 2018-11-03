@@ -44,8 +44,9 @@ exports[`EtablissementHeader.vue Snapshot testing It match the snapshot 1`] = `
       <div
         class="company__buttons"
       >
-        <button
+        <a
           class="button"
+          href="undefinedundefined/pdf"
           title="Télécharger les données de cette entreprise au format PDF"
         >
           <img
@@ -56,7 +57,7 @@ exports[`EtablissementHeader.vue Snapshot testing It match the snapshot 1`] = `
           
           Version imprimable
         
-        </button>
+        </a>
       </div>
        
       <etablissementsirenechildren-stub />
