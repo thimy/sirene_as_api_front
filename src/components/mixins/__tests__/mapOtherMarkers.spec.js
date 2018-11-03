@@ -13,14 +13,14 @@ jest.mock('vue', () => ({
 
 describe('mapOtherMarkers.js', () => {
   test('Method nearEtablissementQuery compute the right query', () => {
-    mapOtherMarkers.methods.baseAdressNearEtablissement = 'https://test/v1/near_etablissement_geojson/'
-    expect(mapOtherMarkers.methods.nearEtablissementQuery('sampleSiret')).toEqual(
-      'https://test/v1/near_etablissement_geojson/sampleSiret?only_same_activity=true'
+    mapOtherMarkers.methods.baseAdressSiren = 'https://test/v1/'
+    expect(mapOtherMarkers.methods.nearEtablissementQuery('sampleSiren')).toEqual(
+      'https://test/v1/sampleSiren/etablissements_geojson'
   )})
 
   test('Method getMarkersData gets the right query', () => {
-    mapOtherMarkers.methods.getMarkersData('sampleSiret')
+    mapOtherMarkers.methods.getMarkersData('sampleSiren')
     expect(Vue.http.get).toHaveBeenCalledWith(
-      'https://test/v1/near_etablissement_geojson/sampleSiret?only_same_activity=true'
+      'https://test/v1/sampleSiren/etablissements_geojson'
   )})
 })

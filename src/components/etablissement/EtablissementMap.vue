@@ -38,7 +38,7 @@ export default {
     initMap: async function (json) {
       let map = await new mapboxgl.Map(this.mapOptions(json))
       // addOtherMarkets first so the etablissement marker will be on top
-      this.addOtherMarkers(map, this.etablissement.siret)
+      this.addOtherMarkers(map, this.$store.getters.singlePageEtablissementSirene.siren)
       this.addEtablissementMarker(map)
       mapOtherMarkers.methods.addPopupContent(this.etablissementPopup, this.etablissement)
     },
