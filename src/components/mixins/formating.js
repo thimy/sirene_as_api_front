@@ -69,10 +69,11 @@ function RNCSConcatName (person) {
 
 function RNCSConcatAddress(infos) {
   let address = concatIfExist('', infos.adresse_code_postal, infos.adresse_code_postal, '')
-  address = concatIfExist(address, (infos.adresse_code_postal && infos.adresse_ville), ' ')
+  address = concatIfExist(address, (infos.adresse_code_postal && infos.adresse_ville), ' ', '')
   address = concatIfExist(address, infos.adresse_ville, `${Filters.filters.capitalize(infos.adresse_ville)} `, ' ')
-  if (infos.adresse_pays && infos.adresse_pays.toLowerCase() !== 'france')
-  address = concatIfExist(address, infos.adresse_pays, Filters.filters.upperCase(infos.adresse_pays), '')
+  if (infos.adresse_pays && infos.adresse_pays.toLowerCase() !== 'france') {
+    address = concatIfExist(address, infos.adresse_pays, Filters.filters.upperCase(infos.adresse_pays), '')
+  }
 
   return address
 }
