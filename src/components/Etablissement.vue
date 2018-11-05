@@ -3,13 +3,15 @@
     <div class="container">
       <not-found v-if="isNotFound" />
       <server-error v-else-if="isError" />
-      <loader v-else-if="isEtablissementLoading" />
       <template v-else>
         <etablissement-header :searchId=searchId />
-        <!-- <etablissement-sirene v-if=haveSireneInfo />
-        <etablissement-rna v-if=haveRNAInfo :haveComponentTop=haveSireneInfo />
-        <etablissement-rnm v-if=haveRNMInfo /> -->
-        <etablissement-rncs v-if=haveRNCSInfo />
+        <blocks-skeleton v-if="!haveRNCSInfo"></blocks-skeleton>
+        <template v-else>
+          <!-- <etablissement-sirene v-if=haveSireneInfo />
+          <etablissement-rna v-if=haveRNAInfo :haveComponentTop=haveSireneInfo />
+          <etablissement-rnm v-if=haveRNMInfo /> -->
+          <etablissement-rncs v-if=haveRNCSInfo />
+        </template>
         <div v-if=haveRNCSInfo class="company__extra">
           <div class="notification">
             <div>Ces informations sont issues du RNCS mis à jour le {{ RNCSUpdate }}.</div>
@@ -36,6 +38,8 @@ import EtablissementRNA from '@/components/etablissement/EtablissementRNA'
 import EtablissementRNM from '@/components/etablissement/EtablissementRNM'
 import EtablissementRNCS from '@/components/etablissement/EtablissementRNCS'
 
+import BlocksSkeleton from '@/components/etablissement/skeletons/BlocksSkeleton'
+
 export default {
   name: 'Etablissement',
   metaInfo () {
@@ -51,7 +55,8 @@ export default {
     'EtablissementSirene': EtablissementSirene,
     'EtablissementRna': EtablissementRNA,
     'EtablissementRnm': EtablissementRNM,
-    'EtablissementRncs': EtablissementRNCS
+    'EtablissementRncs': EtablissementRNCS,
+    'BlocksSkeleton': BlocksSkeleton
   },
   computed: {
     searchId () {
@@ -159,5 +164,9 @@ export default {
       margin-top: 1em;
     }
   }
+}
+
+.company__extra {
+  margin-top: 2em;
 }
 </style>
