@@ -12,7 +12,7 @@
         </router-link>
       </li>
     </ul>
-    <p v-if="showNoResultMessage">Aucun résultat trouvé</p>
+    <h4 v-if="!result">Aucun résultat trouvé.</h4>
   </div>
 </template>
 
@@ -45,9 +45,6 @@ export default {
     },
     numberResults () {
       return this.$store.getters.numberResultsFullTextSirene
-    },
-    showNoResultMessage () {
-      return this.numberResults === 0
     },
     resultsNumberSentence () {
       if (this.numberResults === undefined) {

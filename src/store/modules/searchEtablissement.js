@@ -31,7 +31,7 @@ const actions = {
         await store.dispatch('searchEtablissementFromIdAssociation', searchId)
         break
       default:
-        store.commit('setNoResultFound', { value: true, api: 'ALL' })
+        store.commit('setNoResultFound', 'ALL')
     }
     store.commit('setLoading', { value: false, search: 'ALL' })
   },

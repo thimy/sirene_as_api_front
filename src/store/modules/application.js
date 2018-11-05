@@ -46,6 +46,9 @@ const getters = {
   mainAPINotFound: () => {
     return (state.status['RNA'] == 404 && state.status['SIRENE'] == 404)
   },
+  FullTextMainAPINotFound: () => {
+    return (state.status['RNA_FULLTEXT'] == 404 && state.status['SIRENE_FULLTEXT'] == 404)
+  },
   isWelcomeTextVisible: () => {
     if (store.state.route.name != 'Home') {
       return false
@@ -85,6 +88,16 @@ const mutations = {
       }
     } else {
       state.status[api] = null
+    }
+  },
+  setNoResultFound (state, api) {
+    if (api == 'ALL') {
+      state.status = {
+        'RNA': 404,
+        'SIRENE': 404
+      }
+    } else {
+      state.status[api] = 404
     }
   }
 }
