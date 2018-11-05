@@ -10,7 +10,7 @@
         <etablissement-rna v-if=haveRNAInfo :haveComponentTop=haveSireneInfo />
         <etablissement-rnm v-if=haveRNMInfo /> -->
         <etablissement-rncs v-if=haveRNCSInfo />
-        <div class="company__extra">
+        <div v-if=haveRNCSInfo class="company__extra">
           <div class="notification">
             <div>Ces informations sont issues du RNCS mis à jour le {{ RNCSUpdate }}.</div>
             <a class="button-outline secondary" target="_blank" v-bind:href="dataRequestURL" title="Accéder aux données brutes de cette entreprise">
