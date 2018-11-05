@@ -7,64 +7,10 @@ exports[`EtablissementHeader.vue Snapshot testing It match the snapshot 1`] = `
   <div
     class="company__main"
   >
-    <div
-      class="title__block"
-    >
-      <h2>
-         
-        <span
-          class="company__siren"
-        >
-          ()
-        </span>
-      </h2>
-       
-      <!---->
-       
-      <div
-        class="subtitle"
-      >
-        <div>
-          
-        </div>
-         
-        <div>
-          
-        </div>
-      </div>
-       
-      <div
-        class="second__subtitle"
-      >
-         
-      </div>
-       
-      <!---->
-       
-      <div
-        class="company__buttons"
-      >
-        <a
-          class="button"
-          href="undefinedundefined/pdf"
-          title="Télécharger les données de cette entreprise au format PDF"
-        >
-          <img
-            alt=""
-            class="icon"
-            src="@/assets/img/download.svg"
-          />
-          
-          Version imprimable
-        
-        </a>
-      </div>
-       
-      <etablissementsirenechildren-stub />
-    </div>
+    <headerskeleton-stub />
      
-    <etablissementmap-stub
-      etablissement="[object Object]"
+    <div
+      class="map__dummy panel"
     />
   </div>
 </div>
