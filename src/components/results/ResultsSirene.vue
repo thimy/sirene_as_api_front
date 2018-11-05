@@ -4,8 +4,8 @@
     <did-you-mean :api=api></did-you-mean>
     <results-skeleton v-if="resultsAreLoading"></results-skeleton>
     <ul v-else>
-      <li v-for="result in storedResultsEntreprises" :key="result.siret" class="panel">
-        <router-link class="no_base_style" :to="{ name: 'Etablissement', params: {searchId: result['siret']}}">
+      <li v-for="result in storedResultsEntreprises" :key="result.siret">
+        <router-link class="panel" :to="{ name: 'Etablissement', params: {searchId: result['siret']}}">
           <h4 class="title">{{result['nom_raison_sociale'] | capitalize | removeExtraChars}}</h4>
           <p>{{result['libelle_activite_principale_entreprise']}}</p>
           <p>{{result['code_postal']}} {{result['libelle_commune'] | capitalize}}</p>
@@ -74,7 +74,8 @@ export default {
     font-family: "Evolventa", "Trebuchet MS", sans-serif;
   }
 
-  .no_base_style {
+  .panel {
+    display: block;
     text-decoration: none;
     color: $color-black;
   }
@@ -91,6 +92,10 @@ export default {
     li:hover {
       background-color: $color-lightest-grey;
     }
+  }
+
+  li + li {
+    margin-top: 2em;
   }
 </style>
 
