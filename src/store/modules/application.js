@@ -44,7 +44,12 @@ const getters = {
       && (state.status['SIRENE'] == 0 || state.status['SIRENE'] == 500 || state.status['SIRENE'] == 404)
   },
   mainAPINotFound: () => {
-    return (state.status['RNA'] == 404 && state.status['SIRENE'] == 404)
+    // RNA Deactivated, TODO: reactivate post demo
+    // return (state.status['RNA'] == 404 && state.status['SIRENE'] == 404)
+    return (state.status['SIRENE'] == 404)
+  },
+  FullTextMainAPINotFound: () => {
+    return (state.status['RNA_FULLTEXT'] == 404 && state.status['SIRENE_FULLTEXT'] == 404)
   },
   isWelcomeTextVisible: () => {
     if (store.state.route.name != 'Home') {
@@ -85,6 +90,16 @@ const mutations = {
       }
     } else {
       state.status[api] = null
+    }
+  },
+  setNoResultFound (state, api) {
+    if (api == 'ALL') {
+      state.status = {
+        'RNA': 404,
+        'SIRENE': 404
+      }
+    } else {
+      state.status[api] = 404
     }
   }
 }
