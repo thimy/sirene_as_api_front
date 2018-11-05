@@ -2,7 +2,7 @@
   <ul>
     <li class="panel">
       <div class="glow"></div>
-      <h2 class="loading"></h2>
+      <h4 class="loading"></h4>
       <div class="text__long loading"></div>
       <div class="text__medium loading"></div>
     </li>
@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-h2.loading {
+h4.loading {
   margin: 0;
   width: 300px
 }

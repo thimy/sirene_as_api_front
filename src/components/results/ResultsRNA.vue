@@ -3,8 +3,8 @@
     <h3>{{resultsNumberSentence}}</h3>
     <did-you-mean :api=api></did-you-mean>
     <ul>
-      <li v-for="result in storedResultsAssociations" :key="result.id" class="panel">
-        <router-link tag="a" class="no_base_style" :to="{ name: 'Etablissement', params: {searchId: result['id_association']}}">
+      <li v-for="result in storedResultsAssociations" :key="result.id">
+        <router-link class="panel" :to="{ name: 'Etablissement', params: {searchId: result['id_association']}}">
           <h4 class="title">{{result['titre'] | capitalize }}</h4>
           <p>{{ result['objet'] | truncate }}</p>
           <p>{{result['adresse_code_postal']}} {{result['adresse_libelle_commune'] | capitalize}}</p>
@@ -56,9 +56,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .no_base_style {
+  .panel {
     text-decoration: none;
     color: $color-black;
+    display: block;
   }
 
   p {
@@ -73,6 +74,10 @@ export default {
     li:hover {
       background-color: $color-lightest-grey;
     }
+  }
+
+  li + li {
+    margin-top: 2em;
   }
 </style>
 
