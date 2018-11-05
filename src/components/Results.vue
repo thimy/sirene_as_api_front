@@ -1,8 +1,7 @@
 <template>
   <section class="section">
     <div class="container">
-      <loader v-if="resultsAreLoading"></loader>
-      <server-error v-else-if="serverError"></server-error>
+      <server-error v-if="serverError"></server-error>
       <template v-else>
         <results-sirene />
         <!-- <results-rna /> -->

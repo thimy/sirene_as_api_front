@@ -1,7 +1,8 @@
 <template>
   <div class="company">
     <div class="company__main">
-      <div class="title__block">
+      <header-skeleton v-if="isEtablissementLoading"></header-skeleton>
+      <div class="title__block" v-else>
         <h2 v-if="haveSireneInfo">{{resultSirene.nom_raison_sociale | removeExtraChars}} <span class="company__siren">({{ resultSirene.siren }})</span></h2>
         <h2 v-if="haveOnlyRNAInfo">{{resultRNA.titre}} <span class="association__id">({{ resultRNA.id_association }})</span></h2>
 
@@ -21,7 +22,10 @@
         </div>
         <etablissement-sirene-children />
       </div>
-      <etablissement-map v-if=haveSireneInfo :positionEtablissement='coordinates' :etablissement='this.resultSirene'/>
+      <div class="map__dummy panel" v-if="isEtablissementLoading"></div>
+      <template v-else>
+        <etablissement-map v-if=haveSireneInfo :positionEtablissement='coordinates' :etablissement='this.resultSirene'/>
+      </template>
     </div>
   </div>
 </template>
@@ -30,15 +34,20 @@
 import Filters from '@/components/mixins/filters.js'
 import EtablissementSireneChildren from '@/components/etablissement/etablissementSirene/EtablissementSireneChildren'
 import EtablissementMap from '@/components/etablissement/EtablissementMap'
+import HeaderSkeleton from '@/components/etablissement/skeletons/HeaderSkeleton'
 
 export default {
   name: 'EtablissementHeader',
   props: ['searchId'],
   components: {
     'EtablissementSireneChildren': EtablissementSireneChildren,
-    'EtablissementMap': EtablissementMap
+    'EtablissementMap': EtablissementMap,
+    'HeaderSkeleton': HeaderSkeleton
   },
   computed: {
+    isEtablissementLoading () {
+      return this.$store.getters.isEtablissementLoading
+    },
     resultSirene () {
       return this.$store.getters.singlePageEtablissementSirene
     },
@@ -103,8 +112,6 @@ export default {
       padding: 0.5em 1em 0.6em;
       vertical-align: middle;
       margin-left: 0;
-      margin-right: 1em;
-      margin-top: 0.5em;
     }
   }
 
@@ -112,29 +119,22 @@ export default {
     margin: 0;
   }
 
-  .tabs {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-
-    @media screen and (max-width: $tablet) {
-      flex-direction: column;
-    }
-
-    margin: 2em 0;
-  }
-
   .subtitle {
     font-size: 1.25em;
   }
 
   .second__subtitle {
-    margin-top: 1em;
+    margin-top: 0.5em;
   }
 
   .company__siren,
   .second__subtitle {
     color: $color-darker-grey;
+  }
 
+  .map__dummy {
+    height: 350px;
+    width: 48%;
+    background-color: #f2eae2;
   }
 </style>
