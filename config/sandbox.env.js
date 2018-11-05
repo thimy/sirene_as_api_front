@@ -12,6 +12,6 @@ module.exports = {
   BASE_ADDRESS_RNA_SIRET: '"https://sandbox.entreprise.data.gouv.fr/api/rna/v1/siret/"',
   BASE_ADDRESS_RNA_ID_ASSOCIATION: '"https://sandbox.entreprise.data.gouv.fr/api/rna/v1/id/"',
 
-  BASE_ADDRESS_RNCS: '"https://sandbox2.sirene.entreprise.api.gouv.fr/rncs/api/infos_identite_entreprise/"',
+  BASE_ADDRESS_RNCS: '"https://sandbox2.entreprise.data.gouv.fr/api/rncs/infos_identite_entreprise"',
   BASE_ADDRESS_RNM: '"https://api-rnm.artisanat.fr/api/entreprise/"'
 }
