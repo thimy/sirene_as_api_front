@@ -14,10 +14,10 @@
         </template>
         <div v-if="haveOnlyRNAInfo" class="second__subtitle"> {{ resultRNA.titre_court}}</div>
         <div class="company__buttons">
-          <button class="button" title="Télécharger les données de cette entreprise au format PDF">
+          <a class="button" v-bind:href="dataRequestPDF" title="Télécharger les données de cette entreprise au format PDF">
             <img class="icon" src="@/assets/img/download.svg" alt="" />
             Version imprimable
-          </button>
+          </a>
         </div>
         <etablissement-sirene-children />
       </div>
@@ -64,8 +64,11 @@ export default {
       }
       return null
     },
-    dataRequestURL () {
-      return `${process.env.BASE_ADDRESS_RNCS}${this.resultSirene.siren}`
+    dataRequestPDF () {
+      if (this.resultSirene) {
+        return `${process.env.BASE_ADDRESS_RNCS}${this.resultSirene.siren}/pdf`
+      }
+      return null
     }
   },
   mixins: [Filters]

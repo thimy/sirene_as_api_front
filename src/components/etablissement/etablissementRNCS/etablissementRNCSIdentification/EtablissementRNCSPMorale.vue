@@ -6,7 +6,6 @@
       <div class="company__item-key">Informations capital</div>
       <div class="company__item-value"> {{ RNCSDeviseSentence(this.RNCSLegal) }}</div>
     </div>
-    <panel-info-inline-rncs class="company__item" :parent=RNCSLegal :elements=this.elementsToDisplay2 />
   </div>
 </template>
 

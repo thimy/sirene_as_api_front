@@ -47,7 +47,7 @@ export default {
       if (this.numberResults === undefined) {
         return ''
       }
-      const numberResultsFormatted = Formating.methods.frenchNumberFormat(this.numberResults)
+      const numberResultsFormatted = Filters.filters.frenchNumberFormat(this.numberResults)
       const resultText = numberResultsFormatted > 1 ? 'résultats' : 'résultat'
       return `${numberResultsFormatted} ${resultText} pour "${this.$store.state.searchFullText.storedLastFullText}" dans la base SIRENE des entreprises`
     }

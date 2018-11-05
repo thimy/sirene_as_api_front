@@ -12,8 +12,8 @@
         <etablissement-rncs v-if=haveRNCSInfo />
         <div class="company__extra">
           <div class="notification">
-            <div>Ces informations sont issues du RNCS mis à jour le 2017-05-17.</div>
-            <a class="button-outline secondary" target="_blank" :href=dataRequestURL title="Accéder aux données brutes de cette entreprise">
+            <div>Ces informations sont issues du RNCS mis à jour le {{ RNCSUpdate }}.</div>
+            <a class="button-outline secondary" target="_blank" v-bind:href="dataRequestURL" title="Accéder aux données brutes de cette entreprise">
               <img class="icon" src="@/assets/img/json.svg" alt="" />
               Accéder aux données JSON
             </a>
@@ -26,6 +26,7 @@
 
 <script>
 import Filters from '@/components/mixins/filters'
+import Formating from '@/components/mixins/formating'
 import Loader from '@/components/modules/Loader'
 import ServerError from '@/components/modules/ServerError'
 import NotFound from '@/components/etablissement/EtablissementNotFound'
@@ -92,6 +93,19 @@ export default {
         return this.$store.getters.singlePageEtablissementSirene
       }
       return null
+    },
+    dataRequestURL () {
+      if (this.resultSirene) {
+        return `${process.env.BASE_ADDRESS_RNCS}${this.resultSirene.siren}`
+      }
+      return null
+    },
+    RNCSUpdate () {
+      if (this.$store.getters.RNCSData) {
+        const date = this.$store.getters.RNCSData.updated_at.substring(0, 10)
+        return this.$store.getters.RNCSData.updated_at.substring(0, 10)
+      }
+      return null
     }
   },
   methods: {
@@ -112,7 +126,7 @@ export default {
     this.$store.commit('clearSirenResults')
     this.$store.dispatch('executeSearchEtablissement', this.$route.params.searchId)
   },
-  mixins: [Filters],
+  mixins: [Filters, Formating],
   watch: {
     '$route' (to, from) {
       this.$store.dispatch('executeSearchEtablissement', this.$route.params.searchId)

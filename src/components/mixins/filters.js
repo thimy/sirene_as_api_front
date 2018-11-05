@@ -39,12 +39,15 @@ export default {
       } else {
         return string
       }
-    }
-  },
-  methods: {
+    },
     frenchNumberFormat: function(input) {
       return new Intl.NumberFormat('fr-FR').format(input)
     },
+    frenchDateFormat: function(input) {
+      return new Intl.DateTimeFormat('en-GB').format(new Date(input))
+    },
+  },
+  methods: {
     concatIfExist(base, addition) {
       if (addition) {
         return base.concat(' ', addition)

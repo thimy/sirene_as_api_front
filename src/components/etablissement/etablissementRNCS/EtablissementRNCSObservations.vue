@@ -43,7 +43,7 @@ export default {
 
   .comment + .comment {
     margin-top: 2em;
-  } 
+  }
 
   .comment-header {
     padding: 0 1em 0.5em;

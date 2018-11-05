@@ -1,10 +1,6 @@
 import Greffes from '@/assets/fixtures/codesGreffes.json'
 import Filters from '@/components/mixins/filters.js'
 
-function frenchNumberFormat(input) {
-  return new Intl.NumberFormat('fr-FR').format(input)
-}
-
 function nameFromCodeGreffe(code) {
   return Greffes.listeGreffes[code]
 }
@@ -36,7 +32,7 @@ function PrincipaleOrSecondaire(letter) {
 }
 
 function RNCSDeviseSentence (infos) {
-  let sentence = `${Filters.filters.ifExist(frenchNumberFormat(infos.capital))}`
+  let sentence = `${Filters.filters.ifExist(Filters.filters.frenchNumberFormat(infos.capital))}`
 
   sentence = concatIfExist(`${FixeOrVariable(infos.type_capital)} : `, infos.type_capital, sentence,'')
   sentence = concatIfExist(sentence, infos.devise, ` ${infos.devise}`,', de devise non précisée')
@@ -69,10 +65,11 @@ function RNCSConcatName (person) {
 
 function RNCSConcatAddress(infos) {
   let address = concatIfExist('', infos.adresse_code_postal, infos.adresse_code_postal, '')
-  address = concatIfExist(address, (infos.adresse_code_postal && infos.adresse_ville), ' ')
+  address = concatIfExist(address, (infos.adresse_code_postal && infos.adresse_ville), ' ', '')
   address = concatIfExist(address, infos.adresse_ville, `${Filters.filters.capitalize(infos.adresse_ville)} `, ' ')
-  if (infos.adresse_pays && infos.adresse_pays.toLowerCase() !== 'france')
-  address = concatIfExist(address, infos.adresse_pays, Filters.filters.upperCase(infos.adresse_pays), '')
+  if (infos.adresse_pays && infos.adresse_pays.toLowerCase() !== 'france') {
+    address = concatIfExist(address, infos.adresse_pays, Filters.filters.upperCase(infos.adresse_pays), '')
+  }
 
   return address
 }
@@ -88,7 +85,6 @@ function RNCSConcatAddressDAP(infos) {
 
 export default {
   methods: {
-    frenchNumberFormat,
     nameFromCodeGreffe,
     concatIfExist,
     PrincipaleOrSecondaire,
