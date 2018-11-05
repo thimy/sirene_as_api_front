@@ -14,7 +14,8 @@ const state = {
     'RNA': null,
     'SIRENE': null,
     'RNA_FULLTEXT': null,
-    'SIRENE_FULLTEXT': null
+    'SIRENE_FULLTEXT': null,
+    'RNCS': null
   }
 }
 
@@ -50,6 +51,12 @@ const getters = {
       return false
     }
     return true
+  },
+  isRNCS404: () => {
+    if (state.status['RNCS'] == 404) {
+      return true
+    }
+    return false
   }
 }
 
@@ -73,7 +80,8 @@ const mutations = {
     if (api == 'ALL') {
       state.status = {
         'RNA': null,
-        'SIRENE': null
+        'SIRENE': null,
+        'RNCS': null
       }
     } else {
       state.status[api] = null
