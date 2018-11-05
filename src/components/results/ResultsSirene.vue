@@ -2,9 +2,10 @@
   <div>
     <h3>{{resultsNumberSentence}}</h3>
     <did-you-mean :api=api></did-you-mean>
-    <ul>
+    <results-skeleton v-if="resultsAreLoading"></results-skeleton>
+    <ul v-else>
       <li v-for="result in storedResultsEntreprises" :key="result.siret" class="panel">
-        <router-link tag="a" class="no_base_style" :to="{ name: 'Etablissement', params: {searchId: result['siret']}}">
+        <router-link class="no_base_style" :to="{ name: 'Etablissement', params: {searchId: result['siret']}}">
           <h4 class="title">{{result['nom_raison_sociale'] | capitalize | removeExtraChars}}</h4>
           <p>{{result['libelle_activite_principale_entreprise']}}</p>
           <p>{{result['code_postal']}} {{result['libelle_commune'] | capitalize}}</p>
@@ -19,6 +20,7 @@
 import DidYouMean from '@/components/results/ResultsDidYouMean'
 import Filters from '@/components/mixins/filters.js'
 import Formating from '@/components/mixins/formating.js'
+import ResultsSkeleton from '@/components/results/ResultsSkeleton'
 
 export default {
   name: 'ResultsSirene',
@@ -28,9 +30,13 @@ export default {
     }
   },
   components: {
-    'DidYouMean': DidYouMean
+    'DidYouMean': DidYouMean,
+    'ResultsSkeleton': ResultsSkeleton
   },
   computed: {
+    resultsAreLoading () {
+      return this.$store.getters.isFullTextLoading
+    },
     isSearchNotEmpty () {
       return this.$store.state.searchFullText.storedFullText !== ''
     },

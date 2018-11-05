@@ -1,11 +1,11 @@
 <template>
   <div class="company__panel">
-    <div v-if="isSiegeSocial" class="company__item">Cet établissement est le siège social</div>
-    <div v-else class="company__item">Le siège social de cet établissement est :
+    <p v-if="isSiegeSocial" class="company__item">Cet établissement est le siège social.</p>
+    <p v-else class="company__item">Le siège social de cet établissement est :
       <router-link class="company__item-link" :to="{ name: 'Etablissement', params: {searchId: resultSiegeSocial.siret}}">
         {{ resultSiegeSocial.nom_raison_sociale | removeExtraChars }} ({{ resultSiegeSocial.siret }})
       </router-link>
-    </div>
+    </p>
     <div v-if="haveChildrenEtablissements" class="company__item">
       <div class="company__children-summary">
         Cette entreprise possède {{ totalResultsOtherSirens }} {{ `établissement` | pluralizeDependingOn(this.totalResultsOtherSirens) }}<template v-if="thereAreMoreThanMaxChildren">
@@ -88,7 +88,7 @@ export default {
 
 <style lang="scss" scoped>
   .company__panel {
-    margin-top: 2em;
+    margin-top: 1.5em;
   }
 
   .company__item {
