@@ -13,7 +13,7 @@ export default {
       return string.toUpperCase()
     },
     ifExist: function (string) {
-      if (string) {
+      if (string && string != 'null') {
         return string
       }
       return 'Non renseigné'

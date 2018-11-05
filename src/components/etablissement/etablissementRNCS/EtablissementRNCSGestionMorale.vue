@@ -72,7 +72,9 @@ export default {
       return this.$store.getters.RNCSData.representants
     },
     managersLegal () {
-      return this.managers.filter(manager => (manager.type_representant == 'P. Morale'))
+      return this.managers.filter(manager => (
+        manager.type_representant && RegExp(/morale/).test(manager.type_representant.toLowerCase())
+      ))
     }
   },
   mixins: [Filters, Formating]

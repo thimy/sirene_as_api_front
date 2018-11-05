@@ -57,7 +57,9 @@ export default {
       return this.$store.getters.RNCSData.representants
     },
     managersPhysical () {
-      return this.managers.filter(manager => (manager.type_representant == 'P.Physique'))
+      return this.managers.filter(manager => (
+        manager.type_representant && RegExp(/physique/).test(manager.type_representant.toLowerCase())
+      ))
     },
     noManagersPhysical () {
       if (this.managersPhysical && this.managersPhysical.length != 0) {
