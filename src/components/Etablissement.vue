@@ -5,8 +5,8 @@
       <server-error v-else-if="isError" />
       <template v-else>
         <etablissement-header :searchId=searchId />
-        <blocks-skeleton v-if="!haveRNCSInfo"></blocks-skeleton>
-        <template v-else>
+        <blocks-skeleton v-if="RNCSIsComing"></blocks-skeleton>
+        <template>
           <!-- <etablissement-sirene v-if=haveSireneInfo />
           <etablissement-rna v-if=haveRNAInfo :haveComponentTop=haveSireneInfo />
           <etablissement-rnm v-if=haveRNMInfo /> -->
@@ -110,6 +110,12 @@ export default {
         return Filters.filters.frenchDateFormat(this.$store.getters.RNCSData.updated_at)
       }
       return null
+    },
+    RNCSIsComing () {
+      if (!this.haveRNCSInfo && !this.$store.getters.isRNCS404) {
+        return true
+      }
+      return false
     }
   },
   methods: {
