@@ -46,6 +46,14 @@ export default {
     frenchDateFormat: function(input) {
       return new Intl.DateTimeFormat('en-GB').format(new Date(input))
     },
+    formatIfDate: function(input) {
+      const dateFormat = RegExp(/^\d{4}-\d{2}-\d{2}$/)
+
+      if (dateFormat.test(input)) {
+        return new Intl.DateTimeFormat('en-GB').format(new Date(input))
+      }
+      return input
+    }
   },
   methods: {
     concatIfExist(base, addition) {

@@ -6,7 +6,7 @@
       <div class="company__item"><div class="company__item-key">Observation</div></div>
     </div>
     <div class="comment" v-for="observation in RNCSObservations" :key="observation.id" v-if="observation.texte">
-      <div class="company__item company__comment-date"><div class="company__item-value">{{ observation.date_ajout }}</div></div>
+      <div class="company__item company__comment-date"><div class="company__item-value">{{ observation.date_ajout | frenchDateFormat }}</div></div>
       <div class="company__item"><div class="company__item-value">{{ observation.texte }}</div></div>
     </div>
     <panel-no-results-rncs :ifNotPresent="RNCSObservations" />
