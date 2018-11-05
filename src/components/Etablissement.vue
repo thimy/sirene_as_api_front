@@ -102,8 +102,7 @@ export default {
     },
     RNCSUpdate () {
       if (this.$store.getters.RNCSData) {
-        const date = this.$store.getters.RNCSData.updated_at.substring(0, 10)
-        return this.$store.getters.RNCSData.updated_at.substring(0, 10)
+        return Filters.filters.frenchDateFormat(this.$store.getters.RNCSData.updated_at)
       }
       return null
     }
