@@ -44,9 +44,16 @@ export default {
       return new Intl.NumberFormat('fr-FR').format(input)
     },
     frenchDateFormat: function(input) {
+      if (input == null) {
+        return null
+      }
       return new Intl.DateTimeFormat('en-GB').format(new Date(input))
     },
     formatIfDate: function(input) {
+      if (input == null) {
+        return null
+      }
+
       const dateFormat = RegExp(/^\d{4}-\d{2}-\d{2}$/)
 
       if (dateFormat.test(input)) {
