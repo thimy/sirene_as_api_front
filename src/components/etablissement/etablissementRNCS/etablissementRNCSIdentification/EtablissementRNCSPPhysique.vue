@@ -1,6 +1,6 @@
 <template>
   <div v-if="RNCSPhysical">
-    <h4>Personne physique</h4>
+    <h4>Identification de la Personne Physique</h4>
     <div class="company__item">
       <div class="company__item-key">Nom</div>
       <div class="company__item-value">{{ concatNames(RNCSPhysical.prenoms, RNCSPhysical.nom_patronyme) }}</div>
