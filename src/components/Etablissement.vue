@@ -112,7 +112,7 @@ export default {
       return null
     },
     RNCSIsComing () {
-      if (!this.haveRNCSInfo && !this.$store.getters.isRNCS404) {
+      if (!this.haveRNCSInfo && !this.$store.getters.isRNCS404Or500) {
         return true
       }
       return false
