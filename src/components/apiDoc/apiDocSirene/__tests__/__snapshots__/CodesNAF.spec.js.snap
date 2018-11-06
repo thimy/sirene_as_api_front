@@ -8,7 +8,7 @@ exports[`CodesNAF.vue snapshot testing It match the snapshot 1`] = `
     class="container"
   >
     <h2>
-      Liste des Codes Nomenclature D'Activité Française (NAF)
+      Liste des Codes Nomenclature D’Activité Française (NAF)
     </h2>
      
     <h3>

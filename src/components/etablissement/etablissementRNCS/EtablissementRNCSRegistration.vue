@@ -1,9 +1,9 @@
 <template>
   <div class="company__panel panel">
-    <h4>Informations d'immatriculation et d'activité</h4>
+    <h4>Informations d’immatriculation et d’activité</h4>
     <div class="company__item">
     <div class="company__item">
-      <div class="company__item-key">Type d'inscription</div>
+      <div class="company__item-key">Type d’inscription</div>
       <div class="company__item-value"> {{ PrincipaleOrSecondaire(this.RNCSData.type_inscription) }}</div>
     </div>
       <div class="company__item-key">Greffe</div>
@@ -11,11 +11,11 @@
     </div>
     <panel-info-rncs :parent=RNCSData :elements=this.elementsToDisplay1 />
     <div class="company__item" v-if="haveRNCSPhysicalDAP">
-      <div class="company__item-key">Déclaration d'attribution de Patrimoine :</div>
+      <div class="company__item-key">Déclaration d’attribution de Patrimoine :</div>
       <div class="company__item-value">{{ RNCSPhysical.dap }}</div>
     </div>
     <div class="company__item" v-if="RNCSPhysicalDAPIsPositive">
-      <div class="company__item-key">Déclaration d'attribution de Patrimoine, Adresse :</div>
+      <div class="company__item-key">Déclaration d’attribution de Patrimoine, Adresse :</div>
       <div class="company__item-value">
         <div v-if="RNCSPhysical.dap_adresse_ligne_1">{{ RNCSPhysical.dap_adresse_ligne_1 | ifExist }}</div>
         <div v-if="RNCSPhysical.dap_adresse_ligne_2">{{ RNCSPhysical.dap_adresse_ligne_2 }}</div>
@@ -51,14 +51,14 @@ export default {
         "Economie Sociale Solidaire": "economie_sociale_solidaire",
         "Activité foraine": "activite_forain",
         "Status EIRL": "eirl",
-        "Date d‘immatriculation": "date_immatriculation",
+        "Date d’immatriculation": "date_immatriculation",
         "Date de première immatriculation": "date_premiere_immatriculation",
         "Date de radiation": "date_radiation",
         "Date de transfert": "date_transfert",
         "Sans activité": "sans_activite",
-        "Date de début d‘activité": "date_debut_activite",
+        "Date de début d’activité": "date_debut_activite",
         "Date de début de première activité": "date_debut_premiere_activite",
-        "Date de cessation d‘activité": "date_cessation_activite"
+        "Date de cessation d’activité": "date_cessation_activite"
       },
       elementsToDisplayDAP:
       {

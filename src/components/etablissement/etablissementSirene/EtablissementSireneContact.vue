@@ -8,7 +8,7 @@
     <div class="company__item"><label class="company__item-key">Date de création</label><div class="company__item-value"> {{ formattedDate }}</div></div>
     <div class="company__item"><label class="company__item-key">Téléphone</label><div class="company__item-value"> {{ resultSirene.telephone | ifExist}}</div></div>
     <div class="company__item"><label class="company__item-key">Email</label><div class="company__item-value"> {{ resultSirene.email | ifExist}}</div></div>
-    <div class="company__item"><label class="company__item-key">Tranche d'effectif salariés</label><div class="company__item-value"> {{ resultSirene.libelle_tranche_effectif_salarie }}</div></div>
+    <div class="company__item"><label class="company__item-key">Tranche d’effectif salariés</label><div class="company__item-value"> {{ resultSirene.libelle_tranche_effectif_salarie }}</div></div>
   </div>
 </template>
 

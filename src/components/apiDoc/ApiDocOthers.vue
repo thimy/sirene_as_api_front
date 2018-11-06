@@ -27,7 +27,7 @@
           </p>
           <h3>La mission Etalab</h3>
           <p>
-            Etalab coordonne la politique d’ouverture et de partage des données publiques (“open data”). <a href="https://www.etalab.gouv.fr/en/qui-sommes-nous">Plus d'informations.</a>
+            Etalab coordonne la politique d’ouverture et de partage des données publiques (“open data”). <a href="https://www.etalab.gouv.fr/en/qui-sommes-nous">Plus d’informations.</a>
           </p>
         </div>
       </div>

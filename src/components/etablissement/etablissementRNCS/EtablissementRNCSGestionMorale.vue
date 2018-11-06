@@ -58,7 +58,7 @@ export default {
         "Représentant permanent, Pays": "representant_permanent_adresse_pays",
         "Représentant permanent, Adresse ligne 3": "representant_permanent_adresse_ligne_3",
         "Représentant permanent, Nom": "representant_permanent_nom_patronyme",
-        "Représentant permanent, Nom d'usage": "representant_permanent_nom_usage",
+        "Représentant permanent, Nom d’usage": "representant_permanent_nom_usage",
         "Représentant permanent, Prénoms": "representant_permanent_prenoms",
         "Représentant permanent, Date de naissance": "representant_permanent_date_naissance",
         "Représentant permanent, Ville de naissance": "representant_permanent_ville_naissance",

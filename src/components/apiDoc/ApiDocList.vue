@@ -4,11 +4,11 @@
       <div class="container apis">
         <div class="row">
           <div class="description">
-            <h2>L'API Sirene</h2>
+            <h2>L’API Sirene</h2>
             <p>
-              L'API Sirene contient tous les établissements des entreprises françaises,
-              ainsi que toutes les associations disposant d'un code SIRET.<br>
-              Les données de l'API Sirene sont délivrées par l'INSEE.
+              L’API Sirene contient tous les établissements des entreprises françaises,
+              ainsi que toutes les associations disposant d’un code SIRET.<br>
+              Les données de l’API Sirene sont délivrées par l’INSEE.
             </p>
           </div>
           <div class="cta">
@@ -21,10 +21,10 @@
       <div class="container apis">
         <div class="row">
           <div class="description">
-            <h2>L'API Repertoire National des Associations (RNA)</h2>
+            <h2>L’API Repertoire National des Associations (RNA)</h2>
             <p>
               Cette API contient toutes les associations françaises.<br>
-              Les données proviennent du Ministère de l'Intérieur.
+              Les données proviennent du Ministère de l’Intérieur.
             </p>
           </div>
           <div class="cta">
@@ -37,9 +37,9 @@
       <div class="container apis">
         <div class="row">
           <div class="description">
-            <h2>L'API Répertoire National des Métiers (RNM)</h2>
+            <h2>L’API Répertoire National des Métiers (RNM)</h2>
             <p>
-              L'API RNM vous est gracieusement ouverte par les Chambres et Métiers de l'Artisanat.<br>
+              L’API RNM vous est gracieusement ouverte par les Chambres et Métiers de l’Artisanat.<br>
               Les données sont mises à jour toutes les nuits.
             </p>
           </div>
@@ -53,10 +53,10 @@
       <div class="container apis">
         <div class="row">
           <div class="description">
-            <h2>L'API Registre National du Commerce<br/>et des Sociétés (RNCS)</h2>
+            <h2>L’API Registre National du Commerce<br/>et des Sociétés (RNCS)</h2>
             <p>
               Cette API contient les données IMR (Immatriculation, Modification, Radiation) des sociétés.<br>
-              Les données proviennent d'Infogreffe et de l'INPI.
+              Les données proviennent d’Infogreffe et de l’INPI.
             </p>
           </div>
           <div class="cta">

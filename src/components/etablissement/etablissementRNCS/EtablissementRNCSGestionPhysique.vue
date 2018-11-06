@@ -9,7 +9,7 @@
           <div class="company__item-value">{{ concatNames(manager.prenoms, manager.nom_patronyme) }}</div>
         </div>
         <div v-if="manager.nom_usage" class="company__item-inline">
-          <div class="company__item-key">Nom d'usage</div>
+          <div class="company__item-key">Nom d’usage</div>
           <div class="company__item-value">{{ manager.nom_usage | upperCase }}</div>
         </div>
         <panel-info-rncs :parent="manager" :elements=elementsToDisplay :inlineLabels="true" />
@@ -56,7 +56,7 @@ export default {
           "Nationalité": "nationalite",
         },
         elementsToDisplay2: {
-          "Conjoint collaborateur, Nom d'usage":"conjoint_collab_nom_usage",
+          "Conjoint collaborateur, Nom d’usage":"conjoint_collab_nom_usage",
           "Conjoint collaborateur, Date de Fin":"conjoint_collab_date_fin",
           "Conjoint collaborateur, Nom":"conjoint_collab_nom_patronyme",
           "Conjoint collaborateur, Pseudonyme":"conjoint_collab_pseudonyme",

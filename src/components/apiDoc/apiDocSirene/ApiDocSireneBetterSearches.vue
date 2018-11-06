@@ -18,7 +18,7 @@
             </thead>
             <tbody>
               <tr>
-                <td>Activité principale de l'entreprise (code NAF)</td>
+                <td>Activité principale de l’entreprise (code NAF)</td>
                 <td><code>activite_principale</code></td>
                 <td>Le code `activité principale` désiré</td>
               </tr>
@@ -38,7 +38,7 @@
                 <td>Le numéro de département à 2 chiffres désiré</td>
               </tr>
               <tr>
-                <td>Appartenance au champs de l'économie sociale et solidaire</td>
+                <td>Appartenance au champs de l’économie sociale et solidaire</td>
                 <td><code>is_ess</code></td>
                 <td>`O` pour Oui, `N` pour Non, `I` pour Invalide</td>
               </tr>
@@ -51,7 +51,7 @@
           </table>
           <p>
             Ces options sont disponibles pour le moment uniquement sur la recherche Texte.<br>
-            L'API est en constante évolution, n'hésitez pas à nous écrire pour demander davantage d'options correspondant à vos besoins !
+            L’API est en constante évolution, n’hésitez pas à nous écrire pour demander davantage d’options correspondant à vos besoins !
           </p>
         </div>
       </div>

@@ -4,19 +4,19 @@
       <div class="column__full">
         <h2>Exemple de requête :</h2>
         <p>
-          L'adresse à taper pour une requête est : <strong>Adresse + Version + Informations</strong><br>
+          L’adresse à taper pour une requête est : <strong>Adresse + Version + Informations</strong><br>
           <api-doc-input :request=exempleFullText></api-doc-input>
         </p>
-        <h2>Trois moyens d'interroger l'API.</h2>
+        <h2>Trois moyens d’interroger l’API.</h2>
         <h3>Recherche Texte :</h3>
         <p>
           La recherche texte permet de trouver un établissement depuis son nom (titre).<br>
           <strong>Exemple de recherches possible :</strong> "Croix rouge", "Medecins sans frontieres"
         </p>
         <p>
-          Les résultats sont paginés de la même façon que pour l'API Sirene.
+          Les résultats sont paginés de la même façon que pour l’API Sirene.
           Les paramètres <em>page</em> et <em>per_page</em> sont disponibles.<br>
-          Vous pouvez demander jusqu'à 100 résultats par page.<br>
+          Vous pouvez demander jusqu’à 100 résultats par page.<br>
         <h3>Recherche par Numéro RNA :</h3>
         <p>
           La recherche par numéro RNA permet de trouver une association par son numéro RNA unique.<br>

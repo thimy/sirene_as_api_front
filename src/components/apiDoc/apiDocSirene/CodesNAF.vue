@@ -1,7 +1,7 @@
 <template>
   <section class="section section-white center">
     <div class="container">
-      <h2>Liste des Codes Nomenclature D'Activité Française (NAF)</h2>
+      <h2>Liste des Codes Nomenclature D’Activité Française (NAF)</h2>
       <h3>En vigueur depuis la révision de Janvier 2008</h3>
       <ul>
         <li>0111Z - Culture de céréales (à l’exception du riz), de légumineuses et de graines oléagineuses</li>

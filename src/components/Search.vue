@@ -6,7 +6,7 @@
           <h1 class="search__title">
             Retrouvez toutes les informations concernant les entreprises et associations de France
           </h1>
-          <p class="search__subtitle">Les bases de données sur l'état civil des entreprises et associations françaises sont maintenant accessibles à tous, sans frais.</p>
+          <p class="search__subtitle">Les bases de données sur l’état civil des entreprises et associations françaises sont maintenant accessibles à tous, sans frais.</p>
         </div>
       </transition>
       <SearchBar searchName="Recherche par nom"></SearchBar>
