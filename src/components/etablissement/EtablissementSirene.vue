@@ -22,6 +22,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .company {
+    margin-top: 2em;
+  }
+
   .panel + .panel {
     margin-left: 2em;
   }

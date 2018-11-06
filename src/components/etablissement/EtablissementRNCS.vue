@@ -6,9 +6,7 @@
     </div>
     <etablissement-rncs-gestion-physique/>
     <etablissement-rncs-gestion-morale/>
-    <div class="company-container">
-      <etablissement-rncs-observations/>
-    </div>
+    <etablissement-rncs-observations/>
   </div>
 </template>
 
