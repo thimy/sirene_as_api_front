@@ -74,6 +74,17 @@ function RNCSConcatAddress(infos) {
   return address
 }
 
+function RNCSConcatAddressRP(infos) {
+  let address = concatIfExist('', infos.representant_permanent_adresse_code_postal, infos.representant_permanent_adresse_code_postal, '')
+  address = concatIfExist(address, (infos.representant_permanent_adresse_code_postal && infos.representant_permanent_adresse_ville), ' ', '')
+  address = concatIfExist(address, infos.representant_permanent_adresse_ville, `${Filters.filters.capitalize(infos.representant_permanent_adresse_ville)} `, ' ')
+  if (infos.representant_permanent_adresse_pays && infos.representant_permanent_adresse_pays.toLowerCase() !== 'france') {
+    address = concatIfExist(address, infos.representant_permanent_adresse_pays, Filters.filters.upperCase(infos.representant_permanent_adresse_pays), '')
+  }
+
+  return address
+}
+
 function RNCSConcatAddressDAP(infos) {
   let address = concatIfExist('', infos.dap_adresse_code_postal, infos.dap_adresse_code_postal, '')
   address = concatIfExist(address, (infos.dap_adresse_code_postal && infos.dap_adresse_ville), ', ', '')
@@ -114,6 +125,7 @@ export default {
     RNCSConcatGreffe,
     RNCSConcatName,
     RNCSConcatAddress,
+    RNCSConcatAddressRP,
     RNCSConcatAddressDAP,
     concatNames
   }
