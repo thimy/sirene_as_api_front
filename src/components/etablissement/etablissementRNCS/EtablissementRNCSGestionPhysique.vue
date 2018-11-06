@@ -6,7 +6,11 @@
         <h5>{{ manager.qualite | capitalize }}</h5>
         <div class="company__item-inline">
           <div class="company__item-key">Nom</div>
-          <div class="company__item-value">{{ concatNames(manager.prenoms, manager.nom_usage, manager.nom_patronyme) }}</div>
+          <div class="company__item-value">{{ concatNames(manager.prenoms, manager.nom_patronyme) }}</div>
+        </div>
+        <div v-if="manager.nom_usage" class="company__item-inline">
+          <div class="company__item-key">Nom d'usage</div>
+          <div class="company__item-value">{{ manager.nom_usage | upperCase }}</div>
         </div>
         <panel-info-rncs :parent="manager" :elements=elementsToDisplay :inlineLabels="true" />
         <div class="company__item-inline">
@@ -19,9 +23,9 @@
           </div>
         </div>
         <panel-info-rncs :parent="manager" :elements=elementsToDisplay2 :inlineLabels="true" />
-        <div class="company__item-inline">
+        <div v-if="collabName(manager)" class="company__item-inline">
           <div class="company__item-key">Nom du conjoint collaborateur</div>
-          <div class="company__item-value">{{ concatNames(manager.conjoint_collab_nom_usage, manager.conjoint_collab_nom_usage, manager.conjoint_collab_nom_patronyme) }}</div>
+          <div class="company__item-value">{{ collabName(manager) }}</div>
         </div>
       </div>
     </div>
@@ -52,9 +56,9 @@ export default {
           "Nationalité": "nationalite",
         },
         elementsToDisplay2: {
+          "Conjoint collaborateur, Nom d'usage":"conjoint_collab_nom_usage",
           "Conjoint collaborateur, Date de Fin":"conjoint_collab_date_fin",
           "Conjoint collaborateur, Nom":"conjoint_collab_nom_patronyme",
-          "Conjoint collaborateur, Nom d‘usage":"conjoint_collab_nom_usage",
           "Conjoint collaborateur, Pseudonyme":"conjoint_collab_pseudonyme",
           "Conjoint collaborateur, Prénoms":"conjoint_collab_prénoms"
         }
@@ -74,6 +78,11 @@ export default {
         return false
       }
       return true
+    }
+  },
+  methods: {
+    collabName (person) {
+      return Formating.methods.concatNames(person.conjoint_collab_prenoms, person.conjoint_collab_nom_patronyme)
     }
   },
   mixins: [Filters, Formating]

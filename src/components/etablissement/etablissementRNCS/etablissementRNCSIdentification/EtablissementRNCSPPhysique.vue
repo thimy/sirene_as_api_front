@@ -3,7 +3,11 @@
     <h4>Personne physique</h4>
     <div class="company__item-inline">
       <div class="company__item-key">Nom</div>
-      <div class="company__item-value">{{ concatNames(RNCSPhysical.prenoms, RNCSPhysical.nom_usage, RNCSPhysical.nom_patronyme) }}</div>
+      <div class="company__item-value">{{ concatNames(RNCSPhysical.prenoms, RNCSPhysical.nom_patronyme) }}</div>
+    </div>
+    <div v-if="RNCSPhysical.nom_usage" class="company__item-inline">
+      <div class="company__item-key">Nom d'usage</div>
+      <div class="company__item-value">{{ RNCSPhysical.nom_usage | upperCase }}</div>
     </div>
     <panel-info-rncs :parent="RNCSPhysical" :elements="elementsToDisplay1" />
     <div class="company__item-inline">
@@ -16,9 +20,9 @@
         <div v-if="RNCSPhysical.adresse_code_commune">Code Commune {{ RNCSPhysical.adresse_code_commune }}</div>
       </div>
     </div>
-    <div class="company__item-inline">
+    <div v-if="collabName(RNCSPhysical)" class="company__item-inline">
       <div class="company__item-key">Nom du conjoint collaborateur</div>
-      <div class="company__item-value">{{ concatNames(RNCSPhysical.conjoint_collab_nom_usage, RNCSPhysical.conjoint_collab_nom_usage, RNCSPhysical.conjoint_collab_nom_patronyme) }}</div>
+      <div class="company__item-value">{{ collabName(RNCSPhysical) }}</div>
     </div>
     <panel-info-inline-rncs :parent="RNCSPhysical" :elements="elementsToDisplay2" />
   </div>
@@ -48,6 +52,7 @@ export default {
       },
       elementsToDisplay2:
       {
+        "Conjoint collaborateur, Nom d'usage": "conjoint_collab_nom_usage",
         "Conjoint collaborateur, date de fin": "conjoint_collab_date_fin",
         "Conjoint collaborateur, Pseudonyme": "conjoint_collab_pseudonyme"
       }
@@ -56,6 +61,9 @@ export default {
   computed: {
     RNCSPhysical () {
       return this.$store.getters.RNCSData.personne_physique
+    },
+    collabName (person) {
+      return Formating.methods.concatNames(person.conjoint_collab_prenoms, person.conjoint_collab_nom_patronyme)
     }
   },
   mixins: [Filters, Formating]

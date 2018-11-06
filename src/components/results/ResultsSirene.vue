@@ -12,7 +12,7 @@
         </router-link>
       </li>
     </ul>
-    <h4 v-if="!result">Aucun résultat trouvé.</h4>
+    <h4 v-if="noResults">Aucun résultat trouvé.</h4>
   </div>
 </template>
 
@@ -53,6 +53,12 @@ export default {
       const numberResultsFormatted = Filters.filters.frenchNumberFormat(this.numberResults)
       const resultText = numberResultsFormatted > 1 ? 'résultats' : 'résultat'
       return `${numberResultsFormatted} ${resultText} pour "${this.$store.state.searchFullText.storedLastFullText}" dans la base SIRENE des entreprises`
+    },
+    noResults () {
+      if (this.storedResultsEntreprises && this.storedResultsEntreprises.length > 0) {
+        return false
+      }
+      return true
     }
   },
   mixins: [Filters]

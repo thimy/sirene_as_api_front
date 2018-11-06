@@ -83,21 +83,18 @@ function RNCSConcatAddressDAP(infos) {
   return address
 }
 
-function concatNames (firstName, lastName, otherLastName) {
+function concatNames (firstName, lastName) {
   let first, last = ''
-  
+
   if (lastName) {
     last = lastName.toUpperCase()
-  } else if (otherLastName) {
-    last = otherLastName.toUpperCase()
   } else {
-    return ''
+    return null
   }
 
   if (firstName) {
     first = firstName.capitalize()
   }
-
   return `${first} ${last}`
 }
 
