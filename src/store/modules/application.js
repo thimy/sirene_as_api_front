@@ -57,8 +57,8 @@ const getters = {
     }
     return true
   },
-  isRNCS404: () => {
-    if (state.status['RNCS'] == 404) {
+  isRNCS404Or500: () => {
+    if (state.status['RNCS'] == 404 || state.status['RNCS'] == 500) {
       return true
     }
     return false
