@@ -1,6 +1,6 @@
 <template>
   <div v-if="managersPhysical.length" class="company__panel panel">
-    <h4>Gestionnaires (Personnes physiques)</h4>
+    <h4>Représentants Légaux - Personnes physiques</h4>
     <div class="company__managers">
       <div v-for="manager in managersPhysical" :key=manager.id>
         <h5>{{ manager.qualite | capitalize }}</h5>
