@@ -1,5 +1,5 @@
 <template>
-  <section class="section-grey">
+  <section class="section section-grey">
     <div class="container column__full">
       <h2>Restez connectés !</h2>
       <p>

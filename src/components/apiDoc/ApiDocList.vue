@@ -80,9 +80,22 @@ export default {
   align-items: center;
 }
 
+.row {
+  width: 100%;
+  @media screen and (max-width: $mobile) {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 a.button {
-  text-align: center;
-  min-width: 280px;
+  @media screen and (max-width: $mobile) {
+    min-width: 0;
+    margin: auto;
+  }
+  @media screen and (min-width: $mobile) {
+    min-width: 240px;
+  }
 }
 
 .apis {
@@ -92,6 +105,11 @@ a.button {
   @media screen and (min-width: $tablet) {
     flex-direction: row;
     align-items: center;
+  }
+
+  @media screen and (max-width: $mobile) {
+    align-items: center;
+    text-align: center;
   }
 }
 

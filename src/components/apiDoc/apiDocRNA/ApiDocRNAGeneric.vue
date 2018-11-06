@@ -1,5 +1,5 @@
 <template>
-  <section class="section-grey">
+  <section class="section section-grey">
     <div class="container">
       <div class="column__icon">
         <img src="@/assets/img/icons/laptop.svg" alt="">
@@ -69,6 +69,10 @@ export default {
   display: flex;
   flex-direction: column;
   align-self: flex-end;
+  max-width: 100%;
+  @media screen and (min-width: $tablet) {
+    max-width: 70%;
+  }
 }
 
 .container__subtext {

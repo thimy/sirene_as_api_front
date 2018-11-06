@@ -1,5 +1,5 @@
 <template>
-  <section class="section-white">
+  <section class="section section-white">
     <div class="container">
       <div class="column">
         <h1>Documentation de l'API RNA</h1>

@@ -79,7 +79,9 @@ exports[`FooterEtalab.vue snapshot testing It match the snapshot 1`] = `
       class="footer__links"
     >
       <li>
-        <h2>
+        <h2
+          class="fit-mobile"
+        >
           <a
             href="https://entreprise.api.gouv.fr/"
           >

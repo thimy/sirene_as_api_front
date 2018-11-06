@@ -47,6 +47,16 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  @media screen and (max-width: $mobile) {
+    h2, h3, p {
+      text-align: center;
+    }
+  }
+}
+
+.row {
+  margin: auto;
 }
 
 .column__icon {
@@ -54,12 +64,21 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media screen and (max-width: $mobile) {
+    width: 40%;
+    margin: auto;
+  }
 }
 
 .column__right {
   display: flex;
   flex-direction: column;
   align-self: flex-end;
+
+  @media screen and (max-width: $mobile) {
+    max-width: 295px;
+  }
 }
 
 </style>

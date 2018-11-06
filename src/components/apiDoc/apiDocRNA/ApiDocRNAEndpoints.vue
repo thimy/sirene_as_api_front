@@ -1,5 +1,5 @@
 <template>
-  <section class="section-white">
+  <section class="section section-white">
     <div class="container">
       <div class="column__full">
         <h2>Exemple de requête :</h2>

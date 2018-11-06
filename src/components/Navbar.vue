@@ -17,3 +17,21 @@ export default {
   }}
 }
 </script>
+
+<style lang="scss" scoped>
+.navbar__container {
+  @media screen and (max-width: $mobile) {
+    padding: 0.3em;
+  }
+}
+
+.navbar__logo {
+  @media screen and (max-width: $mobile) {
+    margin-right: 0em;
+  }
+}
+
+.navbar__home {
+  display: block;
+}
+</style>
