@@ -5,7 +5,7 @@
       <div class="company__item company__comment-date"><div class="company__item-key">Date</div></div>
       <div class="company__item"><div class="company__item-key">Observation</div></div>
     </div>
-    <div class="comment" v-for="observation in RNCSObservations" :key="observation.id" v-if="observation.texte">
+    <div class="comment" v-for="observation in RNCSObservationsOrdered" :key="observation.id" v-if="observation.texte">
       <div class="company__item company__comment-date"><div class="company__item-value">{{ observation.date_ajout | frenchDateFormat }}</div></div>
       <div class="company__item"><div class="company__item-value">{{ observation.texte }}</div></div>
     </div>
@@ -16,6 +16,7 @@
 <script>
 import Filters from '@/components/mixins/filters'
 import PanelNoResultsRNCS from '@/components/templates/PanelNoResultsRNCS'
+import orderBy from 'lodash/orderBy';
 
 export default {
   name: 'EtablissementRNCSObservations',
@@ -26,6 +27,9 @@ export default {
     },
     RNCSObservations () {
       return this.$store.getters.RNCSData.observations
+    },
+    RNCSObservationsOrdered () {
+      return orderBy(this.RNCSObservations, 'date_ajout', 'desc')
     }
   },
   mixins: [Filters]
