@@ -14,7 +14,7 @@
           <div class="second__subtitle"> {{ resultSirene.libelle_activite_principale_entreprise }}</div>
         </template>
         <div v-if="haveOnlyRNAInfo" class="second__subtitle"> {{ resultRNA.titre_court}}</div>
-        <div class="company__buttons">
+        <div v-if=haveRNCSInfo class="company__buttons">
           <a class="button" v-bind:href="dataRequestPDF" title="Télécharger les données de cette entreprise au format PDF">
             <img class="icon" src="@/assets/img/download.svg" alt="" />
             Version imprimable
@@ -64,6 +64,11 @@ export default {
     },
     haveRNAInfo () {
       if (this.$store.getters.RNAAvailable) {
+        return true
+      }
+    },
+    haveRNCSInfo () {
+      if (this.$store.getters.RNCSAvailable) {
         return true
       }
     },
