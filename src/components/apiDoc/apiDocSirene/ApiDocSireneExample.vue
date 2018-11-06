@@ -3,14 +3,14 @@
     <div class="container">
       <div class="row">
         <div class="column">
-          <h2>Un cas d'utilisation avancée.</h2>
+          <h2>Un cas d’utilisation avancée.</h2>
           <p>
-            J'ouvre un commerce (Boulangerie) dans la région de Toulon. Je souhaite vérifier où sont situés les autres commerces.<br>
+            J’ouvre un commerce (Boulangerie) dans la région de Toulon. Je souhaite vérifier où sont situés les autres commerces.<br>
             Je constitue ma requête de la manière suivante :
           </p>
           <ul class="spaced-list">
             <li>
-              L'adresse de base pour la recherche Texte :<br>
+              L’adresse de base pour la recherche Texte :<br>
               <a href="https://entreprise.data.gouv.fr/api/sirene/v1/full_text">https://entreprise.data.gouv.fr/api/sirene/v1/full_text</a>
             </li>
             <li>Je ne me soucie pas du nom, donc je met un astérisque :<br>
@@ -24,7 +24,7 @@
               <p>
                 Je renseigne le code activité (code NAF) pour les boulangeries.<br>
                 Je peux trouver cette information <router-link :to="{ name: 'CodesNAF'}">sur cette page</router-link>.<br>
-                L'INSEE propose également un <a href="https://www.insee.fr/fr/information/2406147">moteur de recherche</a> avec des informations supplémentaires.<br><br>
+                L’INSEE propose également un <a href="https://www.insee.fr/fr/information/2406147">moteur de recherche</a> avec des informations supplémentaires.<br><br>
               </p>
               <p>
                 Le code pour les boulangeries est le 1071C, et le code postal de Toulon est le 83000. Ma requête sera donc :

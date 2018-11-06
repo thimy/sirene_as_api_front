@@ -119,7 +119,7 @@ exports[`EtablissementSireneContact.vue snapshot It match the snapshot 1`] = `
     <label
       class="company__item-key"
     >
-      Tranche d'effectif salariés
+      Tranche d’effectif salariés
     </label>
     <div
       class="company__item-value"

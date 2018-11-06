@@ -6,7 +6,7 @@
       <div class="company__item-value">{{ concatNames(RNCSPhysical.prenoms, RNCSPhysical.nom_patronyme) }}</div>
     </div>
     <div v-if="RNCSPhysical.nom_usage" class="company__item">
-      <div class="company__item-key">Nom d'usage</div>
+      <div class="company__item-key">Nom d’usage</div>
       <div class="company__item-value">{{ RNCSPhysical.nom_usage | upperCase }}</div>
     </div>
     <panel-info-rncs :parent="RNCSPhysical" :elements="elementsToDisplay1" />
@@ -52,7 +52,7 @@ export default {
       },
       elementsToDisplay2:
       {
-        "Conjoint collaborateur, Nom d'usage": "conjoint_collab_nom_usage",
+        "Conjoint collaborateur, Nom d’usage": "conjoint_collab_nom_usage",
         "Conjoint collaborateur, date de fin": "conjoint_collab_date_fin",
         "Conjoint collaborateur, Pseudonyme": "conjoint_collab_pseudonyme"
       }

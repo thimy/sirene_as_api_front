@@ -4,7 +4,7 @@
       <h1>Les APIs Open Data</h1>
       <p class="centered">
         Entreprise.data.gouv.fr est en phase intensive de développement. De nombreuses
-        APIs sont en cours d'ajout !
+        APIs sont en cours d’ajout !
       </p>
     </div>
   </section>

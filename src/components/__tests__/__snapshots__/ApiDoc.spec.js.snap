@@ -17,7 +17,7 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
       >
         
       Entreprise.data.gouv.fr est en phase intensive de développement. De nombreuses
-      APIs sont en cours d'ajout !
+      APIs sont en cours d’ajout !
     
       </p>
     </div>
@@ -37,16 +37,16 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
             class="description"
           >
             <h2>
-              L'API Sirene
+              L’API Sirene
             </h2>
              
             <p>
               
-            L'API Sirene contient tous les établissements des entreprises françaises,
-            ainsi que toutes les associations disposant d'un code SIRET.
+            L’API Sirene contient tous les établissements des entreprises françaises,
+            ainsi que toutes les associations disposant d’un code SIRET.
               <br />
               
-            Les données de l'API Sirene sont délivrées par l'INSEE.
+            Les données de l’API Sirene sont délivrées par l’INSEE.
           
             </p>
           </div>
@@ -77,7 +77,7 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
             class="description"
           >
             <h2>
-              L'API Repertoire National des Associations (RNA)
+              L’API Repertoire National des Associations (RNA)
             </h2>
              
             <p>
@@ -85,7 +85,7 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
             Cette API contient toutes les associations françaises.
               <br />
               
-            Les données proviennent du Ministère de l'Intérieur.
+            Les données proviennent du Ministère de l’Intérieur.
           
             </p>
           </div>
@@ -116,12 +116,12 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
             class="description"
           >
             <h2>
-              L'API Répertoire National des Métiers (RNM)
+              L’API Répertoire National des Métiers (RNM)
             </h2>
              
             <p>
               
-            L'API RNM vous est gracieusement ouverte par les Chambres et Métiers de l'Artisanat.
+            L’API RNM vous est gracieusement ouverte par les Chambres et Métiers de l’Artisanat.
               <br />
               
             Les données sont mises à jour toutes les nuits.
@@ -156,7 +156,7 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
             class="description"
           >
             <h2>
-              L'API Registre National du Commerce
+              L’API Registre National du Commerce
               <br />
               et des Sociétés (RNCS)
             </h2>
@@ -166,7 +166,7 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
             Cette API contient les données IMR (Immatriculation, Modification, Radiation) des sociétés.
               <br />
               
-            Les données proviennent d'Infogreffe et de l'INPI.
+            Les données proviennent d’Infogreffe et de l’INPI.
           
             </p>
           </div>
@@ -265,7 +265,7 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
             <a
               href="https://www.etalab.gouv.fr/en/qui-sommes-nous"
             >
-              Plus d'informations.
+              Plus d’informations.
             </a>
           </p>
         </div>
@@ -283,7 +283,7 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
         class="center"
       >
         <h2>
-          Découvrez l'API Entreprise, toutes les informations sur les sociétés.
+          Découvrez l’API Entreprise, toutes les informations sur les sociétés.
         </h2>
          
         <div
@@ -296,13 +296,13 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
         </div>
          
         <h3>
-          Vous justifiez d'une mission de service public ? L'API Entreprise est pour vous.
+          Vous justifiez d’une mission de service public ? L’API Entreprise est pour vous.
         </h3>
          
         <p>
           
-        Dans le respect du principe "Dites le nous une seule fois", la DINSIC a mis en place l'API Entreprise,
-        l'API qui aggrège les informations sur les entreprises.
+        Dans le respect du principe "Dites le nous une seule fois", la DINSIC a mis en place l’API Entreprise,
+        l’API qui aggrège les informations sur les entreprises.
           <br />
           
         Obtenez les Greffes, Certificats, Liasses fiscales, Attestations sociales, et bien plus encore...

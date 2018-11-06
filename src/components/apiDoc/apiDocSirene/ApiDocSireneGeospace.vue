@@ -4,16 +4,16 @@
       <div class="column__full">
         <h2>Recherches géographiques</h2>
         <p>
-          <strong>L'API integre désormais le géocodage de la base Sirene !</strong>
-          Chaque établissement affiche désormais sa latitude, longitude, ainsi qu'un <strong>geo_score</strong> indiquant
-          la fiabilité du géocodage de l'établissement.
+          <strong>L’API integre désormais le géocodage de la base Sirene !</strong>
+          Chaque établissement affiche désormais sa latitude, longitude, ainsi qu’un <strong>geo_score</strong> indiquant
+          la fiabilité du géocodage de l’établissement.
         </p>
       </div>
       <div class="container__columns">
         <div class="column">
-          <h3>Recherche autour d'un point :</h3>
+          <h3>Recherche autour d’un point :</h3>
           <p>
-            L'endpoint <code>/v1/near_point/</code> prend en paramètre une latitude (:lat) et une longitude (:long)
+            L’endpoint <code>/v1/near_point/</code> prend en paramètre une latitude (:lat) et une longitude (:long)
             et renvoie les établissements autour de ces coordonnées.<br>
             Vous pouvez également préciser un paramètre <code>radius</code> (défaut: 5 km).
           </p>
@@ -37,7 +37,7 @@
         </thead>
         <tbody>
           <tr>
-            <td>Filtrage par code d'activité principale (code NAF)</td>
+            <td>Filtrage par code d’activité principale (code NAF)</td>
             <td><code>activite_principale</code></td>
             <td>le code NAF désiré</td>
           </tr>
@@ -56,15 +56,15 @@
       <div class="container__columns">
         <div class="row">
           <div class="column">
-            <h3>Recherche autour d'un établissement :</h3>
+            <h3>Recherche autour d’un établissement :</h3>
             <p>
-              L'endpoint <code>/v1/near_etablissement/:SIRET</code> prend en paramètre un siret et renvoie les établissements
-              autour de l'établissement correspondant à ce siret.
+              L’endpoint <code>/v1/near_etablissement/:SIRET</code> prend en paramètre un siret et renvoie les établissements
+              autour de l’établissement correspondant à ce siret.
             </p>
             <api-doc-input :request=exempleGeoSpace2></api-doc-input>
-            <h3>Recherche autour d'un établissement, format GeoJSON :</h3>
+            <h3>Recherche autour d’un établissement, format GeoJSON :</h3>
             <p>
-              L'endpoint <code>/v1/near_etablissement_geoJSON/:SIRET</code> fonctionne exactement comme le précédent
+              L’endpoint <code>/v1/near_etablissement_geoJSON/:SIRET</code> fonctionne exactement comme le précédent
               mais retourne les 500 établissements les plus proches au format GeoJSON.
               Les résultats ne sont pas paginés.
             </p>

@@ -3,7 +3,7 @@
     <div class="container">
         <p>
           Vous êtes une administration publique ?<br />
-          Demandez votre accès spécial à l'API Entreprise pour obtenir des informations supplémentaires sur les sociétés
+          Demandez votre accès spécial à l’API Entreprise pour obtenir des informations supplémentaires sur les sociétés
         </p>
         <a class="button" href="https://entreprise.api.gouv.fr/">Demander un accès</a>
       </div>

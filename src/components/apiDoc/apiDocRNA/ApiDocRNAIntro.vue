@@ -2,13 +2,13 @@
   <section class="section section-white">
     <div class="container">
       <div class="column">
-        <h1>Documentation de l'API RNA</h1>
-        <h2>L'API du Répertoire National des Associations est désormais disponible !</h2>
+        <h1>Documentation de l’API RNA</h1>
+        <h2>L’API du Répertoire National des Associations est désormais disponible !</h2>
         <p>
-          Dans le cadre du Service Public de la Donnée, de nombreux jeux de données s'ouvrent au grand public.<br>
+          Dans le cadre du Service Public de la Donnée, de nombreux jeux de données s’ouvrent au grand public.<br>
           La base de données RNA sur les associations est maintenant <strong>Open data</strong>.
           <br>
-          L'API RNA est développée par <a href="https://www.data.gouv.fr/fr/organizations/etalab/">Étalab</a>.<br>
+          L’API RNA est développée par <a href="https://www.data.gouv.fr/fr/organizations/etalab/">Étalab</a>.<br>
           Ce site web et son API sont open-source : vous pouvez <a href="https://github.com/etalab/rna_as_api">télécharger le code sur GitHub</a>.
         </p>
       </div>
