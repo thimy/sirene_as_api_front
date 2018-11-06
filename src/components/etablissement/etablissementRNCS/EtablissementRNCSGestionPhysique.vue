@@ -4,6 +4,10 @@
     <div class="company__managers">
       <div v-for="manager in managersPhysical" :key=manager.id>
         <h5>{{ manager.qualite | capitalize }}</h5>
+        <div class="company__item-inline">
+          <div class="company__item-key">Nom</div>
+          <div class="company__item-value">{{ concatNames(manager.prenoms, manager.nom_usage, manager.nom_patronyme) }}</div>
+        </div>
         <panel-info-rncs :parent="manager" :elements=elementsToDisplay :inlineLabels="true" />
         <div class="company__item-inline">
           <div class="company__item-key">Adresse</div>
@@ -13,6 +17,11 @@
             <div v-if="manager.adresse_ligne_3">{{ manager.adresse_ligne_3 }}</div>
             <div> {{ RNCSConcatAddress(manager) }}</div>
           </div>
+        </div>
+        <panel-info-rncs :parent="manager" :elements=elementsToDisplay2 :inlineLabels="true" />
+        <div class="company__item-inline">
+          <div class="company__item-key">Nom du conjoint collaborateur</div>
+          <div class="company__item-value">{{ concatNames(manager.conjoint_collab_nom_usage, manager.conjoint_collab_nom_usage, manager.conjoint_collab_nom_patronyme) }}</div>
         </div>
       </div>
     </div>
@@ -36,14 +45,13 @@ export default {
     return {
       elementsToDisplay:
         {
-          "Nom": "nom_patronyme",
-          "Nom d'usage": "nom_usage",
           "Pseudonyme": "pseudonyme",
-          "Prénoms": "prenoms",
           "Date de naissance": "date_naissance",
           "Ville de naissance": "ville_naissance",
           "Pays de naissance": "pays_naissance",
           "Nationalité": "nationalite",
+        },
+        elementsToDisplay2: {
           "Conjoint collaborateur, Date de Fin":"conjoint_collab_date_fin",
           "Conjoint collaborateur, Nom":"conjoint_collab_nom_patronyme",
           "Conjoint collaborateur, Nom d‘usage":"conjoint_collab_nom_usage",

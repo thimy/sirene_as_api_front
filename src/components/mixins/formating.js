@@ -83,6 +83,30 @@ function RNCSConcatAddressDAP(infos) {
   return address
 }
 
+function concatNames (firstName, lastName, otherLastName) {
+  let first, last = ''
+  
+  if (lastName) {
+    last = lastName.toUpperCase()
+  } else if (otherLastName) {
+    last = otherLastName.toUpperCase()
+  } else {
+    return ''
+  }
+
+  if (firstName) {
+    first = firstName.capitalize()
+  }
+
+  return `${first} ${last}`
+}
+
+String.prototype.capitalize = function() {
+  return this.toLowerCase().replace( /(?:^|[^\wà-öø-ÿ])[\wà-öø-ÿ]/g, function (match) {
+    return match.toUpperCase();
+  })
+}
+
 export default {
   methods: {
     nameFromCodeGreffe,
@@ -93,6 +117,7 @@ export default {
     RNCSConcatGreffe,
     RNCSConcatName,
     RNCSConcatAddress,
-    RNCSConcatAddressDAP
+    RNCSConcatAddressDAP,
+    concatNames
   }
 }
