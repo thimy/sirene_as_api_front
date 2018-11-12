@@ -54,6 +54,7 @@ export default {
   },
   methods: {
     requestSearchIfNotEmpty: function() {
+      this.fullText = this.fullText.trim()
       if (this.isSearchNotEmpty) {
         this.requestSearch()
       }
