@@ -109,6 +109,14 @@ function concatNames (firstName, lastName) {
   return `${first} ${last}`
 }
 
+function collabName (person) {
+  return concatNames(person.conjoint_collab_prenoms, person.conjoint_collab_nom_patronyme)
+}
+
+function representName (person) {
+  return concatNames(person.representant_permanent_nom_patronyme, person.representant_permanent_prenoms)
+}
+
 String.prototype.capitalize = function() {
   return this.toLowerCase().replace( /(?:^|[^\wà-öø-ÿ])[\wà-öø-ÿ]/g, function (match) {
     return match.toUpperCase();
@@ -127,6 +135,8 @@ export default {
     RNCSConcatAddress,
     RNCSConcatAddressRP,
     RNCSConcatAddressDAP,
-    concatNames
+    concatNames,
+    collabName,
+    representName
   }
 }
