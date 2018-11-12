@@ -9,7 +9,7 @@
       <div class="company__item-key">Greffe</div>
       <div class="company__item-value"> {{ RNCSConcatGreffe(this.RNCSData) }}</div>
     </div>
-    <panel-info-rncs :parent=RNCSData :elements=this.elementsToDisplay1 />
+    <panel-info :parent=RNCSData :elements=this.elementsToDisplay1 />
     <div class="company__item" v-if="haveRNCSPhysicalDAP">
       <div class="company__item-key">Déclaration d’attribution de Patrimoine :</div>
       <div class="company__item-value">{{ RNCSPhysical.dap }}</div>
@@ -23,22 +23,22 @@
         <div> {{ RNCSConcatAddressDAP(RNCSPhysical) }}</div>
         <div v-if="RNCSPhysical.dap_adresse_code_commune">Code Commune {{ RNCSPhysical.dap_adresse_code_commune }}</div>
       </div>
-      <panel-info-inline-rncs class="company__item" :parent=RNCSPhysical :elements=this.elementsToDisplay3 />
+      <panel-info-inline class="company__item" :parent=RNCSPhysical :elements=this.elementsToDisplay3 />
     </div>
   </div>
 </template>
 
 <script>
-import PanelInfoRNCS from '@/components/templates/PanelInfoRNCS'
-import PanelInfoInlineRNCS from '@/components/templates/PanelInfoInlineRNCS'
+import PanelInfo from '@/components/etablissement/etablissementRNCS/templates/PanelInfo'
+import PanelInfoInline from '@/components/etablissement/etablissementRNCS/templates/PanelInfoInline'
 import Filters from '@/components/mixins/filters'
 import Formating from '@/components/mixins/formating'
 
 export default {
   name: 'EtablissementRNCSRegistration',
   components: {
-    'PanelInfoRncs': PanelInfoRNCS,
-    'PanelInfoInlineRncs': PanelInfoInlineRNCS
+    'PanelInfo': PanelInfo,
+    'PanelInfoInline': PanelInfoInline
   },
   data () {
     return {

@@ -13,7 +13,7 @@
 import Filters from '@/components/mixins/filters'
 
 export default {
-  name: 'PanelInfoRNCS',
+  name: 'PanelInfo',
   props: ['parent', 'elements', 'inlineLabels'],
   mixins: [Filters]
 }

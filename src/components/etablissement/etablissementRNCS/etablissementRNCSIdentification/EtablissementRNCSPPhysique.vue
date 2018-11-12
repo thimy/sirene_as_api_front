@@ -9,7 +9,7 @@
       <div class="company__item-key">Nom d’usage</div>
       <div class="company__item-value">{{ RNCSPhysical.nom_usage | upperCase }}</div>
     </div>
-    <panel-info-rncs :parent="RNCSPhysical" :elements="elementsToDisplay1" />
+    <panel-info :parent="RNCSPhysical" :elements="elementsToDisplay1" />
     <div class="company__item">
       <div class="company__item-key">Adresse :</div>
       <div class="company__item-value">
@@ -17,28 +17,27 @@
         <div v-if="RNCSPhysical.adresse_ligne_2">{{ RNCSPhysical.adresse_ligne_2 }}</div>
         <div v-if="RNCSPhysical.adresse_ligne_3">{{ RNCSPhysical.adresse_ligne_3 }}</div>
         <div> {{ RNCSConcatAddress(RNCSPhysical) }}</div>
-        <div v-if="RNCSPhysical.adresse_code_commune">Code Commune {{ RNCSPhysical.adresse_code_commune }}</div>
       </div>
     </div>
     <div v-if="collabName(RNCSPhysical)" class="company__item">
       <div class="company__item-key">Nom du conjoint collaborateur</div>
       <div class="company__item-value">{{ collabName(RNCSPhysical) }}</div>
     </div>
-    <panel-info-inline-rncs :parent="RNCSPhysical" :elements="elementsToDisplay2" />
+    <panel-info-inline :parent="RNCSPhysical" :elements="elementsToDisplay2" />
   </div>
 </template>
 
 <script>
-import PanelInfoRNCS from '@/components/templates/PanelInfoRNCS'
+import PanelInfo from '@/components/etablissement/etablissementRNCS/templates/PanelInfo'
+import PanelInfoInline from '@/components/etablissement/etablissementRNCS/templates/PanelInfoInline'
 import Formating from '@/components/mixins/formating'
 import Filters from '@/components/mixins/filters'
-import PanelInfoInlineRNCS from '@/components/templates/PanelInfoInlineRNCS';
 
 export default {
   name: 'EtablissementRNCSPPhysique',
   components: {
-    'PanelInfoRncs': PanelInfoRNCS,
-    'PanelInfoInlineRncs': PanelInfoInlineRNCS
+    'PanelInfo': PanelInfo,
+    'PanelInfoInline': PanelInfoInline
   },
   data () {
     return {

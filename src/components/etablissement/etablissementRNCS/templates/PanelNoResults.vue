@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'PanelNoResultsRNCS',
+  name: 'PanelNoResults',
   props: ['ifNotPresent'],
   computed: {
     dataIsAvailable () {

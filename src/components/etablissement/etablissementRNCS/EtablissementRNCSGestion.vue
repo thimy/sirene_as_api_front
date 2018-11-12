@@ -9,23 +9,23 @@
         <etablissement-rncs-gestion-physique :manager=manager />
       </div>
     </div>
-    <panel-no-results-rncs :ifNotPresent="managers" />
+    <panel-no-results :ifNotPresent="managers" />
   </div>
 </template>
 
 <script>
 import EtablissementRNCSGestionMorale from '@/components/etablissement/etablissementRNCS/etablissementRNCSGestion/EtablissementRNCSGestionMorale'
 import EtablissementRNCSGestionPhysique from '@/components/etablissement/etablissementRNCS/etablissementRNCSGestion/EtablissementRNCSGestionPhysique'
-import PanelNoResultsRNCS from '@/components/templates/PanelNoResultsRNCS'
+import PanelNoResults from '@/components/etablissement/etablissementRNCS/templates/PanelNoResults'
 import Filters from '@/components/mixins/filters'
 import Formating from '@/components/mixins/formating'
 
 export default {
   name: 'EtablissementRNCSGestion',
   components: {
+    'PanelNoResults': PanelNoResults,
     'EtablissementRncsGestionMorale': EtablissementRNCSGestionMorale,
     'EtablissementRncsGestionPhysique': EtablissementRNCSGestionPhysique,
-    'PanelNoResultsRncs': PanelNoResultsRNCS
   },
   computed: {
     managers () {

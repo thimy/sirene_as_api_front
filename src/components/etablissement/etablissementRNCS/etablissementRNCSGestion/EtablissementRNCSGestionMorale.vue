@@ -1,7 +1,7 @@
 <template>
   <div>
     <h5>{{ manager.qualite | ifExist | capitalize }}</h5>
-    <panel-info-rncs :parent="manager" :elements=elementsToDisplayLegal :inlineLabels="true" />
+    <panel-info :parent="manager" :elements=elementsToDisplayLegal :inlineLabels="true" />
     <div v-if="manager.siren_pm" class="company__item-inline">
       <div class="company__item-key">SIREN</div>
       <div class="company__item-value">
@@ -21,15 +21,13 @@
 </template>
 
 <script>
-import PanelInfoRNCS from '@/components/templates/PanelInfoRNCS'
-import Formating from '@/components/mixins/formating'
+import PanelInfo from '@/components/etablissement/etablissementRNCS/templates/PanelInfo'
 import Filters from '@/components/mixins/filters'
+import Formating from '@/components/mixins/formating'
 
 export default {
   name: 'EtablissementRNCSGestionMorale',
-  components: {
-    'PanelInfoRncs': PanelInfoRNCS
-  },
+  components: { 'PanelInfo': PanelInfo },
   props: ['manager'],
   data () {
     return {

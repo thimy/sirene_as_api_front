@@ -9,18 +9,18 @@
       <div class="company__item company__comment-date"><div class="company__item-value">{{ observation.date_ajout | frenchDateFormat | ifExist }}</div></div>
       <div class="company__item"><div class="company__item-value">{{ observation.texte }}</div></div>
     </div>
-    <panel-no-results-rncs :ifNotPresent="RNCSObservations" />
+    <panel-no-results :ifNotPresent="RNCSObservations" />
   </div>
 </template>
 
 <script>
 import Filters from '@/components/mixins/filters'
-import PanelNoResultsRNCS from '@/components/templates/PanelNoResultsRNCS'
+import PanelNoResults from '@/components/etablissement/etablissementRNCS/templates/PanelNoResults'
 import orderBy from 'lodash/orderBy';
 
 export default {
   name: 'EtablissementRNCSObservations',
-  components: { 'PanelNoResultsRncs': PanelNoResultsRNCS },
+  components: { 'PanelNoResults': PanelNoResults },
   computed: {
     RNCSData () {
       return this.$store.getters.RNCSData
