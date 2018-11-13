@@ -1,16 +1,17 @@
 <template>
   <div class="form__group">
     <input type="text" name="search" placeholder="Nom, SIREN, SIRET, adresse..." v-model="fullText"
+      @keydown="allowSuggestions"
       @keydown.down="suggestDown"
       @keydown.up.prevent="suggestUp"
       @keydown.esc="suggestReset"
       @blur="suggestReset"
-      @keydown.enter="requestSearchIfNotEmpty"/>
+      @keydown.enter="prepareThenSearch"/>
     <button class="overlay-button" @click="suggestSelectAndEnter(index)">
       <svg class="icon icon-search"><use xlink:href="#icon-search"></use></svg>
     </button>
 
-    <ul v-show="suggestions.length" class="suggestions">
+    <ul v-show="suggestions.length && this.suggestionsAllowed" class="suggestions">
       <li class="suggestion__box"
           v-for="(suggestion, index) in suggestions"
           :key="index"
@@ -36,16 +37,14 @@ export default {
         return this.$store.state.searchFullText.storedFullText
       },
       set: function (fullText) {
-        this.$store.commit('setFullText', fullText)
         if (!fullText) {
           this.$store.dispatch('goToClearedHomePage')
         }
-        if (String(fullText).length >= 3) {
+        if (String(fullText).length >= 3 && this.suggestionsAllowed) {
           this.resetIndexSuggestion()
-          this.$store.commit('setPage', 1)
-          this.$store.commit('setQuerySuggestions', fullText)
-          this.$store.dispatch('executeSearchSuggestions')
+          this.$store.dispatch('executeSearchSuggestions', fullText)
         }
+        this.$store.commit('setFullText', fullText)
       }
     },
     isSearchNotEmpty () {
@@ -53,8 +52,18 @@ export default {
     },
   },
   methods: {
-    requestSearchIfNotEmpty: function() {
+    prepareThenSearch: function() {
+      this.$store.commit('setPage', 1)
+      // Disallowing suggestions so we stop displaying them
+      this.suggestionsAllowed = false
+      // Set fullText to current suggestion if it is selected
+      if (this.currentSuggestion) {
+        this.fulltext = this.currentSuggestion
+      }
+      // Trimming input
       this.fullText = this.fullText.trim()
+
+      // Start search except if input is empty
       if (this.isSearchNotEmpty) {
         this.requestSearch()
       }
@@ -81,6 +90,9 @@ export default {
       this.$store.dispatch('requestSearchFullText')
       this.suggestCount = -1
     }
+  },
+  beforeDestroy() {
+    this.suggestReset()
   },
   mixins: [Filters, SuggestionsHelpers, RegExps]
 }
