@@ -41,7 +41,12 @@ export default {
       }
     },
     frenchNumberFormat: function(input) {
-      return new Intl.NumberFormat('fr-FR').format(input)
+      // If input have fraction digits, write 2 of them
+      if (Number(input) % 1 == 0) {
+        return new Intl.NumberFormat('fr-FR').format(input)
+      } else {
+        return new Intl.NumberFormat('fr-FR', { minimumFractionDigits: 2 }).format(input)
+      }
     },
     frenchDateFormat: function(input) {
       if (input == null) {
