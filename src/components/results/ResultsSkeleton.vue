@@ -8,13 +8,13 @@
     </li>
     <li class="panel">
       <div class="glow"></div>
-      <h2 class="loading"></h2>
+      <h4 class="loading"></h4>
       <div class="text__long loading"></div>
       <div class="text__medium loading"></div>
     </li>
     <li class="panel">
       <div class="glow"></div>
-      <h2 class="loading"></h2>
+      <h4 class="loading"></h4>
       <div class="text__long loading"></div>
       <div class="text__medium loading"></div>
     </li>
@@ -34,13 +34,13 @@ h4.loading {
 }
 
 .text__long {
-  margin-top: 1em;
+  margin-top: 0.9em;
   width: 600px;
 }
 
 .text__medium {
-  margin-top: 1em;
-  width: 400px
+  margin-top: 0.9em;
+  width: 300px
 }
 
 
