@@ -58,6 +58,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .section {
+    min-height: 70vh;
+  }
+  
   .panel {
     margin-top: 2em;
   }
