@@ -1,22 +1,14 @@
 // This module contains code relative to Application State
 import store from '@/store/index.js'
 import router from '@/router/index.js'
+import mapValues from 'lodash/mapValues'
+
+const endpoints = Object.assign({}, process.env.LIST_ENDPOINTS)
 
 const state = {
   // One entry here for each endpoint
-  isLoading: {
-    'ID_ASSOCIATION': true,
-    'SIRET': true,
-    'SIRENE_FULLTEXT': true,
-    'RNA_FULLTEXT': true
-  },
-  status: {
-    'RNA': null,
-    'SIRENE': null,
-    'RNA_FULLTEXT': null,
-    'SIRENE_FULLTEXT': null,
-    'RNCS': null
-  }
+  isLoading: mapValues(endpoints, () => false),
+  status: mapValues(endpoints, () => null)
 }
 
 const getters = {
@@ -68,12 +60,7 @@ const getters = {
 const mutations = {
   setLoading(state, {value, search}) {
     if (search == 'ALL') {
-      state.isLoading = {
-        'ID_ASSOCIATION': value,
-        'SIRET': value,
-        'SIRENE_FULLTEXT': value,
-        'RNA_FULLTEXT': value
-      }
+      state.isLoading = mapValues(endpoints, () => value)
     } else {
       state.isLoading[search] = value
     }
@@ -83,25 +70,21 @@ const mutations = {
   },
   clearStatus (state, api ) {
     if (api == 'ALL') {
-      state.status = {
-        'RNA': null,
-        'SIRENE': null,
-        'RNCS': null
-      }
+      state.status = mapValues(endpoints, () => null)
     } else {
       state.status[api] = null
     }
   },
-  setNoResultFound (state, api) {
-    if (api == 'ALL') {
-      state.status = {
-        'RNA': 404,
-        'SIRENE': 404
-      }
-    } else {
-      state.status[api] = 404
-    }
-  }
+  // setNoResultFound (state, api) {
+  //   if (api == 'ALL') {
+  //     state.status = {
+  //       'RNA': 404,
+  //       'SIRENE': 404
+  //     }
+  //   } else {
+  //     state.status[api] = 404
+  //   }
+  // }
 }
 
 const actions = {
