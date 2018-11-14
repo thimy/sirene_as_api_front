@@ -41,7 +41,7 @@ export default {
       }
     },
     frenchNumberFormat: function(input) {
-      return new Intl.NumberFormat('fr-FR').format(input)
+      return new Intl.NumberFormat('fr-FR', { minimumFractionDigits: 2 }).format(input)
     },
     frenchDateFormat: function(input) {
       if (input == null) {
