@@ -189,7 +189,7 @@ table {
   margin: 10px 0px auto;
   border-collapse: collapse;
   border: 1px solid $color-white;
-  border-bottom: 2px solid $color-light-blue;
+  border-bottom: 2px solid $color-blue;
   box-shadow: 0px 0px 20px rgba(0,0,0,0.10),
      0px 10px 20px rgba(0,0,0,0.05),
      0px 20px 20px rgba(0,0,0,0.05),
@@ -213,7 +213,7 @@ table {
     }
   }
   th {
-    background: $color-light-blue;
+    background: $color-blue;
     color: $color-white;
     text-transform: uppercase;
     font-size: 1em;

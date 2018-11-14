@@ -6,18 +6,17 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
     class="section section-white"
   >
     <div
-      class="container centered"
+      class="container text-center"
     >
       <h1>
         Les APIs Open Data
       </h1>
        
       <p
-        class="centered"
+        class="text-center lead-text"
       >
         
-      Entreprise.data.gouv.fr est en phase intensive de développement. De nombreuses
-      APIs sont en cours d’ajout !
+      Entreprise.data.gouv.fr est en phase intensive de développement. De nombreuses APIs sont en cours d’ajout !
     
       </p>
     </div>
@@ -30,26 +29,22 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
       <div
         class="container apis"
       >
+        <h2>
+          L’API Sirene
+        </h2>
+         
         <div
           class="row"
         >
-          <div
+          <p
             class="description"
           >
-            <h2>
-              L’API Sirene
-            </h2>
-             
-            <p>
-              
-            L’API Sirene contient tous les établissements des entreprises françaises,
-            ainsi que toutes les associations disposant d’un code SIRET.
-              <br />
-              
-            Les données de l’API Sirene sont délivrées par l’INSEE.
-          
-            </p>
-          </div>
+            
+          L’API Sirene contient tous les établissements des entreprises françaises,
+          ainsi que toutes les associations disposant d’un code SIRET.
+          Les données de l’API Sirene sont délivrées par l’INSEE.
+        
+          </p>
            
           <div
             class="cta"
@@ -70,25 +65,21 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
       <div
         class="container apis"
       >
+        <h2>
+          L’API Repertoire National des Associations (RNA)
+        </h2>
+         
         <div
           class="row"
         >
-          <div
+          <p
             class="description"
           >
-            <h2>
-              L’API Repertoire National des Associations (RNA)
-            </h2>
-             
-            <p>
-              
-            Cette API contient toutes les associations françaises.
-              <br />
-              
-            Les données proviennent du Ministère de l’Intérieur.
-          
-            </p>
-          </div>
+            
+          Cette API contient toutes les associations françaises.
+          Les données proviennent du Ministère de l’Intérieur.
+        
+          </p>
            
           <div
             class="cta"
@@ -109,25 +100,21 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
       <div
         class="container apis"
       >
+        <h2>
+          L’API Répertoire National des Métiers (RNM)
+        </h2>
+         
         <div
           class="row"
         >
-          <div
+          <p
             class="description"
           >
-            <h2>
-              L’API Répertoire National des Métiers (RNM)
-            </h2>
-             
-            <p>
-              
-            L’API RNM vous est gracieusement ouverte par les Chambres et Métiers de l’Artisanat.
-              <br />
-              
-            Les données sont mises à jour toutes les nuits.
-          
-            </p>
-          </div>
+            
+          L’API RNM vous est gracieusement ouverte par les Chambres et Métiers de l’Artisanat.
+          Les données sont mises à jour toutes les nuits.
+        
+          </p>
            
           <div
             class="cta"
@@ -149,27 +136,21 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
       <div
         class="container apis"
       >
+        <h2>
+          L’API Registre National du Commerce et des Sociétés (RNCS)
+        </h2>
+         
         <div
           class="row"
         >
-          <div
+          <p
             class="description"
           >
-            <h2>
-              L’API Registre National du Commerce
-              <br />
-              et des Sociétés (RNCS)
-            </h2>
-             
-            <p>
-              
-            Cette API contient les données IMR (Immatriculation, Modification, Radiation) des sociétés.
-              <br />
-              
-            Les données proviennent d’Infogreffe et de l’INPI.
-          
-            </p>
-          </div>
+            
+          Cette API contient les données IMR (Immatriculation, Modification, Radiation) des sociétés.
+          Les données proviennent d’Infogreffe et de l’INPI.
+        
+          </p>
            
           <div
             class="cta"
@@ -195,15 +176,6 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
         class="row"
       >
         <div
-          class="column__icon"
-        >
-          <img
-            alt=""
-            src="@/assets/img/icons/statistics-on-a-screen.svg"
-          />
-        </div>
-         
-        <div
           class="column__right"
         >
           <h2>
@@ -219,7 +191,7 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
              met a votre disposition de nombreux jeux de données "Open Data".
             <br />
             
-          Quelques exemples :
+          Quelques exemples :
         
           </p>
            
@@ -262,12 +234,24 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
           <p>
             
           Etalab coordonne la politique d’ouverture et de partage des données publiques (“open data”). 
+          
+            <br />
+             
             <a
               href="https://www.etalab.gouv.fr/en/qui-sommes-nous"
             >
               Plus d’informations.
             </a>
           </p>
+        </div>
+         
+        <div
+          class="column__icon"
+        >
+          <img
+            alt=""
+            src="@/assets/img/icons/statistics-on-a-screen.svg"
+          />
         </div>
       </div>
     </div>
@@ -277,45 +261,41 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
     class="section section-white"
   >
     <div
-      class="container"
+      class="container text-center"
     >
+      <h2>
+        Découvrez l’API Entreprise, toutes les informations sur les sociétés.
+      </h2>
+       
       <div
-        class="center"
+        class="column__img"
       >
-        <h2>
-          Découvrez l’API Entreprise, toutes les informations sur les sociétés.
-        </h2>
-         
-        <div
-          class="column__img"
-        >
-          <img
-            alt=""
-            src="@/assets/img/city.svg"
-          />
-        </div>
-         
-        <h3>
-          Vous justifiez d’une mission de service public ? L’API Entreprise est pour vous.
-        </h3>
-         
-        <p>
-          
-        Dans le respect du principe "Dites le nous une seule fois", la DINSIC a mis en place l’API Entreprise,
-        l’API qui aggrège les informations sur les entreprises.
-          <br />
-          
-        Obtenez les Greffes, Certificats, Liasses fiscales, Attestations sociales, et bien plus encore...
-      
-        </p>
-         
-        <a
-          class="button"
-          href="https://entreprise.api.gouv.fr/"
-        >
-          Demander un accès
-        </a>
+        <img
+          alt=""
+          src="@/assets/img/city.svg"
+        />
       </div>
+       
+      <h3>
+        Vous justifiez d’une mission de service public ? L’API Entreprise est pour vous.
+      </h3>
+       
+      <p>
+        
+      Dans le respect du principe "Dites le nous une seule fois", la DINSIC a mis en place l’API Entreprise,
+      l’API qui aggrège les informations sur les entreprises.
+        <br />
+        
+      Obtenez les Greffes, Certificats, Liasses fiscales, Attestations sociales, et bien plus encore...
+    
+      </p>
+       
+      <a
+        class="button"
+        href="https://entreprise.api.gouv.fr/"
+      >
+        Demander un accès
+      </a>
     </div>
   </section>
 </div>
