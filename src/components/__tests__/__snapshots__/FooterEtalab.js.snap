@@ -10,9 +10,14 @@ exports[`FooterEtalab.vue snapshot testing It match the snapshot 1`] = `
     <div
       class="footer__logo"
     >
-      <img
-        src="../assets/img/etalab.svg"
-      />
+      <a
+        href="https://www.etalab.gouv.fr"
+        target="_blank"
+      >
+        <img
+          src="../assets/img/etalab.svg"
+        />
+      </a>
        
       <ul
         class="footer__social"
@@ -83,7 +88,7 @@ exports[`FooterEtalab.vue snapshot testing It match the snapshot 1`] = `
           class="fit-mobile"
         >
           <a
-            href="https://entreprise.api.gouv.fr/"
+            href="https://entreprise.data.gouv.fr/"
           >
             entreprise.data.gouv.fr
           </a>

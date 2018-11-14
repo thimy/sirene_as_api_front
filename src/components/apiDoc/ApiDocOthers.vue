@@ -2,14 +2,11 @@
   <section class="section section-grey">
     <div class="container">
       <div class="row">
-        <div class="column__icon">
-          <img src="@/assets/img/icons/statistics-on-a-screen.svg" alt="">
-        </div>
         <div class="column__right">
           <h2>Découvrez les autres APIs et jeux de données Data.gouv</h2>
           <p>
             <a href="https://data.gouv.fr">Data.gouv.fr</a> met a votre disposition de nombreux jeux de données "Open Data".<br>
-            Quelques exemples :
+            Quelques exemples :
           </p>
           <ul>
             <li>
@@ -27,8 +24,13 @@
           </p>
           <h3>La mission Etalab</h3>
           <p>
-            Etalab coordonne la politique d’ouverture et de partage des données publiques (“open data”). <a href="https://www.etalab.gouv.fr/en/qui-sommes-nous">Plus d’informations.</a>
+            Etalab coordonne la politique d’ouverture et de partage des données publiques (“open data”). 
+            <br />
+            <a href="https://www.etalab.gouv.fr/en/qui-sommes-nous">Plus d’informations.</a>
           </p>
+        </div>
+        <div class="column__icon">
+          <img src="@/assets/img/icons/statistics-on-a-screen.svg" alt="">
         </div>
       </div>
     </div>
@@ -42,43 +44,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-.container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  @media screen and (max-width: $mobile) {
-    h2, h3, p {
-      text-align: center;
-    }
-  }
-}
-
-.row {
-  margin: auto;
-}
-
 .column__icon {
   width: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+
+  img {
+    max-height: 150px;
+  }
 
   @media screen and (max-width: $mobile) {
-    width: 40%;
-    margin: auto;
+    width: auto;
   }
 }
-
-.column__right {
-  display: flex;
-  flex-direction: column;
-  align-self: flex-end;
-
-  @media screen and (max-width: $mobile) {
-    max-width: 295px;
-  }
-}
-
 </style>
