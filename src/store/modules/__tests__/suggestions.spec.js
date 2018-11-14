@@ -19,25 +19,12 @@ jest.mock('vue', () => ({
   }
 }))
 
-describe('suggestions.js getters', () => {
-  test('Getter suggestionAdressToGet concatenate the right address', () => {
-    const state = {
-      baseAdressSuggestions: 'mock-base-',
-      querySuggestions: 'mock-query'
-    }
-    expect(Suggestions.getters.suggestionAdressToGet(state)).toBe('mock-base-mock-query')
-  })
-})
-
 describe('suggestions.js mutations', () => {
   const state = {
     querySuggestions: 0,
     storedSuggestions: 0
   }
-  test('Mutation setQuerySuggestions works', () => {
-    Suggestions.mutations.setQuerySuggestions(state, 1)
-    expect(state.querySuggestions).toBe(1)
-  })
+
   test('Mutation setStoredSuggestions works', () => {
     Suggestions.mutations.setStoredSuggestions(state, 1)
     expect(state.storedSuggestions).toBe(1)

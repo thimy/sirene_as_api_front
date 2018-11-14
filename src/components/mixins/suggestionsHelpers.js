@@ -2,7 +2,10 @@ export default {
   data () {
     return {
       maxSuggestions: 5,
-      suggestCount: -1
+      suggestCount: -1,
+      // allowSuggestions only if user just typed something, so we avoid
+      // automatic search of suggestions
+      suggestionsAllowed: false
     }
   },
   computed: {
@@ -33,6 +36,9 @@ export default {
     }
   },
   methods: {
+    allowSuggestions: function () {
+      this.suggestionsAllowed = true
+    },
     currentSuggestion: function () {
       if (this.suggestCount >= 0) {
         return this.suggestions[this.suggestCount]
@@ -60,7 +66,7 @@ export default {
     },
     suggestSelectAndEnter: function (selectedIndex) {
       this.suggestCount = selectedIndex
-      this.requestSearchIfNotEmpty()
+      this.prepareThenSearch()
     },
     resetIndexSuggestion: function () {
       this.suggestCount = -1
