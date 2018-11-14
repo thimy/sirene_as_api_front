@@ -81,6 +81,10 @@ export default {
     display: block;
     text-decoration: none;
     color: $color-black;
+
+    &:hover {
+      border: 1px solid $color-light-blue;
+    }
   }
 
   p {
