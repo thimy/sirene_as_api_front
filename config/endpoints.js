@@ -1,14 +1,20 @@
 module.exports = {
-  LIST_ENDPOINTS: {
-    'SIRENE_FULLTEXT': null,
+  fullText: {
+    'SIRENE': null,
+    'RNA': null
+  },
+  etablissementMain: {
     'SIRENE_SIRET': null,
+    'RNA_ID_ASSOCIATION': null
+  },
+  etablissementAdditional: {
     'SIRENE_SIREN': null,
-    'SIRENE_SUGGESTION': null,
     'SIRENE_ID_ASSOCIATION': null,
-    'RNA_FULLTEXT': null,
     'RNA_SIRET': null,
-    'RNA_ID': null,
-    'RNCS_SIREN': null,
-    'RNM_SIREN': null
+    'RNCS': null,
+    'RNM': null
+  },
+  searchBar: {
+    'SIRENE_SUGGESTION': null
   }
 }

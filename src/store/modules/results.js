@@ -14,6 +14,18 @@ const state = {
 }
 
 const getters = {
+  sireneAvailable: () => {
+    if (state.singlePageResult['SIRENE']) {
+      return true
+    }
+    return false
+  },
+  RNAAvailable: () => {
+    if (state.singlePageResult['RNA']) {
+      return true
+    }
+    return false
+  },
   storedSpellcheckSirene: state => {
     if (state.fullTextResults['SIRENE']) {
       return state.fullTextResults['SIRENE'].spellcheck
@@ -107,13 +119,12 @@ const mutations = {
 }
 
 const actions = {
-  async setResponseFullText(dispatch, { response, api }) {
-    await store.commit('setFullTextResults', { value: response.body, api: api })
-    await store.commit('setStatus', { value: response.status, api: `${api}_FULLTEXT` })
-    store.commit('setLoading', { value: false, search: `${api}_FULLTEXT` })
+  setResponseFullText(dispatch, { response, api }) {
+    store.commit('setStatus', { value: response.status, endpoint: `${api}_FULLTEXT` })
+    store.commit('setFullTextResults', { value: response.body, api: api })
   },
-  setResponseEtablissement(dispatch, { response, api }) {
-    store.commit('setStatus', { value: response.status, api: api })
+  setResponseEtablissement(dispatch, { response, api, endpoint }) {
+    store.commit('setStatus', { value: response.status, endpoint: endpoint })
     if (response.status == 200) {
       store.commit('setSinglePageResults', { value: response.body, api: api })
     } else {

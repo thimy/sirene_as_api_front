@@ -57,14 +57,13 @@ const actions = {
   },
 
   async searchFullText () {
-    await store.dispatch('resetApplicationState')
-    await store.commit('setLoading', { value: true, search: 'SIRENE_FULLTEXT' })
-    await store.commit('setLoading', { value: true, search: 'RNA_FULLTEXT' })
+    // await store.dispatch('resetApplicationState')
     store.dispatch('executeSearchFullText', 'SIRENE')
     store.dispatch('executeSearchFullText', 'RNA')
   },
 
   async executeSearchFullText(dispatch, api) {
+    await store.commit('setLoading', { value: true, search: `${api}_FULLTEXT` })
     store.dispatch('sendAPIRequest', getters.addressToGetFullText(state, api))
       .then(response => {
         store.dispatch('setResponseFullText', { response: response, api: api })
@@ -72,6 +71,7 @@ const actions = {
       .catch(async error => {
         store.dispatch('setResponseFullText', { response: error, api: api })
       })
+      .finally(store.commit('setLoading', { value: false, search: `${api}_FULLTEXT` }))
   }
 }
 

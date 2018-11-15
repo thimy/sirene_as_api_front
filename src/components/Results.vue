@@ -35,10 +35,10 @@ export default {
   },
   computed: {
     resultsAreLoading () {
-      return this.$store.getters.isFullTextLoading
+      return this.$store.getters.fullTextLoading
     },
     serverError () {
-      return this.$store.getters.mainAPIError
+      return this.$store.getters.fullTextError
     },
     // Deactivating RNA Page count for demo
     // biggerNumberPages () {
@@ -61,7 +61,7 @@ export default {
   .section {
     min-height: 70vh;
   }
-  
+
   .panel {
     margin-top: 2em;
   }

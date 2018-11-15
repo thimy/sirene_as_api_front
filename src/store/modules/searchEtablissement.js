@@ -37,6 +37,7 @@ const actions = {
   },
 
   async searchEtablissementFromSiret(dispatch, searchId) {
+    await store.commit()
     await store.dispatch('executeSearchBySiret', { siret: searchId, api: 'SIRENE' })
     await store.dispatch('executeSearchBySiren', store.getters.singlePageEtablissementSirene.siren)
     store.dispatch('fromSireneRequestOtherAPIs', searchId)
@@ -54,40 +55,40 @@ const actions = {
   },
 
   async executeSearchBySiret(dispatch, { siret, api }) {
-    await store.commit('setLoading', { value: true, search: 'SIRET' })
-    await store.dispatch('sendAPIRequest', state.baseAdressSiret[api] + siret)
+    await store.commit('setLoading', { value: true, search: `${api}_SIRET` })
+    store.dispatch('sendAPIRequest', state.baseAdressSiret[api] + siret)
     .then(response => {
       store.dispatch('setResponseEtablissement', {response: response, api: api})
     })
     .catch(notFound => {
       store.dispatch('setResponseEtablissement', {response: notFound, api: api})
     })
-    store.commit('setLoading', { value: false, search: 'SIRET' })
+    .finally(store.commit('setLoading', { value: false, search: `${api}_SIRET` }))
   },
 
   async executeSearchByIdAssociation(dispatch, { id, api }) {
-    await store.commit('setLoading', { value: true, search: 'ID_ASSOCIATION' })
-    await store.dispatch('sendAPIRequest', state.baseAdressRNAId[api] + id)
+    await store.commit('setLoading', { value: true, search: `${api}_ID_ASSOCIATION` })
+    store.dispatch('sendAPIRequest', state.baseAdressRNAId[api] + id)
       .then(response => {
         store.dispatch('setResponseEtablissement', {response: response, api: api})
       })
       .catch(notFound => {
         store.dispatch('setResponseEtablissement', {response: notFound, api: api})
       })
-    store.commit('setLoading', { value: false, search: 'ID_ASSOCIATION' })
+      .finally(store.commit('setLoading', { value: false, search: `${api}_ID_ASSOCIATION` }))
   },
 
   // This function is API-Sirene only
   async executeSearchBySiren(dispatch, siren) {
-    await store.commit('setLoading', { value: true, search: 'SIREN' })
-    await store.dispatch('sendAPIRequest', dispatch.state.baseAdressSiren + siren)
+    await store.commit('setLoading', { value: true, search: 'SIRENE_SIREN' })
+    store.dispatch('sendAPIRequest', dispatch.state.baseAdressSiren + siren)
       .then(response => {
         store.dispatch('setResponseSiren', response)
       })
       .catch((notFound) => {
         store.dispatch('setResponseSiren', notFound)
       })
-    store.commit('setLoading', { value: false, search: 'SIREN' })
+      .finally(store.commit('setLoading', { value: false, search: 'SIRENE_SIREN' }))
   },
 
   sendAPIRequest: async function (dispatch, query) {

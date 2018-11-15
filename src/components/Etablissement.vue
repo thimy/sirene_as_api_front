@@ -63,13 +63,13 @@ export default {
       return this.$route.params.searchId
     },
     isEtablissementLoading () {
-      return this.$store.getters.isEtablissementLoading
+      return this.$store.getters.mainAPISLoading
     },
     isNotFound () {
-      return this.$store.getters.mainAPINotFound
+      return this.$store.getters.mainAPISNotFound
     },
     isError () {
-      return this.$store.getters.mainAPIError
+      return this.$store.getters.mainAPISError
     },
     haveSireneInfo () {
       if (this.$store.getters.sireneAvailable) {
