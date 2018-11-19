@@ -50,9 +50,8 @@ export default {
       if (this.numberResults === undefined) {
         return ''
       }
-      const numberResultsFormatted = Filters.filters.frenchNumberFormat(this.numberResults)
-      const resultText = numberResultsFormatted > 1 ? 'résultats' : 'résultat'
-      return `${numberResultsFormatted} ${resultText} pour "${this.$store.state.searchFullText.storedLastFullText}" dans la base SIRENE des entreprises`
+      const resultText = this.numberResults > 1 ? 'résultats' : 'résultat'
+      return `${this.numberResults} ${resultText} pour "${this.$store.state.searchFullText.storedLastFullText}" dans la base SIRENE des entreprises`
     },
     noResults () {
       if (this.storedResultsEntreprises && this.storedResultsEntreprises.length > 0) {
