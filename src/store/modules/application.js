@@ -11,8 +11,8 @@ import flatten from 'lodash/flatten'
 // Deep-cloning endpoints from config
 const endpoints = cloneDeep(process.env.ENDPOINTS)
 
-const errorCodes = ['500', '422']
-const notFoundCodes = ['404']
+const errorCodes = [500, 0]
+const notFoundCodes = [404, 422]
 const badCodes = flatten(errorCodes, notFoundCodes)
 
 const state = {
@@ -35,35 +35,35 @@ const getters = {
   fullTextLoading: state => {
     return includes(values(state.isLoading.fullText), true)
   },
-  fullTextError: state => { // Removing values function would work ?
-    return every(state.status.fullText, errorCodes)
+  fullTextError: state => {
+    return every(values(state.status.fullText), (value) => includes(errorCodes, value))
   },
   fullTextNotFound: state => {
-    return every(values(state.status.fullText), notFoundCodes)
+    return every(values(state.status.fullText), (value) => includes(notFoundCodes, value))
   },
   fullTextNotWorking: state => {
-    return every(values(state.status.fullText), badCodes)
+    return every(values(state.status.fullText), (value) => includes(badCodes, value))
   },
 
   // Main endpoints (RNA_ID and SIRENE_SIRET)
-  // One main API is loading = page Etablissement not ready
+  // any main API is loading = page Etablissement not ready
   mainAPISLoading: (state) => {
     return includes(values(state.isLoading.etablissementMain), true)
   },
   mainAPISError: (state) => {
-    return includes(values(state.status.etablissementMain), errorCodes)
+    return every(values(state.status.etablissementMain), (value) => includes(errorCodes, value))
   },
   mainAPISNotWorking: (state) => {
-    return includes(values(state.status.etablissementMain), badCodes)
+    return every(values(state.status.etablissementMain), (value) => includes(badCodes, value))
   },
   mainAPISNotFound: (state) => {
-    return includes(values(state.status.etablissementMain), notFoundCodes)
+    return every(values(state.status.etablissementMain), (value) => includes(notFoundCodes, value))
   },
 
   // Additional informations endpoints
   additionalAPILoading: (state) => {
     return api => {
-      return includes(badCodes, state.isLoading.etablissementAdditional[api])
+      return state.isLoading.etablissementAdditional[api]
     }
   },
   additionalAPIError: (state) => {
@@ -94,42 +94,42 @@ const getters = {
 const mutations = {
   setLoadingFullText(state, {value, endpoint}) {
     if (endpoint == 'ALL') {
-      state.isLoading.fullText = mapValues(endpoints, () => value)
+      state.isLoading.fullText = mapValues(state.isLoading.fullText, () => value)
     } else {
       state.isLoading.fullText[endpoint] = value
     }
   },
-  setLoadingMainAPI(state, {value, endpoint}) {
+  setLoadingMainAPI(state, { value, endpoint }) {
     if (endpoint == 'ALL') {
-      state.isLoading.etablissementMain = mapValues(endpoints, () => value)
+      state.isLoading.etablissementMain = mapValues(state.isLoading.etablissementMain, () => value)
     } else {
       state.isLoading.etablissementMain[endpoint] = value
     }
   },
-  setLoadingAdditionalAPI(state, {value, endpoint}) {
+  setLoadingAdditionalAPI(state, { value, endpoint }) {
     if (endpoint == 'ALL') {
-      state.isLoading.etablissementAdditional = mapValues(endpoints, () => value)
+      state.isLoading.etablissementAdditional = mapValues(state.isLoading.etablissementAdditional, () => value)
     } else {
       state.isLoading.etablissementAdditional[endpoint] = value
     }
   },
   setStatusFullText (state, { value, endpoint }) {
     if (endpoint == 'ALL') {
-      state.status.fullText = mapValues(endpoints, () => value)
+      state.status.fullText = mapValues(state.status.fullText, () => value)
     } else {
       state.status.fullText[endpoint] = value
     }
   },
   setStatusMainAPI (state, { value, endpoint }) {
     if (endpoint == 'ALL') {
-      state.status.etablissementMain = mapValues(endpoints, () => value)
+      state.status.etablissementMain = mapValues(state.status.etablissementMain, () => value)
     } else {
       state.status.etablissementMain[endpoint] = value
     }
   },
   setStatusAdditionalAPI (state, { value, endpoint }) {
     if (endpoint == 'ALL') {
-      state.status.etablissementAdditional = mapValues(endpoints, () => value)
+      state.status.etablissementAdditional = mapValues(state.status.etablissementAdditional, () => value)
     } else {
       state.status.etablissementAdditional[endpoint] = value
     }
@@ -138,9 +138,9 @@ const mutations = {
 
 const actions = {
   clearAllStatus() {
-    store.commit('setStatusFullText', { value: '', endpoint: 'ALL' })
-    store.commit('setStatusMainAPI', { value: '', endpoint: 'ALL' })
-    store.commit('setStatusAdditionalAPI', { value: '', endpoint: 'ALL' })
+    store.commit('setStatusFullText', { value: null, endpoint: 'ALL' })
+    store.commit('setStatusMainAPI', { value: null, endpoint: 'ALL' })
+    store.commit('setStatusAdditionalAPI', { value: null, endpoint: 'ALL' })
   },
   resetApplicationState() {
     store.dispatch('clearAllStatus')

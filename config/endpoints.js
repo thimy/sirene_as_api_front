@@ -4,13 +4,10 @@ module.exports = {
     'RNA': null
   },
   etablissementMain: {
-    'SIRENE_SIRET': null,
-    'RNA_ID_ASSOCIATION': null
+    'SIRENE': null,
+    'RNA': null
   },
   etablissementAdditional: {
-    'SIRENE_SIREN': null,
-    'SIRENE_ID_ASSOCIATION': null,
-    'RNA_SIRET': null,
     'RNCS': null,
     'RNM': null
   },

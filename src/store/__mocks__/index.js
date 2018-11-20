@@ -98,14 +98,9 @@ export const getters = {
 }
 
 export const mutations = {
-  // application.js
-  setLoading: jest.fn(),
-  setError500: jest.fn(),
-  setNoResultFound: jest.fn(),
   // results.js
   setFullTextResults: jest.fn(),
   clearResults: jest.fn(),
-  setStatus: jest.fn(),
   setSinglePageResults: jest.fn(),
   // resultsSiren.js
   setSirenResults: jest.fn(),

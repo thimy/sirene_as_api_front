@@ -63,7 +63,7 @@ const actions = {
   },
 
   async executeSearchFullText(dispatch, api) {
-    await store.commit('setLoading', { value: true, search: `${api}_FULLTEXT` })
+    await store.commit('setLoadingFullText', { value: true, endpoint: api })
     store.dispatch('sendAPIRequest', getters.addressToGetFullText(state, api))
       .then(response => {
         store.dispatch('setResponseFullText', { response: response, api: api })
@@ -71,7 +71,7 @@ const actions = {
       .catch(async error => {
         store.dispatch('setResponseFullText', { response: error, api: api })
       })
-      .finally(store.commit('setLoading', { value: false, search: `${api}_FULLTEXT` }))
+      .finally(store.commit('setLoadingFullText', { value: false, endpoint: api }))
   }
 }
 

@@ -31,22 +31,24 @@ const actions = {
         await store.dispatch('searchEtablissementFromIdAssociation', searchId)
         break
       default:
-        store.commit('setNoResultFound', 'ALL')
+        store.commit('setStatusMainAPI', { value: 404, endpoint: 'ALL' })
     }
-    store.commit('setLoading', { value: false, search: 'ALL' })
+    store.commit('setLoadingMainAPI', { value: false, endpoint: 'ALL' })
   },
 
   async searchEtablissementFromSiret(dispatch, searchId) {
-    await store.commit()
     await store.dispatch('executeSearchBySiret', { siret: searchId, api: 'SIRENE' })
-    await store.dispatch('executeSearchBySiren', store.getters.singlePageEtablissementSirene.siren)
+    if (store.getters.singlePageEtablissementSirene)
+      await store.dispatch('executeSearchBySiren', store.getters.singlePageEtablissementSirene.siren)
     store.dispatch('fromSireneRequestOtherAPIs', searchId)
   },
 
   async searchEtablissementFromSiren(dispatch, searchId) {
     await store.dispatch('executeSearchBySiren', searchId)
-    await store.dispatch('executeSearchBySiret', { siret: store.getters.storedSirenSiege.siret, api: 'SIRENE' })
-    store.dispatch('fromSireneRequestOtherAPIs', store.getters.storedSirenSiege.siret)
+    if (store.getters.storedSirenSiege) {
+      await store.dispatch('executeSearchBySiret', { siret: store.getters.storedSirenSiege.siret, api: 'SIRENE' })
+      store.dispatch('fromSireneRequestOtherAPIs', store.getters.storedSirenSiege.siret)
+    }
   },
 
   async searchEtablissementFromIdAssociation(dispatch, searchId) {
@@ -55,19 +57,19 @@ const actions = {
   },
 
   async executeSearchBySiret(dispatch, { siret, api }) {
-    await store.commit('setLoading', { value: true, search: `${api}_SIRET` })
-    store.dispatch('sendAPIRequest', state.baseAdressSiret[api] + siret)
+    await store.commit('setLoadingMainAPI', { value: true, endpoint: api })
+    await store.dispatch('sendAPIRequest', state.baseAdressSiret[api] + siret)
     .then(response => {
       store.dispatch('setResponseEtablissement', {response: response, api: api})
     })
     .catch(notFound => {
       store.dispatch('setResponseEtablissement', {response: notFound, api: api})
     })
-    .finally(store.commit('setLoading', { value: false, search: `${api}_SIRET` }))
+    .finally(store.commit('setLoadingMainAPI', { value: false, endpoint: api }))
   },
 
   async executeSearchByIdAssociation(dispatch, { id, api }) {
-    await store.commit('setLoading', { value: true, search: `${api}_ID_ASSOCIATION` })
+    await store.commit('setLoadingMainAPI', { value: true, endpoint: api })
     store.dispatch('sendAPIRequest', state.baseAdressRNAId[api] + id)
       .then(response => {
         store.dispatch('setResponseEtablissement', {response: response, api: api})
@@ -75,12 +77,12 @@ const actions = {
       .catch(notFound => {
         store.dispatch('setResponseEtablissement', {response: notFound, api: api})
       })
-      .finally(store.commit('setLoading', { value: false, search: `${api}_ID_ASSOCIATION` }))
+      .finally(store.commit('setLoadingMainAPI', { value: false, endpoint: api }))
   },
 
   // This function is API-Sirene only
   async executeSearchBySiren(dispatch, siren) {
-    await store.commit('setLoading', { value: true, search: 'SIRENE_SIREN' })
+    await store.commit('setLoadingMainAPI', { value: true, endpoint: 'SIRENE' })
     store.dispatch('sendAPIRequest', dispatch.state.baseAdressSiren + siren)
       .then(response => {
         store.dispatch('setResponseSiren', response)
@@ -88,7 +90,7 @@ const actions = {
       .catch((notFound) => {
         store.dispatch('setResponseSiren', notFound)
       })
-      .finally(store.commit('setLoading', { value: false, search: 'SIRENE_SIREN' }))
+      .finally(store.commit('setLoadingMainAPI', { value: false, endpoint: 'SIRENE' }))
   },
 
   sendAPIRequest: async function (dispatch, query) {

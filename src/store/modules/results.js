@@ -120,11 +120,11 @@ const mutations = {
 
 const actions = {
   setResponseFullText(dispatch, { response, api }) {
-    store.commit('setStatus', { value: response.status, endpoint: `${api}_FULLTEXT` })
+    store.commit('setStatusFullText', { value: response.status, endpoint: api })
     store.commit('setFullTextResults', { value: response.body, api: api })
   },
-  setResponseEtablissement(dispatch, { response, api, endpoint }) {
-    store.commit('setStatus', { value: response.status, endpoint: endpoint })
+  setResponseEtablissement(dispatch, { response, api }) {
+    store.commit('setStatusMainAPI', { value: response.status, endpoint: api })
     if (response.status == 200) {
       store.commit('setSinglePageResults', { value: response.body, api: api })
     } else {

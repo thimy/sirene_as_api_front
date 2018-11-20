@@ -46,16 +46,18 @@ const actions = {
     store.dispatch('searchAdditionalInfoSirene', 'RNCS')
   },
   async searchAdditionalInfoSirene(dispatch, api) {
-    await store.commit('setLoading', { value: true, search: api })
-    const siren = store.getters.singlePageEtablissementSirene.siren
-    store.dispatch('sendAPIRequest', state.baseAdressAdditionalInfo[api] + siren)
-    .then(response => {
-      store.dispatch('setResponseAdditionalInfo', {response: response, api: api})
-    })
-    .catch(notFound => {
-      store.dispatch('setResponseAdditionalInfo', {response: notFound, api: api})
-    })
-    .finally(store.commit('setLoading', { value: false, search: api }))
+    await store.commit('setLoadingAdditionalAPI', { value: true, endpoint: api })
+    if (store.getters.singlePageEtablissementSirene) {
+      const siren = store.getters.singlePageEtablissementSirene.siren
+      store.dispatch('sendAPIRequest', state.baseAdressAdditionalInfo[api] + siren)
+      .then(response => {
+        store.dispatch('setResponseAdditionalInfo', {response: response, api: api})
+      })
+      .catch(notFound => {
+        store.dispatch('setResponseAdditionalInfo', {response: notFound, api: api})
+      })
+      .finally(store.commit('setLoadingAdditionalAPI', { value: false, endpoint: api }))
+    }
   }
 }
 

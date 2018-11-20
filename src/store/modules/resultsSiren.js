@@ -37,7 +37,7 @@ const mutations = {
 
 const actions = {
   async setResponseSiren(dispatch, response) {
-    await store.commit('setStatus', { value: response.status, endpoint: 'SIRENE_SIREN' })
+    await store.commit('setStatusMainAPI', { value: response.status, endpoint: 'SIRENE' })
     if (response.status == 200) {
       store.commit('setSirenResults', response.body)
     } else {
