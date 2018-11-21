@@ -27,11 +27,11 @@ const getters = {
 
 const actions = {
   // When we have an RNA ID, check if there is a Siret. If yes, look up Sirene. If no, look up the ID in Sirene.
-  async fromRNARequestOtherAPIs(dispatch, id) {
+  fromRNARequestOtherAPIs(dispatch, id) {
     if (store.getters.siretFromRNA) {
-      await store.dispatch('executeSearchBySiret', { siret: store.getters.siretFromRNA, api: 'SIRENE' })
+      store.dispatch('executeSearchBySiret', { siret: store.getters.siretFromRNA, api: 'SIRENE' })
     } else {
-      await store.dispatch('executeSearchByIdAssociation', { id: id, api: 'SIRENE' })
+      store.dispatch('executeSearchByIdAssociation', { id: id, api: 'SIRENE' })
     }
   },
   // When we have Siret, check if there is an RNA ID. If yes, look up RNA. If no, look up Siret in RNA.
@@ -46,18 +46,17 @@ const actions = {
     store.dispatch('searchAdditionalInfoSirene', 'RNCS')
   },
   async searchAdditionalInfoSirene(dispatch, api) {
-    await store.commit('setLoadingAdditionalAPI', { value: true, endpoint: api })
-    if (store.getters.singlePageEtablissementSirene) {
-      const siren = store.getters.singlePageEtablissementSirene.siren
-      store.dispatch('sendAPIRequest', state.baseAdressAdditionalInfo[api] + siren)
-      .then(response => {
-        store.dispatch('setResponseAdditionalInfo', {response: response, api: api})
-      })
-      .catch(notFound => {
-        store.dispatch('setResponseAdditionalInfo', {response: notFound, api: api})
-      })
-      .finally(store.commit('setLoadingAdditionalAPI', { value: false, endpoint: api }))
-    }
+    store.commit('setLoadingAdditionalAPI', { value: true, endpoint: api })
+    const siren = store.getters.singlePageEtablissementSirene.siren
+
+    await store.dispatch('sendAPIRequest', state.baseAdressAdditionalInfo[api] + siren)
+    .then(response => {
+      store.dispatch('setResponseAdditionalInfo', {response: response, api: api})
+    })
+    .catch(notFound => {
+      store.dispatch('setResponseAdditionalInfo', {response: notFound, api: api})
+    })
+    .finally(() => store.commit('setLoadingAdditionalAPI', { value: false, endpoint: api }))
   }
 }
 

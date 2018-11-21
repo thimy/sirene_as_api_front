@@ -14,13 +14,13 @@ const state = {
 }
 
 const getters = {
-  sireneAvailable: () => {
+  sireneAvailable: state => {
     if (state.singlePageResult['SIRENE']) {
       return true
     }
     return false
   },
-  RNAAvailable: () => {
+  RNAAvailable: state => {
     if (state.singlePageResult['RNA']) {
       return true
     }
@@ -50,7 +50,7 @@ const getters = {
     }
     return null
   },
-  singlePageEtablissementSirene: () => { // ex-singlePageResultEtablissement
+  singlePageEtablissementSirene: () => {
     if (store.state.results.singlePageResult['SIRENE']) {
       return store.state.results.singlePageResult['SIRENE'].etablissement
     }

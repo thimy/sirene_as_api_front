@@ -16,7 +16,6 @@ const notFoundCodes = [404, 422]
 const badCodes = flatten(errorCodes, notFoundCodes)
 
 const state = {
-  endpoints: endpoints,
   isLoading: {
     fullText: mapValues(endpoints.fullText, () => false),
     etablissementMain:  mapValues(endpoints.etablissementMain, () => false),

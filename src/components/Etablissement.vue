@@ -5,7 +5,8 @@
       <server-error v-else-if="isError" />
       <template v-else>
         <etablissement-header :searchId=searchId />
-        <etablissement-rncs v-if="haveRNCSInfo"/>
+        <blocks-skeleton v-if="RNCSLoading"/>
+        <etablissement-rncs v-else-if="haveRNCSInfo"/>
           <!-- <etablissement-sirene v-if=haveSireneInfo />
           <etablissement-rna v-if=haveRNAInfo :haveComponentTop=haveSireneInfo />
           <etablissement-rnm v-if=haveRNMInfo /> -->
@@ -33,6 +34,7 @@ import EtablissementHeader from '@/components/etablissement/EtablissementHeader'
 import EtablissementSirene from '@/components/etablissement/EtablissementSirene'
 import EtablissementRNA from '@/components/etablissement/EtablissementRNA'
 import EtablissementRNM from '@/components/etablissement/EtablissementRNM'
+import EtablissementRNCS from '@/components/etablissement/EtablissementRNCS'
 import BlocksSkeleton from '@/components/etablissement/skeletons/BlocksSkeleton'
 
 export default {
@@ -50,14 +52,8 @@ export default {
     'EtablissementSirene': EtablissementSirene,
     'EtablissementRna': EtablissementRNA,
     'EtablissementRnm': EtablissementRNM,
-    'EtablissementRncs': () => ({
-      component: import('@/components/etablissement/EtablissementRNCS'),
-      loading: BlocksSkeleton,
-      delay: 0
-    })
-
-    // 'BlocksSkeleton': BlocksSkeleton,
-    // 'EtablissementRncs': EtablissementRNCS,
+    'EtablissementRncs': EtablissementRNCS,
+    'BlocksSkeleton': BlocksSkeleton
   },
   computed: {
     searchId () {
@@ -103,10 +99,6 @@ export default {
       return null
     },
     RNCSLoading () {
-      // console.log('RNCS state:')
-      // console.log(this.$store.state.application.isLoading.etablissementAdditional['RNCS'])
-      // console.log('RNCS getter')
-      // console.log(this.$store.getters.additionalAPILoading('RNCS'))
       return this.$store.getters.additionalAPILoading('RNCS')
     }
   },
@@ -125,8 +117,6 @@ export default {
   },
   beforeCreate () {
     this.$store.commit('setStoredSuggestions', '')
-    this.$store.commit('setLoadingAdditionalAPI', { value: true, endpoint: 'RNCS' })
-    // this.$store.commit('clearSirenResults')
   },
   created () {
     this.$store.dispatch('executeSearchEtablissement', this.$route.params.searchId)

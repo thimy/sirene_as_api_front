@@ -2,6 +2,7 @@
   <section class="section">
     <div class="container">
       <server-error v-if="serverError"></server-error>
+      <results-skeleton v-else-if=resultsAreLoading />
       <template v-else>
         <results-sirene />
         <!-- <results-rna /> -->
@@ -18,6 +19,7 @@ import ServerError from '@/components/modules/ServerError'
 import ResultsSirene from '@/components/results/ResultsSirene'
 import ResultsRNA from '@/components/results/ResultsRNA'
 import ResultsPaginateModule from '@/components/results/ResultsPaginateModule'
+import ResultsSkeleton from '@/components/results/ResultsSkeleton'
 
 export default {
   name: 'Results',
@@ -31,7 +33,8 @@ export default {
     'ServerError': ServerError,
     'ResultsSirene': ResultsSirene,
     'ResultsRna': ResultsRNA,
-    'ResultsPaginateModule': ResultsPaginateModule
+    'ResultsPaginateModule': ResultsPaginateModule,
+    'ResultsSkeleton': ResultsSkeleton
   },
   computed: {
     resultsAreLoading () {
