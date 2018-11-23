@@ -47,8 +47,8 @@ export default {
 .column__icon {
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100%;
+  align-self: center;
+  max-width: 300px;
   @media screen and (min-width: $tablet) {
     flex-direction: column;
     width: 20%;

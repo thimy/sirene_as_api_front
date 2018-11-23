@@ -2,7 +2,7 @@
   <section class="section section-grey">
     <div class="container">
       <div class="column__icon">
-        <img src="@/assets/img/icons/laptop.svg" alt="">
+        <img src="@/assets/img/icons/search.svg" alt="">
       </div>
       <div class="column__right">
         <h2>L’API RNCS</h2>
@@ -17,7 +17,7 @@
         Les codes suivants sont également renvoyés :</p>
         <ul>
           <li>404 : Entreprise non trouvée dans les dossiers de greffes</li>
-          <li>422 : TODO:</li>
+          <li>422 : Impossible d'effectuer la requête (par exemple si le SIREN est mal formaté)</li>
           <li>500 : Erreur serveur (par exemple pendant une maintenance)</li>
         </ul>
         <p>Les différents champs renvoyés dans la réponse sont listés dans <a href="https://www.inpi.fr/sites/default/files/doc_tech_imr_juillet_2018_v1.4.pdf">la documentation de l'INPI</a></p>
