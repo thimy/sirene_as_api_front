@@ -6,14 +6,14 @@ import mapValues from 'lodash/mapValues'
 import values from 'lodash/values'
 import includes from 'lodash/includes'
 import every from 'lodash/every'
-import flatten from 'lodash/flatten'
+// import flatten from 'lodash/flatten'
 
 // Deep-cloning endpoints from config
 const endpoints = cloneDeep(process.env.ENDPOINTS)
 
 const errorCodes = [500, 0]
 const notFoundCodes = [404, 422]
-const badCodes = flatten(errorCodes, notFoundCodes)
+// const badCodes = flatten(errorCodes, notFoundCodes)
 
 const state = {
   isLoading: {
@@ -31,18 +31,19 @@ const state = {
 const getters = {
   // Getters to get fullText, Etablissement (main APIs) et Etablissement (secondary API)
   // 4 states : Loading, Error, Not found, Not working
+  // The getters commented out are because not used yet, but might be useful
   fullTextLoading: state => {
     return includes(values(state.isLoading.fullText), true)
   },
   fullTextError: state => {
     return every(values(state.status.fullText), (value) => includes(errorCodes, value))
   },
-  fullTextNotFound: state => {
-    return every(values(state.status.fullText), (value) => includes(notFoundCodes, value))
-  },
-  fullTextNotWorking: state => {
-    return every(values(state.status.fullText), (value) => includes(badCodes, value))
-  },
+  // fullTextNotFound: state => {
+  //   return every(values(state.status.fullText), (value) => includes(notFoundCodes, value))
+  // },
+  // fullTextNotWorking: state => {
+  //   return every(values(state.status.fullText), (value) => includes(badCodes, value))
+  // },
 
   // Main endpoints (RNA_ID and SIRENE_SIRET)
   // any main API is loading = page Etablissement not ready
@@ -52,12 +53,12 @@ const getters = {
   mainAPISError: (state) => {
     return every(values(state.status.etablissementMain), (value) => includes(errorCodes, value))
   },
-  mainAPISNotWorking: (state) => {
-    return every(values(state.status.etablissementMain), (value) => includes(badCodes, value))
-  },
   mainAPISNotFound: (state) => {
     return every(values(state.status.etablissementMain), (value) => includes(notFoundCodes, value))
   },
+  // mainAPISNotWorking: (state) => {
+  //   return every(values(state.status.etablissementMain), (value) => includes(badCodes, value))
+  // },
 
   // Additional informations endpoints
   additionalAPILoading: (state) => {
@@ -65,29 +66,28 @@ const getters = {
       return state.isLoading.etablissementAdditional[api]
     }
   },
-  additionalAPIError: (state) => {
-    return api => {
-      return includes(errorCodes, state.status.etablissementAdditional[api])
-    }
-  },
-  additionalAPINotWorking: (state) => {
-    return api => {
-      return includes(badCodes, state.status.etablissementAdditional[api])
-    }
-  },
-  additionalAPINotFound: (state) => {
-    return api => {
-      return includes(notFoundCodes, state.status.etablissementAdditional[api])
-    }
-  },
+  // additionalAPIError: (state) => {
+  //   return api => {
+  //     return includes(errorCodes, state.status.etablissementAdditional[api])
+  //   }
+  // },
+  // additionalAPINotWorking: (state) => {
+  //   return api => {
+  //     return includes(badCodes, state.status.etablissementAdditional[api])
+  //   }
+  // },
+  // additionalAPINotFound: (state) => {
+  //   return api => {
+  //     return includes(notFoundCodes, state.status.etablissementAdditional[api])
+  //   }
+  // },
 
   isWelcomeTextVisible: () => {
     if (store.state.route.name != 'Home') {
       return false
     }
     return true
-  },
-  // TODO: isBackToResultsButtonVisible:
+  }
 }
 
 const mutations = {
