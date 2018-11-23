@@ -12,7 +12,7 @@ import every from 'lodash/every'
 const endpoints = cloneDeep(process.env.ENDPOINTS)
 
 const errorCodes = [500, 0]
-const notFoundCodes = [404, 422]
+const notFoundCodes = [400, 404, 422]
 // const badCodes = flatten(errorCodes, notFoundCodes)
 
 const state = {
