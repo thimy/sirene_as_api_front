@@ -12,9 +12,11 @@ export default {
   methods: {
     addOtherMarkers: async function (map, siren) {
       const response = await this.getMarkersData(siren)
-      this.addSourceEtablissements(map, response.body)
-      this.addLayerEtablissements(map)
-      this.addPopupsEtablissements(map)
+      map.on('load', () => {
+        this.addSourceEtablissements(map, response.body)
+        this.addLayerEtablissements(map)
+        this.addPopupsEtablissements(map)
+      })
     },
     getMarkersData: async function (siren) {
       const query = this.nearEtablissementQuery(siren)

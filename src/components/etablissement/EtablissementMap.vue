@@ -35,8 +35,8 @@ export default {
     Vue.http.get(this.mapTilesEtalab).then((json) => { this.initMap(json) })
   },
   methods: {
-    initMap: async function (json) {
-      let map = await new mapboxgl.Map(this.mapOptions(json))
+    initMap: function (json) {
+      let map = new mapboxgl.Map(this.mapOptions(json))
       // addOtherMarkets first so the etablissement marker will be on top
       this.addOtherMarkers(map, this.$store.getters.singlePageEtablissementSirene.siren)
       this.addEtablissementMarker(map)
