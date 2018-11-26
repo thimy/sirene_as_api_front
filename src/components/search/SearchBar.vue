@@ -52,7 +52,7 @@ export default {
     },
   },
   methods: {
-    prepareThenSearch: function() {
+    prepareThenSearch: async function() {
       this.$store.commit('setPage', 1)
       // Disallowing suggestions so we stop displaying them
       this.suggestionsAllowed = false

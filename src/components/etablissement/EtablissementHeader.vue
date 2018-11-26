@@ -46,7 +46,7 @@ export default {
   },
   computed: {
     isEtablissementLoading () {
-      return this.$store.getters.isEtablissementLoading
+      return this.$store.getters.mainAPISLoading
     },
     resultSirene () {
       return this.$store.getters.singlePageEtablissementSirene

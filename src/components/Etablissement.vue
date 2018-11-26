@@ -5,13 +5,11 @@
       <server-error v-else-if="isError" />
       <template v-else>
         <etablissement-header :searchId=searchId />
-        <blocks-skeleton v-if="RNCSIsComing"></blocks-skeleton>
-        <template>
+        <blocks-skeleton v-if="RNCSLoading"/>
+        <etablissement-rncs v-else-if="haveRNCSInfo"/>
           <!-- <etablissement-sirene v-if=haveSireneInfo />
           <etablissement-rna v-if=haveRNAInfo :haveComponentTop=haveSireneInfo />
           <etablissement-rnm v-if=haveRNMInfo /> -->
-          <etablissement-rncs v-if=haveRNCSInfo />
-        </template>
         <div v-if=haveRNCSInfo class="company__extra">
           <div class="notification">
             <div>Ces informations sont issues du RNCS mis à jour le {{ RNCSUpdate }}.</div>
@@ -37,7 +35,6 @@ import EtablissementSirene from '@/components/etablissement/EtablissementSirene'
 import EtablissementRNA from '@/components/etablissement/EtablissementRNA'
 import EtablissementRNM from '@/components/etablissement/EtablissementRNM'
 import EtablissementRNCS from '@/components/etablissement/EtablissementRNCS'
-
 import BlocksSkeleton from '@/components/etablissement/skeletons/BlocksSkeleton'
 
 export default {
@@ -63,35 +60,25 @@ export default {
       return this.$route.params.searchId
     },
     isEtablissementLoading () {
-      return this.$store.getters.isEtablissementLoading
+      return this.$store.getters.mainAPISLoading
     },
     isNotFound () {
-      return this.$store.getters.mainAPINotFound
+      return this.$store.getters.mainAPISNotFound
     },
     isError () {
-      return this.$store.getters.mainAPIError
+      return this.$store.getters.mainAPISError
     },
     haveSireneInfo () {
-      if (this.$store.getters.sireneAvailable) {
-        return true
-      }
+      return this.$store.getters.sireneAvailable
     },
     haveRNAInfo () {
-      if (this.$store.getters.RNAAvailable) {
-        return true
-      } else {
-        return false
-      }
+      return this.$store.getters.RNAAvailable
     },
     haveRNMInfo () {
-      if (this.$store.getters.RNMAvailable) {
-        return true
-      }
+      return this.$store.getters.RNMAvailable
     },
     haveRNCSInfo () {
-      if (this.$store.getters.RNCSAvailable) {
-        return true
-      }
+      return this.$store.getters.RNCSAvailable
     },
     resultSirene () {
       if (this.haveSireneInfo) {
@@ -111,11 +98,8 @@ export default {
       }
       return null
     },
-    RNCSIsComing () {
-      if (!this.haveRNCSInfo && !this.$store.getters.isRNCSError) {
-        return true
-      }
-      return false
+    RNCSLoading () {
+      return this.$store.getters.additionalAPILoading('RNCS')
     }
   },
   methods: {
@@ -133,7 +117,8 @@ export default {
   },
   beforeCreate () {
     this.$store.commit('setStoredSuggestions', '')
-    this.$store.commit('clearSirenResults')
+  },
+  created () {
     this.$store.dispatch('executeSearchEtablissement', this.$route.params.searchId)
   },
   mixins: [Filters, Formating],

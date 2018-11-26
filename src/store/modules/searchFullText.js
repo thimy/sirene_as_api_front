@@ -44,7 +44,7 @@ const mutations = {
 }
 
 const actions = {
-  async requestSearchFullText () {
+  requestSearchFullText () {
     router.push({ path: '/search',
       query: {
         fullText: state.storedFullText,
@@ -56,22 +56,21 @@ const actions = {
     store.commit('setLastFullText', state.storedFullText)
   },
 
-  async searchFullText () {
-    await store.dispatch('resetApplicationState')
-    await store.commit('setLoading', { value: true, search: 'SIRENE_FULLTEXT' })
-    await store.commit('setLoading', { value: true, search: 'RNA_FULLTEXT' })
+  searchFullText () {
     store.dispatch('executeSearchFullText', 'SIRENE')
     store.dispatch('executeSearchFullText', 'RNA')
   },
 
   async executeSearchFullText(dispatch, api) {
-    store.dispatch('sendAPIRequest', getters.addressToGetFullText(state, api))
+    store.commit('setLoadingFullText', { value: true, endpoint: api })
+    await store.dispatch('sendAPIRequest', getters.addressToGetFullText(state, api))
       .then(response => {
         store.dispatch('setResponseFullText', { response: response, api: api })
       })
-      .catch(async error => {
+      .catch(error => {
         store.dispatch('setResponseFullText', { response: error, api: api })
       })
+      .finally(() => store.commit('setLoadingFullText', { value: false, endpoint: api }))
   }
 }
 

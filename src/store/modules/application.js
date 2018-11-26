@@ -1,112 +1,148 @@
 // This module contains code relative to Application State
 import store from '@/store/index.js'
 import router from '@/router/index.js'
+import cloneDeep from 'lodash/cloneDeep'
+import mapValues from 'lodash/mapValues'
+import values from 'lodash/values'
+import includes from 'lodash/includes'
+import every from 'lodash/every'
+// import flatten from 'lodash/flatten'
+
+// Deep-cloning endpoints from config
+const endpoints = cloneDeep(process.env.ENDPOINTS)
+
+const errorCodes = [500, 0]
+const notFoundCodes = [400, 404, 422]
+// const badCodes = flatten(errorCodes, notFoundCodes)
 
 const state = {
-  // One entry here for each endpoint
   isLoading: {
-    'ID_ASSOCIATION': true,
-    'SIRET': true,
-    'SIRENE_FULLTEXT': true,
-    'RNA_FULLTEXT': true
+    fullText: mapValues(endpoints.fullText, () => false),
+    etablissementMain:  mapValues(endpoints.etablissementMain, () => false),
+    etablissementAdditional:  mapValues(endpoints.etablissementAdditional, () => false)
   },
   status: {
-    'RNA': null,
-    'SIRENE': null,
-    'RNA_FULLTEXT': null,
-    'SIRENE_FULLTEXT': null,
-    'RNCS': null
+    fullText: mapValues(endpoints.fullText, () => null),
+    etablissementMain:  mapValues(endpoints.etablissementMain, () => null),
+    etablissementAdditional:  mapValues(endpoints.etablissementAdditional, () => null)
   }
 }
 
 const getters = {
-  // If any search is loading, the Etablissement page is loading :
-  isEtablissementLoading: state => {
-    return (state.isLoading['SIRET'] || state.isLoading['ID_ASSOCIATION'])
+  // Getters to get fullText, Etablissement (main APIs) et Etablissement (secondary API)
+  // 4 states : Loading, Error, Not found, Not working
+  // The getters commented out are because not used yet, but might be useful
+  fullTextLoading: state => {
+    return includes(values(state.isLoading.fullText), true)
   },
-  isFullTextLoading: state => {
-    return (state.isLoading['SIRENE_FULLTEXT'] || state.isLoading['RNA_FULLTEXT'])
+  fullTextError: state => {
+    return every(values(state.status.fullText), (value) => includes(errorCodes, value))
   },
-  sireneAvailable: () => {
-    if (store.state.results.singlePageResult['SIRENE']) {
-      return true
+  // fullTextNotFound: state => {
+  //   return every(values(state.status.fullText), (value) => includes(notFoundCodes, value))
+  // },
+  // fullTextNotWorking: state => {
+  //   return every(values(state.status.fullText), (value) => includes(badCodes, value))
+  // },
+
+  // Main endpoints (RNA_ID and SIRENE_SIRET)
+  // any main API is loading = page Etablissement not ready
+  mainAPISLoading: (state) => {
+    return includes(values(state.isLoading.etablissementMain), true)
+  },
+  mainAPISError: (state) => {
+    return every(values(state.status.etablissementMain), (value) => includes(errorCodes, value))
+  },
+  mainAPISNotFound: (state) => {
+    return every(values(state.status.etablissementMain), (value) => includes(notFoundCodes, value))
+  },
+  // mainAPISNotWorking: (state) => {
+  //   return every(values(state.status.etablissementMain), (value) => includes(badCodes, value))
+  // },
+
+  // Additional informations endpoints
+  additionalAPILoading: (state) => {
+    return api => {
+      return state.isLoading.etablissementAdditional[api]
     }
-    return false
   },
-  RNAAvailable: () => {
-    if (store.state.results.singlePageResult['RNA']) {
-      return true
-    }
-    return false
-  },
-  mainAPIError: () => {
-    return (state.status['RNA'] == 0 || state.status['RNA'] == 500 || state.status['RNA'] == 404)
-      && (state.status['SIRENE'] == 0 || state.status['SIRENE'] == 500 || state.status['SIRENE'] == 404)
-  },
-  mainAPINotFound: () => {
-    // RNA Deactivated, TODO: reactivate post demo
-    // return (state.status['RNA'] == 404 && state.status['SIRENE'] == 404)
-    return (state.status['SIRENE'] == 404)
-  },
-  FullTextMainAPINotFound: () => {
-    return (state.status['RNA_FULLTEXT'] == 404 && state.status['SIRENE_FULLTEXT'] == 404)
-  },
+  // additionalAPIError: (state) => {
+  //   return api => {
+  //     return includes(errorCodes, state.status.etablissementAdditional[api])
+  //   }
+  // },
+  // additionalAPINotWorking: (state) => {
+  //   return api => {
+  //     return includes(badCodes, state.status.etablissementAdditional[api])
+  //   }
+  // },
+  // additionalAPINotFound: (state) => {
+  //   return api => {
+  //     return includes(notFoundCodes, state.status.etablissementAdditional[api])
+  //   }
+  // },
+
   isWelcomeTextVisible: () => {
     if (store.state.route.name != 'Home') {
       return false
     }
     return true
-  },
-  isRNCSError: () => {
-    if (state.status['RNCS'] == 404 || state.status['RNCS'] == 500 || state.status['RNCS'] == 422) {
-      return true
-    }
-    return false
   }
 }
 
 const mutations = {
-  setLoading(state, {value, search}) {
-    if (search == 'ALL') {
-      state.isLoading = {
-        'ID_ASSOCIATION': value,
-        'SIRET': value,
-        'SIRENE_FULLTEXT': value,
-        'RNA_FULLTEXT': value
-      }
+  setLoadingFullText(state, {value, endpoint}) {
+    if (endpoint == 'ALL') {
+      state.isLoading.fullText = mapValues(state.isLoading.fullText, () => value)
     } else {
-      state.isLoading[search] = value
+      state.isLoading.fullText[endpoint] = value
     }
   },
-  setStatus (state, { value, api }) {
-    state.status[api] = value
-  },
-  clearStatus (state, api ) {
-    if (api == 'ALL') {
-      state.status = {
-        'RNA': null,
-        'SIRENE': null,
-        'RNCS': null
-      }
+  setLoadingMainAPI(state, { value, endpoint }) {
+    if (endpoint == 'ALL') {
+      state.isLoading.etablissementMain = mapValues(state.isLoading.etablissementMain, () => value)
     } else {
-      state.status[api] = null
+      state.isLoading.etablissementMain[endpoint] = value
     }
   },
-  setNoResultFound (state, api) {
-    if (api == 'ALL') {
-      state.status = {
-        'RNA': 404,
-        'SIRENE': 404
-      }
+  setLoadingAdditionalAPI(state, { value, endpoint }) {
+    if (endpoint == 'ALL') {
+      state.isLoading.etablissementAdditional = mapValues(state.isLoading.etablissementAdditional, () => value)
     } else {
-      state.status[api] = 404
+      state.isLoading.etablissementAdditional[endpoint] = value
+    }
+  },
+  setStatusFullText (state, { value, endpoint }) {
+    if (endpoint == 'ALL') {
+      state.status.fullText = mapValues(state.status.fullText, () => value)
+    } else {
+      state.status.fullText[endpoint] = value
+    }
+  },
+  setStatusMainAPI (state, { value, endpoint }) {
+    if (endpoint == 'ALL') {
+      state.status.etablissementMain = mapValues(state.status.etablissementMain, () => value)
+    } else {
+      state.status.etablissementMain[endpoint] = value
+    }
+  },
+  setStatusAdditionalAPI (state, { value, endpoint }) {
+    if (endpoint == 'ALL') {
+      state.status.etablissementAdditional = mapValues(state.status.etablissementAdditional, () => value)
+    } else {
+      state.status.etablissementAdditional[endpoint] = value
     }
   }
 }
 
 const actions = {
+  clearAllStatus() {
+    store.commit('setStatusFullText', { value: null, endpoint: 'ALL' })
+    store.commit('setStatusMainAPI', { value: null, endpoint: 'ALL' })
+    store.commit('setStatusAdditionalAPI', { value: null, endpoint: 'ALL' })
+  },
   resetApplicationState() {
-    store.commit('clearStatus', 'ALL')
+    store.dispatch('clearAllStatus')
     store.commit('setStoredSuggestions', '')
     store.commit('clearAdditionalInfos', 'ALL')
     store.commit('setSinglePageResults', { value: null, api: 'ALL' })

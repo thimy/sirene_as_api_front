@@ -19,12 +19,6 @@ const getters = {
     }
     return null
   },
-  statusSiren: state => {
-    if (state.sirenResults) {
-      return state.sirenResults.sirene.status
-    }
-    return null
-  },
   storedSirenChildren: state => {
     if (state.sirenResults) {
       return state.sirenResults.sirene.data.other_etablissements_sirets
@@ -43,7 +37,7 @@ const mutations = {
 
 const actions = {
   async setResponseSiren(dispatch, response) {
-    await store.commit('setStatus', { value: response.status, api: 'SIRENE' })
+    await store.commit('setStatusMainAPI', { value: response.status, endpoint: 'SIRENE' })
     if (response.status == 200) {
       store.commit('setSirenResults', response.body)
     } else {

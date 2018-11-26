@@ -15,7 +15,13 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "lodash.clonedeep": "^4.5.0",
+    "lodash.every": "^4.6.0",
+    "lodash.flatten": "^4.4.0",
+    "lodash.includes": "^4.3.0",
+    "lodash.mapvalues": "^4.6.0",
     "lodash.orderby": "^4.6.0",
+    "lodash.values": "^4.3.0",
     "mapbox-gl": "^0.45.0-beta.1",
     "node-sass": "^4.9.3",
     "sass-loader": "^6.0.7",
