@@ -102,7 +102,6 @@ export default {
         const etablissementsPoints = renderedFeatures[0];
         const etablissementPopup = new mapboxgl.Popup()
           .setLngLat(etablissementsPoints.geometry.coordinates)
-          .setLngLat(etablissementsPoints.geometry.coordinates)
           .addTo(map)
         vm.addPopupContent(etablissementPopup, etablissementsPoints.properties)
       })
