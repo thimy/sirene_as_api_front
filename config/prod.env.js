@@ -1,6 +1,8 @@
 module.exports = {
   NODE_ENV: '"production"',
 
+  ENDPOINTS: require('./endpoints.js'),
+
   // WARNING: this will make 'non IP failover website' use the 'IP failover API' !
   BASE_ADDRESS_SIRENE_FULLTEXT: '"https://entreprise.data.gouv.fr/api/sirene/v1/full_text/"',
   BASE_ADDRESS_SIRENE_SIRET: '"https://entreprise.data.gouv.fr/api/sirene/v1/siret/"',
