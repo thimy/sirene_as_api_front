@@ -30,7 +30,7 @@
 <script>
 import PanelInfo from '@/components/etablissement/etablissementRNCS/templates/PanelInfo'
 import PanelInfoInline from '@/components/etablissement/etablissementRNCS/templates/PanelInfoInline'
-import Formating from '@/components/mixins/formating'
+import Formating from '@/components/etablissement/etablissementRNCS/mixins/RNCSformating'
 import Filters from '@/components/mixins/filters'
 
 export default {

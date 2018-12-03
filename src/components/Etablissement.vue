@@ -7,9 +7,9 @@
         <etablissement-header :searchId=searchId />
         <blocks-skeleton v-if="RNCSLoading"/>
         <etablissement-rncs v-else-if="haveRNCSInfo"/>
-          <!-- <etablissement-sirene v-if=haveSireneInfo />
+          <etablissement-sirene v-if=haveSireneInfo />
           <etablissement-rna v-if=haveRNAInfo :haveComponentTop=haveSireneInfo />
-          <etablissement-rnm v-if=haveRNMInfo /> -->
+          <etablissement-rnm v-if=haveRNMInfo />
         <div v-if=haveRNCSInfo class="company__extra">
           <div class="notification">
             <div>Ces informations sont issues du RNCS mis à jour le {{ RNCSUpdate }}.</div>
@@ -26,7 +26,6 @@
 
 <script>
 import Filters from '@/components/mixins/filters'
-import Formating from '@/components/mixins/formating'
 import Loader from '@/components/modules/Loader'
 import ServerError from '@/components/modules/ServerError'
 import NotFound from '@/components/etablissement/EtablissementNotFound'
@@ -121,7 +120,7 @@ export default {
   created () {
     this.$store.dispatch('executeSearchEtablissement', this.$route.params.searchId)
   },
-  mixins: [Filters, Formating],
+  mixins: [Filters],
   watch: {
     '$route' (to, from) {
       this.$store.dispatch('executeSearchEtablissement', this.$route.params.searchId)

@@ -18,7 +18,7 @@ import EtablissementRNCSGestionMorale from '@/components/etablissement/etablisse
 import EtablissementRNCSGestionPhysique from '@/components/etablissement/etablissementRNCS/etablissementRNCSGestion/EtablissementRNCSGestionPhysique'
 import PanelNoResults from '@/components/etablissement/etablissementRNCS/templates/PanelNoResults'
 import Filters from '@/components/mixins/filters'
-import Formating from '@/components/mixins/formating'
+import Formating from '@/components/etablissement/etablissementRNCS/mixins/RNCSformating'
 
 export default {
   name: 'EtablissementRNCSGestion',

@@ -14,7 +14,6 @@
 
 <script>
 import Filters from '@/components/mixins/filters'
-import Formating from '@/components/mixins/formating'
 
 export default {
   name: 'EtablissementSireneContact',
@@ -45,7 +44,7 @@ export default {
       return `${day}/${month}/${year}`
     }
   },
-  mixins: [Filters, Formating]
+  mixins: [Filters]
 }
 </script>
 

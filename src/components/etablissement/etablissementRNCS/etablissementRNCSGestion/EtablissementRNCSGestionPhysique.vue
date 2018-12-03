@@ -30,7 +30,7 @@
 <script>
 import PanelInfo from '@/components/etablissement/etablissementRNCS/templates/PanelInfo'
 import Filters from '@/components/mixins/filters'
-import Formating from '@/components/mixins/formating'
+import Formating from '@/components/etablissement/etablissementRNCS/mixins/RNCSformating'
 
 export default {
   name: 'EtablissementRNCSGestionPhysique',
