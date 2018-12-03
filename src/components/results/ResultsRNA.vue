@@ -46,8 +46,7 @@ export default {
       if (this.numberResults === undefined) {
         return ''
       }
-      const numberResultsFormatted = Filters.filters.frenchNumberFormat(this.numberResults)
-      return `${numberResultsFormatted} résultats pour "${this.$store.state.searchFullText.storedLastFullText}" dans la base RNA des associations`
+      return `${this.numberResults} résultats pour "${this.$store.state.searchFullText.storedLastFullText}" dans la base RNA des associations`
     }
   },
   mixins: [Filters]
