@@ -32,7 +32,7 @@
 import PanelInfo from '@/components/etablissement/etablissementRNCS/templates/PanelInfo'
 import PanelInfoInline from '@/components/etablissement/etablissementRNCS/templates/PanelInfoInline'
 import Filters from '@/components/mixins/filters'
-import Formating from '@/components/etablissement/etablissementRNCS/mixins/RNCSformating'
+import RNCSFormating from '@/components/etablissement/etablissementRNCS/mixins/RNCSformating'
 
 export default {
   name: 'EtablissementRNCSRegistration',
@@ -86,6 +86,6 @@ export default {
       return false
     }
   },
-  mixins: [Filters, Formating]
+  mixins: [Filters, RNCSFormating]
 }
 </script>

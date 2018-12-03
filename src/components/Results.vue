@@ -4,9 +4,9 @@
       <server-error v-if="serverError"></server-error>
       <results-skeleton v-else-if=resultsAreLoading />
       <template v-else>
-        <div v-if="SireneError"><p>Notre serveur SIRENE connait des difficultés. Veuillez essayer plus tard.</p></div>
+        <div v-if="SireneError"><p>SIRENE: Notre serveur connait des difficultés. Veuillez essayer plus tard.</p></div>
         <results-sirene v-else />
-        <div v-if="RNAError"><p>Notre serveur SIRENE connait des difficultés. Veuillez essayer plus tard.</p></div>
+        <div v-if="RNAError"><p>RNA: Notre serveur connait des difficultés. Veuillez essayer plus tard.</p></div>
         <results-rna v-else />
         <!-- paginate module on RNA and Sirene, so we use the bigger values -->
         <results-paginate-module v-if="biggerNumberPages" :totalPages=biggerNumberPages></results-paginate-module>

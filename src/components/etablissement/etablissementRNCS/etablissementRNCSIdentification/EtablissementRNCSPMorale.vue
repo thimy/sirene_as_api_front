@@ -12,7 +12,7 @@
 <script>
 import PanelInfo from '@/components/etablissement/etablissementRNCS/templates/PanelInfo'
 import Filters from '@/components/mixins/filters'
-import Formating from '@/components/etablissement/etablissementRNCS/mixins/RNCSformating'
+import RNCSFormating from '@/components/etablissement/etablissementRNCS/mixins/RNCSformating'
 
 export default {
   name: 'EtablissementRNCSPMorale',
@@ -35,6 +35,6 @@ export default {
       return this.$store.getters.RNCSData.personne_morale
     }
   },
-  mixins: [Filters, Formating]
+  mixins: [Filters, RNCSFormating]
 }
 </script>

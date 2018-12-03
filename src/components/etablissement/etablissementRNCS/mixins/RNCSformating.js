@@ -1,5 +1,6 @@
 import Greffes from '@/assets/fixtures/codesGreffes.json'
 import Filters from '@/components/mixins/filters.js'
+import Formating from '@/components/mixins/formating.js'
 
 function nameFromCodeGreffe(code) {
   return Greffes.listeGreffes[code]
@@ -94,27 +95,12 @@ function RNCSConcatAddressDAP(infos) {
   return address
 }
 
-function concatNames (firstName, lastName) {
-  let first, last = ''
-
-  if (lastName) {
-    last = lastName.toUpperCase()
-  } else {
-    return null
-  }
-
-  if (firstName) {
-    first = firstName.capitalize()
-  }
-  return `${first} ${last}`
-}
-
 function collabName (person) {
-  return concatNames(person.conjoint_collab_prenoms, person.conjoint_collab_nom_patronyme)
+  return Formating.methods.concatNames(person.conjoint_collab_prenoms, person.conjoint_collab_nom_patronyme)
 }
 
 function representName (person) {
-  return concatNames(person.representant_permanent_nom_patronyme, person.representant_permanent_prenoms)
+  return Formating.methods.concatNames(person.representant_permanent_nom_patronyme, person.representant_permanent_prenoms)
 }
 
 String.prototype.capitalize = function() {
@@ -135,7 +121,6 @@ export default {
     RNCSConcatAddress,
     RNCSConcatAddressRP,
     RNCSConcatAddressDAP,
-    concatNames,
     collabName,
     representName
   }

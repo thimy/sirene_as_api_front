@@ -46,7 +46,8 @@ export default {
       if (this.numberResults === undefined) {
         return ''
       }
-      return `${this.numberResults} résultats pour "${this.$store.state.searchFullText.storedLastFullText}" dans la base RNA des associations`
+      const resultText = this.numberResults > 1 ? 'résultats' : 'résultat'
+      return `${this.numberResults} ${resultText} pour "${this.$store.state.searchFullText.storedLastFullText}" dans la base RNA des associations`
     }
   },
   mixins: [Filters]
