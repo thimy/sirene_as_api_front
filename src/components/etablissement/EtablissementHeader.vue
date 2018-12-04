@@ -14,7 +14,7 @@
           <div class="second__subtitle"> {{ resultSirene.libelle_activite_principale_entreprise }}</div>
         </template>
         <div v-if="haveOnlyRNAInfo" class="second__subtitle"> {{ resultRNA.titre_court}}</div>
-        <div class="company__buttons">
+        <div class="company__buttons" v-if=displayingOnlyRNCS>
           <a class="button" v-bind:href="dataRequestPDF" title="Télécharger les données de cette entreprise au format PDF">
             <img class="icon" src="@/assets/img/download.svg" alt="" />
             Version imprimable
@@ -78,6 +78,11 @@ export default {
         return `${process.env.BASE_ADDRESS_RNCS}${this.resultSirene.siren}/pdf`
       }
       return null
+    },
+    // Temporary methods for displaying RNCS-only
+    displayingOnlyRNCS () {
+      if (process.env.DISPLAY_RNCS)
+        return true
     }
   },
   mixins: [Filters]

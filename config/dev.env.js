@@ -4,8 +4,8 @@ var prodEnv = require('./prod.env')
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
 
-  // Change this value to test RNCS / not RNCS
-  DISPLAY_RNCS: true,
+  // comment out this value to test RNCS / not RNCS
+  // DISPLAY_RNCS: true,
 
   ENDPOINTS: require('./endpoints.js'),
 
