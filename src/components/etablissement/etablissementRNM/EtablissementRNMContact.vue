@@ -1,6 +1,6 @@
 <template>
   <div class="company__panel panel">
-    <h4>Contact</h4>
+    <h4>Addresse enregistrée au RNM</h4>
     <div class="company__item"><label class="company__item-key">Nom</label><div class="company__item-value">{{ this.resultRNM.NOM | ifExist }}</div></div>
     <div class="company__item"><label class="company__item-key">Adresse</label><div class="company__item-value">{{ this.resultRNM.ADDRESSE | ifExist }}</div></div>
     <div class="company__item"><label class="company__item-key">Complément d’adresse</label><div class="company__item-value">{{ this.resultRNM.COMPLEMENT | ifExist }}</div></div>
