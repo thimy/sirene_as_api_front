@@ -1,7 +1,7 @@
 <template>
   <div class="company">
     <div class="company-container padding_top" v-bind:class="{ no_top_padding: this.haveComponentTop }">
-      <etablissement-rna-contact/>
+      <etablissement-rna-immatriculation/>
       <etablissement-rna-info/>
     </div>
   </div>
@@ -9,14 +9,14 @@
 
 <script>
 import EtablissementRNAInfo from '@/components/etablissement/etablissementRNA/EtablissementRNAInfo'
-import EtablissementRNAContact from '@/components/etablissement/etablissementRNA/EtablissementRNAContact'
+import EtablissementRNAImmatriculation from '@/components/etablissement/etablissementRNA/EtablissementRNAImmatriculation'
 
 export default {
   name: 'EtablissementRNA',
   props: ['haveComponentTop'],
   components: {
     'EtablissementRnaInfo': EtablissementRNAInfo,
-    'EtablissementRnaContact': EtablissementRNAContact
+    'EtablissementRnaImmatriculation': EtablissementRNAImmatriculation
   }
 }
 </script>

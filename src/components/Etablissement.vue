@@ -3,13 +3,12 @@
     <div class="container">
       <not-found v-if="isNotFound" />
       <server-error v-else-if="isError" />
-      <template v-else>
+
+      <!-- Temporary section here to display RNCS Only -->
+      <template v-else-if=displayingOnlyRNCS>
         <etablissement-header :searchId=searchId />
         <blocks-skeleton v-if="RNCSLoading"/>
         <etablissement-rncs v-else-if="haveRNCSInfo"/>
-          <!-- <etablissement-sirene v-if=haveSireneInfo />
-          <etablissement-rna v-if=haveRNAInfo :haveComponentTop=haveSireneInfo />
-          <etablissement-rnm v-if=haveRNMInfo /> -->
         <div v-if=haveRNCSInfo class="company__extra">
           <div class="notification">
             <div>Ces informations sont issues du RNCS mis à jour le {{ RNCSUpdate }}.</div>
@@ -20,13 +19,20 @@
           </div>
         </div>
       </template>
+
+      <template v-else>
+        <etablissement-header :searchId=searchId />
+        <blocks-skeleton v-if="mainAPISLoading"/>
+        <etablissement-sirene v-if=haveSireneInfo />
+        <etablissement-rna v-if=haveRNAInfo :haveComponentTop=haveSireneInfo />
+        <etablissement-rnm v-if=haveRNMInfo />
+      </template>
     </div>
   </section>
 </template>
 
 <script>
 import Filters from '@/components/mixins/filters'
-import Formating from '@/components/mixins/formating'
 import Loader from '@/components/modules/Loader'
 import ServerError from '@/components/modules/ServerError'
 import NotFound from '@/components/etablissement/EtablissementNotFound'
@@ -100,6 +106,14 @@ export default {
     },
     RNCSLoading () {
       return this.$store.getters.additionalAPILoading('RNCS')
+    },
+    mainAPISLoading () {
+      return this.$store.getters.mainAPISLoading
+    },
+    // Temporary methods for displaying RNCS-only
+    displayingOnlyRNCS () {
+      if (process.env.DISPLAY_RNCS)
+        return true
     }
   },
   methods: {
@@ -121,7 +135,7 @@ export default {
   created () {
     this.$store.dispatch('executeSearchEtablissement', this.$route.params.searchId)
   },
-  mixins: [Filters, Formating],
+  mixins: [Filters],
   watch: {
     '$route' (to, from) {
       this.$store.dispatch('executeSearchEtablissement', this.$route.params.searchId)

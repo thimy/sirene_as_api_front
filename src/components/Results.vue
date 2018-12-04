@@ -3,9 +3,19 @@
     <div class="container">
       <server-error v-if="serverError"></server-error>
       <results-skeleton v-else-if=resultsAreLoading />
+
+      <!-- Temporary section here for RNCS-only -->
+      <template v-else-if=displayingOnlyRNCS>
+        <div v-if="sireneError"><p>SIRENE: Notre serveur connait des difficultés. Veuillez essayer plus tard.</p></div>
+        <results-sirene v-else />
+        <results-paginate-module v-if="sireneNumberPages" :totalPages=sireneNumberPages></results-paginate-module>
+      </template>
+
       <template v-else>
-        <results-sirene />
-        <!-- <results-rna /> -->
+        <div v-if="sireneError"><p>SIRENE: Notre serveur connait des difficultés. Veuillez essayer plus tard.</p></div>
+        <results-sirene v-else />
+        <div v-if="RNAError"><p>RNA: Notre serveur connait des difficultés. Veuillez essayer plus tard.</p></div>
+        <results-rna v-else />
         <!-- paginate module on RNA and Sirene, so we use the bigger values -->
         <results-paginate-module v-if="biggerNumberPages" :totalPages=biggerNumberPages></results-paginate-module>
       </template>
@@ -43,12 +53,22 @@ export default {
     serverError () {
       return this.$store.getters.fullTextError
     },
-    // Deactivating RNA Page count for demo
-    // biggerNumberPages () {
-    //   return Math.max(this.$store.getters.totalPageNumberSirene, this.$store.getters.totalPageNumberRNA)
-    // },
+    RNAError () {
+      return this.$store.getters.fullTextRNAError
+    },
+    sireneError () {
+      return this.$store.getters.fullTextSireneError
+    },
     biggerNumberPages () {
+      return Math.max(this.$store.getters.totalPageNumberSirene, this.$store.getters.totalPageNumberRNA)
+    },
+    // Temporary methods for RNCS-Only
+    sireneNumberPages () {
       return this.$store.getters.totalPageNumberSirene
+    },
+    displayingOnlyRNCS () {
+      if (process.env.DISPLAY_RNCS)
+        return true
     }
   },
   methods: {

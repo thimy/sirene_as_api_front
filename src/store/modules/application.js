@@ -38,6 +38,12 @@ const getters = {
   fullTextError: state => {
     return every(values(state.status.fullText), (value) => includes(errorCodes, value))
   },
+  fullTextRNAError: state => {
+    return includes(errorCodes, state.status.fullText['RNA'])
+  },
+  fullTextSireneError: state => {
+    return includes(errorCodes, state.status.fullText['SIRENE'])
+  },
   // fullTextNotFound: state => {
   //   return every(values(state.status.fullText), (value) => includes(notFoundCodes, value))
   // },

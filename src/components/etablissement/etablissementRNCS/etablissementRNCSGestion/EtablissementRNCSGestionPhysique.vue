@@ -31,6 +31,7 @@
 import PanelInfo from '@/components/etablissement/etablissementRNCS/templates/PanelInfo'
 import Filters from '@/components/mixins/filters'
 import Formating from '@/components/mixins/formating'
+import RNCSFormating from '@/components/etablissement/etablissementRNCS/mixins/RNCSformating'
 
 export default {
   name: 'EtablissementRNCSGestionPhysique',
@@ -56,7 +57,7 @@ export default {
       }
     }
   },
-  mixins: [Filters, Formating]
+  mixins: [Filters, Formating, RNCSFormating]
 }
 </script>
 

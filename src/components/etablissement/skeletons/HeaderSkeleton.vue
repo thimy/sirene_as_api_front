@@ -4,7 +4,7 @@
     <div class="subtitle loading"></div>
     <div class="subtitle loading"></div>
     <div class="second__subtitle loading"></div>
-    <div class="company__buttons">
+    <div class="company__buttons" v-if=displayingOnlyRNCS>
       <button class="button" title="Télécharger les données de cette entreprise au format PDF">
         <img class="icon" src="@/assets/img/download.svg" alt="" />
         Version imprimable
@@ -21,7 +21,14 @@
 <script>
 
 export default {
-  name: 'headerSkeleton'
+  name: 'headerSkeleton',
+  computed: {
+    // Temporary methods for displaying RNCS-only
+    displayingOnlyRNCS () {
+      if (process.env.DISPLAY_RNCS)
+        return true
+    }
+  }
 }
 </script>
 

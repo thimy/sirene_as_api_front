@@ -1,5 +1,5 @@
 <template>
-  <div class="company__panel">
+  <div class="company__panel panel">
     <h4>Contact</h4>
     <div class="company__item"><label class="company__item-key">Gérant</label><div class="company__item-value"> {{ concatNames(resultSirene.prenom, resultSirene.nom) | ifExist }}</div></div>
     <div class="company__item"><label class="company__item-key">Adresse</label><div class="company__item-value"> {{ resultSirene.l4_normalisee }} </div></div>

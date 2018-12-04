@@ -30,8 +30,9 @@
 <script>
 import PanelInfo from '@/components/etablissement/etablissementRNCS/templates/PanelInfo'
 import PanelInfoInline from '@/components/etablissement/etablissementRNCS/templates/PanelInfoInline'
-import Formating from '@/components/mixins/formating'
 import Filters from '@/components/mixins/filters'
+import Formating from '@/components/mixins/formating'
+import RNCSFormating from '@/components/etablissement/etablissementRNCS/mixins/RNCSformating'
 
 export default {
   name: 'EtablissementRNCSPPhysique',
@@ -64,9 +65,9 @@ export default {
   },
   methods: {
     collabName (person) {
-      return Formating.methods.concatNames(person.conjoint_collab_prenoms, person.conjoint_collab_nom_patronyme)
+      return concatNames(person.conjoint_collab_prenoms, person.conjoint_collab_nom_patronyme)
     }
   },
-  mixins: [Filters, Formating]
+  mixins: [Filters, Formating, RNCSFormating]
 }
 </script>

@@ -19,7 +19,6 @@
 <script>
 import DidYouMean from '@/components/results/ResultsDidYouMean'
 import Filters from '@/components/mixins/filters.js'
-import Formating from '@/components/mixins/formating.js'
 import ResultsSkeleton from '@/components/results/ResultsSkeleton'
 
 export default {

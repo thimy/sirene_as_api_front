@@ -2,7 +2,7 @@
 
 exports[`EtablissementSireneInfo.vue snapshot It match the snapshot 1`] = `
 <div
-  class="company__panel"
+  class="company__panel panel"
 >
   <div
     class="name__category"
