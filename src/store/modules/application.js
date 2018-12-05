@@ -149,6 +149,7 @@ const actions = {
   },
   resetApplicationState() {
     store.dispatch('clearAllStatus')
+    store.commit('clearSirenResults')
     store.commit('setStoredSuggestions', '')
     store.commit('clearAdditionalInfos', 'ALL')
     store.commit('setSinglePageResults', { value: null, api: 'ALL' })

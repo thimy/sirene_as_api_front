@@ -14,15 +14,15 @@
           <div class="second__subtitle"> {{ resultSirene.libelle_activite_principale_entreprise }}</div>
         </template>
         <div v-if="haveOnlyRNAInfo" class="second__subtitle"> {{ resultRNA.titre_court}}</div>
-        <div class="company__buttons" v-if=displayingOnlyRNCS>
+        <div v-if=displayingOnlyRNCS class="company__buttons">
           <a class="button" v-bind:href="dataRequestPDF" title="Télécharger les données de cette entreprise au format PDF">
             <img class="icon" src="@/assets/img/download.svg" alt="" />
             Version imprimable
           </a>
         </div>
-        <etablissement-sirene-children />
+        <etablissement-sirene-children v-if=haveSireneInfo />
       </div>
-      <div class="map__dummy panel" v-if="isEtablissementLoading"></div>
+      <div v-if=isEtablissementLoading class="map__dummy panel"></div>
       <template v-else>
         <etablissement-map v-if=haveSireneInfo :positionEtablissement='coordinates' :etablissement='this.resultSirene'/>
       </template>
