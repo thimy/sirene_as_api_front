@@ -46,7 +46,7 @@ task :local_build do
   elsif ENV['to'] == 'rncs'
     command 'npm run build:rncs'
   else
-    commans 'npm run build:sandbox'
+    command 'npm run build:sandbox'
   end
 end
 
