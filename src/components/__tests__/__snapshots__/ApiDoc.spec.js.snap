@@ -16,9 +16,40 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
         class="text-center lead-text"
       >
         
-      Entreprise.data.gouv.fr est en phase intensive de développement. De nombreuses APIs sont en cours d’ajout !
+      Entreprise.data.gouv.fr est en phase intensive de développement.
+        <br />
+        
+      De nombreuses APIs sont en cours d’ajout !
     
       </p>
+       
+      <p
+        class="text-center lead-text"
+      >
+        
+      Vous pouvez vous inscrire à notre mailing-list pour vous tenir au courant
+      des nouveautés et changements à venir.
+        <br />
+        
+      Vos informations ne seront jamais utilisées à des fins commerciales.
+    
+      </p>
+       
+      <form>
+        <h4>
+          Inscription Mailing-List
+        </h4>
+         
+        <iframe
+          frameborder="0"
+          height="95"
+          marginheight="0"
+          marginwidth="0"
+          scrolling="no"
+          src="https://app.mailjet.com/widget/iframe/zR1/ack"
+          width="340"
+        />
+      </form>
     </div>
   </section>
    
