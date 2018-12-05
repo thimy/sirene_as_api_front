@@ -4,12 +4,12 @@ import Vuex from 'vuex'
 import VueResource from 'vue-resource'
 import application from './modules/application'
 import results from './modules/results'
-import resultsSirenChildren from './modules/resultsSirenChildren'
+import resultsSiren from './modules/resultsSiren'
+import resultsAdditionalInfos from './modules/resultsAdditionalInfos.js'
 import searchFullText from './modules/searchFullText'
 import searchEtablissement from './modules/searchEtablissement'
-import searchAdditionalInfo from './modules/searchAdditionalInfo'
+import searchAdditionalInfos from './modules/searchAdditionalInfos'
 import suggestions from './modules/suggestions'
-import welcomeText from './modules/welcomeText'
 
 Vue.use(Vuex)
 Vue.use(VueResource)
@@ -18,11 +18,11 @@ export default new Vuex.Store({
   modules: {
     application,
     results,
-    resultsSirenChildren,
+    resultsSiren,
+    resultsAdditionalInfos,
     searchFullText,
     searchEtablissement,
-    searchAdditionalInfo,
-    suggestions,
-    welcomeText
+    searchAdditionalInfos,
+    suggestions
   }
 })

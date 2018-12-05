@@ -1,15 +1,26 @@
 <template>
-  <div class="container">
-    <loader v-if="resultsAreLoading"></loader>
-    <server-error v-else-if="serverError"></server-error>
-    <template v-else>
-      <results-sirene />
-      <hr />
-      <results-rna />
-      <!-- paginate module on RNA and Sirene, so we use the bigger values -->
-      <results-paginate-module :totalPages=biggerNumberPages></results-paginate-module>
-    </template>
-  </div>
+  <section class="section">
+    <div class="container">
+      <server-error v-if="serverError"></server-error>
+      <results-skeleton v-else-if=resultsAreLoading />
+
+      <!-- Temporary section here for RNCS-only -->
+      <template v-else-if=displayingOnlyRNCS>
+        <div v-if="sireneError"><p>SIRENE: Notre serveur connait des difficultés. Veuillez essayer plus tard.</p></div>
+        <results-sirene v-else />
+        <results-paginate-module v-if="sireneNumberPages" :totalPages=sireneNumberPages></results-paginate-module>
+      </template>
+
+      <template v-else>
+        <div v-if="sireneError"><p>SIRENE: Notre serveur connait des difficultés. Veuillez essayer plus tard.</p></div>
+        <results-sirene v-else />
+        <div v-if="RNAError"><p>RNA: Notre serveur connait des difficultés. Veuillez essayer plus tard.</p></div>
+        <results-rna v-else />
+        <!-- paginate module on RNA and Sirene, so we use the bigger values -->
+        <results-paginate-module v-if="biggerNumberPages" :totalPages=biggerNumberPages></results-paginate-module>
+      </template>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -18,6 +29,7 @@ import ServerError from '@/components/modules/ServerError'
 import ResultsSirene from '@/components/results/ResultsSirene'
 import ResultsRNA from '@/components/results/ResultsRNA'
 import ResultsPaginateModule from '@/components/results/ResultsPaginateModule'
+import ResultsSkeleton from '@/components/results/ResultsSkeleton'
 
 export default {
   name: 'Results',
@@ -31,41 +43,49 @@ export default {
     'ServerError': ServerError,
     'ResultsSirene': ResultsSirene,
     'ResultsRna': ResultsRNA,
-    'ResultsPaginateModule': ResultsPaginateModule
+    'ResultsPaginateModule': ResultsPaginateModule,
+    'ResultsSkeleton': ResultsSkeleton
   },
   computed: {
     resultsAreLoading () {
-      return this.$store.state.application.isLoading['FULLTEXT']
+      return this.$store.getters.fullTextLoading
     },
     serverError () {
-      return this.$store.state.application.error500['FULLTEXT']
+      return this.$store.getters.fullTextError
+    },
+    RNAError () {
+      return this.$store.getters.fullTextRNAError
+    },
+    sireneError () {
+      return this.$store.getters.fullTextSireneError
     },
     biggerNumberPages () {
       return Math.max(this.$store.getters.totalPageNumberSirene, this.$store.getters.totalPageNumberRNA)
+    },
+    // Temporary methods for RNCS-Only
+    sireneNumberPages () {
+      return this.$store.getters.totalPageNumberSirene
+    },
+    displayingOnlyRNCS () {
+      if (process.env.DISPLAY_RNCS)
+        return true
     }
   },
   methods: {
     storedLastFullText () {
       return this.$store.state.searchFullText.storedLastFullText
     }
-  },
-  // Deactivated for now
-  // beforeUpdate () {
-  //   // If only one result, go to page Etablissement
-  //   if (this.$store.getters.singleResult) {
-  //     this.$router.push({ name: 'Etablissement', params: {searchId: this.$store.getters.singleResult} })
-  //   }
-  //   return
-  // }
+  }
 }
 
 </script>
 
 <style lang="scss" scoped>
-
-  .container {
-    padding-top: 2em;
-    padding-bottom: 2em;
+  .section {
+    min-height: 70vh;
   }
 
+  .panel {
+    margin-top: 2em;
+  }
 </style>

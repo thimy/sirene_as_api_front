@@ -1,18 +1,20 @@
 <template>
   <div class="company__panel panel">
-    <div class="company__item"><div class="company__item-key">Gérant</div><div class="company__item-value"> {{ fullOwnerName | ifExist }}</div></div>
-    <div class="company__item"><div class="company__item-key">Adresse</div><div class="company__item-value"> {{ resultSirene.l4_normalisee }} </div></div>
-    <div class="company__item"><div class="company__item-key">Ville</div><div class="company__item-value"> {{ resultSirene.code_postal }} {{resultSirene.libelle_commune}}</div></div>
-    <div class="company__item"><div class="company__item-key">Cedex</div><div class="company__item-value"> {{ resultSirene.cedex | ifExist}}</div></div>
-    <div class="company__item"><div class="company__item-key">Date de création</div><div class="company__item-value"> {{ formattedDate }}</div></div>
-    <div class="company__item"><div class="company__item-key">Téléphone</div><div class="company__item-value"> {{ resultSirene.telephone | ifExist}}</div></div>
-    <div class="company__item"><div class="company__item-key">Email</div><div class="company__item-value"> {{ resultSirene.email | ifExist}}</div></div>
-    <div class="company__item"><div class="company__item-key">Tranche d'effectif salariés</div><div class="company__item-value"> {{ resultSirene.libelle_tranche_effectif_salarie }}</div></div>
+    <h4>Contact</h4>
+    <div class="company__item"><label class="company__item-key">Gérant</label><div class="company__item-value"> {{ concatNames(resultSirene.prenom, resultSirene.nom) | ifExist }}</div></div>
+    <div class="company__item"><label class="company__item-key">Adresse</label><div class="company__item-value"> {{ resultSirene.l4_normalisee }} </div></div>
+    <div class="company__item"><label class="company__item-key">Ville</label><div class="company__item-value"> {{ resultSirene.code_postal }} {{resultSirene.libelle_commune}}</div></div>
+    <div class="company__item"><label class="company__item-key">Cedex</label><div class="company__item-value"> {{ resultSirene.cedex | ifExist}}</div></div>
+    <div class="company__item"><label class="company__item-key">Date de création</label><div class="company__item-value"> {{ formattedDate }}</div></div>
+    <div class="company__item"><label class="company__item-key">Téléphone</label><div class="company__item-value"> {{ resultSirene.telephone | ifExist}}</div></div>
+    <div class="company__item"><label class="company__item-key">Email</label><div class="company__item-value"> {{ resultSirene.email | ifExist}}</div></div>
+    <div class="company__item"><label class="company__item-key">Tranche d’effectif salariés</label><div class="company__item-value"> {{ resultSirene.libelle_tranche_effectif_salarie }}</div></div>
   </div>
 </template>
 
 <script>
 import Filters from '@/components/mixins/filters'
+import Formating from '@/components/mixins/formating'
 
 export default {
   name: 'EtablissementSireneContact',
@@ -43,13 +45,7 @@ export default {
       return `${day}/${month}/${year}`
     }
   },
-  mixins: [Filters]
+  mixins: [Filters, Formating]
 }
 </script>
 
-<style lang="scss" scoped>
-  .panel {
-    border: 2px solid $color-lighter-blue;
-    // border: 2px $color-light-pink solid;
-  }
-</style>

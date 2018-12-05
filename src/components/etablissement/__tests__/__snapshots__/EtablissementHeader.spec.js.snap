@@ -4,85 +4,51 @@ exports[`EtablissementHeader.vue Snapshot testing It match the snapshot 1`] = `
 <div
   class="company"
 >
-  <section
-    class="section-white"
+  <div
+    class="company__main"
   >
     <div
-      class="container"
+      class="title__block"
     >
-      <div
-        class="title"
-      >
-        <h2>
-           
-          <span
-            class="company__siren"
-          >
-            ()
-          </span>
-        </h2>
+      <h2>
          
-        <div
-          class="subtitle"
+        <span
+          class="company__siren"
         >
-           
-        </div>
-         
-        <h4
-          class="company__industry"
-        >
-           
-        </h4>
-      </div>
+          ()
+        </span>
+      </h2>
        
       <!---->
        
       <div
-        class="tabs"
+        class="subtitle"
       >
-        <div
-          class="api api__sirene"
-        >
-          <h4>
-            Base SIRENE
-          </h4>
-           
-          <h5>
-            Information disponible
-          </h5>
-           
-          <h5>
-            Dernière mise à jour : 
-            <span
-              class="no_wrap"
-            >
-              
-            </span>
-          </h5>
+        <div>
+          
         </div>
          
-        <div
-          class="api api__rna"
-        >
-          <h4>
-            Base RNA
-          </h4>
-           
-          <h5>
-            Information disponible
-          </h5>
-           
-          <h5>
-            Dernière mise à jour : 
-            <span
-              class="no_wrap"
-            >
-              
-            </span>
-          </h5>
+        <div>
+          
         </div>
       </div>
+       
+      <div
+        class="second__subtitle"
+      >
+         
+      </div>
+       
+      <!---->
+       
+      <!---->
+       
+      <etablissementsirenechildren-stub />
     </div>
-  </section>
+     
+    <etablissementmap-stub
+      etablissement="[object Object]"
+    />
+  </div>
 </div>
 `;

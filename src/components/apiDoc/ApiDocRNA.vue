@@ -28,9 +28,6 @@ export default {
     return {
       baseAdress: "https://entreprise.data.gouv.fr/api/rna/v1/"
     }
-  },
-  created() {
-    this.$store.dispatch('hideWelcomeText')
   }
 }
 

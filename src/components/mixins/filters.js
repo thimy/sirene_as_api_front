@@ -13,7 +13,7 @@ export default {
       return string.toUpperCase()
     },
     ifExist: function (string) {
-      if (string) {
+      if (string && string != 'null') {
         return string
       }
       return 'Non renseigné'
@@ -39,11 +39,35 @@ export default {
       } else {
         return string
       }
+    },
+    frenchNumberFormat: function(input) {
+      return new Intl.NumberFormat('fr-FR', { minimumFractionDigits: 2 }).format(input)
+    },
+    frenchDateFormat: function(input) {
+      if (input == null) {
+        return null
+      }
+      return new Intl.DateTimeFormat('en-GB').format(new Date(input))
+    },
+    formatIfDate: function(input) {
+      if (input == null) {
+        return null
+      }
+
+      const dateFormat = RegExp(/^\d{4}-\d{2}-\d{2}$/)
+
+      if (dateFormat.test(input)) {
+        return new Intl.DateTimeFormat('en-GB').format(new Date(input))
+      }
+      return input
     }
   },
   methods: {
-    frenchNumberFormat: function(input) {
-      return new Intl.NumberFormat('fr-FR').format(input)
+    concatIfExist(base, addition) {
+      if (addition) {
+        return base.concat(' ', addition)
+      }
+      return base
     }
   }
 }

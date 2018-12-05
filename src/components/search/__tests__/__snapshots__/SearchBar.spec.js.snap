@@ -22,23 +22,9 @@ exports[`SearchBar.vue snapshot Snapshot test 1`] = `
     </svg>
   </button>
    
-  <ul>
-     
-    <li
-      class="hidden suggestion__box"
-    />
-    <li
-      class="hidden suggestion__box"
-    />
-    <li
-      class="hidden suggestion__box"
-    />
-    <li
-      class="hidden suggestion__box"
-    />
-    <li
-      class="hidden suggestion__box"
-    />
-  </ul>
+  <ul
+    class="suggestions"
+    style="display: none;"
+  />
 </div>
 `;

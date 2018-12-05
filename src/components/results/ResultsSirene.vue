@@ -2,23 +2,24 @@
   <div>
     <h3>{{resultsNumberSentence}}</h3>
     <did-you-mean :api=api></did-you-mean>
-    <ul>
-      <li v-for="result in storedResultsEntreprises" :key="result.siret" class="panel">
-        <router-link tag="a" class="no_base_style" :to="{ name: 'Etablissement', params: {searchId: result['siret']}}">
+    <results-skeleton v-if="resultsAreLoading"></results-skeleton>
+    <ul v-else>
+      <li v-for="result in storedResultsEntreprises" :key="result.siret">
+        <router-link class="panel" :to="{ name: 'Etablissement', params: {searchId: result['siret']}}">
           <h4 class="title">{{result['nom_raison_sociale'] | capitalize | removeExtraChars}}</h4>
-          <span class="subtitle" v-if="result['l2_normalisee']">{{result['l2_normalisee'] | capitalize | removeExtraChars }}</span>
           <p>{{result['libelle_activite_principale_entreprise']}}</p>
           <p>{{result['code_postal']}} {{result['libelle_commune'] | capitalize}}</p>
         </router-link>
       </li>
     </ul>
-    <p v-if="showNoResultMessage">Aucun résultat trouvé</p>
+    <h4 v-if="noResults">Aucun résultat trouvé.</h4>
   </div>
 </template>
 
 <script>
 import DidYouMean from '@/components/results/ResultsDidYouMean'
 import Filters from '@/components/mixins/filters.js'
+import ResultsSkeleton from '@/components/results/ResultsSkeleton'
 
 export default {
   name: 'ResultsSirene',
@@ -28,27 +29,34 @@ export default {
     }
   },
   components: {
-    'DidYouMean': DidYouMean
+    'DidYouMean': DidYouMean,
+    'ResultsSkeleton': ResultsSkeleton
   },
   computed: {
+    resultsAreLoading () {
+      return this.$store.getters.isFullTextLoading
+    },
     isSearchNotEmpty () {
       return this.$store.state.searchFullText.storedFullText !== ''
     },
     storedResultsEntreprises () {
-      return this.$store.getters.storedResultsEntreprises
+      return this.$store.getters.fullTextResultsSirene
     },
     numberResults () {
       return this.$store.getters.numberResultsFullTextSirene
-    },
-    showNoResultMessage () {
-      return this.numberResults === 0
     },
     resultsNumberSentence () {
       if (this.numberResults === undefined) {
         return ''
       }
-      const numberResultsFormatted = Filters.methods.frenchNumberFormat(this.numberResults)
-      return `${numberResultsFormatted} résultats pour "${this.$store.state.searchFullText.storedLastFullText}" dans la base SIRENE des entreprises`
+      const resultText = this.numberResults > 1 ? 'résultats' : 'résultat'
+      return `${this.numberResults} ${resultText} pour "${this.$store.state.searchFullText.storedLastFullText}" dans la base SIRENE des entreprises`
+    },
+    noResults () {
+      if (this.storedResultsEntreprises && this.storedResultsEntreprises.length > 0) {
+        return false
+      }
+      return true
     }
   },
   mixins: [Filters]
@@ -68,15 +76,13 @@ export default {
   }
 
   .panel {
-    margin-bottom: 2em;
-    cursor: pointer;
-    padding: 1em;
-    border: 1px solid $color-lighter-blue;
-  }
-
-  .no_base_style {
+    display: block;
     text-decoration: none;
     color: $color-black;
+
+    &:hover {
+      border: 1px solid $color-light-blue;
+    }
   }
 
   p {
@@ -91,6 +97,10 @@ export default {
     li:hover {
       background-color: $color-lightest-grey;
     }
+  }
+
+  li + li {
+    margin-top: 2em;
   }
 </style>
 

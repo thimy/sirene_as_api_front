@@ -23,9 +23,6 @@ export default {
     'ApiDocList': ApiDocList,
     'ApiDocOthers': ApiDocOthers,
     'ApiDocOutro': ApiDocOutro
-  },
-  created() {
-    this.$store.dispatch('hideWelcomeText')
   }
 }
 </script>

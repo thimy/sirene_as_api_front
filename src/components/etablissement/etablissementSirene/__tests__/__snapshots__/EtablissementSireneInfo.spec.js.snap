@@ -4,128 +4,132 @@ exports[`EtablissementSireneInfo.vue snapshot It match the snapshot 1`] = `
 <div
   class="company__panel panel"
 >
-  <ul
-    class="company__info-list"
+  <div
+    class="name__category"
   >
-    <div
-      class="company__item"
+    <h4>
+      Informations générales
+    </h4>
+  </div>
+   
+  <div
+    class="company__item"
+  >
+    <label
+      class="company__item-key"
     >
-      <div
-        class="company__item-key"
-      >
-        SIRET
-      </div>
-      <div
-        class="company__item-value"
-      >
-         
-      </div>
-    </div>
-     
+      SIRET
+    </label>
     <div
-      class="company__item"
+      class="company__item-value"
     >
-      <div
-        class="company__item-key"
-      >
-        SIREN
-      </div>
-      <div
-        class="company__item-value"
-      >
-         
-      </div>
+       
     </div>
-     
+  </div>
+   
+  <div
+    class="company__item"
+  >
+    <label
+      class="company__item-key"
+    >
+      SIREN
+    </label>
     <div
-      class="company__item"
+      class="company__item-value"
     >
-      <div
-        class="company__item-key"
-      >
-        Clef NIC
-      </div>
-      <div
-        class="company__item-value"
-      >
-         
-      </div>
+       
     </div>
-     
+  </div>
+   
+  <div
+    class="company__item"
+  >
+    <label
+      class="company__item-key"
+    >
+      Clef NIC
+    </label>
     <div
-      class="company__item"
+      class="company__item-value"
     >
-      <div
-        class="company__item-key"
-      >
-        Activité principale Etablissement
-      </div>
-      <div
-        class="company__item-value"
-      >
-          - 
-      </div>
+       
     </div>
-     
+  </div>
+   
+  <div
+    class="company__item"
+  >
+    <label
+      class="company__item-key"
+    >
+      Activité principale Etablissement
+    </label>
     <div
-      class="company__item"
+      class="company__item-value"
     >
-      <div
-        class="company__item-key"
-      >
-        Activité principale Entreprise
-      </div>
-      <div
-        class="company__item-value"
-      >
-          - 
-      </div>
+        - 
     </div>
-     
+  </div>
+   
+  <div
+    class="company__item"
+  >
+    <label
+      class="company__item-key"
+    >
+      Activité principale Entreprise
+    </label>
     <div
-      class="company__item"
+      class="company__item-value"
     >
-      <div
-        class="company__item-key"
-      >
-        Nature juridique
-      </div>
-      <div
-        class="company__item-value"
-      >
-         Non renseigné
-      </div>
+        - 
     </div>
-     
+  </div>
+   
+  <div
+    class="company__item"
+  >
+    <label
+      class="company__item-key"
+    >
+      Nature juridique
+    </label>
     <div
-      class="company__item"
+      class="company__item-value"
     >
-      <div
-        class="company__item-key"
-      >
-        Numéro RNA
-      </div>
-      <div
-        class="company__item-value"
-      >
-         Non renseigné
-      </div>
+       Non renseigné
     </div>
-     
+  </div>
+   
+  <div
+    class="company__item"
+  >
+    <label
+      class="company__item-key"
+    >
+      Numéro RNA
+    </label>
     <div
-      class="company__item"
+      class="company__item-value"
     >
-      <div
-        class="company__item-key"
-      >
-        N° TVA Intracommunautaire
-      </div>
-      <div
-        class="company__item-value"
-      >
-         FRNaNundefined
-      </div>
+       Non renseigné
     </div>
-  </ul>
+  </div>
+   
+  <div
+    class="company__item"
+  >
+    <label
+      class="company__item-key"
+    >
+      N° TVA Intracommunautaire
+    </label>
+    <div
+      class="company__item-value"
+    >
+       FRNaNundefined
+    </div>
+  </div>
 </div>
 `;

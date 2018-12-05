@@ -1,15 +1,12 @@
 <template>
-  <div class="hero">
-    <div class="notification full-width">
-      Ce site est un travail en cours, actuellement en beta. Vous pouvez le consulter librement.
-    </div>
+  <div class="hero" role="banner">
     <div class="hero__container container" v-bind:class="[showWelcomeText ? '' : 'hero__compact' ]">
       <transition name="fade">
         <div class="text-center" v-if="showWelcomeText">
           <h1 class="search__title">
             Retrouvez toutes les informations concernant les entreprises et associations de France
           </h1>
-          <p class="search__subtitle">Les bases de données sur l'état civil des entreprises et associations françaises sont maintenant accessibles à tous, sans frais.</p>
+          <p class="search__subtitle">Les bases de données sur l’état civil des entreprises et associations françaises sont maintenant accessibles à tous, sans frais.</p>
         </div>
       </transition>
       <SearchBar searchName="Recherche par nom"></SearchBar>
@@ -56,7 +53,7 @@ export default {
       return this.$store.state.storedFullText !== ''
     },
     showWelcomeText () {
-      return this.$store.state.welcomeText.isWelcomeTextVisible
+      return this.$store.getters.isWelcomeTextVisible
     },
     showBackToResultsButton () {
       // show back button only on etablissement page
@@ -77,32 +74,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-  .hero {
-    background: linear-gradient(180deg, $color-light-blue, $color-blue);
-    box-sizing: content-box;
-  }
-
-  .hero__container {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
   .hero__compact {
     min-height: initial;
-    padding-bottom: 0;
   }
 
-  .hero h1, .hero p {
+  .search__subtitle {
     color: $color-white;
-  }
-
-  .icon-equalizer {
-    font-size: 23px;
-  }
-
-  .informations-index {
-    text-align: center;
   }
 
   .back-to-results {

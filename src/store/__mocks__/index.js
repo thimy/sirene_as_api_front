@@ -19,14 +19,10 @@ export const state = {
     noResultFound: {
       'SIRENE': jest.fn().mockReturnValue([{}]),
       'RNA': jest.fn().mockReturnValue([{}])
-    },
-    mainSearch: {
-      'SIRENE': jest.fn().mockReturnValue([{}]),
-      'RNA': jest.fn().mockReturnValue([{}])
     }
   }]),
   baseAdressSuggestions: jest.fn().mockReturnValue([{
-    storedResults: {
+    fullTextResults: {
       'RNA': jest.fn().mockReturnValue([{}]),
       'SIRENE': jest.fn().mockReturnValue([{}])
     },
@@ -34,11 +30,12 @@ export const state = {
       'RNA': jest.fn().mockReturnValue([{}]),
       'SIRENE':  jest.fn().mockReturnValue([{}])
     },
-    storedStatus: {
+    status: {
       'RNA': jest.fn().mockReturnValue([{}]),
       'SIRENE': jest.fn().mockReturnValue([{}])
     }
   }]),
+  sirenResults: jest.fn().mockReturnValue([{}]),
   sirenChildren: jest.fn().mockReturnValue([{}]),
   searchEtablissement: jest.fn().mockReturnValue([{
     baseAdressSiret: {
@@ -49,7 +46,7 @@ export const state = {
       'SIRENE': jest.fn().mockReturnValue([{}]),
       'RNA': jest.fn().mockReturnValue([{}])
     },
-    baseAdressSireneSiren: jest.fn().mockReturnValue([{}])
+    baseAdressSiren: jest.fn().mockReturnValue([{}])
   }]),
   searchFullText: {
     storedFullText: jest.fn().mockReturnValue([{}]),
@@ -65,21 +62,17 @@ export const state = {
     baseAdressSuggestions: jest.fn().mockReturnValue([{}]),
     querySuggestions: jest.fn().mockReturnValue([{}]),
     suggestActive: jest.fn().mockReturnValue([{}])
-  },
-  welcomeText: {
-    isWelcomeTextVisible: jest.fn().mockReturnValue([{}])
   }
 }
 
 export const getters = {
   RNAAvailable: jest.fn().mockReturnValue([{}]),
-  adressToGetFullText: jest.fn().mockReturnValue([{}]),
-  allAPIError500: jest.fn().mockReturnValue([{}]),
-  allAPINotFound: jest.fn().mockReturnValue([{}]),
+  addressToGetFullText: jest.fn().mockReturnValue([{}]),
+  mainAPIError: jest.fn().mockReturnValue([{}]),
+  mainAPINotFound: jest.fn().mockReturnValue([{}]),
   idAssociationFromSirene: jest.fn().mockReturnValue([{}]),
   isEtablissementLoading: jest.fn().mockReturnValue([{}]),
   isWelcomeTextVisible: jest.fn().mockReturnValue([{}]),
-  mainSearch: jest.fn().mockReturnValue([{}]),
   numberResultsFullTextRNA: jest.fn().mockReturnValue([{}]),
   numberResultsFullTextSirene: jest.fn().mockReturnValue([{}]),
   optionsToGet: jest.fn().mockReturnValue(["?per_page=5&page=1"]),
@@ -92,8 +85,8 @@ export const getters = {
   sireneAvailable: jest.fn().mockReturnValue([{}]),
   siretFromRNA: jest.fn().mockReturnValue([{}]),
   storedFullText: jest.fn().mockReturnValue([""]),
-  storedResultsAssociations: jest.fn().mockReturnValue([{}]),
-  storedResultsEntreprises: jest.fn().mockReturnValue([{}]),
+  fullTextResultsAssociations: jest.fn().mockReturnValue([{}]),
+  fullTextResultsEntreprises: jest.fn().mockReturnValue([{}]),
   storedSirenChildren: jest.fn().mockReturnValue([{}]),
   storedSirenSiege: jest.fn().mockReturnValue([{}]),
   storedSirenTotalResults: jest.fn().mockReturnValue([{}]),
@@ -105,17 +98,11 @@ export const getters = {
 }
 
 export const mutations = {
-  // application.js
-  setLoading: jest.fn(),
-  setError500: jest.fn(),
-  setNoResultFound: jest.fn(),
-  setMainSearch: jest.fn(),
   // results.js
-  setResults: jest.fn(),
+  setFullTextResults: jest.fn(),
   clearResults: jest.fn(),
-  setStatus: jest.fn(),
   setSinglePageResults: jest.fn(),
-  // resultsSirenChildren.js
+  // resultsSiren.js
   setSirenResults: jest.fn(),
   // searchFullText.js
   setFullText: jest.fn(),
@@ -124,13 +111,12 @@ export const mutations = {
   // suggestions.js
   setQuerySuggestions: jest.fn(),
   setStoredSuggestions: jest.fn(),
-  // welcomeText.js
-  changeWelcomeTextVisibility: jest.fn()
 }
 
 export const actions = {
   // application.js
   resetApplicationState: jest.fn(),
+  goToClearedHomePage: jest.fn(),
   // results.js
   setResponseFullText: jest.fn(),
   setResponseEtablissement: jest.fn(),
@@ -153,10 +139,7 @@ export const actions = {
   executeSearchFullText: jest.fn(),
   // suggestions.js
   executeSearchSuggestions: jest.fn(),
-  filterAndStoreSuggestions: jest.fn(),
-  // welcomeText.js
-  hideWelcomeText: jest.fn(),
-  goToClearedHomePage: jest.fn()
+  filterAndStoreSuggestions: jest.fn()
 }
 
 // eslint-disable-next-line no-underscore-dangle

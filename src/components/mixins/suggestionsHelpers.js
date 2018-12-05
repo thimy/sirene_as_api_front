@@ -2,14 +2,17 @@ export default {
   data () {
     return {
       maxSuggestions: 5,
-      suggestCount: -1
+      suggestCount: -1,
+      // allowSuggestions only if user just typed something, so we avoid
+      // automatic search of suggestions
+      suggestionsAllowed: false
     }
   },
   computed: {
     suggestions: {
       get: function () {
         const storedSuggestions = this.$store.state.suggestions.storedSuggestions
-        if (storedSuggestions) {
+        if (storedSuggestions && storedSuggestions.length != 0) {
           if (storedSuggestions.length > this.suggestionNumber) {
             return storedSuggestions.slice(0, this.suggestionNumber)
           }
@@ -30,12 +33,12 @@ export default {
           return this.maxSuggestions
         }
       }
-    },
-    suggestionNumberToMax () {
-      return this.maxSuggestions - this.suggestionNumber
     }
   },
   methods: {
+    allowSuggestions: function () {
+      this.suggestionsAllowed = true
+    },
     currentSuggestion: function () {
       if (this.suggestCount >= 0) {
         return this.suggestions[this.suggestCount]
@@ -63,10 +66,13 @@ export default {
     },
     suggestSelectAndEnter: function (selectedIndex) {
       this.suggestCount = selectedIndex
-      this.requestSearchIfNotEmpty()
+      this.prepareThenSearch()
     },
     resetIndexSuggestion: function () {
       this.suggestCount = -1
+    },
+    suggestionNumberToMax () {
+      return this.maxSuggestions - this.suggestionNumber
     }
   }
 }

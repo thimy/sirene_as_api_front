@@ -1,47 +1,53 @@
 <template>
   <div class="company">
-    <section class="section-white">
-      <div class="container">
-        <div v-if="haveSireneInfo" class="title">
-          <h2>{{resultSirene.nom_raison_sociale | removeExtraChars}} <span class="company__siren">({{ resultSirene.siren }})</span></h2>
-          <div class="subtitle"> {{ resultSirene.l2_normalisee }}</div>
-          <h4 class="company__industry"> {{ resultSirene.libelle_activite_principale_entreprise }}</h4>
+    <div class="company__main">
+      <header-skeleton v-if="isEtablissementLoading"></header-skeleton>
+      <div class="title__block" v-else>
+        <h2 v-if="haveSireneInfo">{{resultSirene.nom_raison_sociale | removeExtraChars}} <span class="company__siren">({{ resultSirene.siren }})</span></h2>
+        <h2 v-if="haveOnlyRNAInfo">{{resultRNA.titre}} <span class="association__id">({{ resultRNA.id_association }})</span></h2>
+
+        <template v-if="haveSireneInfo">
+          <div class="subtitle">
+            <div>{{ resultSirene.l4_normalisee }}</div>
+            <div>{{ resultSirene.l6_normalisee }}</div>
+          </div>
+          <div class="second__subtitle"> {{ resultSirene.libelle_activite_principale_entreprise }}</div>
+        </template>
+        <div v-if="haveOnlyRNAInfo" class="second__subtitle"> {{ resultRNA.titre_court}}</div>
+        <div v-if=displayingOnlyRNCS class="company__buttons">
+          <a class="button" v-bind:href="dataRequestPDF" title="Télécharger les données de cette entreprise au format PDF">
+            <img class="icon" src="@/assets/img/download.svg" alt="" />
+            Version imprimable
+          </a>
         </div>
-        <div v-if="haveOnlyRNAInfo" class="title">
-          <h2>{{resultRNA.titre}} <span class="association__id">({{ resultRNA.id_association }})</span></h2>
-          <h4 class="company__industry"> {{ resultRNA.titre_court}}</h4>
-        </div>
-        <div class="tabs">
-          <div v-if="haveSireneInfo" class="api api__sirene">
-            <h4>Base SIRENE</h4>
-            <h5>Information disponible</h5>
-            <h5>Dernière mise à jour : <span class="no_wrap">{{ this.lastUpdateSirene }}</span></h5>
-          </div>
-          <div v-else class="api api__unavailable">
-            <h4>Base SIRENE</h4>
-            <h5>Non disponible</h5>
-          </div>
-          <div v-if="haveRNAInfo" class="api api__rna">
-            <h4>Base RNA</h4>
-            <h5>Information disponible</h5>
-            <h5>Dernière mise à jour : <span class="no_wrap">{{ this.lastUpdateRNA }}</span></h5>
-          </div>
-          <div v-else class="api api__unavailable">
-            <h4>Base RNA</h4>
-            <h5>Non disponible</h5>
-          </div>
-        </div>
+        <etablissement-sirene-children v-if=haveSireneInfo />
       </div>
-    </section>
+      <div v-if=isEtablissementLoading class="map__dummy panel"></div>
+      <template v-else>
+        <etablissement-map v-if=haveSireneInfo :positionEtablissement='coordinates' :etablissement='this.resultSirene'/>
+      </template>
+    </div>
   </div>
 </template>
 
 <script>
 import Filters from '@/components/mixins/filters.js'
+import EtablissementSireneChildren from '@/components/etablissement/etablissementSirene/EtablissementSireneChildren'
+import EtablissementMap from '@/components/etablissement/EtablissementMap'
+import HeaderSkeleton from '@/components/etablissement/skeletons/HeaderSkeleton'
 
 export default {
   name: 'EtablissementHeader',
+  props: ['searchId'],
+  components: {
+    'EtablissementSireneChildren': EtablissementSireneChildren,
+    'EtablissementMap': EtablissementMap,
+    'HeaderSkeleton': HeaderSkeleton
+  },
   computed: {
+    isEtablissementLoading () {
+      return this.$store.getters.mainAPISLoading
+    },
     resultSirene () {
       return this.$store.getters.singlePageEtablissementSirene
     },
@@ -52,20 +58,31 @@ export default {
       return (!this.haveSireneInfo && this.haveRNAInfo)
     },
     haveSireneInfo () {
-      return this.$store.getters.sireneAvailable
+      if (this.$store.getters.sireneAvailable) {
+        return true
+      }
     },
     haveRNAInfo () {
-      return this.$store.getters.RNAAvailable
-    },
-    lastUpdateSirene () {
-      if (this.resultSirene.updated_at) {
-        return this.resultSirene.updated_at.substring(0, 10)
+      if (this.$store.getters.RNAAvailable) {
+        return true
       }
     },
-    lastUpdateRNA () {
-      if (this.resultRNA.updated_at) {
-        return this.resultRNA.updated_at.substring(0, 10)
+    coordinates () {
+      if (this.resultSirene && this.resultSirene.longitude && this.resultSirene.latitude) {
+        return [this.resultSirene.longitude, this.resultSirene.latitude]
       }
+      return null
+    },
+    dataRequestPDF () {
+      if (this.resultSirene) {
+        return `${process.env.BASE_ADDRESS_RNCS}${this.resultSirene.siren}/pdf`
+      }
+      return null
+    },
+    // Temporary methods for displaying RNCS-only
+    displayingOnlyRNCS () {
+      if (process.env.DISPLAY_RNCS)
+        return true
     }
   },
   mixins: [Filters]
@@ -73,69 +90,56 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .container {
-    @media screen and (max-width: $tablet) {
-      display: inline-flex;
-      flex-direction: column;
-    }
-  }
-
-  .tabs {
+  .company__main {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
   }
 
-  .api {
-    margin: 5px 0 5px 0;
-    padding: 10px;
-    h4, h5 {
-      margin: 0;
+  #map {
+    margin-left: 2em;
+  }
+
+  @media (max-width: $desktop) {
+    .company__main {
+      flex-direction: column;
+    }
+
+    #map {
+      margin-left: 0;
     }
   }
 
-  .api__sirene {
-    background-color: $color-light-blue;
-    color: $color-white;
-  }
+  .company__buttons {
+    margin-top: 1.5em;
 
-  .api__rna {
-    background-color: $color-light-pink;
-    color: $color-white;
-  }
-
-  .api__unavailable {
-    background-color: $color-light-grey;
-    color: $color-darker-grey;
-    h5 {
-      padding-top: 5px;
+    .button {
+      padding: 0.5em 1em 0.6em;
+      vertical-align: middle;
+      margin-left: 0;
     }
   }
 
-  .no_wrap {
-    white-space: nowrap;
-  }
-
-  .section-white {
-    padding: 0;
+  h2 {
+    margin: 0;
   }
 
   .subtitle {
-    font-size: 1.4em;
-    font-family: "Evolventa", "Trebuchet MS", sans-serif;
+    font-size: 1.25em;
   }
 
-  .company__industry,
+  .second__subtitle {
+    margin-top: 0.5em;
+  }
+
   .company__siren,
-  .association__id {
-    color: $color-dark-grey;
+  .second__subtitle {
+    color: $color-darker-grey;
   }
 
-  .container {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 2em;
-    padding-bottom: 2em;
+  .map__dummy {
+    height: 350px;
+    width: 48%;
+    background-color: #f2eae2;
   }
-
 </style>

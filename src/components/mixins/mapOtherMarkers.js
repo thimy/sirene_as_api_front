@@ -6,18 +6,20 @@ import Filters from '@/components/mixins/filters'
 export default {
   data () {
     return {
-      baseAdressNearEtablissement: process.env.BASE_ADRESS_SIRENE_NEAR_ETABLISSEMENT
+      baseAdressSiren: process.env.BASE_ADDRESS_SIRENE_SIREN
     }
   },
   methods: {
-    addOtherMarkers: async function (map, siret) {
-      const response = await this.getMarkersData(siret)
-      this.addSourceEtablissements(map, response.body)
-      this.addLayerEtablissements(map)
-      this.addPopupsEtablissements(map)
+    addOtherMarkers: async function (map, siren) {
+      const response = await this.getMarkersData(siren)
+      map.on('load', () => {
+        this.addSourceEtablissements(map, response.body)
+        this.addLayerEtablissements(map)
+        this.addPopupsEtablissements(map)
+      })
     },
-    getMarkersData: async function (siret) {
-      const query = this.nearEtablissementQuery(siret)
+    getMarkersData: async function (siren) {
+      const query = this.nearEtablissementQuery(siren)
       return await Vue.http.get(query)
     },
     addSourceEtablissements: function (map, data) {
@@ -100,19 +102,18 @@ export default {
         const etablissementsPoints = renderedFeatures[0];
         const etablissementPopup = new mapboxgl.Popup()
           .setLngLat(etablissementsPoints.geometry.coordinates)
-          .setLngLat(etablissementsPoints.geometry.coordinates)
           .addTo(map)
         vm.addPopupContent(etablissementPopup, etablissementsPoints.properties)
       })
     },
-    nearEtablissementQuery (siret) {
-      return this.baseAdressNearEtablissement + siret + '?only_same_activity=true'
+    nearEtablissementQuery (siren) {
+      return this.baseAdressSiren + siren + '/etablissements_geojson'
     },
     addPopupContent (popup, etablissement) {
       popup.setHTML(
-        "<p><strong>Raison Sociale</strong> :  " + (Filters.filters.removeExtraChars(etablissement.nom_raison_sociale)) + "</p>"
+        "<p><strong>Enseigne</strong> :  " + (Filters.filters.ifExist(etablissement.enseigne)) + "</p>"
         + "<p><strong>Siret</strong> :  " + etablissement.siret+ "</p>"
-        + "<p><strong>Activité</strong> :  " + etablissement.libelle_activite_principale + "</p>"
+        + "<p><strong>Adresse</strong> :  " + Filters.filters.ifExist(etablissement.address) + "</p>"
       )
     }
   },

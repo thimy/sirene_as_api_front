@@ -1,19 +1,19 @@
 <template>
-  <section class="section-white">
+  <section class="section section-white">
     <div class="container">
       <div class="column__full">
         <h2>Recherches géographiques</h2>
         <p>
-          <strong>L'API integre désormais le géocodage de la base Sirene !</strong>
-          Chaque établissement affiche désormais sa latitude, longitude, ainsi qu'un <strong>geo_score</strong> indiquant
-          la fiabilité du géocodage de l'établissement.
+          <strong>L’API integre désormais le géocodage de la base Sirene !</strong>
+          Chaque établissement affiche désormais sa latitude, longitude, ainsi qu’un <strong>geo_score</strong> indiquant
+          la fiabilité du géocodage de l’établissement.
         </p>
       </div>
       <div class="container__columns">
         <div class="column">
-          <h3>Recherche autour d'un point :</h3>
+          <h3>Recherche autour d’un point :</h3>
           <p>
-            L'endpoint <code>/v1/near_point/</code> prend en paramètre une latitude (:lat) et une longitude (:long)
+            L’endpoint <code>/v1/near_point/</code> prend en paramètre une latitude (:lat) et une longitude (:long)
             et renvoie les établissements autour de ces coordonnées.<br>
             Vous pouvez également préciser un paramètre <code>radius</code> (défaut: 5 km).
           </p>
@@ -23,7 +23,7 @@
           <img src="@/assets/img/icons/around_point.svg" alt="">
         </div>
       </div>
-      <!-- <div class="column__full">
+      <div class="column__full">
         <h3>Options de filtrage</h3>
         <p>Les paramètres de filtrage suivant sont disponibles sur les endpoint near_point :</p>
       </div>
@@ -37,7 +37,7 @@
         </thead>
         <tbody>
           <tr>
-            <td>Filtrage par code d'activité principale (code NAF)</td>
+            <td>Filtrage par code d’activité principale (code NAF)</td>
             <td><code>activite_principale</code></td>
             <td>le code NAF désiré</td>
           </tr>
@@ -52,28 +52,30 @@
             <td>Nombre entier ou flottant, en km (défaut: 5)</td>
           </tr>
         </tbody>
-      </table> -->
+      </table>
       <div class="container__columns">
-        <div class="column">
-          <h3>Recherche autour d'un établissement :</h3>
-          <p>
-            L'endpoint <code>/v1/near_etablissement/:SIRET</code> prend en paramètre un siret et renvoie les établissements
-            autour de l'établissement correspondant à ce siret.
-          </p>
-          <api-doc-input :request=exempleGeoSpace2></api-doc-input>
-          <h3>Recherche autour d'un établissement, format GeoJSON :</h3>
-          <p>
-            L'endpoint <code>/v1/near_etablissement_geoJSON/:SIRET</code> fonctionne exactement comme le précédent
-            mais retourne les 500 établissements les plus proches au format GeoJSON.
-            Les résultats ne sont pas paginés.
-          </p>
-          <api-doc-input :request=exempleGeoSpace3></api-doc-input>
-        </div>
-        <div class="column__icon">
-          <img id="reduced-img" src="@/assets/img/icons/around_etablissement.svg" alt="">
+        <div class="row">
+          <div class="column">
+            <h3>Recherche autour d’un établissement :</h3>
+            <p>
+              L’endpoint <code>/v1/near_etablissement/:SIRET</code> prend en paramètre un siret et renvoie les établissements
+              autour de l’établissement correspondant à ce siret.
+            </p>
+            <api-doc-input :request=exempleGeoSpace2></api-doc-input>
+            <h3>Recherche autour d’un établissement, format GeoJSON :</h3>
+            <p>
+              L’endpoint <code>/v1/near_etablissement_geoJSON/:SIRET</code> fonctionne exactement comme le précédent
+              mais retourne les 500 établissements les plus proches au format GeoJSON.
+              Les résultats ne sont pas paginés.
+            </p>
+            <api-doc-input :request=exempleGeoSpace3></api-doc-input>
+          </div>
+          <div class="column__icon">
+            <img id="reduced-img" src="@/assets/img/icons/around_etablissement.svg" alt="">
+          </div>
         </div>
       </div>
-      <div class="column__full">
+      <div class="container">
         <h3>Options de filtrage</h3>
         <p>Les paramètres de filtrage suivant sont disponibles sur les endpoint near_etablissement et near_etablissement_geojson :</p>
       </div>
@@ -187,7 +189,7 @@ table {
   margin: 10px 0px auto;
   border-collapse: collapse;
   border: 1px solid $color-white;
-  border-bottom: 2px solid $color-light-blue;
+  border-bottom: 2px solid $color-blue;
   box-shadow: 0px 0px 20px rgba(0,0,0,0.10),
      0px 10px 20px rgba(0,0,0,0.05),
      0px 20px 20px rgba(0,0,0,0.05),
@@ -202,7 +204,7 @@ table {
     }
   }
   th, td {
-    color: $color-dark-grey;
+    color: $color-darker-grey;
     border: 1px solid $color-light-grey;
     border-collapse: collapse;
     padding: none;
@@ -211,7 +213,7 @@ table {
     }
   }
   th {
-    background: $color-light-blue;
+    background: $color-blue;
     color: $color-white;
     text-transform: uppercase;
     font-size: 1em;

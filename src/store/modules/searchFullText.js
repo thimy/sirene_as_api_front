@@ -1,3 +1,4 @@
+// This module contains code relative to fulltext search
 import store from '@/store/index.js'
 import router from '@/router/index.js'
 
@@ -7,23 +8,20 @@ const state = {
   pageNumber: 1,
 
   baseAdressFullText: {
-    'SIRENE': process.env.BASE_ADRESS_SIRENE_FULLTEXT,
-    'RNA': process.env.BASE_ADRESS_RNA_FULLTEXT
+    'SIRENE': process.env.BASE_ADDRESS_SIRENE_FULLTEXT,
+    'RNA': process.env.BASE_ADDRESS_RNA_FULLTEXT
   }
 }
 
 const getters = {
-  adressToGetFullText: (state, api) => {
+  addressToGetFullText: (state, api) => {
     return state.baseAdressFullText[api] + store.getters.queryToGet
   },
   queryToGet: () => {
-    return store.state.route.query.fullText + store.getters.optionsToGet
+    return store.state.route.query.fullText + store.getters.pageNumberToGet
   },
   pageNumberToGet: state => {
     return '?per_page=5&page=' + state.pageNumber
-  },
-  optionsToGet: () => {
-    return store.getters.pageNumberToGet
   },
   storedFullText: state => {
     return state.storedFullText
@@ -46,7 +44,7 @@ const mutations = {
 }
 
 const actions = {
-  async requestSearchFullText () {
+  requestSearchFullText () {
     router.push({ path: '/search',
       query: {
         fullText: state.storedFullText,
@@ -58,26 +56,21 @@ const actions = {
     store.commit('setLastFullText', state.storedFullText)
   },
 
-  async searchFullText () {
-    await store.dispatch('resetApplicationState')
-    await store.commit('setLoading', { value: true, search: 'FULLTEXT' })
+  searchFullText () {
     store.dispatch('executeSearchFullText', 'SIRENE')
     store.dispatch('executeSearchFullText', 'RNA')
   },
 
-  async executeSearchFullText(dispatch, api) { // TODO: Find alternatives to commented code (doesnt work with double fulltext)
-    store.dispatch('sendAPIRequest', getters.adressToGetFullText(state, api))
+  async executeSearchFullText(dispatch, api) {
+    store.commit('setLoadingFullText', { value: true, endpoint: api })
+    await store.dispatch('sendAPIRequest', getters.addressToGetFullText(state, api))
       .then(response => {
         store.dispatch('setResponseFullText', { response: response, api: api })
       })
-      .catch(async notFound => {
-        // if (state.pageNumber > 1) {
-        //   await store.commit('setPage', 1)
-        //   store.dispatch('requestSearchFullText')
-        // } else {
-        store.dispatch('setResponseFullText', { response: notFound, api: api })
-        // }
+      .catch(error => {
+        store.dispatch('setResponseFullText', { response: error, api: api })
       })
+      .finally(() => store.commit('setLoadingFullText', { value: false, endpoint: api }))
   }
 }
 

@@ -1,0 +1,21 @@
+body {
+  background: $color-white;
+}
+
+.button {
+  padding: 0.5em 2em 0.6em;
+  text-align: center;
+}
+
+.button .icon {
+  height: 16px;
+  vertical-align: middle;
+  margin-right: 0.25em;
+}
+
+@media (max-width: $mobile) {
+  .row {
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+}

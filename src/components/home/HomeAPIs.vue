@@ -1,9 +1,9 @@
 <template>
-  <section class="api text-center">
+  <section class="api text-center section">
     <div class="container">
       <div class="row">
         <div class="column">
-          <p>Vous pouvez, si vous le souhaitez, interroger directement nos APIs</p>
+          <p>Vous pouvez, si vous le souhaitez, interroger directement les APIs</p>
           <router-link class="button" :to="{ name: 'ApiDoc'}">Documentation des APIs</router-link>
         </div>
         <div class="column api__image">
@@ -28,11 +28,6 @@ export default {
 a.button {
   padding: 0.5em 0.5em;
   min-width: 280px;
-}
-
-.api {
-  background: $color-white;
-  padding: 3em 0 3em 0;
 }
 
 .api .column{

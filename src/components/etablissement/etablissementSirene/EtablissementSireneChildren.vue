@@ -1,29 +1,26 @@
 <template>
-  <div class="company__panel panel">
-    <div v-if="isSiegeSocial" class="company__item">
-      <div class="company__item-key">Cet établissement est le siège social</div>
-    </div>
-    <div v-if="!isSiegeSocial" class="company__item">Siège social :
-      <router-link tag="div" class="company__item-link" :to="{ name: 'Etablissement', params: {searchId: resultSiegeSocial.siret}}">
-        {{ resultSiegeSocial.nom_raison_sociale | removeExtraChars }}
+  <div class="company__panel">
+    <p v-if="isSiegeSocial" class="company__item">Cet établissement est le siège social.</p>
+    <p v-else class="company__item">Le siège social de cet établissement est :
+      <router-link class="company__item-link" :to="{ name: 'Etablissement', params: {searchId: resultSiegeSocial.siret}}">
+        {{ resultSiegeSocial.nom_raison_sociale | removeExtraChars }} ({{ resultSiegeSocial.siret }})
       </router-link>
-    </div>
-    <div v-if="haveChildrenEtablissements" class="company__item lineup">
-      <div class="company__item-key">
-        Etablissements enfants : {{ totalResultsOtherSirens }} {{ `résultat` | pluralizeDependingOn(this.totalResultsOtherSirens) }}
-        ({{ maxChildrenEtablissements }} {{ `affiché` | pluralizeDependingOn(this.maxChildrenEtablissements) }} )</div>
-      <template v-if="thereAreMoreThanMaxChildren">
-        <div class="company__item-link" v-show="!visibleChildren" @click="showAllChildren">Afficher la totalité</div>
-        <div class="company__item-link" v-show="visibleChildren" @click="hideAllChildren">Réduire</div>
-      </template>
-      <ul>
-        <router-link tag="li"
-                      class="company__item-link"
-                      :to="{ name: 'Etablissement', params: {searchId: siret}}"
-                      v-for="siret in resultOtherSirens"
-                      :key="siret">
-          {{ siret }}
-        </router-link>
+    </p>
+    <div v-if="haveChildrenEtablissements" class="company__item">
+      <div class="company__children-summary">
+        Cette entreprise possède {{ totalResultsOtherSirens }} {{ `établissement` | pluralizeDependingOn(this.totalResultsOtherSirens) }}<template v-if="thereAreMoreThanMaxChildren">
+        ({{ maxChildrenEtablissements }} {{ `affiché` | pluralizeDependingOn(this.maxChildrenEtablissements) }})</template> :
+        <template v-if="thereAreMoreThanMaxChildren">
+          <div class="company__item-link" v-show="!visibleChildren" @click="showAllChildren">Afficher la totalité</div>
+          <div class="company__item-link" v-show="visibleChildren" @click="hideAllChildren">Réduire</div>
+        </template>
+      </div>
+      <ul class="company__children">
+        <li class="company__item-link" v-for="siret in resultOtherSirens" :key="siret">
+          <router-link :to="{ name: 'Etablissement', params: {searchId: siret}}">
+            {{ siret }}
+          </router-link>
+        </li>
       </ul>
     </div>
   </div>
@@ -91,10 +88,24 @@ export default {
 
 <style lang="scss" scoped>
   .company__panel {
-    margin-bottom: 0;
+    margin-top: 1.5em;
   }
 
-  .panel {
-    border: 2px solid $color-lighter-blue;
+  .company__item {
+    margin-bottom: 1em;
+  }
+
+  .company__children-summary {
+    margin-bottom: 0.5em;
+  }
+
+  .company__children {
+    margin: 0;
+    padding: 0;
+  }
+
+  .company__children li {
+    display: inline-block;
+    margin-right: 0.5em;
   }
 </style>

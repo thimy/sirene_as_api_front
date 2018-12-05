@@ -53,7 +53,7 @@ export default {
 }
 
 .pagesButtons {
-  background: transparentize($color-light-blue, .8);
+  background: $color-lighter-blue;
   border-radius: 3px;
   padding: 2px 5px;
   margin-left: 8px;
@@ -62,8 +62,13 @@ export default {
     background: none;
   }
 
+  &.disabled a {
+    color: $color-dark-grey;
+    cursor: auto;
+  }
+
   &.active {
-    background-color: $color-light-blue;
+    background-color: $color-blue;
 
     a {
       color: $color-white;
@@ -74,6 +79,7 @@ export default {
 .pagesButtons a {
   color: $link-color;
   font-weight: 700;
+  text-decoration: none;
 }
 
 </style>

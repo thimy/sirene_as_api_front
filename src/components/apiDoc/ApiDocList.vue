@@ -1,28 +1,60 @@
 <template>
   <div>
-    <section class="section-grey">
+    <section class="section section-grey">
       <div class="container apis">
-        <div class="description">
-          <h2>L'API Sirene</h2>
-          <p>
-            L'API Sirene contient tous les établissements des entreprises françaises,
-            ainsi que toutes les associations disposant d'un code SIRET.<br>
-            Les données de l'API Sirene sont délivrées par l'INSEE.
+        <h2>L’API Sirene</h2>
+        <div class="row">
+          <p class="description">
+            L’API Sirene contient tous les établissements des entreprises françaises,
+            ainsi que toutes les associations disposant d’un code SIRET.
+            Les données de l’API Sirene sont délivrées par l’INSEE.
           </p>
+          <div class="cta">
+            <router-link class="button" :to="{ name: 'ApiDocSirene'}">Documentation API Sirene</router-link>
+          </div>
         </div>
-        <router-link class="button" :to="{ name: 'ApiDocSirene'}">Documentation API Sirene</router-link>
       </div>
     </section>
-    <section class="section-white">
+    <section class="section section-white">
       <div class="container apis">
-        <div class="description">
-          <h2>L'API Repertoire National des Associations (RNA)</h2>
-          <p>
-            Cette API contient toutes les associations françaises.<br>
-            Les données proviennent du Ministère de l'Intérieur.
+        <h2>L’API Repertoire National des Associations (RNA)</h2>
+        <div class="row">
+          <p class="description">
+            Cette API contient toutes les associations françaises.
+            Les données proviennent du Ministère de l’Intérieur.
           </p>
+          <div class="cta">
+            <router-link class="button" :to="{ name: 'ApiDocRNA'}">Documentation API RNA</router-link>
+          </div>
         </div>
-        <router-link class="button" :to="{ name: 'ApiDocRNA'}">Documentation API RNA</router-link>
+      </div>
+    </section>
+    <section class="section section-grey">
+      <div class="container apis">
+        <h2>L’API Répertoire National des Métiers (RNM)</h2>
+        <div class="row">
+          <p class="description">
+            L’API RNM vous est gracieusement ouverte par les Chambres et Métiers de l’Artisanat.
+            Les données sont mises à jour toutes les nuits.
+          </p>
+          <div class="cta">
+            <a class="button" href="https://api-rnm.artisanat.fr/">Documentation API RNM</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section section-white">
+      <div class="container apis">
+        <h2>L’API Registre National du Commerce et des Sociétés (RNCS)</h2>
+        <div class="row">
+          <p class="description">
+            Cette API contient les données IMR (Immatriculation, Modification, Radiation) des sociétés.
+            Les données proviennent d’Infogreffe et de l’INPI.
+          </p>
+          <div class="cta">
+            <router-link class="button" :to="{ name: 'ApiDocRNCS'}">Documentation API RNCS</router-link>
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -35,22 +67,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-a.button {
-  text-align: center;
-  padding: 0.5em 0.5em;
-  min-width: 280px;
-  max-height: 1.2em;
-}
-
-.apis {
+.cta {
   display: flex;
-  flex-direction: column;
-
-  @media screen and (min-width: $tablet) {
-    flex-direction: row;
-    align-items: center;
-  }
+  align-items: center;
+  justify-content: center;
 }
 
+.button {
+  white-space: nowrap;
+}
 </style>

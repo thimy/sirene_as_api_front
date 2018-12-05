@@ -3,218 +3,330 @@
 exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
 <div>
   <section
-    class="section-white"
+    class="section section-white"
   >
     <div
-      class="container centered"
+      class="container text-center"
     >
       <h1>
-        Nos APIs Open Data
+        Les APIs Open Data
       </h1>
        
       <p
-        class="centered"
+        class="text-center lead-text"
       >
         
-      Entreprise.data.gouv.fr est en phase intensive de développement. De nombreuses
-      APIs, telles que les données IMR ou RNCS, seront bientôt ajoutées !
+      Entreprise.data.gouv.fr est en phase intensive de développement.
+        <br />
+        
+      De nombreuses APIs sont en cours d’ajout !
     
       </p>
+       
+      <p
+        class="text-center lead-text"
+      >
+        
+      Vous pouvez vous inscrire à notre mailing-list pour vous tenir au courant
+      des nouveautés et changements à venir.
+        <br />
+        
+      Vos informations ne seront jamais utilisées à des fins commerciales.
+    
+      </p>
+       
+      <form>
+        <h4>
+          Inscription Mailing-List
+        </h4>
+         
+        <iframe
+          frameborder="0"
+          height="95"
+          marginheight="0"
+          marginwidth="0"
+          scrolling="no"
+          src="https://app.mailjet.com/widget/iframe/zR1/ack"
+          width="340"
+        />
+      </form>
     </div>
   </section>
    
   <div>
     <section
-      class="section-grey"
+      class="section section-grey"
     >
       <div
         class="container apis"
       >
+        <h2>
+          L’API Sirene
+        </h2>
+         
         <div
-          class="description"
+          class="row"
         >
-          <h2>
-            L'API Sirene
-          </h2>
-           
-          <p>
+          <p
+            class="description"
+          >
             
-          L'API Sirene contient tous les établissements des entreprises françaises,
-          ainsi que toutes les associations disposant d'un code SIRET.
-            <br />
-            
-          Les données de l'API Sirene sont délivrées par l'INSEE.
+          L’API Sirene contient tous les établissements des entreprises françaises,
+          ainsi que toutes les associations disposant d’un code SIRET.
+          Les données de l’API Sirene sont délivrées par l’INSEE.
         
           </p>
+           
+          <div
+            class="cta"
+          >
+            <a
+              class="button"
+            >
+              Documentation API Sirene
+            </a>
+          </div>
         </div>
-         
-        <a
-          class="button"
-        >
-          Documentation API Sirene
-        </a>
       </div>
     </section>
      
     <section
-      class="section-white"
+      class="section section-white"
     >
       <div
         class="container apis"
       >
+        <h2>
+          L’API Repertoire National des Associations (RNA)
+        </h2>
+         
         <div
-          class="description"
+          class="row"
         >
-          <h2>
-            L'API Repertoire National des Associations (RNA)
-          </h2>
-           
-          <p>
+          <p
+            class="description"
+          >
             
           Cette API contient toutes les associations françaises.
-            <br />
-            
-          Les données proviennent du Ministère de l'Intérieur.
+          Les données proviennent du Ministère de l’Intérieur.
         
           </p>
+           
+          <div
+            class="cta"
+          >
+            <a
+              class="button"
+            >
+              Documentation API RNA
+            </a>
+          </div>
         </div>
+      </div>
+    </section>
+     
+    <section
+      class="section section-grey"
+    >
+      <div
+        class="container apis"
+      >
+        <h2>
+          L’API Répertoire National des Métiers (RNM)
+        </h2>
          
-        <a
-          class="button"
+        <div
+          class="row"
         >
-          Documentation API RNA
-        </a>
+          <p
+            class="description"
+          >
+            
+          L’API RNM vous est gracieusement ouverte par les Chambres et Métiers de l’Artisanat.
+          Les données sont mises à jour toutes les nuits.
+        
+          </p>
+           
+          <div
+            class="cta"
+          >
+            <a
+              class="button"
+              href="https://api-rnm.artisanat.fr/"
+            >
+              Documentation API RNM
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+     
+    <section
+      class="section section-white"
+    >
+      <div
+        class="container apis"
+      >
+        <h2>
+          L’API Registre National du Commerce et des Sociétés (RNCS)
+        </h2>
+         
+        <div
+          class="row"
+        >
+          <p
+            class="description"
+          >
+            
+          Cette API contient les données IMR (Immatriculation, Modification, Radiation) des sociétés.
+          Les données proviennent d’Infogreffe et de l’INPI.
+        
+          </p>
+           
+          <div
+            class="cta"
+          >
+            <a
+              class="button"
+            >
+              Documentation API RNCS
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   </div>
    
   <section
-    class="section-grey"
+    class="section section-grey"
   >
     <div
       class="container"
     >
       <div
-        class="column__icon"
+        class="row"
       >
-        <img
-          alt=""
-          src="@/assets/img/icons/statistics-on-a-screen.svg"
-        />
-      </div>
-       
-      <div
-        class="column__right"
-      >
-        <h2>
-          Découvrez les autres APIs et jeux de données Data.gouv
-        </h2>
-         
-        <p>
-          <a
-            href="https://data.gouv.fr"
-          >
-            Data.gouv.fr
-          </a>
-           met a votre disposition de nombreux jeux de données "Open Data".
-          <br />
-          
-        Quelques exemples :
-      
-        </p>
-         
-        <ul>
-          <li>
-            <a
-              href="https://www.data.gouv.fr/fr/datasets/resultats-de-lintegralite-des-elections-depuis-2001/"
-            >
-              Les résultats électoraux
-            </a>
-          </li>
+        <div
+          class="column__right"
+        >
+          <h2>
+            Découvrez les autres APIs et jeux de données Data.gouv
+          </h2>
            
-          <li>
+          <p>
             <a
-              href="https://www.data.gouv.fr/fr/datasets/fichier-des-prenoms-edition-2016/"
+              href="https://data.gouv.fr"
             >
-              Le fichier des prénoms
+              Data.gouv.fr
             </a>
-          </li>
+             met a votre disposition de nombreux jeux de données "Open Data".
+            <br />
+            
+          Quelques exemples :
+        
+          </p>
            
-          <li>
+          <ul>
+            <li>
+              <a
+                href="https://www.data.gouv.fr/fr/datasets/resultats-de-lintegralite-des-elections-depuis-2001/"
+              >
+                Les résultats électoraux
+              </a>
+            </li>
+             
+            <li>
+              <a
+                href="https://www.data.gouv.fr/fr/datasets/fichier-des-prenoms-edition-2016/"
+              >
+                Le fichier des prénoms
+              </a>
+            </li>
+             
+            <li>
+              <a
+                href="https://www.data.gouv.fr/fr/datasets/secteurs-de-localisation-de-la-loutre-dans-le-jura/"
+              >
+                Les secteurs de localisation de la loutre dans le Jura
+              </a>
+            </li>
+          </ul>
+           
+          <p>
+            
+          Vous pouvez également consulter des réutilisations utiles de ces jeux de données.
+        
+          </p>
+           
+          <h3>
+            La mission Etalab
+          </h3>
+           
+          <p>
+            
+          Etalab coordonne la politique d’ouverture et de partage des données publiques (“open data”). 
+          
+            <br />
+             
             <a
-              href="https://www.data.gouv.fr/fr/datasets/secteurs-de-localisation-de-la-loutre-dans-le-jura/"
+              href="https://www.etalab.gouv.fr/en/qui-sommes-nous"
             >
-              Les secteurs de localisation de la loutre dans le Jura
+              Plus d’informations.
             </a>
-          </li>
-        </ul>
+          </p>
+        </div>
          
-        <p>
-          
-        Vous pouvez également consulter des réutilisations utiles de ces jeux de données.
-      
-        </p>
-         
-        <h3>
-          La mission Etalab
-        </h3>
-         
-        <p>
-          
-        Etalab coordonne la politique d’ouverture et de partage des données publiques (“open data”). 
-          <a
-            href="https://www.etalab.gouv.fr/en/qui-sommes-nous"
-          >
-            Plus d'informations.
-          </a>
-        </p>
+        <div
+          class="column__icon"
+        >
+          <img
+            alt=""
+            src="@/assets/img/icons/statistics-on-a-screen.svg"
+          />
+        </div>
       </div>
     </div>
   </section>
    
   <section
-    class="section-white"
+    class="section section-white"
   >
     <div
-      class="container"
+      class="container text-center"
     >
+      <h2>
+        Découvrez l’API Entreprise, toutes les informations sur les sociétés.
+      </h2>
+       
       <div
-        class="column__full center"
+        class="column__img"
       >
-        <h2>
-          Découvrez l'API Entreprise, toutes les informations sur les sociétés.
-        </h2>
-         
-        <div
-          class="column__img"
-        >
-          <img
-            alt=""
-            src="@/assets/img/city.svg"
-          />
-        </div>
-         
-        <h3>
-          Vous justifiez d'une mission de service public ? L'API Entreprise est pour vous.
-        </h3>
-         
-        <p>
-          
-        Dans le respect du principe "Dites le nous une seule fois", la DINSIC a mis en place l'API Entreprise,
-        l'API qui aggrège les informations sur les entreprises.
-          <br />
-          
-        Obtenez les Greffes, Certificats, Liasses fiscales, Attestations sociales, et bien plus encore...
-      
-        </p>
-         
-        <a
-          class="button"
-          href="https://entreprise.api.gouv.fr/"
-        >
-          Demander un accès
-        </a>
+        <img
+          alt=""
+          src="@/assets/img/city.svg"
+        />
       </div>
+       
+      <h3>
+        Vous justifiez d’une mission de service public ? L’API Entreprise est pour vous.
+      </h3>
+       
+      <p>
+        
+      Dans le respect du principe "Dites le nous une seule fois", la DINSIC a mis en place l’API Entreprise,
+      l’API qui aggrège les informations sur les entreprises.
+        <br />
+        
+      Obtenez les Greffes, Certificats, Liasses fiscales, Attestations sociales, et bien plus encore...
+    
+      </p>
+       
+      <a
+        class="button"
+        href="https://entreprise.api.gouv.fr/"
+      >
+        Demander un accès
+      </a>
     </div>
   </section>
 </div>

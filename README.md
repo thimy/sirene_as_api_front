@@ -9,13 +9,6 @@ dont les fichiers SIRENE et RNA sont devenus publics.
 
 Le site entreprise.data.gouv.fr a pour vocation de mettre à disposition des citoyens les données ouvertes "Open-data".
 
-Les API exploitées par ce front-end sont les suivantes :
-
-  - Une API Ruby on Rails qui importe les fichiers de données
-    mis à disposition par l'INSEE : [sirene_as_api](https://github.com/etalab/sirene_as_api)
-  - Une API Ruby on Rails qui importe les fichiers de données
-    mis à disposition par l'INSEE : [sirene_as_api](https://github.com/etalab/rna_as_api)
-
 ## Exécution en local
 
 ``` bash

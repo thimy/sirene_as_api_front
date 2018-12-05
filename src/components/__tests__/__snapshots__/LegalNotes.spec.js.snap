@@ -2,7 +2,7 @@
 
 exports[`LegalNotes.vue snapshot testing It matches the snapshot 1`] = `
 <section
-  class="section-white center"
+  class="section section-white center"
 >
   <div
     class="container"
@@ -16,7 +16,7 @@ exports[`LegalNotes.vue snapshot testing It matches the snapshot 1`] = `
     </h3>
      
     <p>
-      Mission Etalab, Direction interministérielle du numérique et du système d'information et de communication de l'Etat (DINSIC).
+      Mission Etalab, Direction interministérielle du numérique et du système d’information et de communication de l’Etat (DINSIC).
     </p>
      
     <h3>
@@ -28,11 +28,11 @@ exports[`LegalNotes.vue snapshot testing It matches the snapshot 1`] = `
       <sup>
         me
       </sup>
-       Laure LUCCHESI, Cheffe de la Mission Etalab, Direction interministérielle du numérique et du système d'information et de communication de l'Etat (DINSIC).
+       Laure LUCCHESI, Cheffe de la Mission Etalab, Direction interministérielle du numérique et du système d’information et de communication de l’Etat (DINSIC).
     </p>
      
     <h3>
-      Prestataire d'hébergement
+      Prestataire d’hébergement
     </h3>
      
     <p>

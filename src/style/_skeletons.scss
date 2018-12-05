@@ -1,0 +1,27 @@
+.loading {
+  background-color: $color-light-grey;
+  height: 1em;
+  border-radius: 3px;
+  max-width: 100%;
+}
+
+@keyframes flow {
+0% { left:-20px; }
+50% { left:30%; }
+100% { left:80%; }
+}
+
+.panel {
+  position: relative;
+  overflow: hidden;
+
+  .glow {
+    background: rgb(255,255,255); 
+    width: 150px; 
+    height: 100%; 
+    z-index: 999;
+    position: absolute;
+    animation: flow 2s linear infinite;
+    background: linear-gradient(to right, rgba(255,255,255,0) 30%,rgba(255,255,255,0.2) 50%,rgba(255,255,255,0) 80%);
+  }
+}

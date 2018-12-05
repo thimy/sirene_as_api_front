@@ -1,36 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App.vue It match the snapshot 1`] = `
-<div>
-  <nav
-    class="nav"
+<div
+  id="app"
+>
+  <header
+    class="navbar"
+    role="navigation"
   >
     <div
-      class="nav__container"
+      class="navbar__container"
     >
       <a
-        class="nav__link"
+        class="navbar__home"
       >
         <img
           alt="entreprise.data.gouv.fr"
-          class="nav__logo"
+          class="navbar__logo"
           src="../assets/img/entreprise.svg"
         />
       </a>
     </div>
-  </nav>
+  </header>
+   
+  <div
+    class="notification full-width"
+  >
+    
+    Ce site est un travail en cours, actuellement en beta. Vous pouvez le consulter librement.
+  
+  </div>
    
   <div
     class="hero"
+    role="banner"
   >
-    <div
-      class="notification full-width"
-    >
-      
-    Ce site est un travail en cours, actuellement en beta. Vous pouvez le consulter librement.
-  
-    </div>
-     
     <div
       class="hero__container container"
     >
@@ -49,7 +53,7 @@ exports[`App.vue It match the snapshot 1`] = `
         <p
           class="search__subtitle"
         >
-          Les bases de données sur l'état civil des entreprises et associations françaises sont maintenant accessibles à tous, sans frais.
+          Les bases de données sur l’état civil des entreprises et associations françaises sont maintenant accessibles à tous, sans frais.
         </p>
       </div>
        
@@ -74,24 +78,10 @@ exports[`App.vue It match the snapshot 1`] = `
           </svg>
         </button>
          
-        <ul>
-           
-          <li
-            class="hidden suggestion__box"
-          />
-          <li
-            class="hidden suggestion__box"
-          />
-          <li
-            class="hidden suggestion__box"
-          />
-          <li
-            class="hidden suggestion__box"
-          />
-          <li
-            class="hidden suggestion__box"
-          />
-        </ul>
+        <ul
+          class="suggestions"
+          style="display: none;"
+        />
       </div>
        
       <!---->
@@ -100,7 +90,7 @@ exports[`App.vue It match the snapshot 1`] = `
    
   <div>
     <section
-      class="api text-center"
+      class="api text-center section"
     >
       <div
         class="container"
@@ -112,7 +102,7 @@ exports[`App.vue It match the snapshot 1`] = `
             class="column"
           >
             <p>
-              Vous pouvez, si vous le souhaitez, interroger directement nos APIs
+              Vous pouvez, si vous le souhaitez, interroger directement les APIs
             </p>
              
             <a
@@ -151,7 +141,7 @@ exports[`App.vue It match the snapshot 1`] = `
     </section>
      
     <section
-      class="section-grey text-center public-administration"
+      class="section section-grey text-center public-administration"
     >
       <div
         class="container"
@@ -161,7 +151,7 @@ exports[`App.vue It match the snapshot 1`] = `
         Vous êtes une administration publique ?
           <br />
           
-        Demandez votre accès spécial à l'API Entreprise pour obtenir des informations supplémentaires sur les sociétés
+        Demandez votre accès spécial à l’API Entreprise pour obtenir des informations supplémentaires sur les sociétés
       
         </p>
          
@@ -186,9 +176,14 @@ exports[`App.vue It match the snapshot 1`] = `
       <div
         class="footer__logo"
       >
-        <img
-          src="../assets/img/etalab.svg"
-        />
+        <a
+          href="https://www.etalab.gouv.fr"
+          target="_blank"
+        >
+          <img
+            src="../assets/img/etalab.svg"
+          />
+        </a>
          
         <ul
           class="footer__social"
@@ -255,9 +250,11 @@ exports[`App.vue It match the snapshot 1`] = `
         class="footer__links"
       >
         <li>
-          <h2>
+          <h2
+            class="fit-mobile"
+          >
             <a
-              href="https://entreprise.api.gouv.fr/"
+              href="https://entreprise.data.gouv.fr/"
             >
               entreprise.data.gouv.fr
             </a>
