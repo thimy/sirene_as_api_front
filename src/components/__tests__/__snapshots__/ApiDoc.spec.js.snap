@@ -20,18 +20,10 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
         <br />
         
       De nombreuses APIs sont en cours d’ajout !
-    
-      </p>
-       
-      <p
-        class="text-center lead-text"
-      >
+        <br />
         
       Vous pouvez vous inscrire à notre mailing-list pour vous tenir au courant
       des nouveautés et changements à venir.
-        <br />
-        
-      Vos informations ne seront jamais utilisées à des fins commerciales.
     
       </p>
        
@@ -39,6 +31,14 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
         <h4>
           Inscription Mailing-List
         </h4>
+         
+        <p>
+          
+    Vos données sont traitées par Mailjet.
+          <br />
+           Vos informations ne seront jamais utilisées à des fins commerciales.
+  
+        </p>
          
         <iframe
           frameborder="0"
@@ -177,9 +177,12 @@ exports[`ApiDoc.vue snapshot testing It match the snapshot 1`] = `
           <p
             class="description"
           >
+            <strong>
+              ⚠ En version alpha ⚠ 
+            </strong>
+            <br />
             
-          Cette API contient les données IMR (Immatriculation, Modification, Radiation) des sociétés.
-          Les données proviennent d’Infogreffe et de l’INPI.
+          Cette API contient les données IMR (Immatriculation, Modification, Radiation) du Registre National du Commerce et des Sociétés de l’INPI.
         
           </p>
            

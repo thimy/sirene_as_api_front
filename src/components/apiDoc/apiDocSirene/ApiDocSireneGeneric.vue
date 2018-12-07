@@ -9,17 +9,17 @@
           <h2>Maitrisez l’API Sirene.</h2>
           <h3>Comment interroger l’API ?</h3>
           <p>
-            Vous devez faire pour cela une requête GET. L’adresse de notre API est : <a href="https://entreprise.data.gouv.fr/api/sirene/v1/">https://entreprise.data.gouv.fr/api/sirene/v1/</a><br>
+            Vous devez faire pour cela une requête GET. L’adresse de l'API est : <a href="https://entreprise.data.gouv.fr/api/sirene/v1/">https://entreprise.data.gouv.fr/api/sirene/v1/</a><br>
             Attention, vous devez rajouter votre requête sur l’adresse.
           </p>
           <h3>Format de réponse</h3>
           <p>
             L’API vous renverra les informations demandées au format JSON (code 200).<br>
-            Vous recevrez un code 404 si aucun établissement n’est trouvé, ou un 500 si notre serveur n’est pas fonctionnel (par exemple pendant une maintenance).
+            Vous recevrez un code 404 si aucun établissement n’est trouvé, ou un 500 si le serveur n’est pas fonctionnel (par exemple pendant une maintenance).
           </p>
           <h3>Limite de requêtes</h3>
           <p>
-            Notre serveur accepte 2000 requêtes / 10 minutes. Au delà, vous risquez un bannissement de votre IP.
+            Le serveur accepte 2000 requêtes / 10 minutes. Au delà, vous risquez un bannissement de votre IP.
           </p>
         </div>
       </div>

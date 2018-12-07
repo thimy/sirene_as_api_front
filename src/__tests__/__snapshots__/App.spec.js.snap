@@ -148,10 +148,10 @@ exports[`App.vue It match the snapshot 1`] = `
       >
         <p>
           
-        Vous êtes une administration publique ?
+        Vous êtes une administration ?
           <br />
           
-        Demandez votre accès spécial à l’API Entreprise pour obtenir des informations supplémentaires sur les sociétés
+        Demandez un accès spécial à l'API Entreprise et obtenez des informations supplémentaires sur les sociétés
       
         </p>
          
@@ -159,7 +159,7 @@ exports[`App.vue It match the snapshot 1`] = `
           class="button"
           href="https://entreprise.api.gouv.fr/"
         >
-          Demander un accès
+          API Entreprise
         </a>
       </div>
     </section>

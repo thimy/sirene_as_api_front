@@ -13,7 +13,8 @@
           <h2>Comment fonctionne Entreprise.data.gouv.fr ?</h2>
           <p>
             Ce site web interroge l’API Sirene développée par <a href="https://www.data.gouv.fr/fr/organizations/etalab/">Étalab</a>.
-            Ce site web et son API sont open-source : vous pouvez <a href="https://github.com/etalab/sirene_as_api">télécharger le code sur GitHub</a>.
+            Ce site web et son API sont open-source : vous pouvez <a href="https://github.com/etalab/sirene_as_api">télécharger le code sur GitHub</a>.<br/>
+            Les données de référence SIRENE sont disponibles sur <a href="https://www.data.gouv.fr/en/datasets/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/">Data.gouv.fr</a>.
           </p>
         </div>
         <div class="column__icon">

@@ -2,7 +2,7 @@
   <form>
     <h4>Inscription Mailing-List</h4>
     <p>
-      Nous utilisons Mailjet pour la gestion de vos données.<br/> Vos informations ne seront jamais utilisées à des fins commerciales.
+      Vos données sont traitées par Mailjet.<br/> Vos informations ne seront jamais utilisées à des fins commerciales.
     </p>
     <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://app.mailjet.com/widget/iframe/zR1/ack" width="340" height="95"></iframe>
   </form>

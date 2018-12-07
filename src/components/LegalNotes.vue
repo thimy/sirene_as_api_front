@@ -4,7 +4,7 @@
       <h2>Mentions légales</h2>
       <h3>Cookies et suivi d'audience</h3>
       <p>Nous enregistrons des logs anonymes pour suivre l'évolution du site et les pratiques
-        de nos utilisateurs.<br/>
+        des utilisateurs.<br/>
         Aucune donnée n'est utilisée à des fins commerciales.<br/>
         Pour en savoir plus ou pour refuser le suivi des sites Data.gouv,
         <a href="https://beta.gouv.fr/suivi/">cliquez ici.</a>

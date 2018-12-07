@@ -48,8 +48,8 @@
         <h2>L’API Registre National du Commerce et des Sociétés (RNCS)</h2>
         <div class="row">
           <p class="description">
-            Cette API contient les données IMR (Immatriculation, Modification, Radiation) des sociétés.
-            Les données proviennent d’Infogreffe et de l’INPI.
+            <strong>⚠ En version alpha ⚠ </strong><br/>
+            Cette API contient les données IMR (Immatriculation, Modification, Radiation) du Registre National du Commerce et des Sociétés de l’INPI.
           </p>
           <div class="cta">
             <router-link class="button" :to="{ name: 'ApiDocRNCS'}">Documentation API RNCS</router-link>
