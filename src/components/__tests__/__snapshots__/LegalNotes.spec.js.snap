@@ -12,6 +12,27 @@ exports[`LegalNotes.vue snapshot testing It matches the snapshot 1`] = `
     </h2>
      
     <h3>
+      Cookies et suivi d'audience
+    </h3>
+     
+    <p>
+      Nous enregistrons des logs anonymes pour suivre l'évolution du site et les pratiques
+      des utilisateurs.
+      <br />
+      
+      Aucune donnée n'est utilisée à des fins commerciales.
+      <br />
+      
+      Pour en savoir plus ou pour refuser le suivi des sites Data.gouv,
+      
+      <a
+        href="https://beta.gouv.fr/suivi/"
+      >
+        cliquez ici.
+      </a>
+    </p>
+     
+    <h3>
       Editeur
     </h3>
      

@@ -4,12 +4,9 @@
       <h1>Les APIs Open Data</h1>
       <p class="text-center lead-text">
         Entreprise.data.gouv.fr est en phase intensive de développement.<br/>
-        De nombreuses APIs sont en cours d’ajout !
-      </p>
-      <p class="text-center lead-text">
+        De nombreuses APIs sont en cours d’ajout !<br/>
         Vous pouvez vous inscrire à notre mailing-list pour vous tenir au courant
-        des nouveautés et changements à venir.<br/>
-        Vos informations ne seront jamais utilisées à des fins commerciales.
+        des nouveautés et changements à venir.
       </p>
       <api-doc-mail />
     </div>

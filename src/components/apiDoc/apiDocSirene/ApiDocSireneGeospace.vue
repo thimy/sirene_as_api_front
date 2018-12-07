@@ -179,7 +179,7 @@ h3 {
 
 #reduced-img {
   max-width: 120px;
-  padding: 40px 40px 40px 40px;
+  padding: 15px 15px 15px 15px;
 }
 
 

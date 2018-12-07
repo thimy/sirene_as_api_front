@@ -4,15 +4,18 @@
       <div class="row">
         <div class="column">
           <h1>Documentation de l’API RNCS</h1>
+          <p><strong>⚠ Attention: Cette API est encore en version alpha et donc non-stable pour une utilisation en production. ⚠</strong></p>
           <h2>Qu’est-ce que le RNCS ?</h2>
           <p>
             Le RNCS est le <strong>Répertoire National du Commerce et des Sociétés</strong>.
-            Il est produit par l'INPI depuis le RCS (Registre du Commerce et des Sociétés), registre compilé
-            par Infogreffe depuis les greffes de tribunaux de commerce.
+           Le RNCS est le Répertoire National du Commerce et des Sociétés. Il s'agit de l'ensemble
+           des informations sur les sociétés françaises immatriculées,
+           dans tous les registres locaux des greffes des tribunaux à 
+           compétence commerciale, et centralisées à l'INPI.
           </p>
           <p>
             L’API RNCS est développée par l'équipe <a href="https://entreprise.api.gouv.fr/">API Entreprise</a> au sein d'<a href="https://www.data.gouv.fr/fr/organizations/etalab/">Étalab</a>.<br/>
-            Notre API est open-source : vous pouvez <a href="https://github.com/etalab/rncs_worker_api_entreprise">télécharger le code sur GitHub</a>.
+            L'API est open-source : vous pouvez <a href="https://github.com/etalab/rncs_worker_api_entreprise">télécharger le code sur GitHub</a>.
           </p>
         </div>
         <div class="column__icon">

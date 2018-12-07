@@ -8,7 +8,7 @@
         <h2>L’API RNCS</h2>
         <h3>Comment interroger l’API ?</h3>
         <p>
-          Notre API RNCS est similaire à nos API Sirene et RNA.
+          L'API RNCS est similaire aux API Sirene et RNA.
           Vous devez faire une requête GET. L’adresse de l’API est : <a href="https://entreprise.data.gouv.fr/api/rncs/">https://entreprise.data.gouv.fr/api/rncs/</a><br>
           Attention, vous devez rajouter votre requête sur l’adresse.
         </p>
