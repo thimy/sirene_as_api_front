@@ -15,7 +15,8 @@
           </p>
           <p>
             L’API RNCS est développée par l'équipe <a href="https://entreprise.api.gouv.fr/">API Entreprise</a> au sein d'<a href="https://www.data.gouv.fr/fr/organizations/etalab/">Étalab</a>.<br/>
-            L'API est open-source : vous pouvez <a href="https://github.com/etalab/rncs_worker_api_entreprise">télécharger le code sur GitHub</a>.
+            L'API est open-source : vous pouvez <a href="https://github.com/etalab/rncs_worker_api_entreprise">télécharger le code sur GitHub</a>.<br/>
+            L INPI poste ses données sur <a href="https://www.data.gouv.fr/fr/organizations/institut-national-de-la-propriete-industrielle-inpi/">Data.gouv.fr</a>.
           </p>
         </div>
         <div class="column__icon">
