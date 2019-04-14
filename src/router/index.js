@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Meta from 'vue-meta'
 import Results from '@/components/Results'
 import Etablissement from '@/components/Etablissement'
+import EtablissementLegal from '@/components/etablissement/EtablissementLegal'
 import LegalNotes from '@/components/LegalNotes'
 import ApiDoc from '@/components/ApiDoc'
 import ApiDocSirene from '@/components/apiDoc/ApiDocSirene'
@@ -33,7 +34,11 @@ export default new Router({
     {
       path: '/etablissement/:searchId',
       name: 'Etablissement',
-      component: Etablissement
+      component: Etablissement,
+      children: [{
+        path: '/legal',
+        component: EtablissementLegal
+      }]
     },
     {
       path: '/mentions_legales',
